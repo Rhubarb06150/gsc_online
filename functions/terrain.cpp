@@ -3,10 +3,11 @@
 #include <fstream>
 #include <iostream>
 
-#include "../assets/tiles/tiles.cpp"
+#include "tiles.cpp"
+
 
 class Terrain{
-    
+
     public:
 
     TilesIndex tiles_index;
@@ -42,10 +43,10 @@ class Terrain{
         int real_player_pos_x = player_pos[0]/64;
         int real_player_pos_y = player_pos[1]/64;
         
-        if (real_player_pos_x<5){
+        if (real_player_pos_x<6){
             real_player_pos_x=0;
         }else{
-            real_player_pos_x-=5;
+            real_player_pos_x-=6;
         };
 
         if (real_player_pos_y<5){
@@ -74,7 +75,7 @@ class Terrain{
                 window.draw(sprite);
                 shown_sprites++;
 
-                if(j>max_x)break;
+                if(j>max_x+1)break;
             };
         if (i>max_y)return 2;
         if (shown_sprites>200){

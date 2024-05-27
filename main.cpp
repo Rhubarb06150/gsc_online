@@ -1,31 +1,56 @@
 #include <SFML/Graphics.hpp>
+#include <filesystem>
 #include <iostream>
 #include <vector>
 #include <chrono>
+#include <ctime>
+#include <sys/stat.h>
 
-#include "other/terrain.cpp"
-#include "other/player.cpp"
-#include "other/sounds.cpp"
+#include "functions/functions.cpp"
+#include "functions/terrain.cpp"
+#include "functions/player.cpp"
+#include "functions/sounds.cpp"
+#include "functions/hud.cpp"
 
 std::vector<std::vector<std::string>> terrain_sprites;
-std::vector<int> moy;
-
-std::chrono::high_resolution_clock::time_point start;
-std::chrono::high_resolution_clock::time_point end;
 
 std::string cur_map = "route1";
 std::string player_state = "front";
-
 std::string resolution = "720x576";
 
 int index_frame;
-std::vector<int> player_pos = {0,0};
 int moving_timer = 0;
 char time_otd;
-float fps;
-bool walking;
 Terrain terrain;
 Sounds SoundManager;
+HUD HUDdisplay;
+
+//PLAYER
+std::string username = "Rhubarb";
+std::vector<int> player_pos = {500,500};
+bool walking;
+bool can_move=true;
+
+//DEBUG
+bool debug=false;
+std::chrono::high_resolution_clock::time_point start;
+std::chrono::high_resolution_clock::time_point end;
+std::vector<int> moy = {0};
+float fps;
+int fps_;
+//-------------------------------------------------------
+
+int takeScreenshot(sf::RenderWindow& render_window,std::string filename){
+    sf::Texture texture;
+    texture.create(render_window.getSize().x, render_window.getSize().y);
+    texture.update(render_window);
+    if (texture.copyToImage().saveToFile(filename))
+    {
+        std::cout << "screenshot saved to " << filename << std::endl;
+    };
+    return 0;
+ 
+}
 
 int setTerrain(Terrain terrain,sf::RenderWindow& window, char tœime_otd){
     std::cout << "Loading terrain..." << std::endl;
@@ -84,73 +109,83 @@ std::vector<int> checkResolutionPOffset(){
 
 int main()
 {
+
     //INIT EVERYTHIN
     std::vector<int> resolution_vec = checkResolutionRWindow();
     std::vector<int> player_offset = checkResolutionPOffset();
+    Player player(player_offset);
     sf::RenderWindow window(sf::VideoMode(resolution_vec[0],resolution_vec[1]), "Pokémon GSC Online");
-    srand(time(NULL));
     sf::Clock clock;
     window.setFramerateLimit(60);
-    Player player(player_offset);
     time_otd = 'd';
+    srand(time(NULL));
+    
+    GSC_Functions functions;
+    std::cout << functions.currentDateTime() << std::endl;
 
     setTerrain(terrain,window,time_otd);
     
     while (window.isOpen())
-    {
+    {   
         start = std::chrono::high_resolution_clock::now();
         
         index_frame++;
         sf::Event event;
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num6))getStandingTile();
+
+        if ((sf::Keyboard::isKeyPressed(sf::Keyboard::LControl))&&(sf::Keyboard::isKeyPressed(sf::Keyboard::F1)))takeScreenshot(window,"/home/rhubarb/.gsc_o/screenshots/screenshot.png");
         
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1)){time_otd='m';SoundManager.soundEffect("PRESS");}
         else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2)){time_otd='d';SoundManager.soundEffect("PRESS");}
         else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num3)){time_otd='n';SoundManager.soundEffect("PRESS");}
 
         //PLAYER MOVE
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
-            if (player_pos[0]<terrain_sprites[0].size()*64-64){
-                if (terrain.tiles_index.checkCollision(player_pos,'r',terrain_sprites)==0){
-                    player_pos[0]+=4;
-                };
-            }else{SoundManager.soundEffect("COLLISION");}
-            walking=true;
-            moving_timer+=1;
-            player_state="right";
-        }
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){ 
-            if(player_pos[0]>0){
-                if (terrain.tiles_index.checkCollision(player_pos,'l',terrain_sprites)==0){
-                    player_pos[0]-=4;
-                };
-            }else{SoundManager.soundEffect("COLLISION");}
-            walking=true;
-            moving_timer+=1;
-            player_state="left";
-        }
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){ 
-            if(player_pos[1]<terrain_sprites.size()*64-64){
-                if (terrain.tiles_index.checkCollision(player_pos,'d',terrain_sprites)==0){
-                    player_pos[1]+=4;
-                };
-            }else{SoundManager.soundEffect("COLLISION");}
-            walking=true;
-            moving_timer+=1;
-            player_state="front";
-        }
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){   
-            if(player_pos[1]>0){
-                if (terrain.tiles_index.checkCollision(player_pos,'u',terrain_sprites)==0){
-                    player_pos[1]-=4;
-                };
-            }else{SoundManager.soundEffect("COLLISION");}
-            walking=true;
-            moving_timer+=1;
-            player_state="back";
-        }
-        else {walking=false;moving_timer=20;};
+        if (can_move){
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
+                if (player_pos[0]<terrain_sprites[0].size()*64-64){
+                    if (terrain.tiles_index.checkCollision(player_pos,'r',terrain_sprites)==0){
+                        player_pos[0]+=4;
+                    };
+                }else{SoundManager.soundEffect("COLLISION");}
+                walking=true;
+                moving_timer+=1;
+                player_state="right";
+            }
+            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){ 
+                if(player_pos[0]>0){
+                    if (terrain.tiles_index.checkCollision(player_pos,'l',terrain_sprites)==0){
+                        player_pos[0]-=4;
+                    };
+                }else{SoundManager.soundEffect("COLLISION");}
+                walking=true;
+                moving_timer+=1;
+                player_state="left";
+            }
+            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){ 
+                if(player_pos[1]<terrain_sprites.size()*64-64){
+                    if (terrain.tiles_index.checkCollision(player_pos,'d',terrain_sprites)==0){
+                        player_pos[1]+=4;
+                    };
+                }else{SoundManager.soundEffect("COLLISION");}
+                walking=true;
+                moving_timer+=1;
+                player_state="front";
+            }
+            else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){   
+                if(player_pos[1]>0){
+                    if (terrain.tiles_index.checkCollision(player_pos,'u',terrain_sprites)==0){
+                        player_pos[1]-=4;
+                    };
+                }else{SoundManager.soundEffect("COLLISION");}
+                walking=true;
+                moving_timer+=1;
+                player_state="back";
+            }
+            else {walking=false;moving_timer=20;};
+        }else{
+            walking=false;moving_timer=20;
+        };
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::F5)&&sf::Keyboard::isKeyPressed(sf::Keyboard::R)){
             reloadTextures();
@@ -184,17 +219,24 @@ int main()
         terrain.showTerrain(terrain_sprites,player_pos,time_otd,window,player_offset);
         player_state=player.animPlayer(player_state,moving_timer,walking);
         player.showPlayer('b',player_state,window);
+        HUDdisplay.showPauseMenu(window,username,resolution_vec[0]);
+
+        if (debug){
+            HUDdisplay.showTextWOB(("fps: "+std::to_string(fps_)),{0,0},window);
+            HUDdisplay.showTextWOB(("x: "+std::to_string(player_pos[0]/64)),{0,32},window);
+            HUDdisplay.showTextWOB(("y: "+std::to_string(player_pos[1]/64)),{0,64},window);
+            HUDdisplay.showTextWOB((std::to_string(terrain_sprites.size()*terrain_sprites[0].size())+" tiles"),{0,96},window);
+            std::string time_otd_str;
+            time_otd_str=time_otd;
+            HUDdisplay.showTextWOB(("time: "+time_otd_str),{0,128},window);
+        };
         
         window.display();
 
         end = std::chrono::high_resolution_clock::now();
         fps = (float)1e9/(float)std::chrono::duration_cast<std::chrono::nanoseconds>(end-start).count();
-        int fps_;
         fps_=fps;
-
         moy.push_back(fps_);
-
-        if (index_frame%30==0)window.setTitle("Pokémon GSC Online - "+std::to_string(fps_)+" fps - "+std::to_string(terrain_sprites.size()*terrain_sprites[0].size())+" tiles");
 
     };
 
