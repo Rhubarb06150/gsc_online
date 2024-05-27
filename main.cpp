@@ -110,7 +110,7 @@ int main()
     std::vector<int> resolution_vec = checkResolutionRWindow();
     std::vector<int> player_offset = checkResolutionPOffset();
     Player player(player_offset);
-    sf::RenderWindow window(sf::VideoMode(resolution_vec[0],resolution_vec[1]), "Pokémon GSC Online");
+    sf::RenderWindow window(sf::VideoMode(resolution_vec[0],resolution_vec[1]), "Pokémon GSC Online",sf::Style::Titlebar | sf::Style::Close);
     sf::Clock clock;
     window.setFramerateLimit(60);
     time_otd = 'd';
@@ -135,7 +135,7 @@ int main()
                 function_done=1;
                 functions.takeScreenshot(window,"/home/rhubarb/.gsc_o/screenshots/screenshot_"+functions.currentDateTime()+".png");
                 SoundManager.soundEffect("PRESS");
-                output_message = "Screenshot saved!" ;
+                output_message = "Screenshot saved!";
                 message_timer = 0;
             };};
             if(event.type == (sf::Event::KeyReleased)){
@@ -183,6 +183,17 @@ int main()
             };};
             if(event.type == (sf::Event::KeyReleased)){
                 if (event.key.code == sf::Keyboard::F2&&function_done==1)function_done=0;
+        };
+        // ----------------------------------------------------------
+        //OPEN GAME FOLDER -------------
+        if(event.type == (sf::Event::KeyPressed)){
+            if (event.key.code == sf::Keyboard::O&&function_done==0){
+                function_done=1;
+                SoundManager.soundEffect("PRESS");
+                message_timer = 0;
+            };};
+            if(event.type == (sf::Event::KeyReleased)){
+                if (event.key.code == sf::Keyboard::O&&function_done==1)function_done=0;
         };
         // ----------------------------------------------------------
         
@@ -267,8 +278,8 @@ int main()
 
         if (debug){
             HUDdisplay.showTextDEBUG(("fps: "+std::to_string(fps_)),{0,0},window);
-            HUDdisplay.showTextDEBUG(("x: "+std::to_string(player_pos[0]/64)+"r("+std::to_string(player_pos[0])+")"),{0,16},window);
-            HUDdisplay.showTextDEBUG(("y: "+std::to_string(player_pos[1]/64)+"r("+std::to_string(player_pos[1])+")"),{0,32},window);
+            HUDdisplay.showTextDEBUG(("x: "+std::to_string(player_pos[0]/64)+" r("+std::to_string(player_pos[0])+")"),{0,16},window);
+            HUDdisplay.showTextDEBUG(("y: "+std::to_string(player_pos[1]/64)+" r("+std::to_string(player_pos[1])+")"),{0,32},window);
             HUDdisplay.showTextDEBUG((std::to_string(terrain_sprites.size()*terrain_sprites[0].size())+" tiles"),{0,48},window);
             std::string time_otd_str;
             time_otd_str=time_otd;
@@ -281,6 +292,7 @@ int main()
             HUDdisplay.showTextDEBUG("username: "+username,{0,160},window);
             HUDdisplay.showTextDEBUG("resolution: "+resolution,{0,176},window);
             HUDdisplay.showTextDEBUG("Pokemon GSC Online b0.0",{0,192},window);
+            HUDdisplay.showTextDEBUG("press [o] to open game folder",{0,208},window);
             if (typing)HUDdisplay.showTextDEBUG(playerInput,{0,560},window);
             
         };

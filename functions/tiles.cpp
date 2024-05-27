@@ -43,6 +43,11 @@ class TilesIndex{
         tiles.push_back({"rockTopRight","2411","\\x13"});
         tiles.push_back({"rockRight","2511","\\x14"});
         tiles.push_back({"rock","1511","\\x15"});
+        tiles.push_back({"rockBottomLeft","2611","\\x17"});
+        tiles.push_back({"rockBottomLeftGrass","2711","\\x18"});
+        tiles.push_back({"rockBottomRight","1711","\\x19"});
+        tiles.push_back({"rockBottomRightGrass","0711","\\x21"});
+
     //PATHS
         tiles.push_back({"path","0211","\\x07"});
         tiles.push_back({"altPath","1311","\\x08"});
