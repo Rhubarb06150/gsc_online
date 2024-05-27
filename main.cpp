@@ -4,7 +4,6 @@
 #include <vector>
 #include <chrono>
 #include <ctime>
-#include <sys/stat.h>
 
 #include "functions/functions.cpp"
 #include "functions/terrain.cpp"
@@ -18,15 +17,25 @@ std::string cur_map = "route1";
 std::string player_state = "front";
 std::string resolution = "720x576";
 
+std::string playerInput;
+sf::Text playerText;
+
 int index_frame;
 int moving_timer = 0;
+bool function_done = 0;
+bool typing=true;
+
+//MESSAGES
+std::string output_message;
+int message_timer;
+
 char time_otd;
 Terrain terrain;
 Sounds SoundManager;
 HUD HUDdisplay;
 
 //PLAYER
-std::string username = "Rhubarb";
+std::string username = "MATHEO";
 std::vector<int> player_pos = {500,500};
 bool walking;
 bool can_move=true;
@@ -38,20 +47,8 @@ std::chrono::high_resolution_clock::time_point end;
 std::vector<int> moy = {0};
 float fps;
 int fps_;
+
 //-------------------------------------------------------
-
-int takeScreenshot(sf::RenderWindow& render_window,std::string filename){
-    sf::Texture texture;
-    texture.create(render_window.getSize().x, render_window.getSize().y);
-    texture.update(render_window);
-    if (texture.copyToImage().saveToFile(filename))
-    {
-        std::cout << "screenshot saved to " << filename << std::endl;
-    };
-    return 0;
- 
-}
-
 int setTerrain(Terrain terrain,sf::RenderWindow& window, char tœime_otd){
     std::cout << "Loading terrain..." << std::endl;
     terrain_sprites=terrain.terrainForm(terrain_sprites,cur_map,player_pos);
@@ -76,11 +73,10 @@ int reloadTerrain(){
     return 0;
 };
 
-int getStandingTile(){
+std::string getStandingTile(){
     int real_pos_x=player_pos[0]/64;
     int real_pos_y=player_pos[1]/64;
-    std::cout << terrain_sprites[real_pos_y][real_pos_x] << std::endl;
-    return 0;
+    return terrain_sprites[real_pos_y][real_pos_x];
 };
 
 std::vector<int> checkResolutionRWindow(){
@@ -128,17 +124,71 @@ int main()
     while (window.isOpen())
     {   
         start = std::chrono::high_resolution_clock::now();
-        
         index_frame++;
+        message_timer++;
+
         sf::Event event;
 
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num6))getStandingTile();
-
-        if ((sf::Keyboard::isKeyPressed(sf::Keyboard::LControl))&&(sf::Keyboard::isKeyPressed(sf::Keyboard::F1)))takeScreenshot(window,"/home/rhubarb/.gsc_o/screenshots/screenshot.png");
+        //TAKE SCREENSHOT -------------
+        if(event.type == (sf::Event::KeyPressed)){
+            if (event.key.code == sf::Keyboard::F1&&function_done==0){
+                function_done=1;
+                functions.takeScreenshot(window,"/home/rhubarb/.gsc_o/screenshots/screenshot_"+functions.currentDateTime()+".png");
+                SoundManager.soundEffect("PRESS");
+                output_message = "Screenshot saved!" ;
+                message_timer = 0;
+            };};
+            if(event.type == (sf::Event::KeyReleased)){
+                if (event.key.code == sf::Keyboard::F1&&function_done==1)function_done=0;
+        };
+        // ----------------------------------------------------------
+        //RELOAD TEXTURES -------------
+        if(event.type == (sf::Event::KeyPressed)){
+            if (event.key.code == sf::Keyboard::F5&&function_done==0){
+                function_done=1;
+                reloadTextures();
+                SoundManager.soundEffect("PRESS");
+                output_message = "Textures reloaded!" ;
+                message_timer = 0;
+            };};
+            if(event.type == (sf::Event::KeyReleased)){
+                if (event.key.code == sf::Keyboard::F5&&function_done==1)function_done=0;
+        };
+        // ----------------------------------------------------------
+        //RELOAD TERRAIN -------------
+        if(event.type == (sf::Event::KeyPressed)){
+            if (event.key.code == sf::Keyboard::F4&&function_done==0){
+                function_done=1;
+                reloadTerrain();
+                SoundManager.soundEffect("PRESS");
+                output_message = "Terrain reloaded!" ;
+                message_timer = 0;
+            };};
+            if(event.type == (sf::Event::KeyReleased)){
+                if (event.key.code == sf::Keyboard::F4&&function_done==1)function_done=0;
+        };
+        // ----------------------------------------------------------
+        //ENABLE DEBUG -------------
+        if(event.type == (sf::Event::KeyPressed)){
+            if (event.key.code == sf::Keyboard::F2&&function_done==0){
+                function_done=1;
+                debug=!debug;
+                SoundManager.soundEffect("PRESS");
+                if (debug){
+                    output_message="Showing debug menu";
+                }else{
+                    output_message="Hiding debug menu";
+                }
+                message_timer = 0;
+            };};
+            if(event.type == (sf::Event::KeyReleased)){
+                if (event.key.code == sf::Keyboard::F2&&function_done==1)function_done=0;
+        };
+        // ----------------------------------------------------------
         
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1)){time_otd='m';SoundManager.soundEffect("PRESS");}
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2)){time_otd='d';SoundManager.soundEffect("PRESS");}
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num3)){time_otd='n';SoundManager.soundEffect("PRESS");}
+        //if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1)){time_otd='m';SoundManager.soundEffect("PRESS");}
+        //else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2)){time_otd='d';SoundManager.soundEffect("PRESS");}
+        //else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num3)){time_otd='n';SoundManager.soundEffect("PRESS");}
 
         //PLAYER MOVE
         if (can_move){
@@ -187,13 +237,6 @@ int main()
             walking=false;moving_timer=20;
         };
 
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::F5)&&sf::Keyboard::isKeyPressed(sf::Keyboard::R)){
-            reloadTextures();
-        };
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::F4)&&sf::Keyboard::isKeyPressed(sf::Keyboard::R)){
-            reloadTerrain();
-        };
-
         while (window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed){
@@ -219,17 +262,32 @@ int main()
         terrain.showTerrain(terrain_sprites,player_pos,time_otd,window,player_offset);
         player_state=player.animPlayer(player_state,moving_timer,walking);
         player.showPlayer('b',player_state,window);
-        HUDdisplay.showPauseMenu(window,username,resolution_vec[0]);
+        
+        //HUDdisplay.showPauseMenu(window,username,resolution_vec[0]);
 
         if (debug){
-            HUDdisplay.showTextWOB(("fps: "+std::to_string(fps_)),{0,0},window);
-            HUDdisplay.showTextWOB(("x: "+std::to_string(player_pos[0]/64)),{0,32},window);
-            HUDdisplay.showTextWOB(("y: "+std::to_string(player_pos[1]/64)),{0,64},window);
-            HUDdisplay.showTextWOB((std::to_string(terrain_sprites.size()*terrain_sprites[0].size())+" tiles"),{0,96},window);
+            HUDdisplay.showTextDEBUG(("fps: "+std::to_string(fps_)),{0,0},window);
+            HUDdisplay.showTextDEBUG(("x: "+std::to_string(player_pos[0]/64)+"r("+std::to_string(player_pos[0])+")"),{0,16},window);
+            HUDdisplay.showTextDEBUG(("y: "+std::to_string(player_pos[1]/64)+"r("+std::to_string(player_pos[1])+")"),{0,32},window);
+            HUDdisplay.showTextDEBUG((std::to_string(terrain_sprites.size()*terrain_sprites[0].size())+" tiles"),{0,48},window);
             std::string time_otd_str;
             time_otd_str=time_otd;
-            HUDdisplay.showTextWOB(("time: "+time_otd_str),{0,128},window);
+            HUDdisplay.showTextDEBUG(("time: "+time_otd_str),{0,64},window);
+            HUDdisplay.showTextDEBUG(("map: "+cur_map),{0,80},window);
+            HUDdisplay.showTextDEBUG(("cur frame: "+std::to_string(index_frame)),{0,96},window);
+            HUDdisplay.showTextDEBUG("p state: "+player_state,{0,112},window);
+            HUDdisplay.showTextDEBUG("can move: "+std::to_string(can_move),{0,128},window);
+            HUDdisplay.showTextDEBUG("standing tile: "+terrain.tiles_index.getTileName(getStandingTile()),{0,144},window);
+            HUDdisplay.showTextDEBUG("username: "+username,{0,160},window);
+            HUDdisplay.showTextDEBUG("resolution: "+resolution,{0,176},window);
+            HUDdisplay.showTextDEBUG("Pokemon GSC Online b0.0",{0,192},window);
+            if (typing)HUDdisplay.showTextDEBUG(playerInput,{0,560},window);
+            
         };
+
+        if (message_timer<=60){
+            HUDdisplay.showTextDEBUG(output_message,{0,560},window);
+        }
         
         window.display();
 

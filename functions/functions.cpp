@@ -1,20 +1,24 @@
+#pragma once
+
+#include <SFML/Graphics.hpp>
 #include <iostream>
+#include <sys/stat.h>
+
 
 class GSC_Functions{
     public:
     GSC_Functions(){
 
     };
-    const std::string currentDateTime() {
+    std::string currentDateTime() {
         time_t     now = time(0);
         struct tm  tstruct;
         char       buf[80];
         tstruct = *localtime(&now);
         strftime(buf, sizeof(buf), "%Y_%m_%d_%X", &tstruct);
-    return buf;
+        return ReplaceAll(buf,":","_");
     };
 
-    //ouais j'ai totalement volé ca sur stack overflow et jen ai rien a foutre
     std::string ReplaceAll(std::string str, const std::string& from, const std::string& to) {
         size_t start_pos = 0;
         while((start_pos = str.find(from, start_pos)) != std::string::npos) {
@@ -38,4 +42,17 @@ class GSC_Functions{
 
         return std::stoi(res);
     };
+
+    int takeScreenshot(sf::RenderWindow& render_window,std::string filename){
+        sf::Texture texture;
+        texture.create(render_window.getSize().x, render_window.getSize().y);
+        texture.update(render_window);
+        if (texture.copyToImage().saveToFile(filename))
+        {
+            std::cout << "screenshot saved to " << filename << std::endl;
+        };
+        return 0;
+    };
+
+    
 };

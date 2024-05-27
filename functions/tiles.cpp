@@ -155,6 +155,15 @@ class TilesIndex{
         return sprite;
     };
 
+    std::string getTileName(std::string index){
+        for (int i = 0;i<tiles.size();i++){
+            if (index==tiles[i][2]){
+                return tiles[i][0];
+            };
+        };
+        return index+" (unknown)";
+    };
+
     sf::Texture getTileTexture(std::string index, char time){
 
         // index -> index hexa \x00

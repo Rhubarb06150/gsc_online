@@ -12,6 +12,7 @@ class HUD{
     std::vector<std::vector<std::string>> letters_index;
     std::vector<sf::Texture> letters_wob_textures;
     std::vector<sf::Texture> letters_bow_textures;
+    std::vector<sf::Texture> letters_debug_textures;
     std::vector<sf::Texture> menu_textures;
 
     HUD(){
@@ -83,6 +84,20 @@ class HUD{
 
         //NONE
         letters_index.push_back({":","0e"});
+        letters_index.push_back({"/","1e"});
+        letters_index.push_back({"\\","2e"});
+        letters_index.push_back({",","3e"});
+        letters_index.push_back({".","4e"});
+        letters_index.push_back({"(","5e"});
+        letters_index.push_back({")","6e"});
+        letters_index.push_back({";","7e"});
+        letters_index.push_back({"[","8e"});
+        letters_index.push_back({"]","9e"});
+        letters_index.push_back({"'","ae"});
+        letters_index.push_back({"-","be"});
+        letters_index.push_back({"+","ce"});
+        letters_index.push_back({"?","de"});
+        letters_index.push_back({"!","ee"});
         letters_index.push_back({" ","ef"});
         letters_index.push_back({"","ff"});
 
@@ -107,6 +122,8 @@ class HUD{
             letters_bow_textures.push_back(texture);
             texture.loadFromFile("assets/hud/font_wob.png",sf::IntRect(x*8,y*8,8,8));
             letters_wob_textures.push_back(texture);
+            texture.loadFromFile("assets/hud/font_debug.png",sf::IntRect(x*8,y*8,8,8));
+            letters_debug_textures.push_back(texture);
 
         };    
     };
@@ -135,6 +152,17 @@ class HUD{
             sprite.setPosition(text_pos[0]+(i*32),text_pos[1]);
             sprite.setTexture(letters_wob_textures[getLetterIntIndex((text[i]))]);
             sprite.scale(4.f,4.f);
+            window.draw(sprite);
+        };
+        return 0;  
+    };
+
+    int showTextDEBUG(std::string text, std::vector<int> text_pos, sf::RenderWindow& window){
+        for (int i = 0; i < text.size(); i++){
+            sf::Sprite sprite;
+            sprite.setPosition(text_pos[0]+(i*16),text_pos[1]);
+            sprite.setTexture(letters_debug_textures[getLetterIntIndex((text[i]))]);
+            sprite.scale(2.f,2.f);
             window.draw(sprite);
         };
         return 0;  
