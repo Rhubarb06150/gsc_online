@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include <SFML/Window.hpp>
 #include <filesystem>
 #include <iostream>
 #include <vector>
@@ -42,13 +43,14 @@ bool can_move=true;
 
 //DEBUG
 bool debug=false;
+int debug_page=1;
 std::chrono::high_resolution_clock::time_point start;
 std::chrono::high_resolution_clock::time_point end;
 std::vector<int> moy = {0};
 float fps;
 int fps_;
 
-//-------------------------------------------------------
+//---------------------------------------------------------------------------
 int setTerrain(Terrain terrain,sf::RenderWindow& window, char tœime_otd){
     std::cout << "Loading terrain..." << std::endl;
     terrain_sprites=terrain.terrainForm(terrain_sprites,cur_map,player_pos);
@@ -114,6 +116,8 @@ int main()
     sf::Clock clock;
     window.setFramerateLimit(60);
     time_otd = 'd';
+    std::string time_otd_str;
+    time_otd_str=time_otd;
     srand(time(NULL));
     
     GSC_Functions functions;
@@ -129,7 +133,7 @@ int main()
 
         sf::Event event;
 
-        //TAKE SCREENSHOT -------------
+        //TAKE SCREENSHOT -------------------------------------------|
         if(event.type == (sf::Event::KeyPressed)){
             if (event.key.code == sf::Keyboard::F1&&function_done==0){
                 function_done=1;
@@ -141,11 +145,14 @@ int main()
             if(event.type == (sf::Event::KeyReleased)){
                 if (event.key.code == sf::Keyboard::F1&&function_done==1)function_done=0;
         };
-        // ----------------------------------------------------------
-        //RELOAD TEXTURES -------------
+        // ----------------------------------------------------------|
+        if (debug){
+        //RELOAD TEXTURES -------------------------------------------|
         if(event.type == (sf::Event::KeyPressed)){
             if (event.key.code == sf::Keyboard::F5&&function_done==0){
                 function_done=1;
+                output_message = "Reloading textures...";
+                message_timer = 0;
                 reloadTextures();
                 SoundManager.soundEffect("PRESS");
                 output_message = "Textures reloaded!" ;
@@ -154,21 +161,24 @@ int main()
             if(event.type == (sf::Event::KeyReleased)){
                 if (event.key.code == sf::Keyboard::F5&&function_done==1)function_done=0;
         };
-        // ----------------------------------------------------------
-        //RELOAD TERRAIN -------------
+        // ----------------------------------------------------------|
+        //RELOAD TERRAIN --------------------------------------------|
         if(event.type == (sf::Event::KeyPressed)){
             if (event.key.code == sf::Keyboard::F4&&function_done==0){
                 function_done=1;
+                output_message = "Reloading terrain...";
+                message_timer = 0;
                 reloadTerrain();
                 SoundManager.soundEffect("PRESS");
-                output_message = "Terrain reloaded!" ;
+                output_message = "Terrain reloaded!";
                 message_timer = 0;
             };};
             if(event.type == (sf::Event::KeyReleased)){
                 if (event.key.code == sf::Keyboard::F4&&function_done==1)function_done=0;
         };
-        // ----------------------------------------------------------
-        //ENABLE DEBUG -------------
+        // ----------------------------------------------------------|
+        };
+        //ENABLE DEBUG ----------------------------------------------|
         if(event.type == (sf::Event::KeyPressed)){
             if (event.key.code == sf::Keyboard::F2&&function_done==0){
                 function_done=1;
@@ -184,22 +194,15 @@ int main()
             if(event.type == (sf::Event::KeyReleased)){
                 if (event.key.code == sf::Keyboard::F2&&function_done==1)function_done=0;
         };
-        // ----------------------------------------------------------
-        //OPEN GAME FOLDER -------------
-        if(event.type == (sf::Event::KeyPressed)){
-            if (event.key.code == sf::Keyboard::O&&function_done==0){
-                function_done=1;
-                SoundManager.soundEffect("PRESS");
-                message_timer = 0;
-            };};
-            if(event.type == (sf::Event::KeyReleased)){
-                if (event.key.code == sf::Keyboard::O&&function_done==1)function_done=0;
-        };
-        // ----------------------------------------------------------
+        // ----------------------------------------------------------|
         
         //if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1)){time_otd='m';SoundManager.soundEffect("PRESS");}
         //else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2)){time_otd='d';SoundManager.soundEffect("PRESS");}
         //else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num3)){time_otd='n';SoundManager.soundEffect("PRESS");}
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1)&&debug){debug_page=1;};
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2)&&debug){debug_page=2;};
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num3)&&debug){debug_page=3;};
 
         //PLAYER MOVE
         if (can_move){
@@ -277,24 +280,33 @@ int main()
         //HUDdisplay.showPauseMenu(window,username,resolution_vec[0]);
 
         if (debug){
-            HUDdisplay.showTextDEBUG(("fps: "+std::to_string(fps_)),{0,0},window);
-            HUDdisplay.showTextDEBUG(("x: "+std::to_string(player_pos[0]/64)+" r("+std::to_string(player_pos[0])+")"),{0,16},window);
-            HUDdisplay.showTextDEBUG(("y: "+std::to_string(player_pos[1]/64)+" r("+std::to_string(player_pos[1])+")"),{0,32},window);
+            if (debug_page==1){
+            HUDdisplay.showTextDEBUG("Debug page 1 (Terrain)",{0,0},window);
+            HUDdisplay.showTextDEBUG("                      ",{0,16},window);
+            HUDdisplay.showTextDEBUG(("Current map: "+cur_map),{0,32},window);
             HUDdisplay.showTextDEBUG((std::to_string(terrain_sprites.size()*terrain_sprites[0].size())+" tiles"),{0,48},window);
-            std::string time_otd_str;
-            time_otd_str=time_otd;
-            HUDdisplay.showTextDEBUG(("time: "+time_otd_str),{0,64},window);
-            HUDdisplay.showTextDEBUG(("map: "+cur_map),{0,80},window);
-            HUDdisplay.showTextDEBUG(("cur frame: "+std::to_string(index_frame)),{0,96},window);
-            HUDdisplay.showTextDEBUG("p state: "+player_state,{0,112},window);
-            HUDdisplay.showTextDEBUG("can move: "+std::to_string(can_move),{0,128},window);
-            HUDdisplay.showTextDEBUG("standing tile: "+terrain.tiles_index.getTileName(getStandingTile()),{0,144},window);
-            HUDdisplay.showTextDEBUG("username: "+username,{0,160},window);
-            HUDdisplay.showTextDEBUG("resolution: "+resolution,{0,176},window);
-            HUDdisplay.showTextDEBUG("Pokemon GSC Online b0.0",{0,192},window);
-            HUDdisplay.showTextDEBUG("press [o] to open game folder",{0,208},window);
-            if (typing)HUDdisplay.showTextDEBUG(playerInput,{0,560},window);
-            
+            HUDdisplay.showTextDEBUG(("Current time: "+time_otd_str),{0,64},window);
+            HUDdisplay.showTextDEBUG("Press [F4] to reload terrain",{0,80},window);
+            }else if (debug_page==2){
+            HUDdisplay.showTextDEBUG("Debug page 2 (Player)",{0,0},window);
+            HUDdisplay.showTextDEBUG("                     ",{0,16},window);
+            HUDdisplay.showTextDEBUG(("X: "+std::to_string(player_pos[0]/64)+" r("+std::to_string(player_pos[0])+")"),{0,32},window);
+            HUDdisplay.showTextDEBUG(("Y: "+std::to_string(player_pos[1]/64)+" r("+std::to_string(player_pos[1])+")"),{0,48},window);
+            HUDdisplay.showTextDEBUG("Player state: "+player_state,{0,64},window);
+            HUDdisplay.showTextDEBUG("Can move: "+std::to_string(can_move),{0,80},window);
+            HUDdisplay.showTextDEBUG("Username: "+username,{0,96},window);
+            }else if (debug_page=3){
+            HUDdisplay.showTextDEBUG("Debug page 3 (Display)",{0,0},window);
+            HUDdisplay.showTextDEBUG("                      ",{0,16},window);
+            HUDdisplay.showTextDEBUG(("FPS: "+std::to_string(fps_)),{0,32},window);        
+            HUDdisplay.showTextDEBUG(("Frames elapsed: "+std::to_string(index_frame)),{0,48},window);
+            HUDdisplay.showTextDEBUG("Resolution: "+resolution,{0,64},window);
+            HUDdisplay.showTextDEBUG("Press [F5] to reload textures",{0,80},window);
+            };
+            //HUDdisplay.showTextDEBUG("standing tile: "+terrain.tiles_index.getTileName(getStandingTile())+" ("+getStandingTile()+")",{0,144},window);
+            //HUDdisplay.showTextDEBUG("Pokemon GSC Online b0.0",{0,192},window);
+            //HUDdisplay.showTextDEBUG("[F10] open game folder",{0,208},window);
+            //HUDdisplay.showTextDEBUG("(/home/rhubarb/.gsc_o/)",{0,224},window);
         };
 
         if (message_timer<=60){

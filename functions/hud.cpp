@@ -95,6 +95,7 @@ class HUD{
         letters_index.push_back({"]","9e"});
         letters_index.push_back({"'","ae"});
         letters_index.push_back({"-","be"});
+        letters_index.push_back({"_","bf"});
         letters_index.push_back({"+","ce"});
         letters_index.push_back({"?","de"});
         letters_index.push_back({"!","ee"});

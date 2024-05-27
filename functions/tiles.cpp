@@ -166,7 +166,7 @@ class TilesIndex{
                 return tiles[i][0];
             };
         };
-        return index+" (unknown)";
+        return "unknown";
     };
 
     sf::Texture getTileTexture(std::string index, char time){

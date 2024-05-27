@@ -1,0 +1,1 @@
+g++ -c main.cpp&&g++ main.o -o main -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system&&rm -f *.o&&./main
