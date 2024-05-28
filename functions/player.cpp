@@ -112,13 +112,13 @@ class Player{
         return 0;
     };
 
-    void showPlayer(char gender, std::string player_state, sf::RenderWindow& window){
+    void showPlayer(std::string gender, std::string player_state, sf::RenderWindow& window){
         
         int gender_index;
-        if (gender=='b')gender_index=0;
-        if (gender=='g')gender_index=1;
-        if (gender=='r')gender_index=2;
-        if (gender=='m')gender_index=3;
+        if (gender=="b")gender_index=0;
+        if (gender=="g")gender_index=1;
+        if (gender=="r")gender_index=2;
+        if (gender=="m")gender_index=3;
         sprite.setTexture(players_textures[gender_index][getTextureIndex(player_state)]);
         window.draw(sprite);
     };

@@ -2,8 +2,10 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <string>
+#include <vector>
 #include <sys/stat.h>
-
+#include <fstream>
 
 class GSC_Functions{
     public:
@@ -26,6 +28,21 @@ class GSC_Functions{
             start_pos += to.length();
         }
         return str;
+    };
+
+    int saveCurrentMap(std::vector<std::vector<std::string>> terrain_tiles, std::string cur_map){
+        std::ofstream map_file("/home/rhubarb/.gsc_o/maps/"+cur_map+"_"+currentDateTime()+".lv");
+        for (int i = 0; i < terrain_tiles.size() ; i++){
+            for (int j = 0; j < terrain_tiles[i].size();j++){
+                map_file << terrain_tiles[i][j];
+            };
+            if (i!=terrain_tiles.size()-1){
+            map_file << "\n";
+            };
+        };
+        map_file.close();
+        std::cout << "map saved at /home/rhubarb/.gsc_o/maps/"+cur_map+"_"+currentDateTime()+".lv" << std::endl;
+        return 0;
     };
 
     int hexToInt(char hexa){

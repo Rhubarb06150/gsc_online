@@ -13,6 +13,7 @@ class HUD{
     std::vector<sf::Texture> letters_wob_textures;
     std::vector<sf::Texture> letters_bow_textures;
     std::vector<sf::Texture> letters_debug_textures;
+    std::vector<sf::Texture> letters_debug_sel_textures;
     std::vector<sf::Texture> menu_textures;
 
     HUD(){
@@ -125,6 +126,9 @@ class HUD{
             letters_wob_textures.push_back(texture);
             texture.loadFromFile("assets/hud/font_debug.png",sf::IntRect(x*8,y*8,8,8));
             letters_debug_textures.push_back(texture);
+            texture.loadFromFile("assets/hud/font_debug_sel.png",sf::IntRect(x*8,y*8,8,8));
+            letters_debug_sel_textures.push_back(texture);
+
 
         };    
     };
@@ -163,6 +167,17 @@ class HUD{
             sf::Sprite sprite;
             sprite.setPosition(text_pos[0]+(i*16),text_pos[1]);
             sprite.setTexture(letters_debug_textures[getLetterIntIndex((text[i]))]);
+            sprite.scale(2.f,2.f);
+            window.draw(sprite);
+        };
+        return 0;  
+    };
+
+    int showTextSELDEBUG(std::string text, std::vector<int> text_pos, sf::RenderWindow& window){
+        for (int i = 0; i < text.size(); i++){
+            sf::Sprite sprite;
+            sprite.setPosition(text_pos[0]+(i*16),text_pos[1]);
+            sprite.setTexture(letters_debug_sel_textures[getLetterIntIndex((text[i]))]);
             sprite.scale(2.f,2.f);
             window.draw(sprite);
         };

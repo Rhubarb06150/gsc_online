@@ -31,7 +31,7 @@ class Terrain{
         return terrain_vector;
     };
 
-    int showTerrain(std::vector<std::vector<std::string>> terrain_vector, std::vector<int> player_pos, char time_otd, sf::RenderWindow& window, std::vector<int> player_camera){
+    int showTerrain(std::vector<std::vector<std::string>> terrain_vector, std::vector<int> player_pos, char time_otd, sf::RenderWindow& window, std::vector<int> player_camera, bool light_stand){
 
         int shown_sprites = 0;
         int ppos0 = player_pos[0];
@@ -72,6 +72,9 @@ class Terrain{
                 sprite.setTexture(tiles_index.textures[time_index][tiles_index.getIntIndex(terrain_vector[i][j])]);
                 sprite.setPosition(pos_vec0-ppos0+player_camera0,pos_vec1-ppos1+player_camera1);
                 sprite.scale(4.f,4.f);
+                if (light_stand&&ppos0/64==j&&ppos1/64==i){
+                    sprite.setColor(sf::Color(150,150,150));
+                }
                 window.draw(sprite);
                 shown_sprites++;
 
