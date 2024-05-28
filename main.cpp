@@ -15,16 +15,17 @@
 std::vector<std::vector<std::string>> terrain_sprites;
 bool framerate_limit=true;
 
-std::string cur_map = "route1";
-std::string player_state = "front";
-std::string resolution = "720x576";
+std::string cur_map="room2";
+std::string player_state="front";
+std::string resolution="720x576";
 
 std::string playerInput;
 sf::Text playerText;
+std::string copied_tile="";
 
 int index_frame;
-int moving_timer = 0;
-bool function_done = 0;
+int moving_timer=0;
+bool function_done=0;
 bool typing=true;
 
 //MESSAGES
@@ -37,9 +38,9 @@ Sounds SoundManager;
 HUD HUDdisplay;
 
 //PLAYER
-std::string username = "MATHEO";
-std::string player_type = "b";
-std::vector<int> player_pos = {500,500};
+std::string username="MATHEO";
+std::string player_type="b";
+std::vector<int> player_pos={500,500};
 bool walking;
 bool can_move=true;
 
@@ -49,7 +50,7 @@ int debug_page=1;
 int debug_choice=0;
 std::chrono::high_resolution_clock::time_point start;
 std::chrono::high_resolution_clock::time_point end;
-std::vector<int> moy = {0};
+std::vector<int> moy={0};
 float fps;
 int fps_;
 
@@ -125,13 +126,13 @@ int main()
 
     //INIT EVERYTHIN
     
-    std::vector<int> resolution_vec = checkResolutionRWindow();
-    std::vector<int> player_offset = checkResolutionPOffset();
+    std::vector<int> resolution_vec=checkResolutionRWindow();
+    std::vector<int> player_offset=checkResolutionPOffset();
     Player player(player_offset);
     sf::RenderWindow window(sf::VideoMode(resolution_vec[0],resolution_vec[1]), "Pokemon GSC Online",sf::Style::Titlebar | sf::Style::Close);
     sf::Clock clock;
-    //window.setFramerateLimit(60);
-    time_otd = 'd';
+    window.setFramerateLimit(60);
+    time_otd='d';
     std::string time_otd_str;
     time_otd_str=time_otd;
     srand(time(NULL));
@@ -143,7 +144,7 @@ int main()
     
     while (window.isOpen())
     {   
-        start = std::chrono::high_resolution_clock::now();
+        start=std::chrono::high_resolution_clock::now();
         index_frame++;
         message_timer++;
 
@@ -153,8 +154,8 @@ int main()
         if (isPressed(event,sf::Keyboard::F1)==0){
             functions.takeScreenshot(window,"/home/rhubarb/.gsc_o/screenshots/screenshot_"+functions.currentDateTime()+".png");
             SoundManager.soundEffect("PRESS");
-            output_message = "Screenshot saved!";
-            message_timer = 0;
+            output_message="Screenshot saved!";
+            message_timer=0;
         };
         // ----------------------------------------------------------|
 
@@ -167,15 +168,9 @@ int main()
             }else{
                 output_message="Hiding debug menu";
             }
-            message_timer = 0;
+            message_timer=0;
         };
         // ----------------------------------------------------------|
-        
-
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1)&&debug){debug_page=1;};
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2)&&debug){debug_page=2;};
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num3)&&debug){debug_page=3;};
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num4)&&debug){debug_page=9;debug_choice=0;};
 
         //PLAYER MOVE
         if (can_move){
@@ -227,9 +222,9 @@ int main()
         while (window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed){
-                int sum_moy = 0;
-                int biggest = moy[0];
-                int lowest = moy[0];
+                int sum_moy=0;
+                int biggest=moy[0];
+                int lowest=moy[0];
                 for (int i =0;i<moy.size();i++){
                     if (moy[i]>biggest)biggest=moy[i];
                     if (moy[i]<lowest)lowest=moy[i];
@@ -252,6 +247,10 @@ int main()
         //HUDdisplay.showPauseMenu(window,username,resolution_vec[0]);
 
         if (debug){
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1)&&debug){debug_page=1;};
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2)&&debug){debug_page=2;};
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num3)&&debug){debug_page=3;};
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num9)&&debug){debug_page=9;};
             if (debug_page==1){
                 can_move=true;
                 HUDdisplay.showTextDEBUG("Debug page 1 (Terrain)",{0,0},window);
@@ -263,8 +262,8 @@ int main()
                 if (isPressed(event,sf::Keyboard::F5)==0){
                     reloadTerrain();
                     SoundManager.soundEffect("PRESS");
-                    output_message = "Terrain reloaded!" ;
-                    message_timer = 0;
+                    output_message="Terrain reloaded!" ;
+                    message_timer=0;
                 };
             }else if (debug_page==2){
                 can_move=true;
@@ -286,8 +285,8 @@ int main()
                 if (isPressed(event,sf::Keyboard::F4)==0){
                     reloadTextures();
                     SoundManager.soundEffect("PRESS");
-                    output_message = "Textures reloaded!" ;
-                    message_timer = 0;
+                    output_message="Textures reloaded!" ;
+                    message_timer=0;
                 };
             }else if (debug_page==4){
                 can_move=true;
@@ -300,7 +299,7 @@ int main()
                 //DEBUG MENU HERE //////////////////////////////////////////////////////////////
                 can_move=false;
                 std::string time_otd_str;
-                time_otd_str = time_otd;
+                time_otd_str=time_otd;
                 HUDdisplay.showTextDEBUG("Debug menu",{0,0},window);
                 HUDdisplay.showTextDEBUG("          ",{0,16},window);
                     //PAGE DOWN
@@ -323,21 +322,21 @@ int main()
                     if (debug_choice==0){
                         if (isPressed(event,sf::Keyboard::Right)==0){
                             if (time_otd == 'd'){
-                                time_otd = 'n'; 
+                                time_otd='n'; 
                             }else if(time_otd == 'n'){
-                                time_otd = 'm';
-                            }else if (time_otd = 'm'){
-                                time_otd = 'd';
+                                time_otd='m';
+                            }else if (time_otd='m'){
+                                time_otd='d';
                             };
                         };
 
                         if (isPressed(event,sf::Keyboard::Left)==0){
                             if (time_otd == 'm'){
-                                time_otd = 'n'; 
+                                time_otd='n'; 
                             }else if(time_otd == 'n'){
-                                time_otd = 'd';
-                            }else if (time_otd = 'd'){
-                                time_otd = 'm';
+                                time_otd='d';
+                            }else if (time_otd='d'){
+                                time_otd='m';
                             };
                         }
                         
@@ -352,6 +351,13 @@ int main()
                         };
                     if (debug_choice==2){
                         int tile_index;
+                        if (isPressed(event,sf::Keyboard::A)==0){
+                            int real_player_pos_x=player_pos[0]/64;
+                            int real_player_pos_y=player_pos[1]/64;
+                            copied_tile=terrain_sprites[real_player_pos_y][real_player_pos_x];
+                            output_message="Copied "+copied_tile+" ("+ terrain.tiles_index.getTileName(copied_tile) +")";
+                            message_timer=0;
+                        }; 
                         if (isPressed(event,sf::Keyboard::Right)==0){
                             if (terrain.tiles_index.getIntIndex(getStandingTile())==terrain.tiles_index.tiles.size()-1){
                                 tile_index=0;
@@ -360,7 +366,7 @@ int main()
                             };
                             int real_player_pos_x=player_pos[0]/64;
                             int real_player_pos_y=player_pos[1]/64;
-                            terrain_sprites[real_player_pos_y][real_player_pos_x] = terrain.tiles_index.tiles[tile_index][2];
+                            terrain_sprites[real_player_pos_y][real_player_pos_x]=terrain.tiles_index.tiles[tile_index][2];
                         };
                         if (isPressed(event,sf::Keyboard::Left)==0){
                             int real_player_pos_x=player_pos[0]/64;
@@ -370,7 +376,7 @@ int main()
                             }else{
                                 tile_index=terrain.tiles_index.getIntIndex(getStandingTile())-1;
                             };
-                            terrain_sprites[real_player_pos_y][real_player_pos_x] = terrain.tiles_index.tiles[tile_index][2];
+                            terrain_sprites[real_player_pos_y][real_player_pos_x]=terrain.tiles_index.tiles[tile_index][2];
                         };
                         HUDdisplay.showTextSELDEBUG("Set standing tile: "+terrain.tiles_index.getTileName(getStandingTile())+" ("+getStandingTile()+")",{0,64},window);
                     }else{
@@ -401,25 +407,25 @@ int main()
                                 SoundManager.soundEffect("PRESS");
                                 output_message="Framerate limit is now removed";
                                 message_timer=0;
-                            }
-                        }
+                            };
+                        };
                     }else{
                         HUDdisplay.showTextDEBUG("60 FPS limit: "+std::to_string(framerate_limit),{0,96},window);
                     };
             };
-            //HUDdisplay.showTextDEBUG("standing tile: "+terrain.tiles_index.getTileName(getStandingTile())+" ("+getStandingTile()+")",{0,144},window);
         }else{
             can_move=true;
         };
 
         if (message_timer<=60){
             HUDdisplay.showTextDEBUG(output_message,{0,560},window);
-        }
+        };
         
+        HUDdisplay.showTextDEBUG(std::to_string(fps_),{500,0},window);
         window.display();
 
-        end = std::chrono::high_resolution_clock::now();
-        fps = (float)1e9/(float)std::chrono::duration_cast<std::chrono::nanoseconds>(end-start).count();
+        end=std::chrono::high_resolution_clock::now();
+        fps=(float)1e9/(float)std::chrono::duration_cast<std::chrono::nanoseconds>(end-start).count();
         fps_=fps;
         moy.push_back(fps_);
 
