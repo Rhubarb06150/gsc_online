@@ -112,27 +112,341 @@ std::vector<int> checkResolutionPOffset(){
 };
 
 int isPressed(sf::Event event,sf::Keyboard::Key key){
-    if(event.type == (sf::Event::KeyPressed)){
-        if (event.key.code == key&&function_done==0){
-            function_done=1;
-            return 0;
-        };};
-        if(event.type == (sf::Event::KeyReleased)){
-            if (event.key.code == key&&function_done==1)function_done=0;
+    if (sf::Keyboard::isKeyPressed(key)&&function_done==0){
+        function_done=1;
+        return 0;
+    };
+    if(event.type == (sf::Event::KeyReleased)){
+        if (event.key.code == key&&function_done==1){
+            function_done=0;
+        }else 
+            if (!(sf::Keyboard::isKeyPressed(key))){
+                function_done=0;
+            };
     };
     return 1;
 };
 
-int isLetterPressed(sf::Event event,int key){
-    if(event.type == (sf::Event::KeyPressed)){
-        if (event.key.code == key&&function_done==0){
-            function_done=1;
-            return 0;
-        };};
-        if(event.type == (sf::Event::KeyReleased)){
-            if (event.key.code == key&&function_done==1)function_done=0;
-    };
+int yesNoQuestion(std::string question,sf::Event event,sf::RenderWindow& window){
+    int choice = 1;
+    do{
+        while (window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed){
+                window.close();
+                return 0;
+            };
+        };
+        window.clear();
+        HUDdisplay.showTextWOB("ARE YOU SURE?",{32,32},window);
+        HUDdisplay.showTextDEBUG("Following action:",{32,80},window);
+        HUDdisplay.showTextDEBUG(question,{32,96},window);
+        HUDdisplay.showTextDEBUG("Press F5 to validate your choice",{32,128},window);
+
+        if (isPressed(event,sf::Keyboard::Right)==0){
+            choice=1;
+        };
+        if (isPressed(event,sf::Keyboard::Left)==0){
+            choice=0;
+        };
+        if (isPressed(event,sf::Keyboard::F5)==0){
+            return choice;
+        };
+
+        if (choice==0){
+            HUDdisplay.showTextSELDEBUG("YES",{32,160},window);
+            HUDdisplay.showTextDEBUG("NO",{144,160},window);
+        }else{
+            HUDdisplay.showTextDEBUG("YES",{32,160},window);
+            HUDdisplay.showTextSELDEBUG("NO",{144,160},window);
+        };
+        window.display();
+    }while(true);
     return 1;
+};
+
+int showEditorControls(sf::RenderWindow&window,sf::Event event, std::vector<std::vector<std::string>> terrain_vector, std::vector<int> camera_pos, std::vector<int> camera_offset){
+    do{
+        while (window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed){
+                window.close();
+                return 0;
+            };
+        };
+        if (isPressed(event,sf::Keyboard::F6)==0){
+            return 0;
+        };
+    window.clear(sf::Color(148,148,148));
+    HUDdisplay.editorBG(window);
+    terrain.showTerrain(terrain_vector,camera_pos,time_otd,window,camera_offset,true);
+    HUDdisplay.showTextDEBUG("Editor Mode 0.0",{0,0},window);
+
+    HUDdisplay.showTextDEBUG("                                   ",{32,32},window);
+    HUDdisplay.showTextDEBUG("       Level Editor Controls       ",{32,32+16},window);
+    HUDdisplay.showTextDEBUG("                                   ",{32,32+32},window);
+    HUDdisplay.showTextDEBUG("  Navigate: up-down arrows         ",{32,32+48},window);
+    HUDdisplay.showTextDEBUG("  Modify value: left-right arrows  ",{32,32+64},window);
+    HUDdisplay.showTextDEBUG("  Move arroun the terrain: arrows  ",{32,32+80},window);
+    HUDdisplay.showTextDEBUG("  Toggle menu: Right Shift         ",{32,32+96},window);
+    HUDdisplay.showTextDEBUG("  Copy tile: C                     ",{32,32+112},window);
+    HUDdisplay.showTextDEBUG("  Paste tile: V                    ",{32,32+128},window);
+    HUDdisplay.showTextDEBUG("  Set Pos1: F3                     ",{32,32+144},window);
+    HUDdisplay.showTextDEBUG("  Set Pos2: F4                     ",{32,32+160},window);
+    HUDdisplay.showTextDEBUG("                                   ",{32,32+176},window);
+    HUDdisplay.showTextDEBUG("  Press F6 to exit                 ",{32,32+192},window);
+    HUDdisplay.showTextDEBUG("                                   ",{32,32+208},window);
+    window.display();
+    }while(true);
+    return 0;
+};
+
+int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
+
+    std::vector<std::string> actions;
+    std::vector<int> camera_pos = {0,0};
+    std::vector<int> camera_offset = {290,256};
+    
+    std::vector<int> pos1;
+    std::vector<int> pos2;
+
+    bool pos1set=false;
+    bool pos2set=false;
+
+    message_timer=0;
+    
+    int choice=0;
+    int map_height=9;
+    int map_width=10;
+    int camera_speed=8;
+    bool menu_show=false;
+    time_otd='d';
+    int tiles_index=0;
+    int selected_tile_index=0;
+    int copied_tile_index=0;
+
+    std::vector<std::vector<std::string>> terrain_vector;
+    actions.push_back("Camera speed");//0
+    actions.push_back("Map width");//1
+    actions.push_back("Map height");//2
+    actions.push_back("Default tile");//3
+    actions.push_back("Select tile");//4
+    actions.push_back("Load map");//5
+    actions.push_back("Save map");//6
+    actions.push_back("Fill square");//7
+    actions.push_back("Options");//8
+    actions.push_back("Controls");//9
+    terrain_vector={};
+    for (int i = 0;i<map_height;i++){
+        terrain_vector.push_back({});
+        for (int j = 0;j<map_width;j++){
+            terrain_vector[i].push_back("\\x00");
+        };
+    };
+
+    do{
+        message_timer++;
+        while (window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed){
+                window.close();
+                return 0;
+            };
+        };
+
+        if (isPressed(event,sf::Keyboard::C)==0){
+            int real_pos_x=camera_pos[0]/64;
+            int real_pos_y=camera_pos[1]/64;
+            copied_tile=terrain.tiles_index.getIntIndex(terrain_vector[real_pos_y][real_pos_x]);
+            output_message="Copied "+terrain.tiles_index.getTileName(terrain_vector[real_pos_y][real_pos_x])+" ("+terrain_vector[real_pos_y][real_pos_x]+")";
+            message_timer=0;
+        };
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::V)){
+            int real_pos_x=camera_pos[0]/64;
+            int real_pos_y=camera_pos[1]/64;
+            terrain_vector[real_pos_y][real_pos_x]=terrain.tiles_index.tiles[std::stoi(copied_tile)][2];
+            output_message="Pasted "+terrain.tiles_index.getTileName(terrain_vector[real_pos_y][real_pos_x])+" ("+terrain_vector[real_pos_y][real_pos_x]+")";
+            message_timer=0;
+        };
+
+        if (isPressed(event,sf::Keyboard::F3)==0){
+            int real_pos_x=camera_pos[0]/64;
+            int real_pos_y=camera_pos[1]/64;
+            pos1 = {real_pos_x,real_pos_y};
+            output_message="Pos 1 set to "+std::to_string(pos1[0])+":"+std::to_string(pos1[1]);
+            pos1set=true;
+            message_timer=0;
+        };
+        if (isPressed(event,sf::Keyboard::F4)==0){
+            int real_pos_x=camera_pos[0]/64;
+            int real_pos_y=camera_pos[1]/64;
+            if (real_pos_x>pos1[0]&&real_pos_y>pos1[1]){
+                pos2 = {real_pos_x,real_pos_y};
+                output_message="Pos 2 set to "+std::to_string(pos2[0])+":"+std::to_string(pos2[1]);
+                pos2set=true;
+            }else{
+                output_message="Can't place pos2 here";
+            };
+            message_timer=0;
+        };
+
+        if (menu_show){
+            if (isPressed(event,sf::Keyboard::F5)==0){
+                if (choice==7){
+                    if (yesNoQuestion("Fill square with "+std::to_string((pos2[0]-pos1[0]+1)*(pos2[1]-pos1[1]+1))+" "+terrain.tiles_index.tiles[selected_tile_index][0]+" ?",event,window)==0){
+                     for (int i = 0; i<terrain_vector.size();i++){
+                      for (int j = 0; j<terrain_vector[i].size();j++){
+                          if ((pos1[0]<=j&&j<=pos2[0])&&(pos1[1]<=i&&i<=pos2[1])){
+                            terrain_vector[i][j]=terrain.tiles_index.tiles[selected_tile_index][2];
+                          };
+                      };
+                     };
+                    };
+                    output_message="the selected area has been filled!";
+                    message_timer=0;
+                    menu_show=false;
+                }else if (choice==9){
+                    showEditorControls(window,event,terrain_vector,camera_pos,camera_offset);
+                };
+            };
+            if (isPressed(event,sf::Keyboard::Up)==0){
+                if (choice>0){
+                    choice--;
+                };
+            };
+            
+            if (isPressed(event,sf::Keyboard::Down)==0){
+                if (choice<actions.size()-1){
+                    choice++;
+                };
+            };
+            
+            if (isPressed(event,sf::Keyboard::Right)==0){
+                if (choice==0){
+                    camera_speed++;
+                }else if(choice==1){
+                    map_width++;
+                    for (int i = 0;i<map_height;i++){
+                        terrain_vector[i].push_back(terrain.tiles_index.tiles[tiles_index][2]);
+                    };
+                }else if(choice==2){
+                    map_height++;
+                    terrain_vector.push_back({});
+                    for (int i = 0; i < terrain_vector[0].size();i++){
+                        terrain_vector[terrain_vector.size()-1].push_back(terrain.tiles_index.tiles[tiles_index][2]);
+                    };
+                }else if (choice==3){
+                    if (tiles_index<terrain.tiles_index.tiles.size()-2){
+                        tiles_index++;
+                    };
+                }else if (choice==4){
+                    if (selected_tile_index<terrain.tiles_index.tiles.size()-2){
+                        selected_tile_index++;
+                    };
+                };
+            };
+
+            if (isPressed(event,sf::Keyboard::Left)==0){
+                if (choice==0){
+                    if (camera_speed>4){
+                        camera_speed--;
+                    };
+                }else if(choice==1){
+                    if (map_width>1){
+                        map_width--;
+                        for (int i = 0;i<map_height;i++){
+                        terrain_vector[i].pop_back();
+                        };
+                    };
+                }else if(choice==2){
+                    if (map_height>1){
+                        map_height--;
+                        terrain_vector.pop_back();
+                    };
+                }else if(choice==3){
+                    if (tiles_index>0){
+                        tiles_index--;
+                    };
+                }else if(choice==4){
+                    if (selected_tile_index>0){
+                        selected_tile_index--;
+                    };
+                };
+            };
+
+        }else{
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
+            camera_pos[0]+=camera_speed;
+            };
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
+            camera_pos[0]-=camera_speed;
+            };
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
+            camera_pos[1]-=camera_speed;
+            };
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
+            camera_pos[1]+=camera_speed;
+            };
+        };
+
+        if (isPressed(event,sf::Keyboard::RShift)==0){
+            menu_show=!menu_show;
+        };
+        if (camera_pos[1]<0){
+            camera_pos[1]=0;
+        };
+        if (camera_pos[1]>terrain_vector.size()*64-64){
+            camera_pos[1]=terrain_vector.size()*64-64;
+        };
+        if (camera_pos[0]<0){
+            camera_pos[0]=0;
+        };
+        if (camera_pos[0]>terrain_vector[0].size()*64-64){
+            camera_pos[0]=terrain_vector[0].size()*64-64;
+        };
+
+        window.clear(sf::Color(148,148,148));
+        HUDdisplay.editorBG(window);
+        terrain.showTerrain(terrain_vector,camera_pos,time_otd,window,camera_offset,true);
+        
+        if (pos1set){
+            HUDdisplay.showTextBluDEBUG("pos1",{pos1[0]*64-camera_pos[0]+camera_offset[0],pos1[1]*64-camera_pos[1]+camera_offset[1]},window);
+        };
+        if (pos2set){
+            HUDdisplay.showTextBluDEBUG("pos2",{pos2[0]*64-camera_pos[0]+camera_offset[0],pos2[1]*64-camera_pos[1]+camera_offset[1]},window);
+        };
+
+        HUDdisplay.showTextDEBUG("Editor Mode 0.0",{0,0},window);
+        if (menu_show){
+            HUDdisplay.showTextDEBUG("Press Right Shift to show / hide menu",{0,16},window);
+            actions[0]="Camera speed: "+std::to_string(camera_speed);
+            actions[1]="Map width: "+std::to_string(map_width);
+            actions[2]="Map height: "+std::to_string(map_height);
+            actions[3]="Default tile: "+terrain.tiles_index.tiles[tiles_index][0]+" ("+terrain.tiles_index.tiles[tiles_index][2]+")";
+            actions[4]="Selected tile: "+terrain.tiles_index.tiles[selected_tile_index][2];
+            for (int i = 0 ; i < actions.size();i++){
+                if (choice==i){
+                    HUDdisplay.showTextSELDEBUG(actions[i],{0,32+(i*16)},window);
+                }else{
+                    HUDdisplay.showTextDEBUG(actions[i],{0,32+(i*16)},window);
+                };
+            };
+            HUDdisplay.showTextSELDEBUG("default tile: ",{320,32},window);
+            terrain.tiles_index.showTile(window,tiles_index,{544,32},time_otd);
+            HUDdisplay.showTextSELDEBUG("selected tile:",{320,96},window);
+            terrain.tiles_index.showTile(window,selected_tile_index,{544,96},time_otd);
+            HUDdisplay.showTextSELDEBUG("copied tile:  ",{320,160},window);
+            terrain.tiles_index.showTile(window,copied_tile_index,{544,160},time_otd);
+        };
+
+        if (message_timer<=60){
+            HUDdisplay.showTextDEBUG(output_message,{0,560},window);
+        };
+
+        window.display();
+    }while(true);
+    return 0;
 };
 
 int main_menu(sf::RenderWindow& window,sf::Event event){
@@ -153,14 +467,14 @@ int main_menu(sf::RenderWindow& window,sf::Event event){
         if (isPressed(event,sf::Keyboard::Up)==0){
             if (choice>0){
                 choice--;
-            }
+            };
         };
         if (isPressed(event,sf::Keyboard::Down)==0){
             if (choice<2){
                 choice++;
-            }
+            };
         };
-
+        //TEXTS DISPLAY
         HUDdisplay.showTextDEBUG("Pokemon GSC Online build 0.0",{0,0},window);
         HUDdisplay.showTextDEBUG("27/05/24",{0,16},window);
         HUDdisplay.showTextDEBUG("F5 to confirm, F6 to cancel",{0,32},window);
@@ -168,18 +482,27 @@ int main_menu(sf::RenderWindow& window,sf::Event event){
         HUDdisplay.showTextBOW("LEVEL EDITOR",{64,288},window);
         HUDdisplay.showTextBOW("LAUNCH GAME",{64,320},window);
         HUDdisplay.showTextBOW("LOAD MAP FROM DIR",{64,352},window);
+
         if (isPressed(event,sf::Keyboard::F5)==0){
+            if (choice==0){
+                levelEditorLoop(window,event);
+                return 0;
+            };
             if (choice==1){
                 choosen=true;
                 std::string path = "maps/";
                 std::vector<std::string> maps;  
                 for (const auto & entry : std::filesystem::directory_iterator(path)){
+                    std::string fish;
+                    fish=entry.path().filename();
                     if (!std::filesystem::is_directory(entry.path())){
-                        maps.push_back(entry.path().filename());
+                        //KEEP ONLY .LV FILES AND DIRECTORIES
+                        if(fish.substr(fish.find_last_of(".") + 1) == "lv"||std::filesystem::is_directory(fish)) {
+                            maps.push_back(entry.path().filename());
+                            };
                         };
                 };
                 cur_map=functions.ReplaceAll(maps[0],".lv","");
-                std::cout << cur_map << std::endl;
                 setTerrain(terrain,window,time_otd);
                 return 0;
             }
@@ -187,78 +510,92 @@ int main_menu(sf::RenderWindow& window,sf::Event event){
                 std::string path = "maps/";
                 std::vector<std::string> maps;
                 std::vector<std::string> full_path;
+                maps.push_back("../");
+                full_path.push_back("../");
                 for (const auto & entry : std::filesystem::directory_iterator(path)){
+                    std::string fish;
+                    fish=entry.path();
                     maps.push_back(entry.path().filename());
                     full_path.push_back(entry.path());
                 };
                 int map_choice = 0;
                 int map_offset = 0;
                 do{
-                    while (window.pollEvent(event))
-                    {
-                        if (event.type == sf::Event::Closed){
-                            window.close();
-                            return 0;
-                        };
+                while (window.pollEvent(event))
+                {
+                    if (event.type == sf::Event::Closed){
+                        window.close();
+                        return 0;
                     };
-                    if (isPressed(event,sf::Keyboard::F6)==0)break;
+                };
+                if (isPressed(event,sf::Keyboard::F6)==0)break;
 
-                    if (isPressed(event,sf::Keyboard::F5)==0){
-                        if (std::filesystem::is_directory(full_path[map_choice])){
-                            path=path+"/"+maps[map_choice];
-                            maps={};
-                            full_path={};
-                            maps.push_back("../");
-                            full_path.push_back("../");
-                            for (const auto & entry : std::filesystem::directory_iterator(path)){
+                //FOR NAVIGATE TROUGHT DIRS
+                if (isPressed(event,sf::Keyboard::F5)==0){
+                    if (std::filesystem::is_directory(full_path[map_choice])){
+                        path=path+"/"+maps[map_choice];
+                        maps={};
+                        full_path={};
+                        maps.push_back("../");
+                        full_path.push_back("../");
+                        for (const auto & entry : std::filesystem::directory_iterator(path)){
+                            std::string fish;
+                            fish=entry.path();
+                            //KEEP ONLY .LV FILES AND DIRECTORIES
+                            if(fish.substr(fish.find_last_of(".") + 1) == "lv"||std::filesystem::is_directory(fish)) {
                                 maps.push_back(entry.path().filename());
                                 full_path.push_back(entry.path());
                             };
-                            map_choice=0;
-                        }else{
-                        cur_map=functions.ReplaceAll(maps[map_choice],".lv","");
-                        choosen=true;
-                        setTerrain(terrain,window,time_otd);
-                        break;
                         };
-                    }
-
-                    if (isPressed(event,sf::Keyboard::Up)==0){
-                        if (map_choice>0){
-                            map_choice--;
-                        };
-                    };
-                    if (isPressed(event,sf::Keyboard::Down)==0){
-                        if (map_choice<maps.size()-1){
-                            map_choice++;
-                        };
-                    };
-
-                    //SCROLLING IN MAPS
-                    if (map_choice>12){
-                        map_offset=map_choice-12;
+                    map_choice=0;
                     }else{
-                        map_offset=0;
+                    cur_map=functions.ReplaceAll(maps[map_choice],".lv","");
+                    choosen=true;
+                    setTerrain(terrain,window,time_otd);
+                    break;
                     };
+                };
 
-                    window.clear(sf::Color(248,248,248));
-                    HUDdisplay.showTextDEBUG("Pokemon GSC Online build 0.0",{0,0},window);
-                    HUDdisplay.showTextDEBUG("27/05/24",{0,16},window);
-                    HUDdisplay.showTextDEBUG("F5 to confirm, F6 to cancel",{0,32},window);
-
-                    //SHOWING MAX 13 MAPS
-                    for (int i = 0; i<maps.size();i++){
-                        if (std::filesystem::is_directory(full_path[i+map_offset])&&full_path[i+map_offset]!="../"){
-                            HUDdisplay.showTextBOW(maps[i+map_offset]+"/",{96,128+(i*32)},window);
-                        }else{
-                            HUDdisplay.showTextBOW(maps[i+map_offset],{96,128+(i*32)},window);
-                        };
-                        if (i>11)break;
+                if (isPressed(event,sf::Keyboard::Up)==0){
+                    if (map_choice>0){
+                        map_choice--;
+                    }else{
+                        map_choice=maps.size()-1;
                     };
-                    HUDdisplay.showCursor({64,128+(map_choice*32)-(map_offset*32)},window);
-                    HUDdisplay.showTextBOW("CUR DIRECTORY ("+std::to_string(maps.size())+")",{64,64},window);
+                };
+                if (isPressed(event,sf::Keyboard::Down)==0){
+                    if (map_choice<maps.size()-1){
+                        map_choice++;
+                    }else{
+                        map_choice=0;
+                    };
+                };
 
-                    window.display();
+                //SCROLLING IN MAPS
+                if (map_choice>12){
+                    map_offset=map_choice-12;
+                }else{
+                    map_offset=0;
+                };
+
+                window.clear(sf::Color(248,248,248));
+                HUDdisplay.showTextDEBUG("Pokemon GSC Online build 0.0",{0,0},window);
+                HUDdisplay.showTextDEBUG("27/05/24",{0,16},window);
+                HUDdisplay.showTextDEBUG("F5 to confirm, F6 to cancel",{0,32},window);
+
+                //SHOWING MAX 13 MAPS
+                for (int i = 0; i<maps.size();i++){
+                    if (std::filesystem::is_directory(full_path[i+map_offset])&&full_path[i+map_offset]!="../"){
+                        HUDdisplay.showTextBOW(maps[i+map_offset]+"/",{96,128+(i*32)},window);
+                    }else{
+                        HUDdisplay.showTextBOW(maps[i+map_offset],{96,128+(i*32)},window);
+                    };
+                    if (i>11)break;
+                };
+                HUDdisplay.showCursor({64,128+(map_choice*32)-(map_offset*32)},window);
+                HUDdisplay.showTextBOW("CUR DIRECTORY ("+std::to_string(maps.size()-1)+")",{64,64},window);
+
+                window.display();
                 }while(true);
             };
         };
@@ -318,6 +655,9 @@ int show_debug_pause(sf::RenderWindow& window, sf::Event event, std::vector<int>
         
         window.display();
         if (isPressed(event,sf::Keyboard::F6)==0){
+            return 0;
+        };
+        if (isPressed(event,sf::Keyboard::F3)==0){
             return 0;
         };
         if (isPressed(event,sf::Keyboard::F5)==0){

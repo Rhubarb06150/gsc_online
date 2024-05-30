@@ -14,6 +14,7 @@ class HUD{
     std::vector<sf::Texture> letters_bow_textures;
     std::vector<sf::Texture> letters_debug_textures;
     std::vector<sf::Texture> letters_debug_sel_textures;
+    std::vector<sf::Texture> letters_debug_blu_textures;
     std::vector<sf::Texture> menu_textures;
 
     HUD(){
@@ -111,6 +112,8 @@ class HUD{
         menu_textures.push_back(texture);
         texture.loadFromFile("assets/hud/logo.png");
         menu_textures.push_back(texture);
+        texture.loadFromFile("assets/hud/editor_bg.png");
+        menu_textures.push_back(texture);
 
         int x;
         int y;
@@ -132,6 +135,8 @@ class HUD{
             letters_debug_textures.push_back(texture);
             texture.loadFromFile("assets/hud/font_debug_sel.png",sf::IntRect(x*8,y*8,8,8));
             letters_debug_sel_textures.push_back(texture);
+            texture.loadFromFile("assets/hud/font_debug_blu.png",sf::IntRect(x*8,y*8,8,8));
+            letters_debug_blu_textures.push_back(texture);
 
 
         };    
@@ -183,6 +188,14 @@ class HUD{
         window.draw(sprite);
         return 0;  
     };
+    int editorBG(sf::RenderWindow& window){
+        sf::Sprite sprite;
+        sprite.setPosition(0,0);
+        sprite.setTexture(menu_textures[3]);
+        sprite.scale(4.f,4.f);
+        window.draw(sprite);
+        return 0;  
+    };
 
     int showTextDEBUG(std::string text, std::vector<int> text_pos, sf::RenderWindow& window){
         for (int i = 0; i < text.size(); i++){
@@ -200,6 +213,17 @@ class HUD{
             sf::Sprite sprite;
             sprite.setPosition(text_pos[0]+(i*16),text_pos[1]);
             sprite.setTexture(letters_debug_sel_textures[getLetterIntIndex((text[i]))]);
+            sprite.scale(2.f,2.f);
+            window.draw(sprite);
+        };
+        return 0;  
+    };
+
+    int showTextBluDEBUG(std::string text, std::vector<int> text_pos, sf::RenderWindow& window){
+        for (int i = 0; i < text.size(); i++){
+            sf::Sprite sprite;
+            sprite.setPosition(text_pos[0]+(i*16),text_pos[1]);
+            sprite.setTexture(letters_debug_blu_textures[getLetterIntIndex((text[i]))]);
             sprite.scale(2.f,2.f);
             window.draw(sprite);
         };

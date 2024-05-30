@@ -75,6 +75,7 @@ class TilesIndex{
         tiles.push_back({"roomDeskSheet","c311","\\x55"});
     //OTHER
         tiles.push_back({"none","fe11","\\xff"});
+        tiles.push_back({"unknown","ff11","XXXX"});
 
     int x;
     int y;
@@ -126,6 +127,19 @@ class TilesIndex{
                 };
         };
         return res;
+    };
+
+    int showTile(sf::RenderWindow& window,int index,std::vector<int> pos, char time_otd){
+        int time_index;
+        if (time_otd=='m')time_index=0;
+        if (time_otd=='d')time_index=1;
+        if (time_otd=='n')time_index=2;
+        sf::Sprite sprite;
+        sprite.setPosition(pos[0],pos[1]);
+        sprite.setTexture(textures[time_index][index]);
+        sprite.scale(2.f,2.f);
+        window.draw(sprite);
+        return 0;  
     };
 
     int getIntIndex(std::string index){
