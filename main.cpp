@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <filesystem>
+#include <algorithm>
 #include <iostream>
 #include <vector>
 #include <chrono>
@@ -36,6 +37,7 @@ char time_otd;
 Terrain terrain;
 Sounds SoundManager;
 HUD HUDdisplay;
+GSC_Functions functions;
 
 //PLAYER
 std::string username="MATHEO";
@@ -119,7 +121,219 @@ int isPressed(sf::Event event,sf::Keyboard::Key key){
             if (event.key.code == key&&function_done==1)function_done=0;
     };
     return 1;
+};
+
+int isLetterPressed(sf::Event event,int key){
+    if(event.type == (sf::Event::KeyPressed)){
+        if (event.key.code == key&&function_done==0){
+            function_done=1;
+            return 0;
+        };};
+        if(event.type == (sf::Event::KeyReleased)){
+            if (event.key.code == key&&function_done==1)function_done=0;
+    };
+    return 1;
+};
+
+int main_menu(sf::RenderWindow& window,sf::Event event){
+    int choice = 0;
+    bool choosen=false;
+    do{
+        while (window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed){
+                window.close();
+                return 0;
+            };
+        };
+        window.clear(sf::Color(248,248,248));
+        
+        HUDdisplay.showLogo({32,0},window);
+
+        if (isPressed(event,sf::Keyboard::Up)==0){
+            if (choice>0){
+                choice--;
+            }
+        };
+        if (isPressed(event,sf::Keyboard::Down)==0){
+            if (choice<2){
+                choice++;
+            }
+        };
+
+        HUDdisplay.showTextDEBUG("Pokemon GSC Online build 0.0",{0,0},window);
+        HUDdisplay.showTextDEBUG("27/05/24",{0,16},window);
+        HUDdisplay.showTextDEBUG("F5 to confirm, F6 to cancel",{0,32},window);
+        HUDdisplay.showCursor({32,288+(choice*32)},window);
+        HUDdisplay.showTextBOW("LEVEL EDITOR",{64,288},window);
+        HUDdisplay.showTextBOW("LAUNCH GAME",{64,320},window);
+        HUDdisplay.showTextBOW("LOAD MAP FROM DIR",{64,352},window);
+        if (isPressed(event,sf::Keyboard::F5)==0){
+            if (choice==1){
+                choosen=true;
+                std::string path = "maps/";
+                std::vector<std::string> maps;  
+                for (const auto & entry : std::filesystem::directory_iterator(path)){
+                    if (!std::filesystem::is_directory(entry.path())){
+                        maps.push_back(entry.path().filename());
+                        };
+                };
+                cur_map=functions.ReplaceAll(maps[0],".lv","");
+                std::cout << cur_map << std::endl;
+                setTerrain(terrain,window,time_otd);
+                return 0;
+            }
+            if (choice==2){
+                std::string path = "maps/";
+                std::vector<std::string> maps;
+                std::vector<std::string> full_path;
+                for (const auto & entry : std::filesystem::directory_iterator(path)){
+                    maps.push_back(entry.path().filename());
+                    full_path.push_back(entry.path());
+                };
+                int map_choice = 0;
+                int map_offset = 0;
+                do{
+                    while (window.pollEvent(event))
+                    {
+                        if (event.type == sf::Event::Closed){
+                            window.close();
+                            return 0;
+                        };
+                    };
+                    if (isPressed(event,sf::Keyboard::F6)==0)break;
+
+                    if (isPressed(event,sf::Keyboard::F5)==0){
+                        if (std::filesystem::is_directory(full_path[map_choice])){
+                            path=path+"/"+maps[map_choice];
+                            maps={};
+                            full_path={};
+                            maps.push_back("../");
+                            full_path.push_back("../");
+                            for (const auto & entry : std::filesystem::directory_iterator(path)){
+                                maps.push_back(entry.path().filename());
+                                full_path.push_back(entry.path());
+                            };
+                            map_choice=0;
+                        }else{
+                        cur_map=functions.ReplaceAll(maps[map_choice],".lv","");
+                        choosen=true;
+                        setTerrain(terrain,window,time_otd);
+                        break;
+                        };
+                    }
+
+                    if (isPressed(event,sf::Keyboard::Up)==0){
+                        if (map_choice>0){
+                            map_choice--;
+                        };
+                    };
+                    if (isPressed(event,sf::Keyboard::Down)==0){
+                        if (map_choice<maps.size()-1){
+                            map_choice++;
+                        };
+                    };
+
+                    //SCROLLING IN MAPS
+                    if (map_choice>12){
+                        map_offset=map_choice-12;
+                    }else{
+                        map_offset=0;
+                    };
+
+                    window.clear(sf::Color(248,248,248));
+                    HUDdisplay.showTextDEBUG("Pokemon GSC Online build 0.0",{0,0},window);
+                    HUDdisplay.showTextDEBUG("27/05/24",{0,16},window);
+                    HUDdisplay.showTextDEBUG("F5 to confirm, F6 to cancel",{0,32},window);
+
+                    //SHOWING MAX 13 MAPS
+                    for (int i = 0; i<maps.size();i++){
+                        if (std::filesystem::is_directory(full_path[i+map_offset])&&full_path[i+map_offset]!="../"){
+                            HUDdisplay.showTextBOW(maps[i+map_offset]+"/",{96,128+(i*32)},window);
+                        }else{
+                            HUDdisplay.showTextBOW(maps[i+map_offset],{96,128+(i*32)},window);
+                        };
+                        if (i>11)break;
+                    };
+                    HUDdisplay.showCursor({64,128+(map_choice*32)-(map_offset*32)},window);
+                    HUDdisplay.showTextBOW("CUR DIRECTORY ("+std::to_string(maps.size())+")",{64,64},window);
+
+                    window.display();
+                }while(true);
+            };
+        };
+        window.display();
+        if (choosen)return 0;
+    }
+    while(true);
+    return 0;
 }
+
+int show_debug_pause(sf::RenderWindow& window, sf::Event event, std::vector<int> player_offset,Player player){
+    int choice = 0;
+    do{
+        while (window.pollEvent(event))
+        {
+            if (isPressed(event,sf::Keyboard::Up)==0){
+                if (choice>0){
+                    choice--;
+                };
+            };
+            if (isPressed(event,sf::Keyboard::Down)==0){
+                if (choice<2){
+                    choice++;
+                };
+            };
+            if (event.type == sf::Event::Closed){
+                int sum_moy=0;
+                int biggest=moy[0];
+                int lowest=moy[0];
+                for (int i =0;i<moy.size();i++){
+                    if (moy[i]>biggest)biggest=moy[i];
+                    if (moy[i]<lowest)lowest=moy[i];
+                    sum_moy+=moy[i];
+                };
+                std::cout << "AVG FPS: " << sum_moy/moy.size() << std::endl;
+                std::cout << "Lowest FPS: " << lowest << std::endl;
+                std::cout << "Highest FPS: " << biggest << std::endl;
+                window.close();
+                return 0;
+            };
+        };
+        window.clear();
+        terrain.showTerrain(terrain_sprites,player_pos,time_otd,window,player_offset,false);
+        player.showPlayer(player_type,player_state,window);
+        HUDdisplay.showTextDEBUG("     debug pause    ",{192,256},window);
+        HUDdisplay.showTextDEBUG("                    ",{192,256+16},window);
+        HUDdisplay.showTextDEBUG("                    ",{192,256+32},window);
+        if (choice==0)HUDdisplay.showTextSELDEBUG("main menu",            {192,256+48},window);
+                    else HUDdisplay.showTextDEBUG("main menu",            {192,256+48},window);
+                         HUDdisplay.showTextDEBUG(          "           ",{336,256+48},window);
+        if (choice==1)HUDdisplay.showTextSELDEBUG("quit game",            {192,256+64},window);
+                    else HUDdisplay.showTextDEBUG("quit game",            {192,256+64},window);
+                         HUDdisplay.showTextDEBUG(          "           ",{336,256+64},window);
+        if (choice==2)HUDdisplay.showTextSELDEBUG("exit menu",            {192,256+80},window);
+                    else HUDdisplay.showTextDEBUG("exit menu",            {192,256+80},window);
+                         HUDdisplay.showTextDEBUG(          "           ",{336,256+80},window);
+        
+        window.display();
+        if (isPressed(event,sf::Keyboard::F6)==0){
+            return 0;
+        };
+        if (isPressed(event,sf::Keyboard::F5)==0){
+            if (choice==0){
+                main_menu(window,event);
+                return 0;
+            }else if (choice==1){
+                window.close();
+                return 0;
+            }else if (choice==2){
+                return 0;
+            }
+        };
+    }while(true);
+    return 0;
+};
 
 int main()
 {
@@ -137,18 +351,22 @@ int main()
     time_otd_str=time_otd;
     srand(time(NULL));
     
-    GSC_Functions functions;
-    std::cout << functions.currentDateTime() << std::endl;
+    sf::Event event;
 
-    setTerrain(terrain,window,time_otd);
-    
+    main_menu(window,event);
+
     while (window.isOpen())
-    {   
+    {
+        
         start=std::chrono::high_resolution_clock::now();
         index_frame++;
         message_timer++;
 
         sf::Event event;
+
+        if (isPressed(event,sf::Keyboard::F3)==0){
+            show_debug_pause(window,event,player_offset,player);
+        };
 
         //TAKE SCREENSHOT -------------------------------------------|
         if (isPressed(event,sf::Keyboard::F1)==0){
@@ -171,6 +389,8 @@ int main()
             message_timer=0;
         };
         // ----------------------------------------------------------|
+
+
 
         //PLAYER MOVE
         if (can_move){
@@ -234,18 +454,17 @@ int main()
                 std::cout << "Lowest FPS: " << lowest << std::endl;
                 std::cout << "Highest FPS: " << biggest << std::endl;
                 window.close();
-                };
+                return 0;
+            };
         };
+
         //SHOW ALL
-        
         window.clear();
-        
         terrain.showTerrain(terrain_sprites,player_pos,time_otd,window,player_offset,(debug&&debug_page==9&&debug_choice==2));
         player_state=player.animPlayer(player_state,moving_timer,walking);
         player.showPlayer(player_type,player_state,window);
         
         //HUDdisplay.showPauseMenu(window,username,resolution_vec[0]);
-
         if (debug){
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1)&&debug){debug_page=1;};
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2)&&debug){debug_page=2;};
@@ -282,7 +501,7 @@ int main()
                 HUDdisplay.showTextDEBUG(("Frames elapsed: "+std::to_string(index_frame)),{0,48},window);
                 HUDdisplay.showTextDEBUG("Resolution: "+resolution,{0,64},window);
                 HUDdisplay.showTextDEBUG("Press [F5] to reload textures",{0,80},window);
-                if (isPressed(event,sf::Keyboard::F4)==0){
+                if (isPressed(event,sf::Keyboard::F5)==0){
                     reloadTextures();
                     SoundManager.soundEffect("PRESS");
                     output_message="Textures reloaded!" ;
@@ -351,12 +570,24 @@ int main()
                         };
                     if (debug_choice==2){
                         int tile_index;
-                        if (isPressed(event,sf::Keyboard::A)==0){
+                        if (isPressed(event,sf::Keyboard::F5)==0){
                             int real_player_pos_x=player_pos[0]/64;
                             int real_player_pos_y=player_pos[1]/64;
                             copied_tile=terrain_sprites[real_player_pos_y][real_player_pos_x];
                             output_message="Copied "+copied_tile+" ("+ terrain.tiles_index.getTileName(copied_tile) +")";
                             message_timer=0;
+                        }; 
+                        if (isPressed(event,sf::Keyboard::F6)==0){
+                            if (copied_tile!=""){
+                                int real_player_pos_x=player_pos[0]/64;
+                                int real_player_pos_y=player_pos[1]/64;
+                                terrain_sprites[real_player_pos_y][real_player_pos_x]=copied_tile;
+                                output_message="Pasted "+copied_tile+" ("+ terrain.tiles_index.getTileName(copied_tile) +")";
+                                message_timer=0;
+                            }else{
+                               output_message="No element to paste";
+                                message_timer=0; 
+                            }
                         }; 
                         if (isPressed(event,sf::Keyboard::Right)==0){
                             if (terrain.tiles_index.getIntIndex(getStandingTile())==terrain.tiles_index.tiles.size()-1){

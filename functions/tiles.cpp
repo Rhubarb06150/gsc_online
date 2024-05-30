@@ -47,7 +47,6 @@ class TilesIndex{
         tiles.push_back({"rockBottomLeftGrass","2711","\\x18"});
         tiles.push_back({"rockBottomRight","1711","\\x19"});
         tiles.push_back({"rockBottomRightGrass","0711","\\x21"});
-
     //PATHS
         tiles.push_back({"path","0211","\\x07"});
         tiles.push_back({"altPath","1311","\\x08"});
@@ -72,6 +71,8 @@ class TilesIndex{
         tiles.push_back({"plant3","8212","\\x51"});
         tiles.push_back({"couch","9312","\\x52"});
         tiles.push_back({"roomDoor","b311","\\x53"});
+        tiles.push_back({"roomDesk","d311","\\x54"});
+        tiles.push_back({"roomDeskSheet","c311","\\x55"});
     //OTHER
         tiles.push_back({"none","fe11","\\xff"});
 

@@ -107,6 +107,10 @@ class HUD{
         sf::Texture texture;
         texture.loadFromFile("assets/hud/pause.png");
         menu_textures.push_back(texture);
+        texture.loadFromFile("assets/hud/r_arrow.png");
+        menu_textures.push_back(texture);
+        texture.loadFromFile("assets/hud/logo.png");
+        menu_textures.push_back(texture);
 
         int x;
         int y;
@@ -159,6 +163,24 @@ class HUD{
             sprite.scale(4.f,4.f);
             window.draw(sprite);
         };
+        return 0;  
+    };
+
+    int showCursor(std::vector<int> text_pos, sf::RenderWindow& window){
+        sf::Sprite sprite;
+        sprite.setPosition(text_pos[0],text_pos[1]);
+        sprite.setTexture(menu_textures[1]);
+        sprite.scale(4.f,4.f);
+        window.draw(sprite);
+        return 0;  
+    };
+
+    int showLogo(std::vector<int> text_pos, sf::RenderWindow& window){
+        sf::Sprite sprite;
+        sprite.setPosition(text_pos[0],text_pos[1]);
+        sprite.setTexture(menu_textures[2]);
+        sprite.scale(4.f,4.f);
+        window.draw(sprite);
         return 0;  
     };
 
