@@ -1061,10 +1061,37 @@ int main_menu(sf::RenderWindow& window,sf::Event event){
                             break;
                     };
                     if (event.key.code==sf::Keyboard::Down){
-                        if (choice<2){
+                        if (choice<3){
                             choice++;
                         };
                         break;
+                    };
+                    if (event.key.code==sf::Keyboard::F5||event.key.code==sf::Keyboard::X){
+                        if (choice==0){
+                            levelEditorLoop(window,event);
+                            return 0;
+                        };
+                        if (choice==1){
+                            choosen=true;
+                            std::string path = "maps/route1.lv";
+                            cur_map=path;
+                            setTerrain(terrain,window,time_otd);
+                            return 0;
+                        }
+                        if (choice==2){
+                            std::string map_path;
+                            map_path = askPath("maps",event,window);
+                            if(map_path!=""){
+                                cur_map=map_path;
+                                setTerrain(terrain,window,time_otd);
+                                return 0;
+                            };
+                        };
+                        if (choice==3){
+                            if (std::filesystem::is_directory(functions.getUserPath()+"/.gsc_o/")){ 
+                                system(("cd "+functions.getUserPath()+"/.gsc_o/&&xdg-open .").c_str());
+                            };
+                        };
                     };
             };
             if (event.type == sf::Event::Closed){
@@ -1084,29 +1111,8 @@ int main_menu(sf::RenderWindow& window,sf::Event event){
         HUDdisplay.showTextBOW("LEVEL EDITOR",{64,288},window);
         HUDdisplay.showTextBOW("LAUNCH GAME",{64,320},window);
         HUDdisplay.showTextBOW("LOAD MAP FROM DIR",{64,352},window);
+        HUDdisplay.showTextBOW("OPEN GAME FOLDER",{64,352},window);
 
-        if (isPressed(event,sf::Keyboard::F5)==0||isPressed(event,sf::Keyboard::X)==0){
-            if (choice==0){
-                levelEditorLoop(window,event);
-                return 0;
-            };
-            if (choice==1){
-                choosen=true;
-                std::string path = "maps/route1.lv";
-                cur_map=path;
-                setTerrain(terrain,window,time_otd);
-                return 0;
-            }
-            if (choice==2){
-                std::string map_path;
-                map_path = askPath("maps",event,window);
-                if(map_path!=""){
-                    cur_map=map_path;
-                    setTerrain(terrain,window,time_otd);
-                    return 0;
-                };
-            };
-        };
         if (isPressed(event,sf::Keyboard::F1)==0){
             functions.takeScreenshot(window);
             SoundManager.soundEffect("PRESS");
