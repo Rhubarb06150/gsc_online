@@ -1111,7 +1111,7 @@ int main_menu(sf::RenderWindow& window,sf::Event event){
         HUDdisplay.showTextBOW("LEVEL EDITOR",{64,288},window);
         HUDdisplay.showTextBOW("LAUNCH GAME",{64,320},window);
         HUDdisplay.showTextBOW("LOAD MAP FROM DIR",{64,352},window);
-        HUDdisplay.showTextBOW("OPEN GAME FOLDER",{64,352},window);
+        HUDdisplay.showTextBOW("OPEN GAME FOLDER",{64,384},window);
 
         if (isPressed(event,sf::Keyboard::F1)==0){
             functions.takeScreenshot(window);
