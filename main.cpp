@@ -188,9 +188,9 @@ int isPressed(sf::Event event, sf::Keyboard::Key key)
 {
     if ( sf::Keyboard::isKeyPressed(key) && !key_triggered[key] )
     {
-        return (key_triggered[sf::Keyboard::Right] = 1);
-    }else{
         return 0;
+    }else{
+        return 1;
     }
 }
  
