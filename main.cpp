@@ -498,22 +498,22 @@ std::string askPath(std::string path,sf::Event event,sf::RenderWindow& window){
     while (window.pollEvent(event))
     {
         switch (event.type) {
-                case sf::Event::KeyPressed:
-                    if (event.key.code==sf::Keyboard::Up){
-                        if (map_choice>0){
-                            map_choice--;
-                        }else{
-                            map_choice=maps.size()-1;
-                        };
+            case sf::Event::KeyPressed:
+                if (event.key.code==sf::Keyboard::Up){
+                    if (map_choice>0){
+                        map_choice--;
+                    }else{
+                        map_choice=maps.size()-1;
                     };
-                    if (event.key.code==sf::Keyboard::Down){
-                        if (map_choice<maps.size()-1){
-                            map_choice++;
-                        }else{
-                            map_choice=0;
-                        };
-                        break;
+                };
+                if (event.key.code==sf::Keyboard::Down){
+                    if (map_choice<maps.size()-1){
+                        map_choice++;
+                    }else{
+                        map_choice=0;
                     };
+                    break;
+                };
             };
         if (event.type == sf::Event::Closed){
             window.close();
