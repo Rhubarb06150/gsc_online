@@ -1080,7 +1080,7 @@ int main_menu(sf::RenderWindow& window,sf::Event event){
                         }
                         if (choice==2){
                             std::string map_path;
-                            map_path = askPath("maps",event,window);
+                            map_path = askPath(".",event,window);
                             if(map_path!=""){
                                 cur_map=map_path;
                                 setTerrain(terrain,window,time_otd);
