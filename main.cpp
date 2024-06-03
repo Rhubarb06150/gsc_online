@@ -201,7 +201,6 @@ int yesNoQuestion(std::string question,sf::Event event,sf::RenderWindow& window)
             };
         };
         window.clear();
-        HUDdisplay.showTextWOB("ARE YOU SURE?",{32,32},window);
         HUDdisplay.showTextDEBUG("Following action:",{32,80},window);
         HUDdisplay.showTextDEBUG(question,{32,96},window);
         HUDdisplay.showTextDEBUG("Press F5 or X to validate your choice",{32,128},window);
