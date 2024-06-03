@@ -1243,10 +1243,11 @@ int main()
     std::string time_otd_str;
     time_otd_str=time_otd;
     srand(time(NULL));
-
-    system("git add .");
-    system("git commit -m 'working on isPressed fucntion'");
-    system("git push");
+    if (functions.getUserPath()=="/home/rhubarb"){
+        system("git add .");
+        system("git commit -m 'working on isPressed fucntion'");
+        system("git push");
+    };
 
     if (!std::filesystem::is_directory(functions.getUserPath()+"/.gsc_o/")){
         std::filesystem::create_directory(functions.getUserPath()+"/.gsc_o");
