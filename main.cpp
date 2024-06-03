@@ -1248,7 +1248,9 @@ int main()
         system("git commit -m 'working on isPressed fucntion'");
         system("git push");
     };
-
+    sf::Image icon;
+    icon.loadFromFile("assets/icon.png"); // File/Image/Pixel
+    window.setIcon(64, 64, icon.getPixelsPtr());
     if (!std::filesystem::is_directory(functions.getUserPath()+"/.gsc_o/")){
         std::filesystem::create_directory(functions.getUserPath()+"/.gsc_o");
         std::filesystem::create_directory(functions.getUserPath()+"/.gsc_o/screenshots/");
