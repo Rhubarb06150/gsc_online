@@ -102,6 +102,7 @@ class HUD{
         letters_index.push_back({"x","73"});
         letters_index.push_back({"y","83"});
         letters_index.push_back({"z","93"});
+        letters_index.push_back({"é","a3"});
 
         //NONE
         letters_index.push_back({":","0e"});
