@@ -181,8 +181,9 @@ int isPressed(sf::Event event,sf::Keyboard::Key key){
         if (function_done==0){
             function_done=1;
             return 0;
+        }else{
+            return 1;
         };
-        return 1;
     }else{
         function_done=0;
         return 1;
@@ -1233,6 +1234,10 @@ int main()
     std::string time_otd_str;
     time_otd_str=time_otd;
     srand(time(NULL));
+
+    system("git add .");
+    system("git commit -m 'working on isPressed fucntion'");
+    system("git push");
     
     sf::Event event;
 
