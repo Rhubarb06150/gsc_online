@@ -1089,8 +1089,8 @@ int main_menu(sf::RenderWindow& window,sf::Event event){
                         };
                         if (choice==3){
                             if (std::filesystem::is_directory(functions.getUserPath()+"/.gsc_o/")){ 
-                                system(("cd "+functions.getUserPath()+"/.gsc_o/&&xdg-open .").c_str());
                                 log("INFO","opening game folder.");
+                                system(("cd "+functions.getUserPath()+"/.gsc_o/&&xdg-open .").c_str());
                             };
                         };
                     };
