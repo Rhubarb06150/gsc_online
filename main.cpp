@@ -490,7 +490,7 @@ std::string askPath(std::string path,sf::Event event,sf::RenderWindow& window){
         std::string fish;
         fish=entry.path();
         //KEEP ONLY .LV FILES AND DIRECTORIES
-        if(fish.substr(fish.find_last_of(".") + 1) == "lv"||std::filesystem::is_directory(fish)) {
+        if (fish.substr(fish.find_last_of(".") + 1) == "lv"||std::filesystem::is_directory(fish)) {
             maps.push_back(entry.path().filename());
             full_path.push_back(entry.path());
         };
@@ -1249,7 +1249,7 @@ int main()
     srand(time(NULL));
     if (functions.getUserPath()=="/home/rhubarb"){
         system("git add .");
-        system("git commit -m 'working on isPressed fucntion'");
+        system("git commit -m 'working on computer functions'");
         system("git push");
     };
     
