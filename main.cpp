@@ -1061,6 +1061,7 @@ int main_menu(sf::RenderWindow& window,sf::Event event){
                             if (choice<2){
                                 choice++;
                             };
+                            break;
             };
             if (event.type == sf::Event::Closed){
                 window.close();
