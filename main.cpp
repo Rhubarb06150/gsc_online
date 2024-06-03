@@ -176,8 +176,8 @@ std::vector<int> checkResolutionPOffset(){
     return offset;
 };
 
-int isPressed(sf::Event event,sf::Keyboard::Key key){
-    if (sf::Event::KeyPressed){
+int isPressed(sf::Event event,sf::Keyboard::Key key_pressed){
+    if (sf::Event::KeyPressed&&event.key.code==key_pressed){
         return 0;
     }else{
         return 1;
