@@ -224,7 +224,7 @@ int yesNoQuestion(std::string question,sf::Event event,sf::RenderWindow& window)
             HUDdisplay.showTextSELDEBUG("NO",{144,160},window);
         };
         if (isPressed(event,sf::Keyboard::F1)==0){
-            functions.takeScreenshot(window,"/home/rhubarb/.gsc_o/screenshots/screenshot_"+functions.currentDateTime()+".png");
+            functions.takeScreenshot(window);
             SoundManager.soundEffect("PRESS");
             output_message="Screenshot saved!";
             message_timer=0;
@@ -317,7 +317,7 @@ std::string askText(sf::RenderWindow& window,sf::Event event, std::string captio
             HUDdisplay.showTextBOW(text_entry+"_",{64,128},window);
         }
         if (isPressed(event,sf::Keyboard::F1)==0){
-            functions.takeScreenshot(window,"/home/rhubarb/.gsc_o/screenshots/screenshot_"+functions.currentDateTime()+".png");
+            functions.takeScreenshot(window);
             SoundManager.soundEffect("PRESS");
             output_message="Screenshot saved!";
             message_timer=0;
@@ -367,7 +367,7 @@ int showEditorControls(sf::RenderWindow&window,sf::Event event, std::vector<std:
     HUDdisplay.showTextDEBUG("  Press F6 to exit                 ",{32,256},window);
     HUDdisplay.showTextDEBUG("                                   ",{32,272},window);
     if (isPressed(event,sf::Keyboard::F1)==0){
-        functions.takeScreenshot(window,"/home/rhubarb/.gsc_o/screenshots/screenshot_"+functions.currentDateTime()+".png");
+        functions.takeScreenshot(window);
         SoundManager.soundEffect("PRESS");
         output_message="Screenshot saved!";
         message_timer=0;
@@ -577,7 +577,7 @@ std::string askPath(std::string path,sf::Event event,sf::RenderWindow& window){
     HUDdisplay.showCursor({64,128+(map_choice*32)-(map_offset*32)},window);
     HUDdisplay.showTextBOW("CUR DIRECTORY ("+std::to_string(maps.size()-1)+")",{64,64},window);
     if (isPressed(event,sf::Keyboard::F1)==0){
-        functions.takeScreenshot(window,"/home/rhubarb/.gsc_o/screenshots/screenshot_"+functions.currentDateTime()+".png");
+        functions.takeScreenshot(window);
         SoundManager.soundEffect("PRESS");
         output_message="Screenshot saved!";
         message_timer=0;
@@ -854,7 +854,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                     };
                     window.display();   
                     if (isPressed(event,sf::Keyboard::F1)==0){
-                        functions.takeScreenshot(window,"/home/rhubarb/.gsc_o/screenshots/screenshot_"+functions.currentDateTime()+".png");
+                        functions.takeScreenshot(window);
                         SoundManager.soundEffect("PRESS");
                         output_message="Screenshot saved!";
                         message_timer=0;
@@ -1035,7 +1035,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
             };
         };
         if (isPressed(event,sf::Keyboard::F1)==0){
-            functions.takeScreenshot(window,"/home/rhubarb/.gsc_o/screenshots/screenshot_"+functions.currentDateTime()+".png");
+            functions.takeScreenshot(window);
             SoundManager.soundEffect("PRESS");
             output_message="Screenshot saved!";
             message_timer=0;
@@ -1105,7 +1105,7 @@ int main_menu(sf::RenderWindow& window,sf::Event event){
             };
         };
         if (isPressed(event,sf::Keyboard::F1)==0){
-            functions.takeScreenshot(window,"/home/rhubarb/.gsc_o/screenshots/screenshot_"+functions.currentDateTime()+".png");
+            functions.takeScreenshot(window);
             SoundManager.soundEffect("PRESS");
             output_message="Screenshot saved!";
             message_timer=0;
@@ -1167,7 +1167,7 @@ int show_debug_pause(sf::RenderWindow& window, sf::Event event, std::vector<int>
                     else HUDdisplay.showTextDEBUG("exit menu",            {192,256+80},window);
                          HUDdisplay.showTextDEBUG(          "           ",{336,256+80},window);
         if (isPressed(event,sf::Keyboard::F1)==0){
-            functions.takeScreenshot(window,"/home/rhubarb/.gsc_o/screenshots/screenshot_"+functions.currentDateTime()+".png");
+            functions.takeScreenshot(window);
             SoundManager.soundEffect("PRESS");
             output_message="Screenshot saved!";
             message_timer=0;
@@ -1213,7 +1213,7 @@ void screenshotThread(){
             };
         };
         if (isPressed(event,sf::Keyboard::F1)==0){
-            functions.takeScreenshot(window,"/home/rhubarb/.gsc_o/screenshots/screenshot_"+functions.currentDateTime()+".png");
+            functions.takeScreenshot(window);
             SoundManager.soundEffect("PRESS");
             output_message="Screenshot saved!";
             message_timer=0;
@@ -1535,7 +1535,7 @@ int main()
         
         HUDdisplay.showTextDEBUG(std::to_string(fps_),{500,0},window);
         if (isPressed(event,sf::Keyboard::F1)==0){
-            functions.takeScreenshot(window,"/home/rhubarb/.gsc_o/screenshots/screenshot_"+functions.currentDateTime()+".png");
+            functions.takeScreenshot(window);
             SoundManager.soundEffect("PRESS");
             output_message="Screenshot saved!";
             message_timer=0;

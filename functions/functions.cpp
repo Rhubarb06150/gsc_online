@@ -100,16 +100,17 @@ class GSC_Functions{
         return homedir;
     }
 
-    int takeScreenshot(sf::RenderWindow& render_window,std::string filename){
+    int takeScreenshot(sf::RenderWindow& render_window){
 
         sf::Texture texture;
         texture.create(render_window.getSize().x, render_window.getSize().y);
         texture.update(render_window);
         if (texture.copyToImage().saveToFile(getUserPath()+"/.gsc_o/screenshots/screenshot_"+currentDateTime()+".png"))
         {
-            std::cout << "screenshot saved to " << filename << std::endl;
+            return 0;
         };
-        return 0;
+        std::cout << "[INFO] "+currentHour()+" // screenshot saved at "+getUserPath()+"/.gsc_o/screenshots/screenshot_"+currentDateTime()+".png" << std::endl;
+        return 1;
     };
 
     
