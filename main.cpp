@@ -514,6 +514,32 @@ std::string askPath(std::string path,sf::Event event,sf::RenderWindow& window){
                     };
                     break;
                 };
+                if (event.key.code==sf::Keyboard::F5||event.key.code==sf::Keyboard::X){
+                    if (std::filesystem::is_directory(full_path[map_choice])){
+                        if (maps[map_choice]!="../"){
+                            path=path+"/"+maps[map_choice]+"/";
+                        }else{
+                            path=path+"/"+maps[map_choice];
+                        };
+                        maps={};
+                        full_path={};
+                        maps.push_back("../");
+                        full_path.push_back("../");
+                        for (const auto & entry : std::filesystem::directory_iterator(path)){
+                            std::string fish;
+                            fish=entry.path();
+                            //KEEP ONLY .LV FILES AND DIRECTORIES
+                            if(fish.substr(fish.find_last_of(".") + 1) == "lv"||std::filesystem::is_directory(fish)) {
+                                maps.push_back(entry.path().filename());
+                                full_path.push_back(entry.path());
+                            };
+                        };
+                    map_choice=0;
+                    }else{
+                    file=full_path[map_choice];
+                    return file;
+                    };
+                }
             };
         if (event.type == sf::Event::Closed){
             window.close();
@@ -524,32 +550,6 @@ std::string askPath(std::string path,sf::Event event,sf::RenderWindow& window){
     return "";
 
     //FOR NAVIGATE TROUGHT DIRS
-    if (isPressed(event,sf::Keyboard::F5)==0||isPressed(event,sf::Keyboard::X)==0){
-        if (std::filesystem::is_directory(full_path[map_choice])){
-            if (maps[map_choice]!="../"){
-                path=path+"/"+maps[map_choice]+"/";
-            }else{
-                path=path+"/"+maps[map_choice];
-            };
-            maps={};
-            full_path={};
-            maps.push_back("../");
-            full_path.push_back("../");
-            for (const auto & entry : std::filesystem::directory_iterator(path)){
-                std::string fish;
-                fish=entry.path();
-                //KEEP ONLY .LV FILES AND DIRECTORIES
-                if(fish.substr(fish.find_last_of(".") + 1) == "lv"||std::filesystem::is_directory(fish)) {
-                    maps.push_back(entry.path().filename());
-                    full_path.push_back(entry.path());
-                };
-            };
-        map_choice=0;
-        }else{
-        file=full_path[map_choice];
-        return file;
-        };
-    };
 
     //SCROLLING IN MAPS
     if (map_choice>12){
