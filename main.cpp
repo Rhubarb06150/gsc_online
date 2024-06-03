@@ -1226,7 +1226,6 @@ int main()
 
     //INIT EVERYTHIN
     
-    
     Player player(player_offset);
     sf::Clock clock;
     window.setFramerateLimit(60);
