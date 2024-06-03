@@ -489,8 +489,11 @@ std::string askPath(std::string path,sf::Event event,sf::RenderWindow& window){
     for (const auto & entry : std::filesystem::directory_iterator(path)){
         std::string fish;
         fish=entry.path();
-        maps.push_back(entry.path().filename());
-        full_path.push_back(entry.path());
+        //KEEP ONLY .LV FILES AND DIRECTORIES
+        if(fish.substr(fish.find_last_of(".") + 1) == "lv"||std::filesystem::is_directory(fish)) {
+            maps.push_back(entry.path().filename());
+            full_path.push_back(entry.path());
+        };
     };
     int map_choice = 0;
     int map_offset = 0;
