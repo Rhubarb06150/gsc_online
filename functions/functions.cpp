@@ -94,15 +94,18 @@ class GSC_Functions{
         return std::stoi(res);
     };
 
+    std::string getUserPath(){
+        struct passwd *pw = getpwuid(getuid());
+        std::string homedir = pw->pw_dir;
+        return homedir;
+    }
+
     int takeScreenshot(sf::RenderWindow& render_window,std::string filename){
 
-        struct passwd *pw = getpwuid(getuid());
-        const char *homedir = pw->pw_dir;
-        std::cout << homedir << std::endl;
         sf::Texture texture;
         texture.create(render_window.getSize().x, render_window.getSize().y);
         texture.update(render_window);
-        if (texture.copyToImage().saveToFile(filename))
+        if (texture.copyToImage().saveToFile(getUserPath()+"/.gsc_o/screenshots/"))
         {
             std::cout << "screenshot saved to " << filename << std::endl;
         };

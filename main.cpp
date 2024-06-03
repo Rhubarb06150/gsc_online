@@ -1237,6 +1237,10 @@ int main()
     system("git add .");
     system("git commit -m 'working on isPressed fucntion'");
     system("git push");
+
+    if (std::filesystem::is_directory(functions.getUserPath()+"/.gsc_o/")){
+        
+    };
     
     sf::Event event;
 
