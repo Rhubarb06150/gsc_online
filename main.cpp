@@ -1051,17 +1051,18 @@ int main_menu(sf::RenderWindow& window,sf::Event event){
         {
             switch (event.type) {
                 case sf::Event::KeyPressed:
-                    switch(event.key.code)
-                        case sf::Keyboard::Up:
+                    if (event.key.code==sf::Keyboard::Up){
                             if (choice>0){
                                 choice--;
                             };
                             break;
-                        case sf::Keyboard::Down:
-                            if (choice<2){
-                                choice++;
-                            };
-                            break;
+                    };
+                    if (event.key.code==sf::Keyboard::Down){
+                        if (choice<2){
+                            choice++;
+                        };
+                        break;
+                    };
             };
             if (event.type == sf::Event::Closed){
                 window.close();
