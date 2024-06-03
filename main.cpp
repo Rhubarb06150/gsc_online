@@ -1052,7 +1052,7 @@ int main_menu(sf::RenderWindow& window,sf::Event event){
             case sf::Event::KeyPressed:
                 std::cout << event.key.code << std::endl;
                 break;
-        }
+            };
             if (event.type == sf::Event::Closed){
                 window.close();
                 return 0;
