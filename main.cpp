@@ -1048,6 +1048,11 @@ int main_menu(sf::RenderWindow& window,sf::Event event){
     do{
         while (window.pollEvent(event))
         {
+            switch (event.type) {
+            case sf::Event::KeyPressed:
+                std::cout << event.key.code << std::endl;
+                break;
+        }
             if (event.type == sf::Event::Closed){
                 window.close();
                 return 0;
