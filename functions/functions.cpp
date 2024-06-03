@@ -105,7 +105,7 @@ class GSC_Functions{
         sf::Texture texture;
         texture.create(render_window.getSize().x, render_window.getSize().y);
         texture.update(render_window);
-        if (texture.copyToImage().saveToFile(getUserPath()+"/.gsc_o/screenshots/"))
+        if (texture.copyToImage().saveToFile(getUserPath()+"/.gsc_o/screenshots/screenshot_"+currentDateTime()+".png"))
         {
             std::cout << "screenshot saved to " << filename << std::endl;
         };
