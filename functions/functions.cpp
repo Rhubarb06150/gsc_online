@@ -15,6 +15,9 @@
 #include <vector>
 #include <sys/stat.h>
 #include <fstream>
+#include <unistd.h>
+#include <sys/types.h>
+#include <pwd.h>
 
 class GSC_Functions{
     public:
@@ -92,6 +95,10 @@ class GSC_Functions{
     };
 
     int takeScreenshot(sf::RenderWindow& render_window,std::string filename){
+
+        struct passwd *pw = getpwuid(getuid());
+        const char *homedir = pw->pw_dir;
+        std::cout << homedir << std::endl;
         sf::Texture texture;
         texture.create(render_window.getSize().x, render_window.getSize().y);
         texture.update(render_window);
