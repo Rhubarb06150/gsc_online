@@ -34,19 +34,23 @@ class TilesIndex{
         tiles.push_back({"smallTree","3111","\\x06"});
         tiles.push_back({"grandTree","3312","\\x16"});
         tiles.push_back({"grassBottom","2311","\\x0b"});
-
+        tiles.push_back({"water","3511","\\xa0"});
+    //ROCKS
         tiles.push_back({"rockLeftGrass","0511","\\x20"});
         tiles.push_back({"rockLeft","0511","\\x10"});
-        tiles.push_back({"rockTopLeft","0411","\\x11"});
-        tiles.push_back({"rockTopGrass","1411","\\x22"});
-        tiles.push_back({"rockTop","1411","\\x12"});
+        tiles.push_back({"rockCornerTopLeft","0411","\\x11"});
+        tiles.push_back({"rockCornerTopLeftGrass","1411","\\x22"});
+        tiles.push_back({"rockTop","1611","\\x12"});
         tiles.push_back({"rockTopRight","2411","\\x13"});
         tiles.push_back({"rockRight","2511","\\x14"});
         tiles.push_back({"rock","1511","\\x15"});
-        tiles.push_back({"rockBottomLeft","2611","\\x17"});
-        tiles.push_back({"rockBottomLeftGrass","2711","\\x18"});
+        tiles.push_back({"rockCornerTopRight","2611","\\x17"});
+        tiles.push_back({"rockCornerTopRightGrass","2711","\\x18"});
         tiles.push_back({"rockBottomRight","1711","\\x19"});
         tiles.push_back({"rockBottomRightGrass","0711","\\x21"});
+        tiles.push_back({"rockTopLeftGrass","0811","\\x23"});
+        tiles.push_back({"rockTopGrass","1811","\\x24"});
+        tiles.push_back({"rockTopRightGrass","2811","\\x25"});
     //PATHS
         tiles.push_back({"path","0211","\\x07"});
         tiles.push_back({"altPath","1311","\\x08"});

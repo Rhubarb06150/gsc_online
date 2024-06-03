@@ -1,3 +1,12 @@
+///////////////////////////////////////////////////////////
+//
+//  Hey! Here are the usefull functions that are called sometimes
+//
+//  There are some functions here that I didn't write myself like ReplaceAll or takeScreenshot
+//      also the currentDateTime 
+//
+///////////////////////////////////////////////////////////
+
 #pragma once
 
 #include <SFML/Graphics.hpp>
@@ -13,12 +22,20 @@ class GSC_Functions{
 
     };
     std::string currentDateTime() {
-        time_t     now = time(0);
-        struct tm  tstruct;
-        char       buf[80];
-        tstruct = *localtime(&now);
-        strftime(buf, sizeof(buf), "%Y_%m_%d_%X", &tstruct);
+        time_t now=time(0);
+        struct tm tstruct;
+        char buf[80];
+        tstruct=*localtime(&now);
+        strftime(buf,sizeof(buf),"%Y_%m_%d_%X",&tstruct);
         return ReplaceAll(buf,":","_");
+    };
+    std::string currentHour() {
+        time_t now=time(0);
+        struct tm tstruct;
+        char buf[80];
+        tstruct=*localtime(&now);
+        strftime(buf,sizeof(buf),"%X",&tstruct);
+        return ReplaceAll(buf,":",":");
     };
 
     std::string ReplaceAll(std::string str, const std::string& from, const std::string& to) {
@@ -42,6 +59,20 @@ class GSC_Functions{
         };
         map_file.close();
         std::cout << "map saved at /home/rhubarb/.gsc_o/maps/"+cur_map+"_"+currentDateTime()+".lv" << std::endl;
+        return 0;
+    };
+
+    int saveMap(std::vector<std::vector<std::string>> terrain_tiles, std::string map_path){
+        std::ofstream map_file(map_path);
+        for (int i = 0; i < terrain_tiles.size() ; i++){
+            for (int j = 0; j < terrain_tiles[i].size();j++){
+                map_file << terrain_tiles[i][j];
+            };
+            if (i!=terrain_tiles.size()-1){
+            map_file << "\n";
+            };
+        };
+        map_file.close();
         return 0;
     };
 

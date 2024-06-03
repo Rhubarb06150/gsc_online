@@ -1,3 +1,31 @@
+///////////////////////////////////////////////////////////
+//
+//  Now one of the hardest part, the terrain one.
+//      
+//  The terrainForm function set a given vector to a vector of tiles of a given map
+//  The showTerrain functions, shows the terrain, yep.
+//  
+//  The showTerrain functions was maybe the hardest to write because I wanted to
+//  optimize at the maximum so it displays only tiles that are arouns the player.
+//  
+//  Before and after optimization:
+//
+//   Here is the config wich I tested optimization with:
+//       
+//    - I7 12650H
+//    - RTX 3050 Ti
+//    - 16 Go of DDR5 4800Mhz RAM 
+//
+//   On a map of ~1500 tiles:
+//      
+//      Before optimization: average of 30 FPS
+//      After optimization: average of 2600 FPS
+//
+//  So yes, it improves performances a lot, and the showPlayer function has also been optimized
+//  which gave almost twice better performances.  
+//
+///////////////////////////////////////////////////////////
+
 #include <SFML/Graphics.hpp>    
 #include <vector>
 #include <fstream>
@@ -12,10 +40,10 @@ class Terrain{
 
     TilesIndex tiles_index;
 
-    std::vector<std::vector<std::string>> terrainForm(std::vector<std::vector<std::string>> terrain_vector, std::string map_path, std::vector<int> player_pos){
+    std::vector<std::vector<std::string>> terrainForm(std::vector<std::vector<std::string>> terrain_vector, std::string map_path){
             
         terrain_vector={};
-        std::ifstream inputFile("maps/"+map_path+".lv");
+        std::ifstream inputFile(map_path);
         std::string line;
         int y = 0;
 

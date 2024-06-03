@@ -1,0 +1,26 @@
+----- Help -----
+
+1. Level editor help
+
+  The level editor may be tricky to use, so here are all the controls and help you should need:
+
+-Controls
+
+  Press Right Shift to show/hide the menu
+
+  When menu is not shown:
+    - Arrows - move arround the terrain
+    - G - Place selected tile
+    - C - Copy the tile you are hovering
+    - V - Paste the copied tile
+    - X - Remove hovered tile and replace it with the default tile
+    - Left Shift + X - Remove hovered tile completely
+    - T - Open tile helper (which shows you default terrain tile, selected tile, and copied tile)
+    - Right Shift - Show Menu
+    - F3 - set Pos1
+    - F4 - set Pos2
+
+  When menu is shown:
+    - Up and Down arrows - Navigate throught the menu
+    - Left and Right arrows - Edit selected value
+    - F5 / X - Validate action

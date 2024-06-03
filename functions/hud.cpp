@@ -1,3 +1,21 @@
+///////////////////////////////////////////////////////////
+//
+//  And here is all functions related to HUD (no shit) and the text display
+//      
+//  Here are what showText functions do:
+//
+//      showTextDEBUG : show white text on black transparent background.
+//      showTextSELDEBUG : show yellow text on black transparent background (usually used when you are selecting something).
+//      showTextBluDEBUG : show blue text on black transparent background (used in level editor).
+//      showTextBOW : show black text on white background.
+//      showTextWOB : show white text on black background.
+//
+//          Note : the showText debug functions display text twice smaller than the regular ones.
+//
+//  There is also a function thats display an menu pause (which is unused for now)
+//
+///////////////////////////////////////////////////////////
+
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <string>
@@ -18,6 +36,7 @@ class HUD{
     std::vector<sf::Texture> menu_textures;
 
     HUD(){
+        letters_index.push_back({" ","ef"});
         //UPPERCASES
         letters_index.push_back({"0","0f"});
         letters_index.push_back({"1","1f"});
@@ -101,7 +120,6 @@ class HUD{
         letters_index.push_back({"+","ce"});
         letters_index.push_back({"?","de"});
         letters_index.push_back({"!","ee"});
-        letters_index.push_back({" ","ef"});
         letters_index.push_back({"","ff"});
 
         // MENU TEXTURES
