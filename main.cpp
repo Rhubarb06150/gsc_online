@@ -75,6 +75,7 @@
 
 std::vector<std::vector<std::string>> terrain_sprites;
 bool framerate_limit=true;
+std::vector<bool> key_pressed;
 
 std::string cur_map="room2";
 std::string player_state="front";
@@ -1049,9 +1050,17 @@ int main_menu(sf::RenderWindow& window,sf::Event event){
         while (window.pollEvent(event))
         {
             switch (event.type) {
-            case sf::Event::KeyPressed:
-                std::cout << event.key.code << std::endl;
-                break;
+                case sf::Event::KeyPressed:
+                    switch(event.key.code)
+                        case sf::Keyboard::Up:
+                            if (choice>0){
+                                choice--;
+                            };
+                            break;
+                        case sf::Keyboard::Down:
+                            if (choice<2){
+                                choice++;
+                            };
             };
             if (event.type == sf::Event::Closed){
                 window.close();
@@ -1062,16 +1071,6 @@ int main_menu(sf::RenderWindow& window,sf::Event event){
         
         HUDdisplay.showLogo({32,0},window);
 
-        if (isPressed(event,sf::Keyboard::Up)==0){
-            if (choice>0){
-                choice--;
-            };
-        };
-        if (isPressed(event,sf::Keyboard::Down)==0){
-            if (choice<2){
-                choice++;
-            };
-        };
         //TEXTS DISPLAY
         HUDdisplay.showTextDEBUG("Pokemon GSC Online build 0.1",{0,0},window);
         HUDdisplay.showTextDEBUG("27/05/24",{0,16},window);
