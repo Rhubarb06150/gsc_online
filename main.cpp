@@ -1242,7 +1242,7 @@ int main()
         std::filesystem::create_directory(functions.getUserPath()+"/.gsc_o");
         std::filesystem::create_directory(functions.getUserPath()+"/.gsc_o/screenshots/");
         std::filesystem::create_directory(functions.getUserPath()+"/.gsc_o/maps/");
-        log("INFO","an game folder has been created at "+functions.getUserPath()+"/.gsc_o");
+        log("INFO","an game folder has been created at "+functions.getUserPath()+"/.gsc_o, it will be used to store your saved maps and your screenshots");
     };
     
     sf::Event event;
