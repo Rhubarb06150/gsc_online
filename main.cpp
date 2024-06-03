@@ -184,6 +184,24 @@ int isPressed(sf::Event event,sf::Keyboard::Key key_pressed){
     };
 };
 
+
+bool key_triggered[sf::Keyboard::KeyCount]; //array containing all possible keys
+
+void resetTriggered()
+{
+    for (int i = 0; i < sf::Keyboard::KeyCount; ++i) 
+        key_triggered[i] = false;
+}
+
+bool isPressed(sf::Keyboard::Key key) 
+{
+    if ( sf::Keyboard::isKeyPressed(key) && !key_triggered[key] )
+    {
+        return (key_triggered[sf::Keyboard::Right] = true);
+    }
+}
+ 
+
 int yesNoQuestion(std::string question,sf::Event event,sf::RenderWindow& window){
     int choice = 1;
     do{
