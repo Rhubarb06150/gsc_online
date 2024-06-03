@@ -176,26 +176,14 @@ std::vector<int> checkResolutionPOffset(){
     return offset;
 };
 
-bool key_triggered[sf::Keyboard::KeyCount]; //array containing all possible keys
-
-void resetTriggered()
-{
-    for (int i = 0; i < sf::Keyboard::KeyCount; ++i) 
-        key_triggered[i] = false;
-}
-
-int isPressed(sf::Event event, sf::Keyboard::Key key) 
-{
-    if ( sf::Keyboard::isKeyPressed(key) && !key_triggered[key] )
-    {
-        if (key_triggered[sf::Keyboard::Right] = true){
-            return 0;
-        };
+int isPressed(sf::Event event,sf::Keyboard::Key key_pressed){
+    if (sf::Event::KeyPressed&&event.key.code==key_pressed){
+        return 0;
     }else{
         return 1;
-    }
-}
- 
+    };
+};
+
 
 int yesNoQuestion(std::string question,sf::Event event,sf::RenderWindow& window){
     int choice = 1;
