@@ -1238,8 +1238,11 @@ int main()
     system("git commit -m 'working on isPressed fucntion'");
     system("git push");
 
-    if (std::filesystem::is_directory(functions.getUserPath()+"/.gsc_o/")){
-        
+    if (!std::filesystem::is_directory(functions.getUserPath()+"/.gsc_o/")){
+        std::filesystem::create_directory(functions.getUserPath()+"/.gsc_o");
+        std::filesystem::create_directory(functions.getUserPath()+"/.gsc_o/screenshots/");
+        std::filesystem::create_directory(functions.getUserPath()+"/.gsc_o/maps/");
+        log("INFO","an game folder has been created at "+functions.getUserPath()+"/.gsc_o");
     };
     
     sf::Event event;
