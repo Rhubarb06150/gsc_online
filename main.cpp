@@ -1233,7 +1233,6 @@ void screenshotThread(){
 
 int main()
 {
-
     //INIT EVERYTHIN
     sf::Image icon;
     icon.loadFromFile("assets/icon.png"); // File/Image/Pixel
