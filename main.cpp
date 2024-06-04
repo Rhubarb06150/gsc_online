@@ -1272,35 +1272,15 @@ int show_debug_pause(sf::RenderWindow& window, sf::Event event, std::vector<int>
     return 0;
 };
 
-//INITIALIZING EVERYTING HERE FOR SCREENSHOT THREAD
-sf::Event event;
-std::vector<int> resolution_vec=checkResolutionRWindow();
-std::vector<int> player_offset=checkResolutionPOffset();
-sf::RenderWindow window(sf::VideoMode(resolution_vec[0],resolution_vec[1]), "Pokemon GSC Online",sf::Style::Titlebar | sf::Style::Close);
-
-void screenshotThread(){
-    while(true){
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed){
-                window.close();
-                return;
-            };
-        };
-        if (isPressed(event,sf::Keyboard::F1)==0){
-            functions.takeScreenshot(window);
-            SoundManager.soundEffect("PRESS");
-            output_message="Screenshot saved!";
-            message_timer=0;
-        };
-        };
-    };
-
 int main()
 {
     //INIT EVERYTHIN
+    sf::Event event;
     sf::Image icon;
     loadSettings();
+    std::vector<int> resolution_vec=checkResolutionRWindow();
+    std::vector<int> player_offset=checkResolutionPOffset();
+    sf::RenderWindow window(sf::VideoMode(resolution_vec[0],resolution_vec[1]), "Pokemon GSC Online",sf::Style::Titlebar | sf::Style::Close);
     icon.loadFromFile("assets/icon.png"); // File/Image/Pixel
     window.setIcon(64, 64, icon.getPixelsPtr());
     Player player(player_offset);
@@ -1322,8 +1302,6 @@ int main()
         std::filesystem::create_directory(functions.getUserPath()+"/.gsc_o/maps/");
         log("INFO","an game folder has been created at "+functions.getUserPath()+"/.gsc_o, it will be used to store your saved maps and your screenshots");
     };
-    
-    sf::Event event;
 
     main_menu(window,event);
 
