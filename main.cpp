@@ -270,7 +270,6 @@ void mainLoop(){
     player_state=player.animPlayer(player_state,moving_timer,walking);
     player.showPlayer(player_type,player_state,window);
     
-    //HUDdisplay.showPauseMenu(window,username,resolution_vec[0]);
     if (debug){
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1)&&debug){debug_page=1;};
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2)&&debug){debug_page=2;};
@@ -452,7 +451,7 @@ void mainLoop(){
         can_move=true;
     };
     
-    HUDdisplay.showTextDEBUG(std::to_string(fps_),{500,0},window);
+    //HUDdisplay.showTextDEBUG(std::to_string(fps_),{500,0},window);
     if (isPressed(event,sf::Keyboard::F1)==0){
         functions.takeScreenshot(window);
         SoundManager.soundEffect("PRESS");

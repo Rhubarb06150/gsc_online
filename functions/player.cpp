@@ -119,6 +119,7 @@ class Player{
         if (gender=="g")gender_index=1;
         if (gender=="r")gender_index=2;
         if (gender=="m")gender_index=3;
+
         sprite.setTexture(players_textures[0][0]);
         window.draw(sprite);
     };
