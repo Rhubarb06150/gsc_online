@@ -50,19 +50,21 @@ class GSC_Functions{
     };
 
     std::string goParentFolder(std::string path){
-        std::cout << "going in parent folder of" << path << std::endl;
-        if (path[path.length()-1]!='/'&&path[path.length()-1]!='\\')
-        path.pop_back();
+        std::string res;
+        res=path;
+        std::cout << "going in parent folder of" << res << std::endl;
+        if (res[res.length()-1]!='/'&&res[res.length()-1]!='\\')
+        res.pop_back();
         for (int i = 0;i<512;i++){
-            if (path[path.length()-1]!='/'&&path[path.length()-1]!='\\'){
-                path.pop_back();
-                std::cout << path << std::endl;
+            if (res[res.length()-1]!='/'&&res[res.length()-1]!='\\'){
+                res.pop_back();
+                std::cout << res << std::endl;
             }else{
-                std::cout << path << std::endl;
+                std::cout << res << std::endl;
                 break;
             };
         };
-        return path;
+        return res;
     };
 
     int saveCurrentMap(std::vector<std::vector<std::string>> terrain_tiles, std::string cur_map){
