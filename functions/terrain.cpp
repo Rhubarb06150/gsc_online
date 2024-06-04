@@ -49,8 +49,7 @@ class Terrain{
 
         while (getline(inputFile, line)){
             terrain_vector.push_back({});
-            for (int i = 0; i< line.length()/4; i++){
-                std::cout << "adding " << line.substr(i*4, 4) << std::endl;    
+            for (int i = 0; i< line.length()/4; i++){  
                 terrain_vector[y].push_back(line.substr(i*4, 4));
             };
             y++;
@@ -92,7 +91,7 @@ class Terrain{
 
         for (int i = real_player_pos_y; i < terrain_vector.size();i++){
             for (int j = real_player_pos_x; j<terrain_vector[i].size();j++){
-                
+
                 int pos_vec0 = j*64;
                 int pos_vec1 = i*64;
 
