@@ -130,10 +130,9 @@ class Game{
         sf::Image icon;//that's for the icon
         sf::Clock clock;//the clock that's used for ??? I don't even remember but I let it here bc Idk if it break the program
     Game(){
-        framerate_limit=true;
-        cur_map="room2";
-        player_state="front";
-        copied_tile="";
+        framerate_limit=true;//set the framerate limit (may be unused after)
+        player_state="front";//default player state is front so when 
+        copied_tile="";//none tile is copied by default
         moving_timer=0;
         function_done=0;
         username="Player";
