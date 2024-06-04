@@ -495,6 +495,7 @@ std::string askPath(std::string path,sf::Event event,sf::RenderWindow& window){
             full_path.push_back(entry.path());
         };
         std::sort(maps.begin(),maps.end());
+        std::sort(full_path.begin(),full_path.end());
     };
     int map_choice = 0;
     int map_offset = 0;
@@ -538,6 +539,8 @@ std::string askPath(std::string path,sf::Event event,sf::RenderWindow& window){
                                 full_path.push_back(entry.path());
                             };
                         };
+                        std::sort(maps.begin(),maps.end());
+                        std::sort(full_path.begin(),full_path.end());
                     map_choice=0;
                     }else{
                     file=full_path[map_choice];
