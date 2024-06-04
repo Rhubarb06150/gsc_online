@@ -132,7 +132,7 @@ class Game{
     Game(){
         framerate_limit=true;//set the framerate limit (may be unused after)
         player_state="front";//default player state is front so when 
-        copied_tile="";//none tile is copied by default
+        copied_tile="\\x00";//grass tile is copied by default
         moving_timer=0;
         function_done=0;
         username="Player";
