@@ -92,6 +92,7 @@ class Terrain{
 
         for (int i = real_player_pos_y; i < terrain_vector.size();i++){
             for (int j = real_player_pos_x; j<terrain_vector[i].size();j++){
+                std::cout << "incadre" << std::endl;
                 int pos_vec0 = j*64;
                 int pos_vec1 = i*64;
 
