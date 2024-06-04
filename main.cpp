@@ -648,28 +648,34 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
         message_timer++;
         while (window.pollEvent(event))
         {
+            switch (event.type) {
+                case sf::Event::KeyPressed:
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift)){
+                    if (event.key.code==sf::Keyboard::F){
+                        if (pos1set&&pos2set){
+                        for (int i = 0; i<terrain_vector.size();i++){
+                            for (int j = 0; j<terrain_vector[i].size();j++){
+                                if ((pos1[0]<=j&&j<=pos2[0])&&(pos1[1]<=i&&i<=pos2[1])){
+                                    terrain_vector[i][j]=terrain.tiles_index.tiles[selected_tile_index][2];
+                                    };
+                                };
+                            };
+                            output_message="the selected area has been filled!";
+                            message_timer=0;
+                        }else{
+                        output_message="You need to set Pos1 and Pos2 first!";
+                        message_timer=0;
+                    };
+                    };
+                };
+                if (event.key.code==sf::Keyboard::T){
+                    help_tiles_show=!help_tiles_show;
+                };
+            };
+
             if (event.type == sf::Event::Closed){
                 window.close();
                 return 0;
-            };
-        };
-    
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift)){
-            if (isPressed(event,sf::Keyboard::F)==0){
-                if (pos1set&&pos2set){
-                for (int i = 0; i<terrain_vector.size();i++){
-                    for (int j = 0; j<terrain_vector[i].size();j++){
-                        if ((pos1[0]<=j&&j<=pos2[0])&&(pos1[1]<=i&&i<=pos2[1])){
-                            terrain_vector[i][j]=terrain.tiles_index.tiles[selected_tile_index][2];
-                            };
-                        };
-                    };
-                    output_message="the selected area has been filled!";
-                    message_timer=0;
-                }else{
-                output_message="You need to set Pos1 and Pos2 first!";
-                message_timer=0;
-            };
             };
         };
 
@@ -679,10 +685,6 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
             copied_tile=terrain_vector[real_pos_y][real_pos_x];
             output_message="Copied "+terrain.tiles_index.getTileName(terrain_vector[real_pos_y][real_pos_x])+" ("+terrain_vector[real_pos_y][real_pos_x]+")";
             message_timer=0;
-        };
-
-        if (isPressed(event,sf::Keyboard::T)==0){
-            help_tiles_show=!help_tiles_show;
         };
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::V)){
@@ -1280,7 +1282,7 @@ int main()
         };
 
         //ENABLE DEBUG ----------------------------------------------|
-        if (isPressed(event,sf::Keyboard::F2)==0){
+        if (event.key.code==sf::Keyboard::F2){
             debug=!debug;
             SoundManager.soundEffect("PRESS");
             if (debug){
