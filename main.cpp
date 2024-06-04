@@ -1163,7 +1163,7 @@ int main_menu(sf::RenderWindow& window,sf::Event event){
                                 HUDdisplay.showTextBOW("Settings"+real_res,{64,64},window);
                                 HUDdisplay.showCursor({32,128+(choice*32)},window);
                                 HUDdisplay.showTextBOW("Resolution = "+real_res,{64,128},window);
-                                HUDdisplay.showTextBOW("Username = ",{64,144},window);
+                                HUDdisplay.showTextBOW("Username = ",{64,160},window);
                                 window.display();
                             }while(true);
                         };
