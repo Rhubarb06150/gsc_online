@@ -15,12 +15,7 @@ class Player{
     std::vector<std::vector<sf::Texture>> players_textures;
 
     std::vector<std::vector<std::string>> player_tiles_index;
-    Player(){};
-    Player(std::vector<int> player_pos){
-
-        sprite.setPosition(player_pos[0],player_pos[1]);
-        sprite.scale(4.f,4.f);
-        
+    Player(){
         player_tiles_index.push_back({"front",    "1011"});
         player_tiles_index.push_back({"front1",   "0011"});
         player_tiles_index.push_back({"front2",   "2011"});
@@ -73,7 +68,12 @@ class Player{
             players_textures.push_back(girl_textures);
             players_textures.push_back(rival_textures);
             players_textures.push_back(mother_textures);
-        
+      
+    };
+    Player(std::vector<int> player_pos){
+
+        sprite.setPosition(player_pos[0],player_pos[1]);
+        sprite.scale(4.f,4.f);
     };
 
     int getIndex(std::string index){
@@ -120,8 +120,8 @@ class Player{
         if (gender=="g")gender_index=1;
         if (gender=="r")gender_index=2;
         if (gender=="m")gender_index=3;
-        //sprite.setTexture(players_textures[gender_index][getTextureIndex(player_state)]);
-        //window.draw(sprite);
+        sprite.setTexture(players_textures[gender_index][getTextureIndex(player_state)]);
+        window.draw(sprite);
         return 0;
     };
 
