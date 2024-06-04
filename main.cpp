@@ -1131,7 +1131,7 @@ int main_menu(sf::RenderWindow& window,sf::Event event){
         HUDdisplay.showTextBOW("Launch game",{64,320},window);
         HUDdisplay.showTextBOW("Load map from dir",{64,352},window);
         HUDdisplay.showTextBOW("Open game folder",{64,384},window);
-        HUDdisplay.showTextBOW("Open settings",{64,406},window);
+        HUDdisplay.showTextBOW("Open settings",{64,416},window);
 
         if (isPressed(event,sf::Keyboard::F1)==0){
             functions.takeScreenshot(window);
