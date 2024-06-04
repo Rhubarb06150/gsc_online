@@ -1155,6 +1155,7 @@ int main_menu(sf::RenderWindow& window,sf::Event event){
                                     window.close();
                                     return 0;
                                 };
+                                
                                 window.clear(sf::Color(248,248,248));
                                 HUDdisplay.showTextDEBUG("Pokemon GSC Online build 0.1",{0,0},window);
                                 HUDdisplay.showTextDEBUG("27/05/24",{0,16},window);
@@ -1162,6 +1163,7 @@ int main_menu(sf::RenderWindow& window,sf::Event event){
                                 HUDdisplay.showCursor({32,288+(choice*32)},window);
                                 HUDdisplay.showTextBOW("Resolution = "+real_res,{64,288},window);
                                 HUDdisplay.showTextBOW("Username = ",{64,320},window);
+                                window.display();
                             }while(true);
                         };
                     };
