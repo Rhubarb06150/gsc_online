@@ -1136,7 +1136,33 @@ int main_menu(sf::RenderWindow& window,sf::Event event){
                             };
                         };
                         if (choice==4){
-                            loadSettings();
+                            int choice=0;
+                            do{
+                                switch (event.type) {
+                                    case sf::Event::KeyPressed:
+                                        if (sf::Keyboard::Up){
+                                            if (choice>1){
+                                                choice--;
+                                            };
+                                        };
+                                        if (sf::Keyboard::Down){
+                                            if (choice<1){
+                                                choice++;
+                                            };
+                                        };
+                                };
+                                if (event.type == sf::Event::Closed){
+                                    window.close();
+                                    return 0;
+                                };
+                                window.clear(sf::Color(248,248,248));
+                                HUDdisplay.showTextDEBUG("Pokemon GSC Online build 0.1",{0,0},window);
+                                HUDdisplay.showTextDEBUG("27/05/24",{0,16},window);
+                                HUDdisplay.showTextDEBUG("F5 or X to confirm, F6 to cancel",{0,32},window);
+                                HUDdisplay.showCursor({32,288+(choice*32)},window);
+                                HUDdisplay.showTextBOW("Resolution = "+real_res,{64,288},window);
+                                HUDdisplay.showTextBOW("Username = ",{64,320},window);
+                            }while(true);
                         };
                     };
             };
