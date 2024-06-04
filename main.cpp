@@ -1144,13 +1144,14 @@ int main_menu(sf::RenderWindow& window,sf::Event event){
                                             if (choice>1){
                                                 choice--;
                                             };
+                                            break;
                                         };
                                         if (sf::Keyboard::Down){
                                             if (choice<1){
                                                 choice++;
                                             };
+                                            break;
                                         };
-                                        break;
                                     case sf::Event::Closed:
                                         window.close();
                                         return 0;
