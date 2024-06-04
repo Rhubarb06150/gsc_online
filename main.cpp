@@ -1137,25 +1137,7 @@ int main_menu(sf::RenderWindow& window,sf::Event event){
                             };
                         };
                         if (choice==4){
-                            if (std::filesystem::is_regular_file(functions.getUserPath()+"/.gsc_o/settings.st")){
-                                std::ifstream inputFile(functions.getUserPath()+"/.gsc_o/settings.st");
-                                std::string line;
-                                while (getline(inputFile, line)){
-                                    if (line.rfind("resolution=",0)==0){
-                                        std::string real_res = functions.ReplaceAll(line,"resolution=","");
-                                        std::vector<int> resolution_vec=checkResolutionRWindow();
-                                        std::vector<int> player_offset=checkResolutionPOffset();
-                                        sf::RenderWindow window(sf::VideoMode(resolution_vec[0],resolution_vec[1]), "Pokemon GSC Online",sf::Style::Titlebar | sf::Style::Close);
-                                    }else{
-                                        std::cout << "not resolution "<< line << std::endl;
-                                    };
-                                };
-                            }else{
-                                std::ofstream settings_file(functions.getUserPath()+"/.gsc_o/settings.st");
-                                settings_file << "resolution=640x480\n";
-                                settings_file << "username=Player";
-                                settings_file.close();
-                            };
+                            loadSettings();
                         };
                     };
             };
@@ -1177,7 +1159,7 @@ int main_menu(sf::RenderWindow& window,sf::Event event){
         HUDdisplay.showTextBOW("Launch game",{64,320},window);
         HUDdisplay.showTextBOW("Load map from dir",{64,352},window);
         HUDdisplay.showTextBOW("Open game folder",{64,384},window);
-        HUDdisplay.showTextBOW("Open settings",{64,416},window);
+        HUDdisplay.showTextBOW("Reload settings",{64,416},window);
 
         if (isPressed(event,sf::Keyboard::F1)==0){
             functions.takeScreenshot(window);
