@@ -151,7 +151,7 @@ class Game{
         icon.loadFromFile("assets/icon.png");
         window.setIcon(64, 64, icon.getPixelsPtr());
         window.setFramerateLimit(60);
-        Player player(player_offset);
+        player.initPlayer(player_offset);
         window.setFramerateLimit(60);
         time_otd='d';
         time_otd_str=time_otd;

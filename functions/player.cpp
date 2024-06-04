@@ -70,8 +70,8 @@ class Player{
             players_textures.push_back(mother_textures);
       
     };
-    Player(std::vector<int> player_pos){
 
+    int initPlayer(std::vector<int> player_pos){
         sprite.setPosition(player_pos[0],player_pos[1]);
         sprite.scale(4.f,4.f);
     };
@@ -119,8 +119,8 @@ class Player{
         if (gender=="g")gender_index=1;
         if (gender=="r")gender_index=2;
         if (gender=="m")gender_index=3;
-
-        sprite.setTexture(players_textures[0][0]);
+        
+        sprite.setTexture(players_textures[gender_index][getTextureIndex(player_state)]);
         window.draw(sprite);
     };
 
