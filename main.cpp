@@ -79,7 +79,7 @@ std::vector<bool> key_pressed;
 
 std::string cur_map="room2";
 std::string player_state="front";
-std::string resolution="720x576";
+std::string resolution="640x576";
 
 std::string playerInput;
 sf::Text playerText;
