@@ -1608,7 +1608,6 @@ int main()
 
     G.main_menu();
     while (G.window.isOpen()){
-        G.log("INFO","game is running");
         G.mainLoop();
     };
     return 0;

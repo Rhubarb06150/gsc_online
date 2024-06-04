@@ -74,6 +74,7 @@ class Player{
     int initPlayer(std::vector<int> player_pos){
         sprite.setPosition(player_pos[0],player_pos[1]);
         sprite.scale(4.f,4.f);
+        return 0;
     };
 
     int getIndex(std::string index){
