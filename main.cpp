@@ -183,13 +183,12 @@ int loadSettings(){
         std::string line;
         while (getline(inputFile, line)){
             if (line.rfind("resolution=",0)==0){
-                std::string real_res = functions.ReplaceAll(line,"resolution=","");
+                real_res = functions.ReplaceAll(line,"resolution=","");
                 log("RESOLUTION","the resolution of the game is "+real_res);
                 std::vector<int> resolution_vec=checkResolutionRWindow();
                 std::vector<int> player_offset=checkResolutionPOffset();
                 sf::RenderWindow window(sf::VideoMode(resolution_vec[0],resolution_vec[1]), "Pokemon GSC Online",sf::Style::Titlebar | sf::Style::Close);
             }else{
-                std::cout << "not resolution "<< line << std::endl;
             };
         };
     }else{
