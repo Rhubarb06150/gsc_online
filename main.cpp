@@ -1116,8 +1116,7 @@ int main_menu(sf::RenderWindow& window,sf::Event event){
                                 std::ifstream inputFile(functions.getUserPath()+"/.gsc_o/settings.st");
                                 std::string line;
                                 while (getline(inputFile, line)){
-                                    std::regex r("^resolution=");
-                                    if (std::regex_match(line,r)){
+                                    if (line.rfind("resolution=")){
                                         std::cout << "found resolution "<< line << std::endl;
                                     }else{
                                         std::cout << "not resolution "<< line << std::endl;
