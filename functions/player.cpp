@@ -87,6 +87,7 @@ class Player{
     std::string animPlayer(std::string cur_state, int index_frame, bool walking){
 
     if (walking){
+
         if ((cur_state=="front")&&(index_frame%60>45))return "front1";
         if ((cur_state=="front")&&(index_frame%30>15))return "front2";
 
@@ -112,7 +113,7 @@ class Player{
         return 0;
     };
 
-    void showPlayer(std::string gender, std::string player_state, sf::RenderWindow& window){
+    int showPlayer(std::string gender, std::string player_state, sf::RenderWindow& window){
         
         int gender_index;
         if (gender=="b")gender_index=0;
@@ -121,9 +122,9 @@ class Player{
         if (gender=="m")gender_index=3;
         sprite.setTexture(players_textures[gender_index][getTextureIndex(player_state)]);
         window.draw(sprite);
+        return 0;
     };
 
-    //ouais j'ai totalement volé ca sur stack overflow et jen ai rien a foutre
     std::string ReplaceAll(std::string str, const std::string& from, const std::string& to) {
         size_t start_pos = 0;
         while((start_pos = str.find(from, start_pos)) != std::string::npos) {
