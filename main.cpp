@@ -809,6 +809,9 @@ std::string askPath(std::string path,sf::Event event,sf::RenderWindow& window){
     std::vector<std::string> maps;
     std::vector<std::string> full_path;
     std::string file;
+    if (path[path.length()-1]=='.'){
+        path.pop_back();
+    };
     if (path!="/"){
     maps.push_back("../");
     full_path.push_back("../");
