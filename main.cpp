@@ -809,9 +809,10 @@ std::string askPath(std::string path,sf::Event event,sf::RenderWindow& window){
     std::vector<std::string> maps;
     std::vector<std::string> full_path;
     std::string file;
-    
+    if (path!="/"){
     maps.push_back("../");
     full_path.push_back("../");
+    };
     for (const auto & entry : std::filesystem::directory_iterator(path)){
         std::string fish;
         fish=entry.path();
@@ -861,8 +862,10 @@ std::string askPath(std::string path,sf::Event event,sf::RenderWindow& window){
                         };
                         maps={};
                         full_path={};
+                        if (path!="/"){
                         maps.push_back("../");
                         full_path.push_back("../");
+                        };
                         for (const auto & entry : std::filesystem::directory_iterator(path)){
                             std::string fish;
                             fish=entry.path();
