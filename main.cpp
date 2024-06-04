@@ -1076,7 +1076,7 @@ int main_menu(sf::RenderWindow& window,sf::Event event){
                             break;
                     };
                     if (event.key.code==sf::Keyboard::Down){
-                        if (choice<3){
+                        if (choice<4){
                             choice++;
                         };
                         break;
