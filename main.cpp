@@ -1160,9 +1160,10 @@ int main_menu(sf::RenderWindow& window,sf::Event event){
                                 HUDdisplay.showTextDEBUG("Pokemon GSC Online build 0.1",{0,0},window);
                                 HUDdisplay.showTextDEBUG("27/05/24",{0,16},window);
                                 HUDdisplay.showTextDEBUG("F5 or X to confirm, F6 to cancel",{0,32},window);
-                                HUDdisplay.showCursor({32,288+(choice*32)},window);
-                                HUDdisplay.showTextBOW("Resolution = "+real_res,{64,288},window);
-                                HUDdisplay.showTextBOW("Username = ",{64,320},window);
+                                HUDdisplay.showTextBOW("Settings"+real_res,{64,64},window);
+                                HUDdisplay.showCursor({32,128+(choice*32)},window);
+                                HUDdisplay.showTextBOW("Resolution = "+real_res,{64,128},window);
+                                HUDdisplay.showTextBOW("Username = ",{64,144},window);
                                 window.display();
                             }while(true);
                         };
