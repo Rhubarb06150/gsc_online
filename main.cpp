@@ -187,12 +187,12 @@ int loadSettings(){
                 log("RESOLUTION","the resolution of the game is "+real_res);
                 std::vector<int> resolution_vec=checkResolutionRWindow();
                 std::vector<int> player_offset=checkResolutionPOffset();
-                sf::RenderWindow window(sf::VideoMode(resolution_vec[0],resolution_vec[1]), "Pokemon GSC Online",sf::Style::Titlebar | sf::Style::Close);
             }else{
             };
         };
     }else{
         std::ofstream settings_file(functions.getUserPath()+"/.gsc_o/settings.st");
+        settings_file << "This is where your settings are saved, if you delete this file, it will be recreated with default values\n";
         settings_file << "resolution=640x480\n";
         settings_file << "username=Player";
         settings_file.close();
@@ -1158,7 +1158,7 @@ int main_menu(sf::RenderWindow& window,sf::Event event){
         HUDdisplay.showTextBOW("Launch game",{64,320},window);
         HUDdisplay.showTextBOW("Load map from dir",{64,352},window);
         HUDdisplay.showTextBOW("Open game folder",{64,384},window);
-        HUDdisplay.showTextBOW("Reload settings",{64,416},window);
+        HUDdisplay.showTextBOW("Open settings",{64,416},window);
 
         if (isPressed(event,sf::Keyboard::F1)==0){
             functions.takeScreenshot(window);
