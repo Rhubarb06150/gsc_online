@@ -519,7 +519,7 @@ std::string askPath(std::string path,sf::Event event,sf::RenderWindow& window){
                     };
                     break;
                 };
-                if (event.key.code==sf::Keyboard::F5){
+                if (event.key.code==sf::Keyboard::Left){
                     path=path+"/../";
                 };
                 if (event.key.code==sf::Keyboard::F5||event.key.code==sf::Keyboard::X||event.key.code==sf::Keyboard::Right){
