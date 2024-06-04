@@ -11,6 +11,11 @@ class Player{
     std::vector<sf::Texture> girl_textures;
     std::vector<sf::Texture> rival_textures;
     std::vector<sf::Texture> mother_textures;
+    int gender_index;
+    int x;
+    int y;
+    int xsize;
+    int ysize;
 
     std::vector<std::vector<sf::Texture>> players_textures;
 
@@ -29,11 +34,6 @@ class Player{
 
         player_tiles_index.push_back({"right" ,   "0311"});
         player_tiles_index.push_back({"right1",   "1311"});
-
-        int x;
-        int y;
-        int xsize;
-        int ysize;
 
         for (int i = 0;i<player_tiles_index.size();i++){
 
@@ -115,12 +115,11 @@ class Player{
 
     void showPlayer(std::string gender, std::string player_state, sf::RenderWindow& window){
         
-        int gender_index;
         if (gender=="b")gender_index=0;
         if (gender=="g")gender_index=1;
         if (gender=="r")gender_index=2;
         if (gender=="m")gender_index=3;
-        sprite.setTexture(players_textures[gender_index][getTextureIndex(player_state)]);
+        sprite.setTexture(players_textures[0][0]);
         window.draw(sprite);
     };
 
