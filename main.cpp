@@ -483,8 +483,9 @@ int log(std::string type, std::string info){
 };
 
 //---------------------------------------------------------------------------
-int setTerrain(Terrain terrain,sf::RenderWindow& window, char tœime_otd){
+int setTerrain(){
     log("TERRAIN","Loading terrain...");
+    log("MAP","loading map from "+cur_map);
     terrain_sprites=terrain.terrainForm(terrain_sprites,cur_map);
     log("TERRAIN","Terrain loaded!");
     return 0;
@@ -1413,15 +1414,15 @@ int main_menu(){
                         choosen=true;
                         std::string path = "maps/route1.lv";
                         cur_map=path;
-                        setTerrain(terrain,window,time_otd);
+                        setTerrain();
                         return 0;
                     }
                     if (choice==2){
                         std::string map_path;
                         map_path = askPath(".",event,window);
                         if(map_path!=""){
-                            cur_map=map_path;
-                            setTerrain(terrain,window,time_otd);
+                            cur_map="map_path";
+                            setTerrain();
                             return 0;
                         };
                     };

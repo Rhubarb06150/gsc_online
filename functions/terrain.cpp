@@ -41,7 +41,7 @@ class Terrain{
     TilesIndex tiles_index;
 
     std::vector<std::vector<std::string>> terrainForm(std::vector<std::vector<std::string>> terrain_vector, std::string map_path){
-            
+        
         terrain_vector={};
         std::ifstream inputFile(map_path);
         std::string line;
