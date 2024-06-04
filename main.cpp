@@ -79,7 +79,6 @@ std::vector<bool> key_pressed;
 
 std::string cur_map="room2";
 std::string player_state="front";
-std::string resolution="640x576";
 
 std::string playerInput;
 sf::Text playerText;
@@ -99,6 +98,7 @@ Terrain terrain;
 Sounds SoundManager;
 HUD HUDdisplay;
 GSC_Functions functions;
+std::string real_res;
 
 //PLAYER
 std::string username="MATHEO";
@@ -155,9 +155,9 @@ std::string getStandingTile(){
 
 std::vector<int> checkResolutionRWindow(){
     std::vector<int> res;
-    if (resolution=="640x576"){
+    if (real_res=="640x576"){
         res={640,576};
-    }else if (resolution=="720x576"){
+    }else if (real_res=="720x576"){
         res={720,576};
     }else {
         res={640,576};
@@ -167,14 +167,38 @@ std::vector<int> checkResolutionRWindow(){
 
 std::vector<int> checkResolutionPOffset(){
     std::vector<int> offset;
-    if (resolution=="640x576"){
+    if (real_res=="640x576"){
         offset={256,256};
-    }else if (resolution=="720x576"){
+    }else if (real_res=="720x576"){
         offset={320,256};
     }else {
         offset={256,256};
     };
     return offset;
+};
+
+int loadSettings(){
+    if (std::filesystem::is_regular_file(functions.getUserPath()+"/.gsc_o/settings.st")){
+        std::ifstream inputFile(functions.getUserPath()+"/.gsc_o/settings.st");
+        std::string line;
+        while (getline(inputFile, line)){
+            if (line.rfind("resolution=",0)==0){
+                std::string real_res = functions.ReplaceAll(line,"resolution=","");
+                std::vector<int> resolution_vec=checkResolutionRWindow();
+                std::vector<int> player_offset=checkResolutionPOffset();
+                sf::RenderWindow window(sf::VideoMode(resolution_vec[0],resolution_vec[1]), "Pokemon GSC Online",sf::Style::Titlebar | sf::Style::Close);
+            }else{
+                std::cout << "not resolution "<< line << std::endl;
+            };
+        };
+    }else{
+        std::ofstream settings_file(functions.getUserPath()+"/.gsc_o/settings.st");
+        settings_file << "resolution=640x480\n";
+        settings_file << "username=Player";
+        settings_file.close();
+        log("INFO","a settings file has been created in the game folder, please don't modify by hand it may couse trouble in the game.");
+    };
+    return 0;
 };
 
 int isPressed(sf::Event event,sf::Keyboard::Key key_pressed){
@@ -1438,7 +1462,7 @@ int main()
                 HUDdisplay.showTextDEBUG("                      ",{0,16},window);
                 HUDdisplay.showTextDEBUG(("FPS: "+std::to_string(fps_)),{0,32},window);        
                 HUDdisplay.showTextDEBUG(("Frames elapsed: "+std::to_string(index_frame)),{0,48},window);
-                HUDdisplay.showTextDEBUG("Resolution: "+resolution,{0,64},window);
+                HUDdisplay.showTextDEBUG("Resolution: "+real_res,{0,64},window);
                 HUDdisplay.showTextDEBUG("Press [F5] to reload textures",{0,80},window);
                 if (isPressed(event,sf::Keyboard::F5)==0){
                     reloadTextures();
