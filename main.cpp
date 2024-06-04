@@ -1086,7 +1086,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
             
             if (isPressed(event,sf::Keyboard::F5)==0||isPressed(event,sf::Keyboard::X)==0){
                 if (choice==5){
-                    std::string wanted_map=askPath(".",event,window);
+                    std::string wanted_map=askPath(std::filesystem::absolute("."),event,window);
                     if (wanted_map!=""){
                         cur_map=wanted_map;
                         log("EDITOR","Loaded "+cur_map+" map");
@@ -1420,7 +1420,7 @@ int main_menu(){
                     }
                     if (choice==2){
                         std::string map_path;
-                        map_path = askPath(".",event,window);
+                        map_path = askPath(std::filesystem::absolute("."),event,window);
                         if(map_path!=""){
                             cur_map=map_path;
                             setTerrain();
