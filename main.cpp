@@ -1118,7 +1118,9 @@ int main_menu(sf::RenderWindow& window,sf::Event event){
                                 while (getline(inputFile, line)){
                                     if (line.rfind("resolution=",0)==0){
                                         std::string real_res = functions.ReplaceAll(line,"resolution=","");
-                                        std::cout << real_res << std::endl;
+                                        std::vector<int> resolution_vec=checkResolutionRWindow();
+                                        std::vector<int> player_offset=checkResolutionPOffset();
+                                        sf::RenderWindow window(sf::VideoMode(resolution_vec[0],resolution_vec[1]), "Pokemon GSC Online",sf::Style::Titlebar | sf::Style::Close);
                                     }else{
                                         std::cout << "not resolution "<< line << std::endl;
                                     };
