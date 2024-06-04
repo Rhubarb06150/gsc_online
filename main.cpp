@@ -137,7 +137,7 @@ class Game{
         moving_timer=0;
         function_done=0;
         username="Player";
-        player_type="b";
+        player_type="g";
         player_pos={500,500};
         can_move=true;
         debug=false;
