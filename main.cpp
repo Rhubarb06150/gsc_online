@@ -494,6 +494,7 @@ std::string askPath(std::string path,sf::Event event,sf::RenderWindow& window){
             maps.push_back(entry.path().filename());
             full_path.push_back(entry.path());
         };
+        std::sort(maps.begin(),maps.end());
     };
     int map_choice = 0;
     int map_offset = 0;

@@ -94,6 +94,8 @@ class GSC_Functions{
         return std::stoi(res);
     };
 
+    bool compareFunction (std::string a, std::string b) {return a<b;} 
+
     std::string getUserPath(){
         struct passwd *pw = getpwuid(getuid());
         std::string homedir = pw->pw_dir;
