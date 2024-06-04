@@ -485,7 +485,7 @@ int log(std::string type, std::string info){
 //---------------------------------------------------------------------------
 int setTerrain(){
     log("TERRAIN","Loading terrain...");
-    std::cout << std::filesystem::absolute(cur_map) << std::endl;
+    std::cout << cur_map << std::endl;
     log("MAP","loading map from ");
     terrain_sprites=terrain.terrainForm(terrain_sprites,cur_map);
     log("TERRAIN","Terrain loaded!");
