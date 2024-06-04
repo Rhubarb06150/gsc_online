@@ -1143,20 +1143,16 @@ int main_menu(sf::RenderWindow& window,sf::Event event){
                                         if (choice>1){
                                             choice--;
                                         };
-                                        break;
                                     };
                                     if (sf::Keyboard::Down){
                                         if (choice<1){
                                             choice++;
                                         };
-                                        break;
                                     };
                                 };
                                 if (event.type==sf::Event::Closed){
                                     window.close();
                                     return 0;
-                                    break;
-                                };
                                 };
                                 
                                 window.clear(sf::Color(248,248,248));
@@ -1168,6 +1164,8 @@ int main_menu(sf::RenderWindow& window,sf::Event event){
                                 HUDdisplay.showTextBOW("Resolution = "+real_res,{64,128},window);
                                 HUDdisplay.showTextBOW("Username = ",{64,160},window);
                                 window.display();
+                            };
+
                         };
                     };
             };
