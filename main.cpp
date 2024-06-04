@@ -1095,7 +1095,10 @@ int main_menu(sf::RenderWindow& window,sf::Event event){
                         if (choice==3){
                             if (std::filesystem::is_directory(functions.getUserPath()+"/.gsc_o/")){ 
                                 log("INFO","opening game folder.");
-                                system(("cd "+functions.getUserPath()+"/.gsc_o/&&xdg-open .").c_str());
+                                #if defined(__linux__)
+                                    system(("xdg-open "+functions.getUserPath()+"/.gsc_o/").c_str());
+                                #endif
+                                    system(("start   "+functions.getUserPath()+"/.gsc_o/").c_str());
                             };
                         };
                     };
