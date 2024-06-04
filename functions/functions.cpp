@@ -52,14 +52,14 @@ class GSC_Functions{
     std::string goParentFolder(std::string path){
         std::string res;
         res=path;
-        std::cout << "going in parent folder of" << res << std::endl;
+        std::cout << "going in parent folder of " << res << std::endl;
         if (res[res.length()-1]=='/'||res[res.length()-1]=='\\')
         res.pop_back();
         for (int i = 0;i<512;i++){
             if (res[res.length()-1]!='/'&&res[res.length()-1]!='\\'){
                 res.pop_back();
-                std::cout << res << std::endl;
             }else{
+                std::cout << "parent folder is " << res << std::endl;
                 std::cout << res << std::endl;
                 break;
             };
