@@ -1299,6 +1299,7 @@ int main()
 {
     //INIT EVERYTHIN
     sf::Image icon;
+    loadSettings();
     icon.loadFromFile("assets/icon.png"); // File/Image/Pixel
     window.setIcon(64, 64, icon.getPixelsPtr());
     Player player(player_offset);
