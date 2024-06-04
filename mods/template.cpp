@@ -12,9 +12,11 @@ class Mod{
     public:
     std::string name;
     std::string author_name;
+    bool active;
     Mod(){
         name="Demo mod";
         author_name="Rhubarb";
+        active=true;
     };
     int act(){
         //Your code here
