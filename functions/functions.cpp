@@ -49,6 +49,17 @@ class GSC_Functions{
         return str;
     };
 
+    std::string goParentFolder(std::string path){
+        for (int i = 0;i<512;i++){
+            if (path[path.length() - 1]!='/'&&path[path.length() - 1]!='\\'){
+                path.pop_back();
+            }else{
+                break;
+            };
+        };
+        return path;
+    };
+
     int saveCurrentMap(std::vector<std::vector<std::string>> terrain_tiles, std::string cur_map){
         std::ofstream map_file("/home/rhubarb/.gsc_o/maps/"+cur_map+"_"+currentDateTime()+".lv");
         for (int i = 0; i < terrain_tiles.size() ; i++){
