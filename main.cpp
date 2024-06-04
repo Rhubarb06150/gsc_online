@@ -855,7 +855,7 @@ std::string askPath(std::string path,sf::Event event,sf::RenderWindow& window){
                 if (event.key.code==sf::Keyboard::F5||event.key.code==sf::Keyboard::X){
                     if (std::filesystem::is_directory(full_path[map_choice])){
                         if (maps[map_choice]!="../"){
-                            path=path+"/"+maps[map_choice]+"/";
+                            path=path+maps[map_choice]+"/";
                         }else{
                             if (path!="/")
                             path=functions.goParentFolder(path);
