@@ -1117,7 +1117,8 @@ int main_menu(sf::RenderWindow& window,sf::Event event){
                                 std::string line;
                                 while (getline(inputFile, line)){
                                     if (line.rfind("resolution=",0)==0){
-                                        std::cout << "found resolution "<< line << std::endl;
+                                        std::string real_res = functions.ReplaceAll(line,"resolution=","");
+                                        std::cout << real_res << std::endl;
                                     }else{
                                         std::cout << "not resolution "<< line << std::endl;
                                     };
