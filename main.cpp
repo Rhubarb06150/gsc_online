@@ -63,8 +63,8 @@
 #include <algorithm>
 #include <iostream>
 #include <vector>
-#include <thread>
 #include <chrono>
+#include <regex>
 #include <ctime>
 
 #include "functions/functions.cpp"
@@ -1109,6 +1109,25 @@ int main_menu(sf::RenderWindow& window,sf::Event event){
                                     system(("xdg-open "+functions.getUserPath()+"/.gsc_o/").c_str());
                                 #endif
                                     system(("start   "+functions.getUserPath()+"/.gsc_o/").c_str());
+                            };
+                        };
+                        if (choice==4){
+                            if (std::filesystem::is_regular_file(functions.getUserPath()+"/.gsc_o/settings.st")){
+                                std::ifstream inputFile(functions.getUserPath()+"/.gsc_o/settings.st");
+                                std::string line;
+                                while (getline(inputFile, line)){
+                                    std::regex r("^res=.");
+                                    if (std::regex_match(line,r)){
+                                        std::cout << "found resolution"<< line << std::endl;
+                                    }else{
+                                        std::cout << "not resolution"<< line << std::endl;
+                                    };
+                                };
+                            }else{
+                                std::ofstream settings_file(functions.getUserPath()+"/.gsc_o/settings.st");
+                                settings_file << "resolution=640x480\n";
+                                settings_file << "username=Player";
+                                settings_file.close();
                             };
                         };
                     };
