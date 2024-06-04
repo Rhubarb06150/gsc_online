@@ -54,6 +54,7 @@ class GSC_Functions{
             if (path[path.length() - 1]!='/'&&path[path.length() - 1]!='\\'){
                 path.pop_back();
             }else{
+                std::cout << path << std::endl;
                 break;
             };
         };
