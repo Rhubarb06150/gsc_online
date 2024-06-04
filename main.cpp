@@ -133,43 +133,36 @@ class Game{
         framerate_limit=true;//set the framerate limit (may be unused after)
         player_state="front";//default player state is front so when 
         copied_tile="\\x00";//grass tile is copied by default
-        moving_timer=0;
-        function_done=0;
-        username="Player";
-        player_type="m";
-        player_pos={500,500};
-        can_move=true;
-        debug=false;
-        debug_page=1;
-        debug_choice=0;
-        moy={0};
-        loadSettings();
-        resolution_vec=checkResolutionRWindow();
-        player_offset=checkResolutionPOffset();
-        window.create(sf::VideoMode(resolution_vec[0],resolution_vec[1]), "Pokemon GSC Online",sf::Style::Titlebar | sf::Style::Close);
-        icon.loadFromFile("assets/icon.png");
-        window.setIcon(64, 64, icon.getPixelsPtr());
-        window.setFramerateLimit(60);
-        player.initPlayer(player_offset);
-        window.setFramerateLimit(60);
-        time_otd='d';
-        time_otd_str=time_otd;
-        srand(time(NULL));
+        moving_timer=0;//initializing timer for player animation
+        function_done=0;//I really need to delete this
+        username="Player";//Default username if username in settings file isn't detected
+        player_type="b";//default player type is the basic boy, the basic boiiiiiii
+        player_pos={500,500};//I will change this later
+        can_move=true;//It's better to move when you start
+        debug=false;//don't show debug on game launch (that's better)
+        debug_page=1;//defualt debug page is the page 1
+        debug_choice=0;//same goes for the choice, the default choice of Debug Menu is first choice
+        moy={0};//the moy vector for get the average fps
+        loadSettings();//it loadSettings (no shit)
+        resolution_vec=checkResolutionRWindow();//gets the resolution
+        player_offset=checkResolutionPOffset();//gets the player offset
+        window.create(sf::VideoMode(resolution_vec[0],resolution_vec[1]), "Pokemon GSC Online",sf::Style::Titlebar | sf::Style::Close);//create the window with the resolution we just got
+        icon.loadFromFile("assets/icon.png");//loads up the icon
+        window.setIcon(64, 64, icon.getPixelsPtr());//and BANG, we set the icon
+        window.setFramerateLimit(60);//60 FPS limit hell yeah, 60HZ POWAAAAAAAAA
+        player.initPlayer(player_offset);//we init the player here
+        time_otd='d';//default daytime is the day
+        time_otd_str=time_otd;//same value as time_otd but is string, not char
+        srand(time(NULL));//reset the random values
 
-        /* if (functions.getUserPath()=="/home/rhubarb"){
-            system("git add .");
-            system("git commit -m 'working on computer functions'");
-            system("git push");
-        }; */
-
-        if (!std::filesystem::is_directory(functions.getUserPath()+"/.gsc_o/")){
-            std::filesystem::create_directory(functions.getUserPath()+"/.gsc_o");
-            std::filesystem::create_directory(functions.getUserPath()+"/.gsc_o/screenshots/");
-            std::filesystem::create_directory(functions.getUserPath()+"/.gsc_o/maps/");
-            std::filesystem::create_directory(functions.getUserPath()+"/.gsc_o/mods/");
-            log("INFO","an game folder has been created at "+functions.getUserPath()+"/.gsc_o, it will be used to store your saved maps and your screenshots");
+        if (!std::filesystem::is_directory(functions.getUserPath()+"/.gsc_o/")){// here we verify if a game folder exists
+            std::filesystem::create_directory(functions.getUserPath()+"/.gsc_o");//if not, we create a folder called ".gsc_o" located in the user folder
+            std::filesystem::create_directory(functions.getUserPath()+"/.gsc_o/screenshots/");//we create the screenshots folder
+            std::filesystem::create_directory(functions.getUserPath()+"/.gsc_o/maps/");//we create the maps folder
+            std::filesystem::create_directory(functions.getUserPath()+"/.gsc_o/mods/");//we create the mods folder
+            log("INFO","an game folder has been created at "+functions.getUserPath()+"/.gsc_o, it will be used to store your saved maps and your screenshots");//here we tell the player thta we created him a fresh folder
         };
-        log("SETUP","game launched!");
+        log("SETUP","game launched!");//and there, we annouce to our dear player, that the game is ready to be played
     };
 
 void mainLoop(){
