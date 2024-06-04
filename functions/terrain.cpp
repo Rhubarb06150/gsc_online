@@ -50,6 +50,7 @@ class Terrain{
         while (getline(inputFile, line)){
             terrain_vector.push_back({});
             for (int i = 0; i< line.length()/4; i++){
+                std::cout << "adding " << line.substr(i*4, 4) << std::endl;    
                 terrain_vector[y].push_back(line.substr(i*4, 4));
             };
             y++;
