@@ -856,6 +856,7 @@ std::string askPath(std::string path,sf::Event event,sf::RenderWindow& window){
                         if (maps[map_choice]!="../"){
                             path=path+"/"+maps[map_choice]+"/";
                         }else{
+                            if (path!="/")
                             path=functions.goParentFolder(path);
                         };
                         maps={};
