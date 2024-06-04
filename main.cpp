@@ -671,7 +671,10 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                 if (event.key.code==sf::Keyboard::T){
                     help_tiles_show=!help_tiles_show;
                 };
+            if (event.key.code==sf::Keyboard::RShift){
+                menu_show=!menu_show;
             };
+            };// FIN SWITCH EVENT TYPE
 
             if (event.type == sf::Event::Closed){
                 window.close();
@@ -951,9 +954,6 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
             };
         };
 
-        if (isPressed(event,sf::Keyboard::RShift)==0){
-            menu_show=!menu_show;
-        };
         if (camera_pos[1]<0){
             camera_pos[1]=0;
         };
