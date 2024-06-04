@@ -1137,7 +1137,7 @@ int main_menu(sf::RenderWindow& window,sf::Event event){
                         };
                         if (choice==4){
                             int choice=0;
-                            do{
+                            while (true){
                                 switch (event.type) {
                                     case sf::Event::KeyPressed:
                                         if (sf::Keyboard::Up){
@@ -1166,7 +1166,7 @@ int main_menu(sf::RenderWindow& window,sf::Event event){
                                 HUDdisplay.showTextBOW("Resolution = "+real_res,{64,128},window);
                                 HUDdisplay.showTextBOW("Username = ",{64,160},window);
                                 window.display();
-                            }while(true);
+                            };
                         };
                     };
             };
