@@ -1139,7 +1139,7 @@ int main_menu(sf::RenderWindow& window,sf::Event event){
                             int choice=0;
                             while (true){
                                 switch (event.type) {
-                                    case sf::Event::KeyPressed:
+                                    if (event.type==sf::Event::KeyPressed){
                                         if (sf::Keyboard::Up){
                                             if (choice>1){
                                                 choice--;
@@ -1152,10 +1152,12 @@ int main_menu(sf::RenderWindow& window,sf::Event event){
                                             };
                                             break;
                                         };
-                                    case sf::Event::Closed:
+                                    };
+                                    if (event.type==sf::Event::Closed){
                                         window.close();
                                         return 0;
                                         break;
+                                    };
                                 };
                                 
                                 window.clear(sf::Color(248,248,248));
