@@ -1421,7 +1421,7 @@ int main_menu(){
                         std::string map_path;
                         map_path = askPath(".",event,window);
                         if(map_path!=""){
-                            cur_map="map_path";
+                            cur_map=map_path;
                             setTerrain();
                             return 0;
                         };
