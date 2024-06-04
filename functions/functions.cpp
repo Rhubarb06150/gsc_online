@@ -22,7 +22,6 @@
 class GSC_Functions{
     public:
     GSC_Functions(){
-
     };
     std::string currentDateTime() {
         time_t now=time(0);

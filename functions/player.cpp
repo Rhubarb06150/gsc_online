@@ -15,7 +15,7 @@ class Player{
     std::vector<std::vector<sf::Texture>> players_textures;
 
     std::vector<std::vector<std::string>> player_tiles_index;
-    
+    Player(){};
     Player(std::vector<int> player_pos){
 
         sprite.setPosition(player_pos[0],player_pos[1]);
