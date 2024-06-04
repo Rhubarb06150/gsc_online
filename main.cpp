@@ -1127,10 +1127,11 @@ int main_menu(sf::RenderWindow& window,sf::Event event){
         HUDdisplay.showTextDEBUG("27/05/24",{0,16},window);
         HUDdisplay.showTextDEBUG("F5 or X to confirm, F6 to cancel",{0,32},window);
         HUDdisplay.showCursor({32,288+(choice*32)},window);
-        HUDdisplay.showTextBOW("LEVEL EDITOR",{64,288},window);
-        HUDdisplay.showTextBOW("LAUNCH GAME",{64,320},window);
-        HUDdisplay.showTextBOW("LOAD MAP FROM DIR",{64,352},window);
-        HUDdisplay.showTextBOW("OPEN GAME FOLDER",{64,384},window);
+        HUDdisplay.showTextBOW("Level Editor",{64,288},window);
+        HUDdisplay.showTextBOW("Launch game",{64,320},window);
+        HUDdisplay.showTextBOW("Load map from dir",{64,352},window);
+        HUDdisplay.showTextBOW("Open game folder",{64,384},window);
+        HUDdisplay.showTextBOW("Open settings",{64,384},window);
 
         if (isPressed(event,sf::Keyboard::F1)==0){
             functions.takeScreenshot(window);
