@@ -113,7 +113,7 @@ class Player{
         return 0;
     };
 
-    int showPlayer(std::string gender, std::string player_state, sf::RenderWindow& window){
+    void showPlayer(std::string gender, std::string player_state, sf::RenderWindow& window){
         
         int gender_index;
         if (gender=="b")gender_index=0;
@@ -122,7 +122,6 @@ class Player{
         if (gender=="m")gender_index=3;
         sprite.setTexture(players_textures[gender_index][getTextureIndex(player_state)]);
         window.draw(sprite);
-        return 0;
     };
 
     std::string ReplaceAll(std::string str, const std::string& from, const std::string& to) {
