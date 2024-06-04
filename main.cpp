@@ -1150,10 +1150,11 @@ int main_menu(sf::RenderWindow& window,sf::Event event){
                                                 choice++;
                                             };
                                         };
-                                };
-                                if (event.type == sf::Event::Closed){
-                                    window.close();
-                                    return 0;
+                                        break;
+                                    case sf::Event::Closed:
+                                        window.close();
+                                        return 0;
+                                        break;
                                 };
                                 
                                 window.clear(sf::Color(248,248,248));
