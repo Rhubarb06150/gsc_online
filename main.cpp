@@ -59,6 +59,74 @@
 //
 ///////////////////////////////////////////////////////////
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//                         @@@@@@
+//                 @@@@@@@@@####@@@                                                          @@@@@@
+//               @@@%##%@@%##**#@@@                                                        @@@####@@@
+//             @@@%##**#@@#****#@@@                  @@@@@@        @@@@                    @@@#***##@@@
+//         @@@@@@@#****#@@#+==+#@@@                @@@%##%@@@    @@@%%@@@                  @@%=-+**#@@@
+//       @@@%%%%@@#***=+%%+====+%@@                @@@#**#@@@  @@@%#**#%@@@                @@#-.---+%@@
+//       @@@#**#@@#*==-=#*-:+*=+%@@    @@@@      @@@%#***#@@@  @@@#****#@@@                @@%+---.-#@@@@@@
+//       @@@#**#%%%*=-====-=+**#%@@@@@@@%%@@@    @@@#****#@@@@@@%#*****#@@@    @@@@@@      @@@#**+=+%@%%%%@@@
+//      @@@@#***+*%%*=:.:-+****++*%@@@@%*#@@@    @@@#++++#@@@@@%*+++++*#@@@   @@@@@@@@    #%%%*****###+++#@@@
+//    @@@@@%##*=-=%#-.:-+******=:-#@@%***#@@@    @@%*=::=*%@@@%*-:==:=%@@   @@@%****%@@@ ##*+++***#*-:.:=*%@@
+//   @@@#**#%#-:+*%#--+********=:-#@#*****%@@@  @@@#-:==:-#@@#-:==:-+#@@@  @@%*++++++#@@@@@#-:=**#@@#+-..-#@@
+//   @@@#******+:..:+**********=:-#@#******#@@@@@#-:==::=#@@@@#=::=#@@@    @@#-:==::=#@@@@@#-:=**#@@#**+:-#@@
+//   @@@#****#@#-..:+**********=:-#@@%#=::=#@@@@@#-......-#@@#-....-#@@  @@#-:==::=*%@@@@#-:=+************#
+//    @@@%#+--##-:=+:-+********=:.:=%#-:==:-#@@@@#-......-#%=:.....-#@@@@@@#-..:==:-#@@@@#-:=**********#%@@
+//     @@%=-==-=*#**++*********++-:-#%*=--=*%@@%==**:....-##-......-#%+--+%#-...:-*%%@@%=:.:=**********#@@@@@@@@@
+//     @@%#*=:.:*#***************=:-#%=-==-=%@@#--##-....-##-....:+*=-.:+*=-.....-#@@@@#-:-+***********#@@@@%##%@@
+//   @@@@@@%*-::+****************=::-+*+-:.-#%+-:-##-..:+*+-:....-##-..-##-....:+#%@@%+-::=*************##++***#@@
+// @@@%%%%@@%*-.-=+**************+=-.-##-..:=++=:-##-..-##-....:=++=::=++=:....-#@@%+=:.-=+**************+:.-=*#@@
+// @@@#**#%%*+=-.:-=+**************=:-##-....-##-:==:..-##-....-##-..-##-....:=*%@#=:.:=+****************+:..-*%@@
+// @@@#***+=--=-:.:=+**************=::+*+-:..-##-......:++:....:++:..:++:..:-+%@#+:.:-+****************++-::-+%@@ 
+// @@@%#+=--==:.:-+****************+-:.-##-..:+*=-......................---=*##+:.:-+***************+++=:.:=%@%**
+//   @@%==**-:.:+********************=:-##=:...-#%=:::::..............:=%@%*-....-+****************+:...:=*#%%##%@
+//  @@@@@@@@#+::=********************+::=*%#=::=%@@@@@@#=:::::....:::-#%%*-....:+******************+:..-#@@%#**#@@
+// @@@#+:-#@@#-..:+********************=::+#@@@@@%*+***#%@@@@#-..-#@@#-....:=+*********************+::++::+****#@@
+// @@@#**+:-+#%@@#-:+*******************+*%@@#-:++::=********#%@@#-..:==::==::=******************+:....:+******#@@
+// @@@#+-:++:::::-+************************+--==::=++***%@@@@#=:::.:==::==::=++**************+-......:=+:-+#%@@@@@
+//  @@@@%*--==::=+*#%@@@@%************%#=:::==::==:-+*%#=-++--==::==::=++++++*****************+=:..-*%@@%%@@@@@@
+//   @@@@@##%%##%%#+=+%%++#%********%#+-.:-=--==--=+*+====--==++==++==+**********************+-:.:====*%@@@@@
+//   @@@%%%%@%+===--===-::-+##*****#@#-:---------=+**+:.:--=+*##*********************+==+**+=:.:-=--==-=*###@@@
+//   @@@##%%%#+-:..:++:....-#@#*****#*=----=++==+****+=--=+**#@@#******************+=-..----.:-+##+=**==***##%@@@
+//   @@@%#*+=====-..-==-...-#@#***##***+==+*******************##***************+===-....--..-==+#%%%%%%%#**#%%@@@
+//   @@%#+:....:++:..:++::-+##***#@@#+++************************##***++==++**++-:.::..:-==--==-=+#%@@@@@%%%%@@@
+//   @@#-...::.:++:..:++:-#@#***##%%*=::+***********************%%#*+=:..:=++=:.:-==--==--====*****#%@@@@@@@@
+//   @@%=:.:++::==-:.:++:-#@#**#@@%*:.:-+*****###*****************#*-:..::..::.:**--==--++-=#%%##**##%@@@@@@@@@@
+//     @@#--++:..:++::=+:-#%#**#%@@#=-+***####%@@%***************#@@#+:-++-:++:-#%#+--+******#%@####@@@@@@@@@@@@@@
+//     @@@#**+:..:++:..:++:-#@@%#**#@@#**#@@@%#******************#@#-:+#@@#+::++:-#@#**********#@@@@@@@%*=::=**#@@
+//       @@@#+:..:++:..:++:-#@#****#@@##@@#**********************#@@#+:-#@@@#******#@@#********#@#-......:=****#@@
+//        @@@%#=:..:+=:..:+**#%%*******#@@#**********************#@@#****#@@@%#****#@@@%#**#%@@#=:.....:==:-#@@@@@
+//         @@@#+:..:++:..:+***********%%#***********************%%##%%#***#%@@@%##%#==%@@@@#=:::...-*%%%@@%%@@@@
+//          @@@%*=:.:-=++++**********#@@#*********************%%####@@#**#%@@@@@@#=:..:----=*######%%@@@@@@@
+//           @@@@*-..:+*********%%%%#*##%%%#****************#%##%%%%##%%%@@%+==+%@#+:......:-==+%@@@@@@@@
+//             @@%+-:.-=+******#@@@@%#*#@@@@%%%#********#%%%@@#*####*#@@%%@@#=::=++++**=:.....-==+#####%@@@
+//             @@@%#+-.:+*****##**#%@@##@@@%**%@%%%%%%%%@@@@@@#*******#%%#**%%*=:..:=++++++=:.-----=+**#@@@
+//       @@@@@@%#**###++*****#@%+-=*%@##@@%#==#%##@@#****#@@@%++*#**##*#@%++*#@#-......-#@#*+====---+*#%@@@
+//     @@@@%###+:..:+###########*+-=%@##@%+=+**+==*+:....-#@@#--#@##@@%###@#-:+*=-.....:+*=+%@@%+=*#**%%@@@
+//    @%%#*=:.........:=#@@@@%=-*###%%###*==**+*%%+:.....-#@%*=+%@###%@%+=**:..:**=:....:=%@@  @@@@@####@@@
+//  *#%*-............:+#**%@@%#%@@@@##@#--*%@%==%@@#-....-#%==*%%%%*==*%%*=:::...-**=::=#@@        @@@@@@
+// ##+:..............-#%#****#%@@@@%##%#-..-#@@@@@@#-....-#@@#-....-##-..-#@@#-....-#@@@@
+// @@#-..............:=**#@@@@##@@##@#-....-##-..-##-....-#@@#-....-##-......-##-....-#@@@@
+// @@#-............:=+*#%@@@#**#@@##@%*=:..-##-:=*%#-....-#@@@@#-....-##-....-##-......:+#@@@
+//  @@%*-........:=*%@@@@@#****#@@##@@#++*#*=-==:=%#-....-#@@@@#-....-##-....-#@%*-..:==:-+#@@@
+//   @@#-....:-==+%@@@@@@@#******#%%##%%*#@%*++++*%@%#+-:.:=%@@%%*:...:=*####%%@@%%#+=--=++**#@@@
+//   @@#+=====+*%%@@@##%@@#******#@@##@@@@@@#***%%@@@%=-=-:-#@@@@#-....-#@@@@@@  @@@%#+=+*%%%%@@@
+//     %%#****#%@@@  **%@@%#==+*#%@@##@@@@@@#**#@@@@@%+----+%@@@@%*+=-.:*%@@@      @@@%#**#%@@@
+//     @@@%#*#@@@      @@@@%+=+#@@%%%%@@@@@@%#*#@@@@@@#+==+#@@@  @@%+----+%@@        @@@%%%%@@@
+//       @@@%%@@@      %%%@@#*#%@@##@@@    @@@%%@@@@@@%#***#@@@  @@%+==--=#%@@@        @@@@@@
+//         @@@@        **#@@%%@@@@##@@@      @@@@    @@@#**#@@@    @@%=-+**#@@@
+//                       @@@@@@@%###@@@              @@@####@@@    @@@#****#@@@
+//                       @@@%%%*==#@@                  @@@@@@        @@@#**#@@@ 
+//                       @@#-..-#@@                                    @@@@@@
+//                         @@@@@@      
+//
+//  I found that funny so here is Ho-Oh
+//
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 #include <SFML/Graphics.hpp>
 //#include <SFML/Window.hpp>
 #include <filesystem>
@@ -87,7 +155,7 @@ class Game{
         GSC_Functions functions;//other functions such as save a map, get current date and time
 
         //TERRAIN VARS
-        std::vector<std::vector<std::string>> terrain_sprites;//where all tiles are saved by their index for example, \x00 is the "grass" tile
+        std::vector<std::vector<std::string>> terrain_vector;//where all tiles are saved by their index for example, \x00 is the "grass" tile
         std::string cur_map;//used for determinate which map is currently played, used when terrain is getting init, and in some other functions
         char time_otd;//used to display tiles why daytime variations
         std::string time_otd_str;//just the same as top but in string so I can use it in tiles module
@@ -112,7 +180,15 @@ class Game{
         bool can_move;//when set to true, the player can move, so when false, the player can't (for example it's set to false when some menus are opened)
         
         //EDITOR VARS
-        std::string copied_tile;
+        std::string copied_tile;//the copied tile id (not index but id for example "\x00")
+        int selected_tile_index;//the selcted tile index in int so it navigate faster in tiles
+        int copied_tile_index;//same but for the copied tile
+        int default_tile_index;//finally, he's here for you, no I'm joking it's just the same as above but for the default tile
+        std::vector<int> pos1;//the pos1 vector used for filling, random patterns etc
+        std::vector<int> pos2;//the pos2 vector, same as pos1 but it's the pos2
+        bool pos1set;//used to determine if the pos1 is set
+        bool pos2set;//same but for pos 2
+        bool menu_show;//if set to trues, then the menu is showed, unless it doesnt
 
         //DEBUG VARS
         bool debug;//when set to true, the debug menu is showed up
@@ -143,6 +219,10 @@ class Game{
         debug_page=1;//defualt debug page is the page 1
         debug_choice=0;//same goes for the choice, the default choice of Debug Menu is first choice
         moy={0};//the moy vector for get the average fps
+        pos1={};//empty pos1 so we dont start with pos1 already set
+        pos2={};//same but for pos2
+        pos1set=false;//so we dont start with already set pos1
+        pos2set=false;//so we dont start with already set pos2
         loadSettings();//it loadSettings (no shit)
         resolution_vec=checkResolutionRWindow();//gets the resolution
         player_offset=checkResolutionPOffset();//gets the player offset
@@ -179,8 +259,8 @@ void mainLoop(){
     //PLAYER MOVE
     if (can_move){
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
-            if (player_pos[0]<terrain_sprites[0].size()*64-64){
-                if (Tiles.checkCollision(player_pos,'r',terrain_sprites)==0){
+            if (player_pos[0]<terrain_vector[0].size()*64-64){
+                if (Tiles.checkCollision(player_pos,'r',terrain_vector)==0){
                     player_pos[0]+=4;
                 };
             }else{SoundManager.soundEffect("COLLISION");}
@@ -190,7 +270,7 @@ void mainLoop(){
         }
         else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){ 
             if(player_pos[0]>0){
-                if (Tiles.checkCollision(player_pos,'l',terrain_sprites)==0){
+                if (Tiles.checkCollision(player_pos,'l',terrain_vector)==0){
                     player_pos[0]-=4;
                 };
             }else{SoundManager.soundEffect("COLLISION");}
@@ -199,8 +279,8 @@ void mainLoop(){
             player_state="left";
         }
         else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){ 
-            if(player_pos[1]<terrain_sprites.size()*64-64){
-                if (Tiles.checkCollision(player_pos,'d',terrain_sprites)==0){
+            if(player_pos[1]<terrain_vector.size()*64-64){
+                if (Tiles.checkCollision(player_pos,'d',terrain_vector)==0){
                     player_pos[1]+=4;
                 };
             }else{SoundManager.soundEffect("COLLISION");}
@@ -210,7 +290,7 @@ void mainLoop(){
         }
         else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){   
             if(player_pos[1]>0){
-                if (Tiles.checkCollision(player_pos,'u',terrain_sprites)==0){
+                if (Tiles.checkCollision(player_pos,'u',terrain_vector)==0){
                     player_pos[1]-=4;
                 };
             }else{SoundManager.soundEffect("COLLISION");}
@@ -294,7 +374,7 @@ void mainLoop(){
 
     //SHOW ALL
     window.clear();
-    terrain.showTerrain(terrain_sprites,player_pos,time_otd,window,player_offset,(debug&&debug_page==9&&debug_choice==2));
+    terrain.showTerrain(terrain_vector,player_pos,time_otd,window,player_offset,(debug&&debug_page==9&&debug_choice==2));
     player_state=player.animPlayer(player_state,moving_timer,walking);
     player.showPlayer(player_type,player_state,window);
     
@@ -308,7 +388,7 @@ void mainLoop(){
             HUDdisplay.showTextDEBUG("Debug page 1 (Terrain)",{0,0},window);
             HUDdisplay.showTextDEBUG("                      ",{0,16},window);
             HUDdisplay.showTextDEBUG(("Current map: "+cur_map),{0,32},window);
-            HUDdisplay.showTextDEBUG((std::to_string(terrain_sprites.size()*terrain_sprites[0].size())+" tiles"),{0,48},window);
+            HUDdisplay.showTextDEBUG((std::to_string(terrain_vector.size()*terrain_vector[0].size())+" tiles"),{0,48},window);
             HUDdisplay.showTextDEBUG(("Current time: "+time_otd_str),{0,64},window);
             HUDdisplay.showTextDEBUG("Press [F5] to reload terrain",{0,80},window);
             if (isPressed(event,sf::Keyboard::F5)==0){
@@ -370,7 +450,7 @@ void mainLoop(){
                     if (isPressed(event,sf::Keyboard::F5)==0){
                         int real_player_pos_x=player_pos[0]/64;
                         int real_player_pos_y=player_pos[1]/64;
-                        copied_tile=terrain_sprites[real_player_pos_y][real_player_pos_x];
+                        copied_tile=terrain_vector[real_player_pos_y][real_player_pos_x];
                         output_message="Copied "+copied_tile+" ("+ Tiles.getTileName(copied_tile) +")";
                         message_timer=0;
                     }; 
@@ -378,7 +458,7 @@ void mainLoop(){
                         if (copied_tile!=""){
                             int real_player_pos_x=player_pos[0]/64;
                             int real_player_pos_y=player_pos[1]/64;
-                            terrain_sprites[real_player_pos_y][real_player_pos_x]=copied_tile;
+                            terrain_vector[real_player_pos_y][real_player_pos_x]=copied_tile;
                             output_message="Pasted "+copied_tile+" ("+ Tiles.getTileName(copied_tile) +")";
                             message_timer=0;
                         }else{
@@ -394,7 +474,7 @@ void mainLoop(){
                         };
                         int real_player_pos_x=player_pos[0]/64;
                         int real_player_pos_y=player_pos[1]/64;
-                        terrain_sprites[real_player_pos_y][real_player_pos_x]=Tiles.tiles[tile_index][2];
+                        terrain_vector[real_player_pos_y][real_player_pos_x]=Tiles.tiles[tile_index][2];
                     };
                     if (isPressed(event,sf::Keyboard::Left)==0){
                         int real_player_pos_x=player_pos[0]/64;
@@ -404,7 +484,7 @@ void mainLoop(){
                         }else{
                             tile_index=Tiles.getIntIndex(getStandingTile())-1;
                         };
-                        terrain_sprites[real_player_pos_y][real_player_pos_x]=Tiles.tiles[tile_index][2];
+                        terrain_vector[real_player_pos_y][real_player_pos_x]=Tiles.tiles[tile_index][2];
                     };
                     HUDdisplay.showTextSELDEBUG("Set standing tile: "+Tiles.getTileName(getStandingTile())+" ("+getStandingTile()+")",{0,64},window);
                 }else{
@@ -413,7 +493,7 @@ void mainLoop(){
                 if (debug_choice==3){
                     HUDdisplay.showTextSELDEBUG("Save current terrain",{0,80},window);
                     if (isPressed(event,sf::Keyboard::F5)==0){
-                        functions.saveCurrentMap(terrain_sprites,cur_map);
+                        functions.saveCurrentMap(terrain_vector,cur_map);
                         SoundManager.soundEffect("PRESS");
                         output_message=".lv file of current terrain saved!";
                         message_timer=0;
@@ -480,7 +560,7 @@ int setTerrain(){
     log("TERRAIN","Loading terrain...");
     std::cout << cur_map << std::endl;
     log("MAP","loading map from ");
-    terrain_sprites=terrain.terrainForm(terrain_sprites,cur_map);
+    terrain_vector=terrain.terrainForm(terrain_vector,cur_map);
     log("TERRAIN","Terrain loaded!");
     return 0;
 };
@@ -497,7 +577,7 @@ int reloadTerrain(){
     log("TERRAIN","Reloading terrain...");
     Terrain new_tr;
     terrain=new_tr;
-    terrain_sprites=terrain.terrainForm(terrain_sprites,cur_map);
+    terrain_vector=terrain.terrainForm(terrain_vector,cur_map);
     log("TERRAIN","Terrain reloaded!");
     return 0;
 };
@@ -505,7 +585,7 @@ int reloadTerrain(){
 std::string getStandingTile(){
     int real_pos_x=player_pos[0]/64;
     int real_pos_y=player_pos[1]/64;
-    return terrain_sprites[real_pos_y][real_pos_x];
+    return terrain_vector[real_pos_y][real_pos_x];
 };
 
 std::vector<int> checkResolutionRWindow(){
@@ -647,6 +727,97 @@ std::string askText(sf::RenderWindow& window,sf::Event event, std::string captio
     return "e";
 };
 
+int randomPatternLoop(){
+    int chance=4;
+    int choice=0;
+    bool replace=false;
+    do{
+        while (window.pollEvent(event))
+            {
+                if (event.type == sf::Event::Closed){
+                    window.close();
+                    return 0;
+                };
+            };
+        if (isPressed(event,sf::Keyboard::F6)==0){
+            break;
+        };
+        if (isPressed(event,sf::Keyboard::F5)==0){
+            if (pos1set&&pos2set){
+            for (int i = 0; i<terrain_vector.size();i++){
+                for (int j = 0; j<terrain_vector[i].size();j++){
+                    if ((pos1[0]<=j&&j<=pos2[0])&&(pos1[1]<=i&&i<=pos2[1])){
+                        if (rand()%chance+1==chance){
+                        terrain_vector[i][j]=Tiles.tiles[selected_tile_index][2];
+                        };
+                    };
+                    };
+                };
+                menu_show=false;
+                break;
+                output_message="The random pattern has been applied";
+                message_timer=0;
+            }else{
+            output_message="You need to set Pos1 and Pos2 first!";
+            message_timer=0;
+            };
+        };
+        if (isPressed(event,sf::Keyboard::Right)==0){
+            chance++;
+        };
+        if (isPressed(event,sf::Keyboard::Left)==0){
+            if (chance>1){
+                chance--;
+            }
+        };
+        if (isPressed(event,sf::Keyboard::Up)==0){
+            choice=0;
+        };
+        if (isPressed(event,sf::Keyboard::Down)==0){
+            choice=1;
+        };
+
+        window.clear(sf::Color(148,148,148));
+        HUDdisplay.editorBG(window);
+        terrain.showTerrain(terrain_vector,player_pos,time_otd,window,player_offset,true);
+        HUDdisplay.showTextDEBUG("Editor Mode 0.1",{0,0},window);
+        if (message_timer<=60){
+            HUDdisplay.showTextDEBUG(output_message,{0,560},window);
+        };
+
+        HUDdisplay.showTextDEBUG("                        ",{32,32},window);
+        HUDdisplay.showTextDEBUG("  Set random pattern    ",{32,48},window);
+        HUDdisplay.showTextDEBUG("                        ",{32,64},window);
+        HUDdisplay.showTextDEBUG("  "+Tiles.tiles[selected_tile_index][0]+std::string(22-Tiles.tiles[selected_tile_index][0].length(),' '),{32,80},window);
+        HUDdisplay.showTextDEBUG("                        ",{32,96},window);
+        HUDdisplay.showTextDEBUG("  1 chance on ",{32,112},window);
+        if (choice==0){
+        HUDdisplay.showTextSELDEBUG(std::to_string(chance)+std::string(10-std::to_string(chance).length(),' '),{256,112},window);
+        }else{
+        HUDdisplay.showTextDEBUG(std::to_string(chance)+std::string(10-std::to_string(chance).length(),' '),{256,112},window);
+        }
+        HUDdisplay.showTextDEBUG("                        ",{32,128},window);
+        HUDdisplay.showTextDEBUG("  Replace? ",{32,144},window);
+        if (replace){
+            if (choice==1){
+            HUDdisplay.showTextSELDEBUG("yes",{208,144},window);
+            };
+        };
+        if (!replace){
+        HUDdisplay.showTextDEBUG("                        ",{32,160},window);
+        HUDdisplay.showTextDEBUG("  Press F6 to cancel    ",{32,176},window);
+        HUDdisplay.showTextDEBUG("                        ",{32,192},window);
+        };
+        window.display();   
+        if (isPressed(event,sf::Keyboard::F1)==0){
+            functions.takeScreenshot(window);
+            SoundManager.soundEffect("PRESS");
+            output_message="Screenshot saved!";
+            message_timer=0;
+        };
+    }while(true);
+}
+
 int showEditorControls(){
     do{
         while (window.pollEvent(event))
@@ -661,7 +832,7 @@ int showEditorControls(){
         };
     window.clear(sf::Color(148,148,148));
     HUDdisplay.editorBG(window);
-    terrain.showTerrain(terrain_sprites,player_pos,time_otd,window,player_offset,true);
+    terrain.showTerrain(terrain_vector,player_pos,time_otd,window,player_offset,true);
     HUDdisplay.showTextDEBUG("Editor Mode 0.1",{0,0},window);
 
     HUDdisplay.showTextDEBUG("                                   ",{32,32},window);
@@ -929,8 +1100,8 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
     log("EDITOR","Launching editor");
 
     std::vector<std::string> actions;//actions list for they are  displayed in the editor menu
-    std::vector<int> camera_pos = {0,0};//Begins at top left of the map
-    std::vector<int> camera_offset = {290,256};//Yup, that's a strange offset but I like it
+    std::vector<int> player_pos = {0,0};//Begins at top left of the map
+    std::vector<int> player_offset = {290,256};//Yup, that's a strange offset but I like it
     
     std::vector<int> pos1;// init pos1 for filling and other stuff here
     std::vector<int> pos2;// init pos2 for filling and other stuff here
@@ -1025,121 +1196,31 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                         log("EDITOR","Format rock");
                         terrain_vector=formatRock(terrain_vector);
                     }else if(choice==10){
-                        int chance=4;
-                        int choice=0;
-                        bool replace=false;
-                        do{
-                         while (window.pollEvent(event))
-                            {
-                                if (event.type == sf::Event::Closed){
-                                    window.close();
-                                    return 0;
-                                };
-                            };
-                        if (isPressed(event,sf::Keyboard::F6)==0){
-                            break;
-                        };
-                        if (isPressed(event,sf::Keyboard::F5)==0){
-                            if (pos1set&&pos2set){
-                            for (int i = 0; i<terrain_vector.size();i++){
-                                for (int j = 0; j<terrain_vector[i].size();j++){
-                                    if ((pos1[0]<=j&&j<=pos2[0])&&(pos1[1]<=i&&i<=pos2[1])){
-                                        if (rand()%chance+1==chance){
-                                        terrain_vector[i][j]=Tiles.tiles[selected_tile_index][2];
-                                        };
-                                    };
-                                    };
-                                };
-                                menu_show=false;
-                                break;
-                                output_message="The random pattern has been applied";
-                                message_timer=0;
-                            }else{
-                            output_message="You need to set Pos1 and Pos2 first!";
-                            message_timer=0;
-                            };
-                        };
-                        if (isPressed(event,sf::Keyboard::Right)==0){
-                            chance++;
-                        };
-                        if (isPressed(event,sf::Keyboard::Left)==0){
-                            if (chance>1){
-                                chance--;
-                            }
-                        };
-                        if (isPressed(event,sf::Keyboard::Up)==0){
-                            choice=0;
-                        };
-                        if (isPressed(event,sf::Keyboard::Down)==0){
-                            choice=1;
-                        };
-
-                        window.clear(sf::Color(148,148,148));
-                        HUDdisplay.editorBG(window);
-                        terrain.showTerrain(terrain_vector,camera_pos,time_otd,window,camera_offset,true);
-                        HUDdisplay.showTextDEBUG("Editor Mode 0.1",{0,0},window);
-                        if (message_timer<=60){
-                            HUDdisplay.showTextDEBUG(output_message,{0,560},window);
-                        };
-
-                        HUDdisplay.showTextDEBUG("                        ",{32,32},window);
-                        HUDdisplay.showTextDEBUG("  Set random pattern    ",{32,48},window);
-                        HUDdisplay.showTextDEBUG("                        ",{32,64},window);
-                        HUDdisplay.showTextDEBUG("  "+Tiles.tiles[selected_tile_index][0]+std::string(22-Tiles.tiles[selected_tile_index][0].length(),' '),{32,80},window);
-                        HUDdisplay.showTextDEBUG("                        ",{32,96},window);
-                        HUDdisplay.showTextDEBUG("  1 chance on ",{32,112},window);
-                        if (choice==0){
-                        HUDdisplay.showTextSELDEBUG(std::to_string(chance)+std::string(10-std::to_string(chance).length(),' '),{256,112},window);
-                        }else{
-                        HUDdisplay.showTextDEBUG(std::to_string(chance)+std::string(10-std::to_string(chance).length(),' '),{256,112},window);
-                        }
-                        HUDdisplay.showTextDEBUG("                        ",{32,128},window);
-                        HUDdisplay.showTextDEBUG("  Replace? ",{32,144},window);
-                        if (replace){
-                            if (choice==1){
-                            HUDdisplay.showTextSELDEBUG("yes",{208,144},window);
-                            };
-                        };
-                        if (!replace){
-                        HUDdisplay.showTextDEBUG("                        ",{32,160},window);
-                        HUDdisplay.showTextDEBUG("  Press F6 to cancel    ",{32,176},window);
-                        HUDdisplay.showTextDEBUG("                        ",{32,192},window);
-                        };
-                        window.display();   
-                        if (isPressed(event,sf::Keyboard::F1)==0){
-                            functions.takeScreenshot(window);
-                            SoundManager.soundEffect("PRESS");
-                            output_message="Screenshot saved!";
-                            message_timer=0;
-                        };
-                    }while(true);
+                        randomPatternLoop();
                 }else if (choice==11){
                     showEditorControls();
                 };
 
-            if (event.key.code==sf::Keyboard::Up){
-                if (choice>0){
-                    choice--;
-                }else{
-                    choice=actions.size()-1;
-                };
-            };
-            };
-            
-            if (event.key.code==sf::Keyboard::Down){
-                if (choice<actions.size()-1){
-                    choice++;
-                }else{
-                    choice=0;
-                };
-            };
-            
-            if (isPressed(event,sf::Keyboard::Right)==0){  
+                if (event.key.code==sf::Keyboard::Up){
+                    if (choice>0){
+                        choice--;
+                    }else{
+                        choice=actions.size()-1;
                     };
                 };
+                };
+
+                if (event.key.code==sf::Keyboard::Down){
+                    if (choice<actions.size()-1){
+                        choice++;
+                    }else{
+                        choice=0;
+                    };
                 if (event.key.code==sf::Keyboard::T){
                     help_tiles_show=!help_tiles_show;//show/hide the tile viewer
                 };
+            };
+            };                
         };
 
             
@@ -1151,8 +1232,8 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
         };//END OF MENU ACTIONS
 
         if (isPressed(event,sf::Keyboard::C)==0){
-            int real_pos_x=camera_pos[0]/64;
-            int real_pos_y=camera_pos[1]/64;
+            int real_pos_x=player_pos[0]/64;
+            int real_pos_y=player_pos[1]/64;
             copied_tile=terrain_vector[real_pos_y][real_pos_x];
             output_message="Copied "+Tiles.getTileName(terrain_vector[real_pos_y][real_pos_x])+" ("+terrain_vector[real_pos_y][real_pos_x]+")";
             message_timer=0;
@@ -1160,8 +1241,8 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::V)){
             if (copied_tile!=""){
-                int real_pos_x=camera_pos[0]/64;
-                int real_pos_y=camera_pos[1]/64;
+                int real_pos_x=player_pos[0]/64;
+                int real_pos_y=player_pos[1]/64;
                 terrain_vector[real_pos_y][real_pos_x]=copied_tile;
                 output_message="Pasted "+Tiles.getTileName(terrain_vector[real_pos_y][real_pos_x])+" ("+terrain_vector[real_pos_y][real_pos_x]+")";
                 message_timer=0;
@@ -1172,16 +1253,16 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
         };
 
         if (isPressed(event,sf::Keyboard::F3)==0){
-            int real_pos_x=camera_pos[0]/64;
-            int real_pos_y=camera_pos[1]/64;
+            int real_pos_x=player_pos[0]/64;
+            int real_pos_y=player_pos[1]/64;
             pos1 = {real_pos_x,real_pos_y};
             output_message="Pos 1 set to "+std::to_string(pos1[0])+":"+std::to_string(pos1[1]);
             pos1set=true;
             message_timer=0;
         };
         if (isPressed(event,sf::Keyboard::F4)==0){
-            int real_pos_x=camera_pos[0]/64;
-            int real_pos_y=camera_pos[1]/64;
+            int real_pos_x=player_pos[0]/64;
+            int real_pos_y=player_pos[1]/64;
             if (real_pos_x>pos1[0]&&real_pos_y>pos1[1]){
                 pos2 = {real_pos_x,real_pos_y};
                 output_message="Pos 2 set to "+std::to_string(pos2[0])+":"+std::to_string(pos2[1]);
@@ -1194,8 +1275,8 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::X)){
             if (!menu_show){
-                int real_pos_x=camera_pos[0]/64;
-                int real_pos_y=camera_pos[1]/64;
+                int real_pos_x=player_pos[0]/64;
+                int real_pos_y=player_pos[1]/64;
                 output_message="Removed "+Tiles.getTileName(terrain_vector[real_pos_y][real_pos_x])+" ("+terrain_vector[real_pos_y][real_pos_x]+")";
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift)){
                     terrain_vector[real_pos_y][real_pos_x]="\\xff";
@@ -1207,8 +1288,8 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
         };
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::G)){
-            int real_pos_x=camera_pos[0]/64;
-            int real_pos_y=camera_pos[1]/64;
+            int real_pos_x=player_pos[0]/64;
+            int real_pos_y=player_pos[1]/64;
             terrain_vector[real_pos_y][real_pos_x]=Tiles.tiles[selected_tile_index][2];
             output_message="Placed "+Tiles.getTileName(terrain_vector[real_pos_y][real_pos_x])+" ("+terrain_vector[real_pos_y][real_pos_x]+")";
             message_timer=0;
@@ -1251,41 +1332,41 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
 
         }else{
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
-            camera_pos[0]+=camera_speed;
+            player_pos[0]+=camera_speed;
             };
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
-            camera_pos[0]-=camera_speed;
+            player_pos[0]-=camera_speed;
             };
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
-            camera_pos[1]-=camera_speed;
+            player_pos[1]-=camera_speed;
             };
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
-            camera_pos[1]+=camera_speed;
+            player_pos[1]+=camera_speed;
             };
         };
 
-        if (camera_pos[1]<0){
-            camera_pos[1]=0;
+        if (player_pos[1]<0){
+            player_pos[1]=0;
         };
-        if (camera_pos[1]>terrain_vector.size()*64-64){
-            camera_pos[1]=terrain_vector.size()*64-64;
+        if (player_pos[1]>terrain_vector.size()*64-64){
+            player_pos[1]=terrain_vector.size()*64-64;
         };
-        if (camera_pos[0]<0){
-            camera_pos[0]=0;
+        if (player_pos[0]<0){
+            player_pos[0]=0;
         };
-        if (camera_pos[0]>terrain_vector[0].size()*64-64){
-            camera_pos[0]=terrain_vector[0].size()*64-64;
+        if (player_pos[0]>terrain_vector[0].size()*64-64){
+            player_pos[0]=terrain_vector[0].size()*64-64;
         };
 
         window.clear(sf::Color(148,148,148));
         HUDdisplay.editorBG(window);
-        terrain.showTerrain(terrain_vector,camera_pos,time_otd,window,camera_offset,true);
+        terrain.showTerrain(terrain_vector,player_pos,time_otd,window,player_offset,true);
         
         if (pos1set){
-            HUDdisplay.showTextBluDEBUG("pos1",{pos1[0]*64-camera_pos[0]+camera_offset[0],pos1[1]*64-camera_pos[1]+camera_offset[1]},window);
+            HUDdisplay.showTextBluDEBUG("pos1",{pos1[0]*64-player_pos[0]+player_offset[0],pos1[1]*64-player_pos[1]+player_offset[1]},window);
         };
         if (pos2set){
-            HUDdisplay.showTextBluDEBUG("pos2",{pos2[0]*64-camera_pos[0]+camera_offset[0],pos2[1]*64-camera_pos[1]+camera_offset[1]},window);
+            HUDdisplay.showTextBluDEBUG("pos2",{pos2[0]*64-player_pos[0]+player_offset[0],pos2[1]*64-player_pos[1]+player_offset[1]},window);
         };
 
         HUDdisplay.showTextDEBUG("Editor Mode 0.1",{0,0},window);
@@ -1305,9 +1386,9 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
             };
         }else{
             HUDdisplay.showTextDEBUG(std::to_string(terrain_vector.size()*terrain_vector[0].size())+" tiles",{0,16},window);
-            HUDdisplay.showTextDEBUG("X: "+std::to_string(camera_pos[0]/64)+" Y: "+std::to_string(camera_pos[1]/64),{0,32},window);
+            HUDdisplay.showTextDEBUG("X: "+std::to_string(player_pos[0]/64)+" Y: "+std::to_string(player_pos[1]/64),{0,32},window);
 
-            HUDdisplay.showTextDEBUG("Hovering tile: "+Tiles.getTileName(terrain_vector[camera_pos[1]/64][camera_pos[0]/64])+" ("+terrain_vector[camera_pos[1]/64][camera_pos[0]/64]+")",{0,48},window);
+            HUDdisplay.showTextDEBUG("Hovering tile: "+Tiles.getTileName(terrain_vector[player_pos[1]/64][player_pos[0]/64])+" ("+terrain_vector[player_pos[1]/64][player_pos[0]/64]+")",{0,48},window);
         };
 
         if (help_tiles_show){
@@ -1514,7 +1595,7 @@ int show_debug_pause(){
             };
         };
         window.clear();
-        terrain.showTerrain(terrain_sprites,player_pos,time_otd,window,player_offset,false);
+        terrain.showTerrain(terrain_vector,player_pos,time_otd,window,player_offset,false);
         player.showPlayer(player_type,player_state,window);
         HUDdisplay.showTextDEBUG("     debug pause    ",{192,256},window);
         HUDdisplay.showTextDEBUG("                    ",{192,256+16},window);
