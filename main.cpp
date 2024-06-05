@@ -250,7 +250,29 @@ void mainLoop(){
                     output_message="Hiding debug menu";
                 }
                 message_timer=0;
-            }
+            };
+            if (debug){
+                if (debug_page==9&&debug_choice==0){
+                if (event.key.code==sf::Keyboard::Right){
+                    if (time_otd == 'd'){
+                        time_otd='n'; 
+                    }else if(time_otd == 'n'){
+                        time_otd='m';
+                    }else if (time_otd='m'){
+                        time_otd='d';
+                    };
+                };
+                if (event.key.code==sf::Keyboard::Left){
+                    if (time_otd == 'm'){
+                        time_otd='n'; 
+                    }else if(time_otd == 'n'){
+                        time_otd='d';
+                    }else if (time_otd='d'){
+                        time_otd='m';
+                    };
+                };
+                };
+            };
         };
     };
 
@@ -334,24 +356,6 @@ void mainLoop(){
                 };
 
                 if (debug_choice==0){
-                    if (isPressed(event,sf::Keyboard::Right)==0){
-                        if (time_otd == 'd'){
-                            time_otd='n'; 
-                        }else if(time_otd == 'n'){
-                            time_otd='m';
-                        }else if (time_otd='m'){
-                            time_otd='d';
-                        };
-                    };
-                    if (isPressed(event,sf::Keyboard::Left)==0){
-                        if (time_otd == 'm'){
-                            time_otd='n'; 
-                        }else if(time_otd == 'n'){
-                            time_otd='d';
-                        }else if (time_otd='d'){
-                            time_otd='m';
-                        };
-                    };
                     HUDdisplay.showTextSELDEBUG("Set time: "+time_otd_str,{0,32},window);
                 }else{
                     HUDdisplay.showTextDEBUG("Set time: "+time_otd_str,{0,32},window);
