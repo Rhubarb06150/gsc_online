@@ -271,13 +271,14 @@ void mainLoop(){
                         time_otd='m';
                     };
                 };
+                };
                 if (debug_page==9){
                     if (event.key.code==sf::Keyboard::Down){
                         if (debug_choice < 4){
                             debug_choice++;
                         }else{
                             debug_choice=0;
-                    };
+                        };
                     };
                     if (event.key.code==sf::Keyboard::Up){
                         if (debug_choice > 0){
@@ -286,7 +287,6 @@ void mainLoop(){
                             debug_choice=4;
                         };
                     };
-                }
                 };
             };
         };
