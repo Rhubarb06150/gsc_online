@@ -1000,119 +1000,119 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                         };
                 if (event.key.code==sf::Keyboard::F5||event.key.code==sf::Keyboard::X){
                     if (choice==5){
-                    std::string wanted_map=askPath(std::filesystem::absolute("."),event,window);
-                    if (wanted_map!=""){
-                        cur_map=wanted_map;
-                        log("EDITOR","Loaded "+cur_map+" map");
-                        terrain_vector=terrain.terrainForm(terrain_vector,cur_map);
-                        map_height=terrain_vector.size();
-                        int init_size=terrain_vector[0].size();
-                        for (int i=0;i<map_height;i++){
-                            if (terrain_vector[i].size()<init_size){
+                        std::string wanted_map=askPath(std::filesystem::absolute("."),event,window);
+                        if (wanted_map!=""){
+                            cur_map=wanted_map;
+                            log("EDITOR","Loaded "+cur_map+" map");
+                            terrain_vector=terrain.terrainForm(terrain_vector,cur_map);
+                            map_height=terrain_vector.size();
+                            int init_size=terrain_vector[0].size();
+                            for (int i=0;i<map_height;i++){
+                                if (terrain_vector[i].size()<init_size){
                                 init_size=terrain_vector[i].size();
                             };
-                        };
-                        map_width=init_size;
-                    };
-                };
-                if (choice==6){
-                    functions.saveMap(terrain_vector,cur_map);
-                    output_message="Your map has been saved";
-                    log("EDITOR","map saved at "+cur_map);
-                    message_timer=0;
-                };
-                if (choice==7){
-                }else if(choice==9){
-                    log("EDITOR","Format rock");
-                    terrain_vector=formatRock(terrain_vector);
-                }else if(choice==10){
-                    int chance=4;
-                    int choice=0;
-                    bool replace=false;
-                    do{
-                     while (window.pollEvent(event))
-                        {
-                            if (event.type == sf::Event::Closed){
-                                window.close();
-                                return 0;
+                            map_width=init_size;
                             };
                         };
-                    if (isPressed(event,sf::Keyboard::F6)==0){
-                        break;
                     };
-                    if (isPressed(event,sf::Keyboard::F5)==0){
-                        if (pos1set&&pos2set){
-                        for (int i = 0; i<terrain_vector.size();i++){
-                            for (int j = 0; j<terrain_vector[i].size();j++){
-                                if ((pos1[0]<=j&&j<=pos2[0])&&(pos1[1]<=i&&i<=pos2[1])){
-                                    if (rand()%chance+1==chance){
-                                    terrain_vector[i][j]=Tiles.tiles[selected_tile_index][2];
+                    if (choice==6){
+                        functions.saveMap(terrain_vector,cur_map);
+                        output_message="Your map has been saved";
+                        log("EDITOR","map saved at "+cur_map);
+                        message_timer=0;
+                    };
+                    if (choice==7){
+                    }else if(choice==9){
+                        log("EDITOR","Format rock");
+                        terrain_vector=formatRock(terrain_vector);
+                    }else if(choice==10){
+                        int chance=4;
+                        int choice=0;
+                        bool replace=false;
+                        do{
+                         while (window.pollEvent(event))
+                            {
+                                if (event.type == sf::Event::Closed){
+                                    window.close();
+                                    return 0;
+                                };
+                            };
+                        if (isPressed(event,sf::Keyboard::F6)==0){
+                            break;
+                        };
+                        if (isPressed(event,sf::Keyboard::F5)==0){
+                            if (pos1set&&pos2set){
+                            for (int i = 0; i<terrain_vector.size();i++){
+                                for (int j = 0; j<terrain_vector[i].size();j++){
+                                    if ((pos1[0]<=j&&j<=pos2[0])&&(pos1[1]<=i&&i<=pos2[1])){
+                                        if (rand()%chance+1==chance){
+                                        terrain_vector[i][j]=Tiles.tiles[selected_tile_index][2];
+                                        };
+                                    };
                                     };
                                 };
-                                };
-                            };
-                            menu_show=false;
-                            break;
-                            output_message="The random pattern has been applied";
+                                menu_show=false;
+                                break;
+                                output_message="The random pattern has been applied";
+                                message_timer=0;
+                            }else{
+                            output_message="You need to set Pos1 and Pos2 first!";
                             message_timer=0;
+                            };
+                        };
+                        if (isPressed(event,sf::Keyboard::Right)==0){
+                            chance++;
+                        };
+                        if (isPressed(event,sf::Keyboard::Left)==0){
+                            if (chance>1){
+                                chance--;
+                            }
+                        };
+                        if (isPressed(event,sf::Keyboard::Up)==0){
+                            choice=0;
+                        };
+                        if (isPressed(event,sf::Keyboard::Down)==0){
+                            choice=1;
+                        };
+
+                        window.clear(sf::Color(148,148,148));
+                        HUDdisplay.editorBG(window);
+                        terrain.showTerrain(terrain_vector,camera_pos,time_otd,window,camera_offset,true);
+                        HUDdisplay.showTextDEBUG("Editor Mode 0.1",{0,0},window);
+                        if (message_timer<=60){
+                            HUDdisplay.showTextDEBUG(output_message,{0,560},window);
+                        };
+
+                        HUDdisplay.showTextDEBUG("                        ",{32,32},window);
+                        HUDdisplay.showTextDEBUG("  Set random pattern    ",{32,48},window);
+                        HUDdisplay.showTextDEBUG("                        ",{32,64},window);
+                        HUDdisplay.showTextDEBUG("  "+Tiles.tiles[selected_tile_index][0]+std::string(22-Tiles.tiles[selected_tile_index][0].length(),' '),{32,80},window);
+                        HUDdisplay.showTextDEBUG("                        ",{32,96},window);
+                        HUDdisplay.showTextDEBUG("  1 chance on ",{32,112},window);
+                        if (choice==0){
+                        HUDdisplay.showTextSELDEBUG(std::to_string(chance)+std::string(10-std::to_string(chance).length(),' '),{256,112},window);
                         }else{
-                        output_message="You need to set Pos1 and Pos2 first!";
-                        message_timer=0;
-                        };
-                    };
-                    if (isPressed(event,sf::Keyboard::Right)==0){
-                        chance++;
-                    };
-                    if (isPressed(event,sf::Keyboard::Left)==0){
-                        if (chance>1){
-                            chance--;
+                        HUDdisplay.showTextDEBUG(std::to_string(chance)+std::string(10-std::to_string(chance).length(),' '),{256,112},window);
                         }
-                    };
-                    if (isPressed(event,sf::Keyboard::Up)==0){
-                        choice=0;
-                    };
-                    if (isPressed(event,sf::Keyboard::Down)==0){
-                        choice=1;
-                    };
-
-                    window.clear(sf::Color(148,148,148));
-                    HUDdisplay.editorBG(window);
-                    terrain.showTerrain(terrain_vector,camera_pos,time_otd,window,camera_offset,true);
-                    HUDdisplay.showTextDEBUG("Editor Mode 0.1",{0,0},window);
-                    if (message_timer<=60){
-                        HUDdisplay.showTextDEBUG(output_message,{0,560},window);
-                    };
-
-                    HUDdisplay.showTextDEBUG("                        ",{32,32},window);
-                    HUDdisplay.showTextDEBUG("  Set random pattern    ",{32,48},window);
-                    HUDdisplay.showTextDEBUG("                        ",{32,64},window);
-                    HUDdisplay.showTextDEBUG("  "+Tiles.tiles[selected_tile_index][0]+std::string(22-Tiles.tiles[selected_tile_index][0].length(),' '),{32,80},window);
-                    HUDdisplay.showTextDEBUG("                        ",{32,96},window);
-                    HUDdisplay.showTextDEBUG("  1 chance on ",{32,112},window);
-                    if (choice==0){
-                    HUDdisplay.showTextSELDEBUG(std::to_string(chance)+std::string(10-std::to_string(chance).length(),' '),{256,112},window);
-                    }else{
-                    HUDdisplay.showTextDEBUG(std::to_string(chance)+std::string(10-std::to_string(chance).length(),' '),{256,112},window);
-                    }
-                    HUDdisplay.showTextDEBUG("                        ",{32,128},window);
-                    HUDdisplay.showTextDEBUG("  Replace? ",{32,144},window);
-                    if (replace){
-                        if (choice==1){
-                        HUDdisplay.showTextSELDEBUG("yes",{208,144},window);
+                        HUDdisplay.showTextDEBUG("                        ",{32,128},window);
+                        HUDdisplay.showTextDEBUG("  Replace? ",{32,144},window);
+                        if (replace){
+                            if (choice==1){
+                            HUDdisplay.showTextSELDEBUG("yes",{208,144},window);
+                            };
                         };
-                    };
-                    if (!replace){
-                    HUDdisplay.showTextDEBUG("                        ",{32,160},window);
-                    HUDdisplay.showTextDEBUG("  Press F6 to cancel    ",{32,176},window);
-                    HUDdisplay.showTextDEBUG("                        ",{32,192},window);
-                    };
-                    window.display();   
-                    if (isPressed(event,sf::Keyboard::F1)==0){
-                        functions.takeScreenshot(window);
-                        SoundManager.soundEffect("PRESS");
-                        output_message="Screenshot saved!";
-                        message_timer=0;
-                    };
+                        if (!replace){
+                        HUDdisplay.showTextDEBUG("                        ",{32,160},window);
+                        HUDdisplay.showTextDEBUG("  Press F6 to cancel    ",{32,176},window);
+                        HUDdisplay.showTextDEBUG("                        ",{32,192},window);
+                        };
+                        window.display();   
+                        if (isPressed(event,sf::Keyboard::F1)==0){
+                            functions.takeScreenshot(window);
+                            SoundManager.soundEffect("PRESS");
+                            output_message="Screenshot saved!";
+                            message_timer=0;
+                        };
                     }while(true);
                 }else if (choice==11){
                     showEditorControls();
@@ -1135,29 +1135,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                 };
             };
             
-            if (isPressed(event,sf::Keyboard::Right)==0){
-                if (choice==0){
-                    camera_speed++;
-                }else if(choice==1){
-                    map_width++;
-                    for (int i = 0;i<map_height;i++){
-                        terrain_vector[i].push_back(Tiles.tiles[default_tile_index][2]);
-                    };
-                }else if(choice==2){
-                    map_height++;
-                    terrain_vector.push_back({});
-                    for (int i = 0; i < terrain_vector[0].size();i++){
-                        terrain_vector[terrain_vector.size()-1].push_back(Tiles.tiles[default_tile_index][2]);
-                    };
-                }else if (choice==3){
-                    if (default_tile_index<Tiles.tiles.size()-2){
-                        default_tile_index++;
-                    };
-                }else if (choice==4){
-                    if (selected_tile_index<Tiles.tiles.size()-2){
-                        selected_tile_index++;
-                    };
-                };  
+            if (isPressed(event,sf::Keyboard::Right)==0){  
                     };
                 };
                 if (event.key.code==sf::Keyboard::T){
