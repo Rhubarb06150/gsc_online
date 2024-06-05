@@ -770,27 +770,25 @@ std::vector<std::vector<std::string>> formatRock(std::vector<std::vector<std::st
                     };
                 };
 
-                //terrain_vector[i][j]="\\x15";
-
-                //std::cout << ledge << tedge << redge << bedge << std::endl;
+                terrain_vector[i][j]="\\x15";
 
                 if (rockt&&!rockb&&(rockr||rockl)&&!bedge){
-                    terrain_vector[i][j]="\\x22";// VERS LE BAS
+                    terrain_vector[i][j]="\\x22";//rock is going down
                 };
                 if (rockl&&(rockt||rockb)&&!rockr&&!redge){
-                    terrain_vector[i][j]="\\x10"; // VERS LA DROITE
+                    terrain_vector[i][j]="\\x10";//rock is going right
                 };
                 if (rockt&&rockl&&!rockr&&!rockb&&!bedge&&!tedge&&!redge&&!ledge){
-                    terrain_vector[i][j]="\\x21"; // COIN EXTERIEUR VERS LE BAS DROITE
+                    terrain_vector[i][j]="\\x21";//rock is in interior corner top left
                 };
                 if (rockr&&rockb&&!rockbr){
-                    terrain_vector[i][j]="\\x11"; // COIN INTERIEUR VERS LE BAS DROITE
+                    terrain_vector[i][j]="\\x11";//rock is in exterioir corner bottom right
                 };
                 //if (rockr&&rockb&&!rockbr){
-                //    terrain_vector[i][j]="\\x11"; // VERS LE HAUT
+                //    terrain_vector[i][j]="\\x11"; //rock is going up
                 //};
                 //if (rockr&&rockb&&!rockt&&!rockl){
-                //    terrain_vector[i][j]="\\x23"; // VERS LE HAUT GAUCHE
+                //    terrain_vector[i][j]="\\x23"; //rock is going up left
                 //};
             };
         };   
@@ -999,93 +997,9 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                         }else{
                         output_message="You need to set Pos1 and Pos2 first!";//in case pos1 and/or pos2 arent set
                         message_timer=0;//reset timer
-                    };
-                    };
-                };
-                if (event.key.code==sf::Keyboard::T){
-                    help_tiles_show=!help_tiles_show;//show/hide the tile viewer
-                };
-            if (event.key.code==sf::Keyboard::RShift){
-                menu_show=!menu_show;//show/hide the editor menu
-            };
-            };// end of switch event type
-
-            if (event.type == sf::Event::Closed){
-                window.close();
-                return 0;
-            };
-        };
-
-        if (isPressed(event,sf::Keyboard::C)==0){
-            int real_pos_x=camera_pos[0]/64;
-            int real_pos_y=camera_pos[1]/64;
-            copied_tile=terrain_vector[real_pos_y][real_pos_x];
-            output_message="Copied "+Tiles.getTileName(terrain_vector[real_pos_y][real_pos_x])+" ("+terrain_vector[real_pos_y][real_pos_x]+")";
-            message_timer=0;
-        };
-
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::V)){
-            if (copied_tile!=""){
-                int real_pos_x=camera_pos[0]/64;
-                int real_pos_y=camera_pos[1]/64;
-                terrain_vector[real_pos_y][real_pos_x]=copied_tile;
-                output_message="Pasted "+Tiles.getTileName(terrain_vector[real_pos_y][real_pos_x])+" ("+terrain_vector[real_pos_y][real_pos_x]+")";
-                message_timer=0;
-            }else{
-                output_message="Nothing has been copied yet";
-                message_timer=0;
-            };
-        };
-
-        if (isPressed(event,sf::Keyboard::F3)==0){
-            int real_pos_x=camera_pos[0]/64;
-            int real_pos_y=camera_pos[1]/64;
-            pos1 = {real_pos_x,real_pos_y};
-            output_message="Pos 1 set to "+std::to_string(pos1[0])+":"+std::to_string(pos1[1]);
-            pos1set=true;
-            message_timer=0;
-        };
-        if (isPressed(event,sf::Keyboard::F4)==0){
-            int real_pos_x=camera_pos[0]/64;
-            int real_pos_y=camera_pos[1]/64;
-            if (real_pos_x>pos1[0]&&real_pos_y>pos1[1]){
-                pos2 = {real_pos_x,real_pos_y};
-                output_message="Pos 2 set to "+std::to_string(pos2[0])+":"+std::to_string(pos2[1]);
-                pos2set=true;
-            }else{
-                output_message="Can't place pos2 here";
-            };
-            message_timer=0;
-        };
-
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::X)){
-            if (!menu_show){
-                int real_pos_x=camera_pos[0]/64;
-                int real_pos_y=camera_pos[1]/64;
-                output_message="Removed "+Tiles.getTileName(terrain_vector[real_pos_y][real_pos_x])+" ("+terrain_vector[real_pos_y][real_pos_x]+")";
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift)){
-                    terrain_vector[real_pos_y][real_pos_x]="\\xff";
-                }else{
-                    terrain_vector[real_pos_y][real_pos_x]=Tiles.tiles[default_tile_index][2];
-                }
-                message_timer=0;
-            };
-        };
-
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::G)){
-            int real_pos_x=camera_pos[0]/64;
-            int real_pos_y=camera_pos[1]/64;
-            terrain_vector[real_pos_y][real_pos_x]=Tiles.tiles[selected_tile_index][2];
-            output_message="Placed "+Tiles.getTileName(terrain_vector[real_pos_y][real_pos_x])+" ("+terrain_vector[real_pos_y][real_pos_x]+")";
-            message_timer=0;
-        };
-        if (menu_show){
-
-            /////////////////////////////////////////:
-            //DO ACTION
-            
-            if (isPressed(event,sf::Keyboard::F5)==0||isPressed(event,sf::Keyboard::X)==0){
-                if (choice==5){
+                        };
+                if (event.key.code==sf::Keyboard::F5||event.key.code==sf::Keyboard::X){
+                    if (choice==5){
                     std::string wanted_map=askPath(std::filesystem::absolute("."),event,window);
                     if (wanted_map!=""){
                         cur_map=wanted_map;
@@ -1203,6 +1117,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                 }else if (choice==11){
                     showEditorControls();
                 };
+            };//END OF MENU ACTIONS
             };
             if (isPressed(event,sf::Keyboard::Up)==0){
                 if (choice>0){
@@ -1242,7 +1157,92 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                     if (selected_tile_index<Tiles.tiles.size()-2){
                         selected_tile_index++;
                     };
+                };  
+                    };
                 };
+                if (event.key.code==sf::Keyboard::T){
+                    help_tiles_show=!help_tiles_show;//show/hide the tile viewer
+                };
+            if (event.key.code==sf::Keyboard::RShift){
+                menu_show=!menu_show;//show/hide the editor menu
+            };
+            };// end of switch event type
+
+            if (event.type == sf::Event::Closed){
+                window.close();
+                return 0;
+            };
+        };
+
+        if (isPressed(event,sf::Keyboard::C)==0){
+            int real_pos_x=camera_pos[0]/64;
+            int real_pos_y=camera_pos[1]/64;
+            copied_tile=terrain_vector[real_pos_y][real_pos_x];
+            output_message="Copied "+Tiles.getTileName(terrain_vector[real_pos_y][real_pos_x])+" ("+terrain_vector[real_pos_y][real_pos_x]+")";
+            message_timer=0;
+        };
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::V)){
+            if (copied_tile!=""){
+                int real_pos_x=camera_pos[0]/64;
+                int real_pos_y=camera_pos[1]/64;
+                terrain_vector[real_pos_y][real_pos_x]=copied_tile;
+                output_message="Pasted "+Tiles.getTileName(terrain_vector[real_pos_y][real_pos_x])+" ("+terrain_vector[real_pos_y][real_pos_x]+")";
+                message_timer=0;
+            }else{
+                output_message="Nothing has been copied yet";
+                message_timer=0;
+            };
+        };
+
+        if (isPressed(event,sf::Keyboard::F3)==0){
+            int real_pos_x=camera_pos[0]/64;
+            int real_pos_y=camera_pos[1]/64;
+            pos1 = {real_pos_x,real_pos_y};
+            output_message="Pos 1 set to "+std::to_string(pos1[0])+":"+std::to_string(pos1[1]);
+            pos1set=true;
+            message_timer=0;
+        };
+        if (isPressed(event,sf::Keyboard::F4)==0){
+            int real_pos_x=camera_pos[0]/64;
+            int real_pos_y=camera_pos[1]/64;
+            if (real_pos_x>pos1[0]&&real_pos_y>pos1[1]){
+                pos2 = {real_pos_x,real_pos_y};
+                output_message="Pos 2 set to "+std::to_string(pos2[0])+":"+std::to_string(pos2[1]);
+                pos2set=true;
+            }else{
+                output_message="Can't place pos2 here";
+            };
+            message_timer=0;
+        };
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::X)){
+            if (!menu_show){
+                int real_pos_x=camera_pos[0]/64;
+                int real_pos_y=camera_pos[1]/64;
+                output_message="Removed "+Tiles.getTileName(terrain_vector[real_pos_y][real_pos_x])+" ("+terrain_vector[real_pos_y][real_pos_x]+")";
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift)){
+                    terrain_vector[real_pos_y][real_pos_x]="\\xff";
+                }else{
+                    terrain_vector[real_pos_y][real_pos_x]=Tiles.tiles[default_tile_index][2];
+                }
+                message_timer=0;
+            };
+        };
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::G)){
+            int real_pos_x=camera_pos[0]/64;
+            int real_pos_y=camera_pos[1]/64;
+            terrain_vector[real_pos_y][real_pos_x]=Tiles.tiles[selected_tile_index][2];
+            output_message="Placed "+Tiles.getTileName(terrain_vector[real_pos_y][real_pos_x])+" ("+terrain_vector[real_pos_y][real_pos_x]+")";
+            message_timer=0;
+        };
+        if (menu_show){
+
+            /////////////////////////////////////////:
+            //DO ACTION
+            
+            if (isPressed(event,sf::Keyboard::F5)==0||isPressed(event,sf::Keyboard::X)==0){
             };
 
             if (isPressed(event,sf::Keyboard::Left)==0){
