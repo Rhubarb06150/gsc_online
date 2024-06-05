@@ -176,21 +176,6 @@ void mainLoop(){
         show_debug_pause();
     };
 
-    //ENABLE DEBUG ----------------------------------------------|
-    if (event.key.code==sf::Keyboard::F2){
-        debug=!debug;
-        SoundManager.soundEffect("PRESS");
-        if (debug){
-            output_message="Showing debug menu";
-        }else{
-            output_message="Hiding debug menu";
-        }
-        message_timer=0;
-    };
-    // ----------------------------------------------------------|
-
-
-
     //PLAYER MOVE
     if (can_move){
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
@@ -238,6 +223,7 @@ void mainLoop(){
         walking=false;moving_timer=20;
     };
 
+    // WHILE EVENT LOOP HERE
     while (window.pollEvent(event))
     {
         if (event.type == sf::Event::Closed){
@@ -253,6 +239,18 @@ void mainLoop(){
             log("DEBUG","Lowest FPS: "+std::to_string(lowest));
             log("DEBUG","Highest FPS: "+std::to_string(biggest));
             window.close();
+        };
+        if (event.type==sf::Event::KeyPressed){
+            if (event.key.code==sf::Keyboard::F2){
+                debug=!debug;
+                SoundManager.soundEffect("PRESS");
+                if (debug){
+                    output_message="Showing debug menu";
+                }else{
+                    output_message="Hiding debug menu";
+                }
+                message_timer=0;
+            }
         };
     };
 
