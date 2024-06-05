@@ -980,8 +980,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
         message_timer++;//increase the message timer for display messages
         while (window.pollEvent(event))//level editor true loop
         {
-            switch (event.type) {//switch and case
-                case sf::Event::KeyPressed://I basically never use them but I was obligated to use them here :/
+            if (event.type==sf::Event::KeyPressed){
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift)){//for forced fill verify first if left shift is pressed
                     if (event.key.code==sf::Keyboard::F){
                         if (pos1set&&pos2set){//verify if pos1 and pos2 is set
@@ -1141,9 +1140,6 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                 if (event.key.code==sf::Keyboard::T){
                     help_tiles_show=!help_tiles_show;//show/hide the tile viewer
                 };
-            if (event.key.code==sf::Keyboard::RShift){
-                menu_show=!menu_show;//show/hide the editor menu
-            };
         };
 
             
