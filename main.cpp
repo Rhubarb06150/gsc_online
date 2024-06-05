@@ -1144,12 +1144,13 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
             if (event.key.code==sf::Keyboard::RShift){
                 menu_show=!menu_show;//show/hide the editor menu
             };
-            };// end of switch event type
+        };
 
-            if (event.type == sf::Event::Closed){
-                window.close();
-                return 0;
-            };
+            
+        };
+        if (event.type == sf::Event::Closed){
+            window.close();
+            return 0;
         };
         };//END OF MENU ACTIONS
 
