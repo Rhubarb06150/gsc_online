@@ -1117,17 +1117,17 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                 }else if (choice==11){
                     showEditorControls();
                 };
-            };//END OF MENU ACTIONS
-            };
-            if (isPressed(event,sf::Keyboard::Up)==0){
+
+            if (event.key.code==sf::Keyboard::Up){
                 if (choice>0){
                     choice--;
                 }else{
                     choice=actions.size()-1;
                 };
             };
+            };
             
-            if (isPressed(event,sf::Keyboard::Down)==0){
+            if (event.key.code==sf::Keyboard::Down){
                 if (choice<actions.size()-1){
                     choice++;
                 }else{
@@ -1151,6 +1151,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                 return 0;
             };
         };
+        };//END OF MENU ACTIONS
 
         if (isPressed(event,sf::Keyboard::C)==0){
             int real_pos_x=camera_pos[0]/64;
