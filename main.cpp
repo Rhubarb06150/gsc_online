@@ -271,6 +271,22 @@ void mainLoop(){
                         time_otd='m';
                     };
                 };
+                if (debug_page==9){
+                    if (event.key.code==sf::Keyboard::Down){
+                        if (debug_choice < 4){
+                            debug_choice++;
+                        }else{
+                            debug_choice=0;
+                    };
+                    };
+                    if (event.key.code==sf::Keyboard::Up){
+                        if (debug_choice > 0){
+                            debug_choice--;
+                        }else{
+                            debug_choice=4;
+                        };
+                    };
+                }
                 };
             };
         };
@@ -338,22 +354,6 @@ void mainLoop(){
             time_otd_str=time_otd;
             HUDdisplay.showTextDEBUG("Debug menu",{0,0},window);
             HUDdisplay.showTextDEBUG("          ",{0,16},window);
-                //PAGE DOWN
-                if (isPressed(event,sf::Keyboard::Down)==0){
-                    if (debug_choice < 4){
-                        debug_choice++;
-                    }else{
-                        debug_choice=0;
-                };
-                };
-                //PAGE UP
-                if (isPressed(event,sf::Keyboard::Up)==0){
-                    if (debug_choice > 0){
-                        debug_choice--;
-                    }else{
-                        debug_choice=4;
-                    };
-                };
 
                 if (debug_choice==0){
                     HUDdisplay.showTextSELDEBUG("Set time: "+time_otd_str,{0,32},window);
