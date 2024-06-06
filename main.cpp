@@ -1535,7 +1535,6 @@ int main_menu(){
             
         };
         index_frame++;
-        std::cout << (index_frame%(7*16))/16 << std::endl;
         window.clear(sf::Color(248,248,248));
         
         HUDdisplay.showLogo({32,0},window);
