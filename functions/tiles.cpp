@@ -145,6 +145,7 @@ class TilesIndex{
             texture_day.loadFromFile("assets/tiles/a_day.png",sf::IntRect(x*16,j+y*16,xsize*16,ysize*16));
             animated_day_textures[i].push_back(texture_day);
         };
+        
         for (int j=0;j<j;i++){
             texture_night.loadFromFile("assets/tiles/a_night.png",    sf::IntRect(x*16,j+y*16,xsize*16,ysize*16));
             animated_night_textures[i].push_back(texture_night);

@@ -84,7 +84,9 @@ class Terrain{
         int max_x = real_player_pos_x+11;
         int max_y = real_player_pos_y+9;
 
+        int animated=0;
         int time_index;
+
         if (time_otd=='m'){time_index=0;}
         else if (time_otd=='d'){time_index=1;}
         else time_index=2;
@@ -95,7 +97,13 @@ class Terrain{
                 int pos_vec0 = j*64;
                 int pos_vec1 = i*64;
 
+                for (int k=0;k<tiles_index.animated_tiles.size();k++){
+                    if (tiles_index.getTileName(terrain_vector[i][j])==tiles_index.animated_tiles[k][0]);
+                    std::cout << "Tile is animated!" << std::endl;
+                };
+                
                 sf::Sprite sprite;
+
                 sprite.setTexture(tiles_index.textures[time_index][tiles_index.getIntIndex(terrain_vector[i][j])]);
                 sprite.setPosition(pos_vec0-ppos0+player_camera0,pos_vec1-ppos1+player_camera1);
                 sprite.scale(4.f,4.f);
