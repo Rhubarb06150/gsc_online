@@ -374,7 +374,7 @@ void mainLoop(){
 
     //SHOW ALL
     window.clear();
-    terrain.showTerrain(terrain_vector,player_pos,time_otd,window,player_offset,(debug&&debug_page==9&&debug_choice==2));
+    terrain.showTerrain(terrain_vector,player_pos,time_otd,window,player_offset,(debug&&debug_page==9&&debug_choice==2),index_frame);
     player_state=player.animPlayer(player_state,moving_timer,walking);
     player.showPlayer(player_type,player_state,window);
     
@@ -779,7 +779,7 @@ int randomPatternLoop(){
 
         window.clear(sf::Color(148,148,148));
         HUDdisplay.editorBG(window);
-        terrain.showTerrain(terrain_vector,player_pos,time_otd,window,player_offset,true);
+        terrain.showTerrain(terrain_vector,player_pos,time_otd,window,player_offset,true,index_frame);
         HUDdisplay.showTextDEBUG("Editor Mode 0.1",{0,0},window);
         if (message_timer<=60){
             HUDdisplay.showTextDEBUG(output_message,{0,560},window);
@@ -833,7 +833,7 @@ int showEditorControls(){
         };
     window.clear(sf::Color(148,148,148));
     HUDdisplay.editorBG(window);
-    terrain.showTerrain(terrain_vector,player_pos,time_otd,window,player_offset,true);
+    terrain.showTerrain(terrain_vector,player_pos,time_otd,window,player_offset,true,index_frame);
     HUDdisplay.showTextDEBUG("Editor Mode 0.1",{0,0},window);
 
     HUDdisplay.showTextDEBUG("                                   ",{32,32},window);
@@ -1361,7 +1361,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
 
         window.clear(sf::Color(148,148,148));
         HUDdisplay.editorBG(window);
-        terrain.showTerrain(terrain_vector,player_pos,time_otd,window,player_offset,true);
+        terrain.showTerrain(terrain_vector,player_pos,time_otd,window,player_offset,true,index_frame);
         
         if (pos1set){
             HUDdisplay.showTextBluDEBUG("pos1",{pos1[0]*64-player_pos[0]+player_offset[0],pos1[1]*64-player_pos[1]+player_offset[1]},window);
@@ -1596,7 +1596,7 @@ int show_debug_pause(){
             };
         };
         window.clear();
-        terrain.showTerrain(terrain_vector,player_pos,time_otd,window,player_offset,false);
+        terrain.showTerrain(terrain_vector,player_pos,time_otd,window,player_offset,false,index_frame);
         player.showPlayer(player_type,player_state,window);
         HUDdisplay.showTextDEBUG("     debug pause    ",{192,256},window);
         HUDdisplay.showTextDEBUG("                    ",{192,256+16},window);

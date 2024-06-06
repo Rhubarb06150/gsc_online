@@ -57,7 +57,7 @@ class Terrain{
         return terrain_vector;
     };
 
-    int showTerrain(std::vector<std::vector<std::string>> terrain_vector, std::vector<int> player_pos, char time_otd, sf::RenderWindow& window, std::vector<int> player_camera, bool light_stand){
+    int showTerrain(std::vector<std::vector<std::string>> terrain_vector, std::vector<int> player_pos, char time_otd, sf::RenderWindow& window, std::vector<int> player_camera, bool light_stand, int frame_index){
 
         int shown_sprites = 0;
         int ppos0 = player_pos[0];
