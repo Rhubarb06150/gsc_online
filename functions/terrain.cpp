@@ -105,7 +105,7 @@ class Terrain{
                 };
                 
                 sf::Sprite sprite;
-                if (animated){
+                if (!animated){
                     sprite.setTexture(tiles_index.textures[time_index][tiles_index.getIntIndex(terrain_vector[i][j])]);
                 }else{
                     sprite.setTexture(tiles_index.animated_textures[time_index][tiles_index.getAnimIndex(terrain_vector[i][j])][0]);
