@@ -1532,6 +1532,8 @@ int main_menu(){
                 window.close();
                 return 0;
             };
+            index_frame++;
+            std::cout << (16*index_frame%7)/8 << std::endl;
         };
         window.clear(sf::Color(248,248,248));
         
