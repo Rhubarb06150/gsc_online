@@ -84,7 +84,6 @@ class Terrain{
         int max_x = real_player_pos_x+11;
         int max_y = real_player_pos_y+9;
 
-        bool animated=false;
         int time_index;
 
         if (time_otd=='m'){time_index=0;}
@@ -93,7 +92,9 @@ class Terrain{
 
         for (int i = real_player_pos_y; i < terrain_vector.size();i++){
             for (int j = real_player_pos_x; j<terrain_vector[i].size();j++){
-
+                
+                bool animated=false;
+                
                 int pos_vec0 = j*64;
                 int pos_vec1 = i*64;
 
