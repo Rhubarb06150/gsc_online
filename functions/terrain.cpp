@@ -84,7 +84,7 @@ class Terrain{
         int max_x = real_player_pos_x+11;
         int max_y = real_player_pos_y+9;
 
-        int animated=0;
+        bool animated=false;
         int time_index;
 
         if (time_otd=='m'){time_index=0;}
@@ -99,13 +99,13 @@ class Terrain{
 
                 for (int k=0;k<tiles_index.animated_tiles.size();k++){
                     if (tiles_index.getTileName(terrain_vector[i][j])==tiles_index.animated_tiles[k][0]){
-                        animated=1;
+                        animated=true;
                         break;
                     };
                 };
                 
                 sf::Sprite sprite;
-                if (!animated){
+                if (animated){
                     sprite.setTexture(tiles_index.textures[time_index][tiles_index.getIntIndex(terrain_vector[i][j])]);
                 }else{
                     sprite.setTexture(tiles_index.animated_textures[time_index][tiles_index.getAnimIndex(terrain_vector[i][j])][0]);
