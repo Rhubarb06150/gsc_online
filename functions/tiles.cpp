@@ -163,6 +163,10 @@ class TilesIndex{
         animated_textures.push_back(animated_day_textures);
         animated_textures.push_back(animated_night_textures);
 
+        std::cout << animated_morning_textures.size() << std::endl;
+        std::cout << animated_day_textures.size() << std::endl;
+        std::cout << animated_night_textures.size() << std::endl;
+
         //les textures fonctionnent bien
     };
         
