@@ -143,7 +143,7 @@ class TilesIndex{
         animated_night_textures.push_back({});
 
         for (int j=0;j<frames_nb;j++){
-            texture_morning.loadFromFile("assets/tiles/a_morning.png",sf::IntRect(x*16,(j+y)*16,xsize*16,ysize*16));
+            texture_morning.loadFromFile("assets/tiles/a_morning.png",sf::IntRect(x*16,((j*(ysize))+y)*16,xsize*16,ysize*16));
             animated_morning_textures[i].push_back(texture_morning);
         };
 
@@ -153,7 +153,7 @@ class TilesIndex{
         };
 
         for (int j=0;j<frames_nb;j++){
-            texture_night.loadFromFile("assets/tiles/a_night.png",    sf::IntRect(x*16,(j+y)*16,xsize*16,ysize*16));
+            texture_night.loadFromFile("assets/tiles/a_night.png",    sf::IntRect(x*16,((j*(ysize))+y)*16,xsize*16,ysize*16));
             animated_night_textures[i].push_back(texture_night);
         };
         };
