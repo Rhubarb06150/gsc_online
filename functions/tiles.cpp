@@ -148,7 +148,7 @@ class TilesIndex{
         };
 
         for (int j=0;j<frames_nb;j++){
-            texture_day.loadFromFile("assets/tiles/a_day.png",sf::IntRect(x*16,(j+y+(ysize-1))*16,xsize*16,ysize*16));
+            texture_day.loadFromFile("assets/tiles/a_day.png",sf::IntRect(x*16,((j*(ysize))+y)*16,xsize*16,ysize*16));
             animated_day_textures[i].push_back(texture_day);
         };
 
