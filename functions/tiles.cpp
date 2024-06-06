@@ -206,7 +206,7 @@ class TilesIndex{
         int res;
         std::string fish;
         for (int i = 0;i<animated_tiles.size();i++){
-            if (animated_tiles[i][0]==index){
+            if (animated_tiles[i][0]==getTileName(index)){
                 std::cout << "Index trouvé >" << i << std::endl;
                 return i;
             };
