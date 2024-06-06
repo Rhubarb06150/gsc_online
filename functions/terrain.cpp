@@ -105,10 +105,13 @@ class Terrain{
                 };
                 
                 sf::Sprite sprite;
+                
                 if (!animated){
                     sprite.setTexture(tiles_index.textures[time_index][tiles_index.getIntIndex(terrain_vector[i][j])]);
                 }else{
-                    sprite.setTexture(tiles_index.animated_textures[time_index][tiles_index.getAnimIndex(terrain_vector[i][j])][0]);
+                    int animation_index=tiles_index.getAnimIndex(terrain_vector[i][j]);
+                    int frames_nb=std::stoi(tiles_index.animated_tiles[animation_index][1]);
+                    sprite.setTexture(tiles_index.animated_textures[time_index][animation_index][frame_index%frame_index]);
                 };
 
                 sprite.setPosition(pos_vec0-ppos0+player_camera0,pos_vec1-ppos1+player_camera1);
