@@ -108,7 +108,7 @@ class Terrain{
                 if (!animated){
                     sprite.setTexture(tiles_index.textures[time_index][tiles_index.getIntIndex(terrain_vector[i][j])]);
                 }else{
-                    sprite.setTexture(tiles_index.animated_textures[time_index][tiles_index.getAnimIndex(terrain_vector[i][j])][frame_index%7]);
+                    sprite.setTexture(tiles_index.animated_textures[time_index][tiles_index.getAnimIndex(terrain_vector[i][j])][frame_index%6]);
                 }
                 sprite.setPosition(pos_vec0-ppos0+player_camera0,pos_vec1-ppos1+player_camera1);
                 sprite.scale(4.f,4.f);
