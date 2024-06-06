@@ -28,9 +28,9 @@ class TilesIndex{
     TilesIndex(){
 
     //ANIMATED TILES
-    
+
         animated_tiles.push_back({"water","7","0011"});
-        animated_tiles.push_back({"flowers","2","1011"});
+        animated_tiles.push_back({"flower","2","1011"});
 
     //ENVIRONNEMENT
         tiles.push_back({"grass","0011","\\x00","0"});
