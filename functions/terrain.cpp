@@ -111,13 +111,15 @@ class Terrain{
                 }else{
                     int animation_index=tiles_index.getAnimIndex(terrain_vector[i][j]);
                     int frames_nb=std::stoi(tiles_index.animated_tiles[animation_index][1]);
-                    sprite.setTexture(tiles_index.animated_textures[time_index][animation_index][(frame_index*4%frames_nb*4)/4]);
+                    sprite.setTexture(tiles_index.animated_textures[time_index][animation_index][(frame_index*4%frames_nb)/4]);
                 };
 
                 sprite.setPosition(pos_vec0-ppos0+player_camera0,pos_vec1-ppos1+player_camera1);
                 sprite.scale(4.f,4.f);
-                if (light_stand&&ppos0/64==j&&ppos1/64==i){
+                if (light_stand){
+                    if (ppos0/64==j&&ppos1/64==i){
                     sprite.setColor(sf::Color(150,150,150));
+                    };
                 }
                 window.draw(sprite);
                 shown_sprites++;
