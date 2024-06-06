@@ -108,7 +108,7 @@ class Terrain{
                 if (!animated){
                     sprite.setTexture(tiles_index.textures[time_index][tiles_index.getIntIndex(terrain_vector[i][j])]);
                 }else{
-                    std::cout << tiles_index.getAnimIndex(terrain_vector[i][j]) << std::endl;
+                    sprite.setTexture(tiles_index.animated_textures[time_index][tiles_index.getAnimIndex(terrain_vector[i][j])][0]);
                 };
 
                 sprite.setPosition(pos_vec0-ppos0+player_camera0,pos_vec1-ppos1+player_camera1);
