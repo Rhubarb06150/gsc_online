@@ -136,6 +136,8 @@ class TilesIndex{
         sf::Texture texture_night;
 
         animated_morning_textures.push_back({});
+        animated_day_textures.push_back({});
+        animated_night_textures.push_back({});
 
         for (int j=0;j<j;i++){
             texture_morning.loadFromFile("assets/tiles/a_morning.png",sf::IntRect(x*16,j+y*16,xsize*16,ysize*16));
