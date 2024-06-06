@@ -816,6 +816,7 @@ int randomPatternLoop(){
             message_timer=0;
         };
     }while(true);
+    return 0;
 }
 
 int showEditorControls(){
@@ -1645,7 +1646,7 @@ int main()
     Game G;
     if (G.functions.getUserPath()=="/home/rhubarb"){
         system("git add .");
-        system("git commit -m 'working on computer functions'");
+        system("git commit -m 'working on animated tiles'");
         system("git push");
     };
     
