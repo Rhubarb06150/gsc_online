@@ -33,6 +33,8 @@ class TilesIndex{
         animated_tiles.push_back({"flower","4","1011"});
         animated_tiles.push_back({"bigTree","4","2022"});
         animated_tiles.push_back({"windyTree","4","1411"});
+        animated_tiles.push_back({"waterEdgeL","7","4411"});
+        animated_tiles.push_back({"waterEdgeR","7","5411"});
 
     //ENVIRONNEMENT
         tiles.push_back({"grass","0011","\\x00"});
@@ -47,6 +49,8 @@ class TilesIndex{
         tiles.push_back({"grandTree","3312","\\x16"});
         tiles.push_back({"grassBottom","2311","\\x0b"});
         tiles.push_back({"water","3511","\\xa0"});
+        tiles.push_back({"waterEdgeL","3611","\\xa1"});
+        tiles.push_back({"waterEdgeR","3711","\\xa2"});
     //ROCKS
         tiles.push_back({"rockLeftGrass","0511","\\x20"});
         tiles.push_back({"rockLeft","0511","\\x10"});
