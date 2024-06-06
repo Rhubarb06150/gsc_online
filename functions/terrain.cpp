@@ -98,8 +98,9 @@ class Terrain{
                 int pos_vec1 = i*64;
 
                 for (int k=0;k<tiles_index.animated_tiles.size();k++){
-                    if (tiles_index.getTileName(terrain_vector[i][j])==tiles_index.animated_tiles[k][0]);
-                    std::cout << "Tile is animated! (" << terrain_vector[i][j] << "==" << tiles_index.animated_tiles[k][0] << ")" << std::endl;
+                    if (tiles_index.getTileName(terrain_vector[i][j])==tiles_index.animated_tiles[k][0]){
+                        std::cout << "Tile is animated! (" << terrain_vector[i][j] << "==" << tiles_index.animated_tiles[k][0] << ")" << std::endl;
+                    };
                 };
                 
                 sf::Sprite sprite;
