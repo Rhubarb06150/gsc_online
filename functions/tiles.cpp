@@ -211,7 +211,7 @@ class TilesIndex{
                 return i;
             };
         };
-        return tiles.size()-1;
+        return animated_tiles.size()-1;
     };
 
     sf::Sprite getTile(std::string index){
