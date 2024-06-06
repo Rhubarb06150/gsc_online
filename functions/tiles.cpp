@@ -15,6 +15,7 @@ class TilesIndex{
     std::vector<std::vector<std::string>> tiles;
     std::vector<std::vector<std::string>> animated_tiles;
     std::vector<std::vector<sf::Texture>> textures;
+    std::vector<std::vector<std::vector<sf::Texture>>> animated_textures;
     std::vector<std::vector<std::string>> solids;
     
     std::vector<sf::Texture> morning_textures;
@@ -145,7 +146,7 @@ class TilesIndex{
             texture_day.loadFromFile("assets/tiles/a_day.png",sf::IntRect(x*16,j+y*16,xsize*16,ysize*16));
             animated_day_textures[i].push_back(texture_day);
         };
-        
+
         for (int j=0;j<j;i++){
             texture_night.loadFromFile("assets/tiles/a_night.png",    sf::IntRect(x*16,j+y*16,xsize*16,ysize*16));
             animated_night_textures[i].push_back(texture_night);
@@ -155,6 +156,10 @@ class TilesIndex{
         textures.push_back(morning_textures);
         textures.push_back(day_textures);
         textures.push_back(night_textures);
+
+        animated_textures.push_back(animated_morning_textures);
+        animated_textures.push_back(animated_day_textures);
+        animated_textures.push_back(animated_night_textures);
 
         //les textures fonctionnent bien
     };
@@ -191,6 +196,17 @@ class TilesIndex{
         std::string fish;
         for (int i = 0;i<tiles.size();i++){
             if (tiles[i][2]==index){
+                return i;
+            };
+        };
+        return tiles.size()-1;
+    };
+
+    int getAnimIndex(std::string index){
+        int res;
+        std::string fish;
+        for (int i = 0;i<animated_tiles.size();i++){
+            if (animated_tiles[i][0]==index){
                 return i;
             };
         };
