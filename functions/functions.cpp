@@ -71,7 +71,7 @@ class GSC_Functions{
 
     std::vector<std::string> saveGifFrame(int index_frame, sf::RenderWindow& window, std::vector<std::string> vector){
         sf::Texture texture;
-        texture.create(window.getSize().x/4, window.getSize().y/4);
+        texture.create((window.getSize().x)/4, (window.getSize().y)/4);
         texture.update(window);
         if (texture.copyToImage().saveToFile("/tmp/gscogiff_"+std::to_string(index_frame)+".png"))
         {
