@@ -73,7 +73,7 @@ class GSC_Functions{
         sf::Texture texture;
         int winx=window.getSize().x;
         int winy=window.getSize().y;
-        texture.create(winx*4, winy*4);
+        texture.create(winx, winy);
         texture.update(window);
         if (texture.copyToImage().saveToFile("/tmp/gscogiff_"+std::to_string(index_frame)+".png"))
         {
