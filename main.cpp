@@ -153,7 +153,7 @@ class Game{
         Player player;//players functions, used to show the player, also all players sprites are stored here
         TilesIndex Tiles;//tiles functions, tiles manager, sprites etc are all stored here
         GSC_Functions functions;//other functions such as save a map, get current date and time
-        float version;
+        double version;
 
         //TERRAIN VARS
         std::vector<std::vector<std::string>> terrain_vector;//where all tiles are saved by their index for example, \x00 is the "grass" tile
