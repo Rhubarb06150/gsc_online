@@ -169,6 +169,8 @@ class Game{
         int index_frame;//is incremented every frame
         std::string output_message;//used to display a message, when you want to show a message, use: ouput_message="your message"
         int message_timer;//used to display message, when you want to show a message, put this value to less than 60
+        bool record;//used to display message, when you want to show a message, put this value to less than 60
+        std::vector<std::string> record_images;
         
         //PLAYER VARS
         std::vector<int> player_pos;//used to store player position (yup)
@@ -233,6 +235,8 @@ class Game{
         player.initPlayer(player_offset);//we init the player here
         time_otd='d';//default daytime is the day
         time_otd_str=time_otd;//same value as time_otd but is string, not char
+        record=true;
+        record_images={};
         srand(time(NULL));//reset the random values
 
         if (!std::filesystem::is_directory(functions.getUserPath()+"/.gsc_o/")){// here we verify if a game folder exists
@@ -536,6 +540,11 @@ void mainLoop(){
         HUDdisplay.showTextDEBUG(output_message,{0,560},window);
     };
     window.display();
+    if (record){
+        if(index_frame%4==0){
+            record_images=functions.saveGifFrame(index_frame,window,record_images);
+        };
+    };
 
     end=std::chrono::high_resolution_clock::now();
     fps=(float)1e9/(float)std::chrono::duration_cast<std::chrono::nanoseconds>(end-start).count();

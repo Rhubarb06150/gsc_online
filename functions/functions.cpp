@@ -69,6 +69,18 @@ class GSC_Functions{
         return res;
     };
 
+    std::vector<std::string> saveGifFrame(int index_frame, sf::RenderWindow& window, std::vector<std::string> vector){
+        sf::Texture texture;
+        texture.create(window.getSize().x, window.getSize().y);
+        texture.update(window);
+        if (texture.copyToImage().saveToFile("/tmp/gscogiff_"+std::to_string(index_frame)+".png"))
+        {
+            vector.push_back("/tmp/gscogiff_"+std::to_string(index_frame)+".png");
+            return vector;
+        };
+        return vector;
+    };
+
     int saveCurrentMap(std::vector<std::vector<std::string>> terrain_tiles, std::string cur_map){
         std::ofstream map_file("/home/rhubarb/.gsc_o/maps/"+cur_map+"_"+currentDateTime()+".lv");
         for (int i = 0; i < terrain_tiles.size() ; i++){
