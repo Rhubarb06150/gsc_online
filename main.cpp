@@ -433,7 +433,7 @@ void mainLoop(){
             HUDdisplay.showTextDEBUG("                   ",{0,16},window);
             HUDdisplay.showTextDEBUG("Game folder /home/rhubarb/.gsc_o/",{0,32},window);
             HUDdisplay.showTextDEBUG("Press [F5] to open game folder",{0,48},window);
-            HUDdisplay.showTextDEBUG("Pokemon GSC Online "+std::to_string(version).substr(0,3),{0,64},window);
+            HUDdisplay.showTextDEBUG("Pokemon GSC Online "+std::to_string(version).substr(0,4),{0,64},window);
         }else if (debug_page==9){
             //DEBUG MENU HERE //////////////////////////////////////////////////////////////
             can_move=false;
@@ -791,7 +791,7 @@ int randomPatternLoop(){
         window.clear(sf::Color(148,148,148));
         HUDdisplay.editorBG(window);
         terrain.showTerrain(terrain_vector,player_pos,time_otd,window,player_offset,true,index_frame);
-        HUDdisplay.showTextDEBUG("Editor Mode "+std::to_string(version).substr(0,3),{0,0},window);
+        HUDdisplay.showTextDEBUG("Editor Mode "+std::to_string(version).substr(0,4),{0,0},window);
         if (message_timer<=60){
             HUDdisplay.showTextDEBUG(output_message,{0,560},window);
         };
@@ -845,7 +845,7 @@ int showEditorControls(){
     window.clear(sf::Color(148,148,148));
     HUDdisplay.editorBG(window);
     terrain.showTerrain(terrain_vector,player_pos,time_otd,window,player_offset,true,index_frame);
-    HUDdisplay.showTextDEBUG("Editor Mode "+std::to_string(version).substr(0,3),{0,0},window);
+    HUDdisplay.showTextDEBUG("Editor Mode "+std::to_string(version).substr(0,4),{0,0},window);
 
     HUDdisplay.showTextDEBUG("                                   ",{32,32},window);
     HUDdisplay.showTextDEBUG("       Level Editor Controls       ",{32,48},window);
@@ -1079,7 +1079,7 @@ std::string askPath(std::string path,sf::Event event,sf::RenderWindow& window){
     };
 
     window.clear(sf::Color(248,248,248));
-    HUDdisplay.showTextDEBUG("Pokemon GSC Online build "+std::to_string(version).substr(0,3),{0,0},window);
+    HUDdisplay.showTextDEBUG("Pokemon GSC Online build "+std::to_string(version).substr(0,4),{0,0},window);
     HUDdisplay.showTextDEBUG("27/05/24",{0,16},window);
     HUDdisplay.showTextDEBUG("F5 or X to confirm, F6 to cancel",{0,32},window);
 
@@ -1381,7 +1381,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
             HUDdisplay.showTextBluDEBUG("pos2",{pos2[0]*64-player_pos[0]+player_offset[0],pos2[1]*64-player_pos[1]+player_offset[1]},window);
         };
 
-        HUDdisplay.showTextDEBUG("Editor Mode "+std::to_string(version).substr(0,3),{0,0},window);
+        HUDdisplay.showTextDEBUG("Editor Mode "+std::to_string(version).substr(0,4),{0,0},window);
         if (menu_show&&!help_tiles_show){
             HUDdisplay.showTextDEBUG("Press Right Shift to show / hide menu",{0,16},window);
             actions[0]="Camera speed: "+std::to_string(camera_speed);
@@ -1526,7 +1526,7 @@ int main_menu(){
                             };
                             
                             window.clear(sf::Color(248,248,248));
-                            HUDdisplay.showTextDEBUG("Pokemon GSC Online build "+std::to_string(version).substr(0,3),{0,0},window);
+                            HUDdisplay.showTextDEBUG("Pokemon GSC Online build "+std::to_string(version).substr(0,4),{0,0},window);
                             HUDdisplay.showTextDEBUG("27/05/24",{0,16},window);
                             HUDdisplay.showTextDEBUG("F5 or X to confirm, F6 to cancel",{0,32},window);
                             HUDdisplay.showTextBOW("Settings"+real_res,{64,64},window);
@@ -1551,7 +1551,7 @@ int main_menu(){
         HUDdisplay.showLogo({32,0},window);
 
         //TEXTS DISPLAY
-        HUDdisplay.showTextDEBUG("Pokemon GSC Online build "+std::to_string(version).substr(0,3),{0,0},window);
+        HUDdisplay.showTextDEBUG("Pokemon GSC Online build "+std::to_string(version).substr(0,4),{0,0},window);
         HUDdisplay.showTextDEBUG("27/05/24",{0,16},window);
         HUDdisplay.showTextDEBUG("F5 or X to confirm, F6 to cancel",{0,32},window);
         HUDdisplay.showCursor({32,288+(choice*32)},window);
