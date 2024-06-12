@@ -382,8 +382,8 @@ void mainLoop(){
     //SHOW ALL
     window.clear();
     terrain.showTerrain(terrain_vector,player_pos,time_otd,window,player_offset,(debug&&debug_page==9&&debug_choice==2),index_frame);
-    //player_state=player.animPlayer(player_state,moving_timer,walking);
-    //player.showPlayer(player_type,player_state,window);
+    player_state=player.animPlayer(player_state,moving_timer,walking);
+    player.showPlayer(player_type,player_state,window);
     
     if (debug){
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1)&&debug){debug_page=1;};
