@@ -541,6 +541,12 @@ void mainLoop(){
     };
     window.display();
 
+    //if (record){
+    //    if(index_frame%4==0){
+    //        record_images=functions.saveGifFrame(index_frame,window,record_images);
+    //    };
+    //};
+
     end=std::chrono::high_resolution_clock::now();
     fps=(float)1e9/(float)std::chrono::duration_cast<std::chrono::nanoseconds>(end-start).count();
     fps_=fps;
@@ -1653,6 +1659,11 @@ int main()
         system("git add .");
         system("git commit -m 'working on animated tiles'");
         system("git push");
+    };
+
+    if (!std::filesystem::is_directory("/tmp/.gsc_o/")){
+        std::filesystem::create_directory("/tmp/.gsc_o/");
+        G.log("INFO","an folder has been created in /tmp folder (/tmp/.gsc_o/), it will be used to many things used for in-game process, you will not need to clean it, it will be cleaned automatically.");
     };
     
     if (!std::filesystem::is_directory(G.functions.getUserPath()+"/.gsc_o/")){
