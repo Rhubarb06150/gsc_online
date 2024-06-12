@@ -98,22 +98,22 @@ class Terrain{
                 int pos_vec0 = j*64;
                 int pos_vec1 = i*64;
 
-                for (int k=0;k<tiles_index.animated_tiles.size();k++){
-                    if (tiles_index.getTileName(terrain_vector[i][j])==tiles_index.animated_tiles[k][0]){
-                        animated=true;
-                        break;
-                    };
-                };
+                //for (int k=0;k<tiles_index.animated_tiles.size();k++){
+                //    if (tiles_index.getTileName(terrain_vector[i][j])==tiles_index.animated_tiles[k][0]){
+                //        animated=true;
+                //        break;
+                //    };
+                //};
                 
                 sf::Sprite sprite;
                 
-                if (!animated){
+                //if (!animated){
                     sprite.setTexture(tiles_index.textures[time_index][tiles_index.getIntIndex(terrain_vector[i][j])]);
-                }else{
-                    int animation_index=tiles_index.getAnimIndex(terrain_vector[i][j]);
-                    int frames_nb=std::stoi(tiles_index.animated_tiles[animation_index][1]);
-                    sprite.setTexture(tiles_index.animated_textures[time_index][animation_index][(frame_index%(frames_nb*16))/16]);
-                };
+                //}else{
+                //    int animation_index=tiles_index.getAnimIndex(terrain_vector[i][j]);
+                //    int frames_nb=std::stoi(tiles_index.animated_tiles[animation_index][1]);
+                //    sprite.setTexture(tiles_index.animated_textures[time_index][animation_index][(frame_index%(frames_nb*16))/16]);
+                //};
 
                 sprite.setPosition(pos_vec0-ppos0+player_camera0,pos_vec1-ppos1+player_camera1);
                 sprite.scale(4.f,4.f);
