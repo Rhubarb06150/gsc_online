@@ -69,6 +69,14 @@ class GSC_Functions{
         return res;
     };
 
+    int quitGame(sf::RenderWindow& window){
+        //if linux
+        system("rm -f /tmp/.gsc_o/ *.png");
+        system("rm -f /tmp/.gsc_o/ *.txt");
+        window.close();
+        return 0;
+    };
+
     std::vector<std::string> saveGifFrame(int index_frame, sf::RenderWindow& window, std::vector<std::string> vector){
         sf::Texture texture;
         int winx=window.getSize().x;
