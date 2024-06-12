@@ -540,11 +540,6 @@ void mainLoop(){
         HUDdisplay.showTextDEBUG(output_message,{0,560},window);
     };
     window.display();
-    if (record){
-        if(index_frame%4==0){
-            record_images=functions.saveGifFrame(index_frame,window,record_images);
-        };
-    };
 
     end=std::chrono::high_resolution_clock::now();
     fps=(float)1e9/(float)std::chrono::duration_cast<std::chrono::nanoseconds>(end-start).count();
