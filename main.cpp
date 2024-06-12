@@ -512,12 +512,10 @@ void mainLoop(){
                     HUDdisplay.showTextSELDEBUG("60 FPS limit: "+std::to_string(framerate_limit),{0,96},window);
                     if (isPressed(event,sf::Keyboard::Right)==0){
                         if (framerate_limit){
-                            window.setFramerateLimit(60);
                             SoundManager.soundEffect("PRESS");
                             output_message="Framerate limit is now set to 60 FPS";
                             message_timer=0;
                         }else{
-                            window.setFramerateLimit(8192);
                             SoundManager.soundEffect("PRESS");
                             output_message="Framerate limit is now removed";
                             message_timer=0;
