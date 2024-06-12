@@ -1663,7 +1663,7 @@ int main()
 
     if (!std::filesystem::is_directory("/tmp/.gsc_o/")){
         std::filesystem::create_directory("/tmp/.gsc_o/");
-        G.log("INFO","an folder has been created in /tmp folder (/tmp/.gsc_o/), it will be used to many things used for in-game process, you will not need to clean it, it will be cleaned automatically.");
+        G.log("INFO","an folder has been created in /tmp folder, it will be for in-game processes, it will be cleaned automatically.");
     };
     
     if (!std::filesystem::is_directory(G.functions.getUserPath()+"/.gsc_o/")){
