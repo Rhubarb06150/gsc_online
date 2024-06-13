@@ -1220,8 +1220,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                     }else{
                         choice=actions.size()-1;
                     };
-                };
-                };
+                    };
 
                 if (event.key.code==sf::Keyboard::Down){
                     if (choice<actions.size()-1){
@@ -1231,6 +1230,8 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                     };
                 if (event.key.code==sf::Keyboard::T){
                     help_tiles_show=!help_tiles_show;//show/hide the tile viewer
+                };
+                
                 };
             };
             };                
