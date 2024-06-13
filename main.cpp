@@ -1162,6 +1162,23 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
         while (window.pollEvent(event))//level editor true loop
         {
             if (event.type==sf::Event::KeyPressed){
+                if (menu_show){
+                    if (event.key.code==sf::Keyboard::Up){
+                        if (choice>0){
+                            choice--;
+                        }else{
+                            choice=actions.size()-1;
+                        };
+                    };
+    
+                    if (event.key.code==sf::Keyboard::Down){
+                        if (choice<actions.size()-1){
+                            choice++;
+                        }else{
+                            choice=0;
+                        };
+                    };
+                };
                 if (event.key.code==sf::Keyboard::RShift){
                     menu_show=!menu_show;
                 }
@@ -1214,26 +1231,11 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                     showEditorControls();
                 };
 
-                if (event.key.code==sf::Keyboard::Up){
-                    if (choice>0){
-                        choice--;
-                    }else{
-                        choice=actions.size()-1;
-                    };
-                    };
-
-                if (event.key.code==sf::Keyboard::Down){
-                    if (choice<actions.size()-1){
-                        choice++;
-                    }else{
-                        choice=0;
-                    };
                 if (event.key.code==sf::Keyboard::T){
                     help_tiles_show=!help_tiles_show;//show/hide the tile viewer
                 };
                 
                 };
-            };
             };                
         };
 
