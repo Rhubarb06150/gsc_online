@@ -1162,6 +1162,9 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
         while (window.pollEvent(event))//level editor true loop
         {
             if (event.type==sf::Event::KeyPressed){
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::RShift)){
+                    menu_show=!menu_show;
+                }
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift)){//for forced fill verify first if left shift is pressed
                     if (event.key.code==sf::Keyboard::F){
                         if (pos1set&&pos2set){//verify if pos1 and pos2 is set

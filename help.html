@@ -6,7 +6,7 @@
 </head>
 <style>
     *{font-family:Verdana,Helvetica,Arial,Sans-Serif;margin:0px;padding:0px;}
-    header{background:linear-gradient(180deg, #151515 0%,#404040 100%);padding-top:50px;padding-bottom:50px;}
+    header{background:linear-gradient(180deg, #151515 0%,#404040 80%);padding-top:50px;padding-bottom:50px;}
     .abs-box{position:sticky;background-color:#404045;margin-left:10px;padding:5px;width:max-content;border:2px #808080 solid;max-width:50vw;top:10px;filter:drop-shadow(#000000 4px 4px 0px);}
     .bigger-span{font-size:25px;}
     .smaller-span{font-size:15px;padding-left:10px;}
@@ -31,6 +31,7 @@
         <h4>Jump to:</h4><br>
         <a class="bigger-span" href="#level-editor">Level editor</a><br>
         <a class="smaller-span" href="#basic-controls-level-editor">Basic controls</a><br>
+        <a class="smaller-span" href="#menu-options-level-editor">Menu options</a><br>
         <br>
         <a class="bigger-span" href="#engine-help">Engine help</a><br>
         <a class="smaller-span" href="#how-regular-tiles-works">How regular tiles works</a><br>
@@ -51,24 +52,38 @@
         <h3 id="basic-controls-level-editor">Basic controls</h3><br>
             <p>Here is the list of the basic controls of the level editor:<br><br>
             <table>
-            <tr>
-            <th>Key/Combo</th>
-            <th>Action</th>
-            </tr>
-            <tr><td>Arrows</td><td>Move arround the terrain</td></tr>
-            <tr><td>Right Shift</td><td>Open/close editor menu</td></tr>
-            <tr><td>G</td><td>Place selected tile</td></tr>
-            <tr><td>V</td><td>Place copied tile</td></tr>
-            <tr><td>X</td><td>Remove tile (replaced with default tile)</td></tr>
-            <tr><td>Left Shift + X</td><td>Remove completely tile (replaced with empty tile)</td></tr>
-            <tr><td>C</td><td>Copy hovered tile</td></tr>
-            <tr><td>Left Shift + F</td><td>Fill square (from pos1 to pos2)</td></tr>
-            <tr><td>F1</td><td>Take a screenshot</td></tr>
-            <tr><td>F3</td><td>Place pos1 here</td></tr>
-            <tr><td>F4</td><td>Place pos2 here</td></tr>
-            </table>    
+            <tr><th>Key/Combo</th><th>Action</th></tr>
+            <tr><td style="font-weight:bold;">Arrows</td><td>Move arround the terrain/navigate throught the menu</td></tr>
+            <tr><td style="font-weight:bold;">Right Shift</td><td>Open/close editor menu</td></tr>
+            <tr><td style="font-weight:bold;">G</td><td>Place selected tile</td></tr>
+            <tr><td style="font-weight:bold;">V</td><td>Place copied tile</td></tr>
+            <tr><td style="font-weight:bold;">X</td><td>Remove tile (replaced with default tile)</td></tr>
+            <tr><td style="font-weight:bold;">Left Shift + X</td><td>Remove completely tile (replaced with empty tile)</td></tr>
+            <tr><td style="font-weight:bold;">C</td><td>Copy hovered tile</td></tr>
+            <tr><td style="font-weight:bold;">Left Shift + F</td><td>Fill square (from pos1 to pos2)</td></tr>
+            <tr><td style="font-weight:bold;">F1</td><td>Take a screenshot</td></tr>
+            <tr><td style="font-weight:bold;">F3</td><td>Place pos1 here</td></tr>
+            <tr><td style="font-weight:bold;">F4</td><td>Place pos2 here</td></tr>
+            </table>
+            </p><br>
+        <h3 id="menu-options-level-editor">Menu options</h3><br>
+            <p>Here is the list of the basic controls of the level editor:<br><br>
+            <table>
+            <tr><th>Option name</th><th>Action</th></tr>
+            <tr><td style="font-weight:bold;">Camera speed</td><td>Modify the camera speed</td></tr>
+            <tr><td style="font-weight:bold;">Map width</td><td>Modify the map width</td></tr>
+            <tr><td style="font-weight:bold;">Map height</td><td>Modify the map heigth</td></tr>
+            <tr><td style="font-weight:bold;">Default tile</td><td>Modify the default tile (default terrain tile)</td></tr>
+            <tr><td style="font-weight:bold;">Selected tile</td><td>Modify the default tile (tile used when placing tiles)</td></tr>
+            <tr><td style="font-weight:bold;">Load map</td><td>Loads a selected map file</td></tr>
+            <tr><td style="font-weight:bold;">Save map</td><td>Save the map in a .lv file</td></tr>
+            <tr><td style="font-weight:bold;">Fill square</td><td>Fill square (from pos1 to pos2) after confirmation</td></tr>
+            <tr><td style="font-weight:bold;">Options</td><td>Open level editor settings</td></tr>
+            <tr><td style="font-weight:bold;">Smart rock</td><td>Format all rocks to make them respect rock patterns <a href="rock-pattern-example.png">see example</a></td></tr>
+            <tr><td style="font-weight:bold;">Controls</td><td>Open the controls window</td></tr>
+            </table>
             </p>
-        
+
         <div class="line"></div>
         
         <h2 id="engine-help">Engine help</h2><br>
