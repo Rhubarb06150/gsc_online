@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Pokémon GSC Online Documentation</title>
+    <link rel="icon" href="assets/icon.png">
+</head>
+<style>
+    *{font-family:Verdana,Helvetica,Arial,Sans-Serif;margin:0px;padding:0px;}
+    header{background:linear-gradient(180deg, #151515 0%,#404040 100%);padding-top:50px;padding-bottom:50px;}
+    .abs-box{position:sticky;background-color:#404045;margin-left:10px;padding:5px;width:max-content;border:2px #808080 solid;max-width:50vw;top:10px;filter:drop-shadow(#000000 4px 4px 0px);}
+    .bigger-span{font-size:25px;}
+    .smaller-span{font-size:15px;padding-left:10px;}
+    body{position:relative;background:linear-gradient(180deg,#404040 0%,#101020 100%);background-size:auto;min-height:100vh;padding-bottom:55px;}
+    a:link{color:#ff8800;text-decoration:none;}
+    a:visited{color:#ff8800;text-decoration:none;}
+    a:hover{color:#00aa00;text-decoration:underline;}
+    .infos{color:#ffff00;font-weight:100;}
+    .box{background-color:#404045;margin:10px;padding:5px;width:max-content;border:2px #808080 solid;max-width:50vw;overflow:hidden;}
+    footer{position:absolute;bottom:0;background:linear-gradient(0deg,#252525 0%,#505050 100%);width:100%;color:#000000;padding-top:15px;padding-bottom:15px;}
+    img{width:auto;image-rendering:pixelated;}
+    p,h1,h2,h3,h4,h5{color:#ffffff;}
+    .line{width:75%;border-top:#999999 1px solid;margin-bottom:32px;margin-top:32px;}
+    table{border-collapse:collapse;color:#ffffff;}
+    td,th,tr{border:1px #999999 solid;padding:4px;}
+</style>
+<body>
+    <header id="title">
+    <center><h1>Pokémon GSC Online Documentation</h1></center>
+    </header>
+    <div class="box" style="filter: drop-shadow(#000000 4px 4px 0px);">
+        <h4>Jump to:</h4><br>
+        <a class="bigger-span" href="#level-editor">Level editor</a><br>
+        <a class="smaller-span" href="#basic-controls-level-editor">Basic controls</a><br>
+        <br>
+        <a class="bigger-span" href="#engine-help">Engine help</a><br>
+        <a class="smaller-span" href="#how-regular-tiles-works">How regular tiles works</a><br>
+        <a class="smaller-span" href="#how-animated-tiles-works">How animated tiles works</a><br>
+        <a class="smaller-span" href="#how-map-works">How map works</a><br>
+        <br>
+        <a class="bigger-span" href="#modding-help">Modding help</a><br>
+    </div>
+    <div class="abs-box">
+        <a href="#title">Move to top</a>
+    </div>
+    <center>
+    <div class="box" style="filter: drop-shadow(#000000 0px 0px 20px);">
+        <!-- Engine help -->
+        <h2 id="level-editor">Level Editor</h2><br>
+        <h4>general help about the GSC Online level editor</h4><br>
+        <h4 style="color:#ffff00">Important informations:</h4><p>The level editor is game-included, and you can't use the mouse</p><br>
+        <h3 id="basic-controls-level-editor">Basic controls</h3><br>
+            <p>Here is the list of the basic controls of the level editor:<br><br>
+            <table>
+            <tr>
+            <th>Key/Combo</th>
+            <th>Action</th>
+            </tr>
+            <tr><td>Arrows</td><td>Move arround the terrain</td></tr>
+            <tr><td>Right Shift</td><td>Open/close editor menu</td></tr>
+            <tr><td>G</td><td>Place selected tile</td></tr>
+            <tr><td>V</td><td>Place copied tile</td></tr>
+            <tr><td>X</td><td>Remove tile (replaced with default tile)</td></tr>
+            <tr><td>Left Shift + X</td><td>Remove completely tile (replaced with empty tile)</td></tr>
+            <tr><td>C</td><td>Copy hovered tile</td></tr>
+            <tr><td>Left Shift + F</td><td>Fill square (from pos1 to pos2)</td></tr>
+            <tr><td>F1</td><td>Take a screenshot</td></tr>
+            <tr><td>F3</td><td>Place pos1 here</td></tr>
+            <tr><td>F4</td><td>Place pos2 here</td></tr>
+            </table>    
+            </p>
+        
+        <div class="line"></div>
+        
+        <h2 id="engine-help">Engine help</h2><br>
+        <h4>general help about the GSC Online engine functioning</h4><br>
+        <h4 style="color:#ffff00">Important informations:</h4><p>GSC Online is fully written in C++ and uses the <a href="https://sfml-dev.org" target="_blank">SFML 2</a> library</p><br>
+        <h3 id="how-regular-tiles-works">How regular tiles works</h3><br>
+            <p>Tiles indexes are stored as string vectors in a vector inside of the TilesIndex class (in functions/tiles.cpp)<br>
+            Here is an example:<br><br>
+            <img src="help/fig1.png" alt="Tile declaration example" title="Tile declaration example">
+            <br>I'm gonna explain the three strings above:<br><br>
+            first string: the tile name, when displayed in debug menus or in level editor.<br>
+            second string: the position and the size of the tile in the tileset.<br>
+            third string: the tile index, used in level editor and in saved maps.<br><br>
+            When they are declared, tiles are ripped from the 3 diffrents tilesets and saved in 3 diffrents texture vectors.<br>
+            (first is for morning textures, second is for day textures, and third is for night textures)<br><br>
+            They are ripped thanks to the second string in tile declation (in our example it is the "1122" string)<br><br>
+            the second string is always splitted in 4 integers:<br><br>
+            first: the X position in the tileset<br>
+            second: the Y position in the tileset<br>
+            third: the horizontal size of the tile<br>
+            fourth: the vertical size of the tile<br><br>
+            <span class="infos">note: horizontal and vertical sizes are multiplied by 16, so 11 means a 16x16 tile</span><br><br>
+            <img src="help/fig2.png" alt="Tile ripping functioning" title="Tile ripping functioning"><br><br>
+            Then, in the showTerrain function, the function show the texture that's associated with the tile index by getting it's position in the tiles vector because the tiles have the same position as their textures in the textures vector.<br>
+            For example the bigTree index is \x05, so when the showTerrain sees a \x05, it get the tile position, then acces to it's texture, in the texture vector by using the tile position.
+            </p><br>
+        <h3 id="how-animated-tiles-works">How animated tiles works</h3><br>
+            <p>Animated tiles are stored the same way as basic tiles, but their textures are stored in a vector of textures vector<br>
+            For make a tile animated, you first need to declare it as a classic tile:<br><br>Example:<br><br>
+            <img src="help/fig3.png" alt="Basic tile declaration" title="Basic tile declaration"><br>
+            Then you declare it as a animated tile like this:<br>
+            <img src="help/fig4.png" alt="Animated tile declaration" title="Animated tile declaration"><br>
+            <span class="infos">note: the animated tile name (first string in declaration) must be an existing name in tiles vector,<br>otherwise, the animated tile could not be displayed.</span><br><br>
+            I'm gonna explain the three strings above:<br><br>
+            first string: tile name<br>
+            second string: number of frames<br>
+            third string: animation position and size<br><br>
+            In our example:<br><br>
+            The second string is "1011", and it will be ripped in four integers:<br><br>
+            first: the X pos of the animation first frame<br>
+            second: the Y pos of the animation first frame<br>
+            third: the horizontal size of a frame<br>
+            fourth: the vertical size of a frame<br><br>
+            Explaination of 
+            <font color="#df7126">1</font><font color="#26dfd6">0</font><font color="#ff0000">1</font><font color="#fbff00">1</font>
+            <br><br>
+            So here, the starting point is at <font color="#df7126">X=1</font> and <font color="#26dfd6">Y=0</font>, and the frame is 16x16 (<font color="#ff0000">1</font>*16 & <font color="#fbff00">1</font>*16)<br><br>
+            <img src="help/animated_tiles.gif" alt="Tile animation functioning" title="Tile animation functioning"><br>
+            Here is how animated tiles are stored in the frames vectors.<br>
+            Example of frames vector:<br>
+            <div style="text-align:left;width:max-content;">
+                <p>
+                {<br>
+                {water_frame0_texture, water_frame1_texture, water_frame2_texture},<br>
+                {flower_frame0_texture, flower_frame1_texture}<br>
+                }
+                </p>
+            </div>
+            </p>
+        <h3 id="how-map-works">How map works</h3><br>
+            <p>Map are stored in .lv files (if it's not .lv, it will work if structured well), here is what a file level looks like:<br><br>
+            <img src="help/fig5.png" alt=".lv map file structure" title=".lv map file structure"><br><br>
+            When a map is loaded, the terrain_vector is cleared and then the map file is read and does this process:<br>
+            for each line: a empty vector is added in terrain_vector<br>
+            for each tile: tile is added in terrain_vector last line<br><br>
+            Example:
+            <br>
+            </p>
+            <div style="text-align:left;width:max-content;">
+                <p>
+                {<br>
+                {"\\x00","\\x00","\\x00","\\x00"},<br>
+                {"\\x00","\\x00","\\x00","\\x00"},<br>
+                {"\\x00","\\x00","\\x00","\\x00"},<br>
+                {"\\x00","\\x00","\\x00","\\x00"} <br>
+                }
+                </p>
+            </div><br>
+            <p>
+            This example is a map of 4x4 grass tiles<br><br>
+            Map when rendered:<br><br>
+            <img src="help/fig6.png" alt="Example map rendered" title="Example map rendered">
+            </p>
+    </div>
+    <footer>
+        <font color="#ffffff">
+            Pokémon GSC Online is open-source you can visit the repository <a href="https://www.github.com/Rhubarb06150/gsc_online" target="_blank">here</a>, for any questions, suggestions or any help needed you can contact me on <a href="https://www.twitter.com/rhubarb06150" target="_blank">twitter</a> or at mail <a href="mailto:rhubarb@smbxworld.net">rhubarb@smbxworld.net</a>
+        </font>
+    </footer>
+    </center>
+</body>
+</html>

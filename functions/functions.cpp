@@ -72,7 +72,8 @@ class GSC_Functions{
     int quitGame(sf::RenderWindow& window){
         //if linux
         system("rm -f /tmp/.gsc_o/*.png");
-        system("rm -f /tmp/.gsc_o/*.txt"); 
+        system("rm -f /tmp/.gsc_o/*.txt");
+        system("rm -f /tmp/.gsc_o/*.json"); 
         window.close();
         return 0;
     };
