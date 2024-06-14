@@ -31,6 +31,7 @@ class GSC_Functions{
         strftime(buf,sizeof(buf),"%Y_%m_%d_%X",&tstruct);
         return ReplaceAll(buf,":","_");
     };
+
     std::string currentHour() {
         time_t now=time(0);
         struct tm tstruct;
@@ -45,7 +46,7 @@ class GSC_Functions{
         while((start_pos = str.find(from, start_pos)) != std::string::npos) {
             str.replace(start_pos, from.length(), to);
             start_pos += to.length();
-        }
+        };
         return str;
     };
 

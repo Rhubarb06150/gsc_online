@@ -7,47 +7,72 @@
 <style>
     *{font-family:Verdana,Helvetica,Arial,Sans-Serif;margin:0px;padding:0px;}
     header{background:linear-gradient(180deg, #151515 0%,#404040 80%);padding-top:50px;padding-bottom:50px;}
-    .abs-box{position:sticky;background-color:#404045;margin-left:10px;padding:5px;width:max-content;border:2px #808080 solid;max-width:50vw;top:10px;filter:drop-shadow(#000000 4px 4px 0px);}
+    .abs-box{position:sticky;background-color:#404045;margin-left:10px;padding:5px;width:max-content;border:2px #808080 solid;top:10px;filter:drop-shadow(#000000 4px 4px 0px);z-index:10;;}
+    .jump-to-box{margin:10px;background-color:#404045;padding:20px;width:max-content;border:2px #808080 solid;filter:drop-shadow(#000000 4px 4px 0px);}
     .bigger-span{font-size:25px;}
     .smaller-span{font-size:15px;padding-left:10px;}
     body{position:relative;background:linear-gradient(180deg,#404040 0%,#101020 100%);background-size:auto;min-height:100vh;padding-bottom:55px;}
-    a:link{color:#ff8800;text-decoration:none;}
+    a,a:link{color:#ff8800;text-decoration:none;cursor:pointer;}
     a:visited{color:#ff8800;text-decoration:none;}
-    a:hover{color:#00aa00;text-decoration:underline;}
+    a:hover{color:#00ff00;text-decoration:underline;}
     .infos{color:#ffff00;font-weight:100;}
-    .box{background-color:#404045;margin:10px;padding:5px;width:max-content;border:2px #808080 solid;max-width:50vw;overflow:hidden;}
+    .small{color:#aaaaaa;}
+    .box{background-color:#404045;padding:20px;width:max-content;border:2px #808080 solid;max-width:50vw;overflow:hidden;z-index:10;filter:drop-shadow(#000000 0px 0px 40px);}
     footer{position:absolute;bottom:0;background:linear-gradient(0deg,#252525 0%,#505050 100%);width:100%;color:#000000;padding-top:15px;padding-bottom:15px;}
     img{width:auto;image-rendering:pixelated;}
     p,h1,h2,h3,h4,h5{color:#ffffff;}
     .line{width:75%;border-top:#999999 1px solid;margin-bottom:32px;margin-top:32px;}
-    table{border-collapse:collapse;color:#ffffff;}
-    td,th,tr{border:1px #999999 solid;padding:4px;}
+    table{border-collapse:collapse;color:#ffffff;filter:drop-shadow(#000000 0px 0px 20px);max-width:90%;}
+    th{border:1px #999999 solid;padding:4px;background:#505050;}
+    tr{border:1px #999999 solid;padding:4px;background:#353540;}
+    td{border:1px #999999 solid;padding:4px}
+    b{color:#00aaff}
+    @media only screen and (max-width:700px){.abs-box{filter:none;}body{background:#404045;}.box{width:calc(100vw - 80px);max-width:calc(100vw - 80px);border:none;filter:none;padding:40px;}.jump-to-box{margin:0px;filter:none;border:none;width:calc(100vw - 40px);}p{font-size:10px;}h1{font-size:20px;}span{font-size:10px;}h2{font-size:12px;}h3{font-size:14px;}h4{font-size:16px;}img{width:50vw;}table{font-size:10px;}header{background:linear-gradient(180deg, #151515 0%,#404045 80%);}}
 </style>
+<script>
+    smartRockShow=false;
+    function toggleSmartRock(){
+        smartRockShow=!smartRockShow;
+        if (smartRockShow){
+            document.getElementById("smart-rock-example").style.display="block";
+            document.getElementById("smartRockA").innerHTML="hide example";
+        }else{
+            document.getElementById("smart-rock-example").style.display="none";
+            document.getElementById("smartRockA").innerHTML="show example";
+        };
+    };
+</script>
 <body>
     <header id="title">
     <center><h1>Pokémon GSC Online Documentation</h1></center>
     </header>
-    <div class="box" style="filter: drop-shadow(#000000 4px 4px 0px);">
+    <div id="jump-to" class="jump-to-box">
         <h4>Jump to:</h4><br>
-        <a class="bigger-span" href="#level-editor">Level editor</a><br>
+        <span>
+        <a class="bigger-span" href="#level-editor" title="All the help you'll need about the level editor">Level editor</a><br>
         <a class="smaller-span" href="#basic-controls-level-editor">Basic controls</a><br>
         <a class="smaller-span" href="#menu-options-level-editor">Menu options</a><br>
         <br>
-        <a class="bigger-span" href="#engine-help">Engine help</a><br>
+        <a class="bigger-span" href="#engine-help" title="Explainations about the engine functioning">Engine help</a><br>
         <a class="smaller-span" href="#how-regular-tiles-works">How regular tiles works</a><br>
         <a class="smaller-span" href="#how-animated-tiles-works">How animated tiles works</a><br>
         <a class="smaller-span" href="#how-map-works">How map works</a><br>
+        <a class="smaller-span" href="#how-the-terrain-is-shown">How the terrain in shown</a><br>
         <br>
-        <a class="bigger-span" href="#modding-help">Modding help</a><br>
+        <a class="bigger-span" href="#functions" title="Explainations of how functions works and what they do">Functions</a><br>
+        <p class="smaller-span small">Terrain functions</p>
+        <a class="smaller-span" href="#function-terrainForm">terrainForm</a><br>
+        <a class="smaller-span" href="#function-showTerrain">showTerrain</a><br>
+    </span>
     </div>
     <div class="abs-box">
-        <a href="#title">Move to top</a>
+        <p><a href="#title">Move to top</a></p>
     </div>
     <center>
-    <div class="box" style="filter: drop-shadow(#000000 0px 0px 20px);">
-        <!-- Engine help -->
+    <div class="box">
+        <!-- Level editor -->
         <h2 id="level-editor">Level Editor</h2><br>
-        <h4>general help about the GSC Online level editor</h4><br>
+        <h4>General help about the GSC Online level editor</h4><br>
         <h4 style="color:#ffff00">Important informations:</h4><p>The level editor is game-included, and you can't use the mouse</p><br>
         <h3 id="basic-controls-level-editor">Basic controls</h3><br>
             <p>Here is the list of the basic controls of the level editor:<br><br>
@@ -67,7 +92,7 @@
             </table>
             </p><br>
         <h3 id="menu-options-level-editor">Menu options</h3><br>
-            <p>Here is the list of the basic controls of the level editor:<br><br>
+            <p>Here is the list of the options of the level editor:<br><br>
             <table>
             <tr><th>Option name</th><th>Action</th></tr>
             <tr><td style="font-weight:bold;">Camera speed</td><td>Modify the camera speed</td></tr>
@@ -79,15 +104,20 @@
             <tr><td style="font-weight:bold;">Save map</td><td>Save the map in a .lv file</td></tr>
             <tr><td style="font-weight:bold;">Fill square</td><td>Fill square (from pos1 to pos2) after confirmation</td></tr>
             <tr><td style="font-weight:bold;">Options</td><td>Open level editor settings</td></tr>
-            <tr><td style="font-weight:bold;">Smart rock</td><td>Format all rocks to make them respect rock patterns <a href="rock-pattern-example.png">see example</a></td></tr>
+            <tr><td style="font-weight:bold;">Smart rock</td><td>Format all rocks to make them respect rock patterns <a onclick="toggleSmartRock()" id="smartRockA">show example</a></td></tr>
             <tr><td style="font-weight:bold;">Controls</td><td>Open the controls window</td></tr>
             </table>
             </p>
+            <div id="smart-rock-example" style="display:none;">
+                <p><br>Smart rock example</p><br>
+                <img src="help/smart-rock-example.png" alt="smart rock example" title="smart rock example" onerror="document.body.style.display='none';">
+            </div>
 
         <div class="line"></div>
         
+        <!-- Engine Help -->
         <h2 id="engine-help">Engine help</h2><br>
-        <h4>general help about the GSC Online engine functioning</h4><br>
+        <h4>General help about the GSC Online engine functioning</h4><br>
         <h4 style="color:#ffff00">Important informations:</h4><p>GSC Online is fully written in C++ and uses the <a href="https://sfml-dev.org" target="_blank">SFML 2</a> library</p><br>
         <h3 id="how-regular-tiles-works">How regular tiles works</h3><br>
             <p>Tiles indexes are stored as string vectors in a vector inside of the TilesIndex class (in functions/tiles.cpp)<br>
@@ -143,7 +173,7 @@
                 </p>
             </div>
             </p>
-        <h3 id="how-map-works">How map works</h3><br>
+            <h3 id="how-map-works">How map works</h3><br>
             <p>Map are stored in .lv files (if it's not .lv, it will work if structured well), here is what a file level looks like:<br><br>
             <img src="help/fig5.png" alt=".lv map file structure" title=".lv map file structure"><br><br>
             When a map is loaded, the terrain_vector is cleared and then the map file is read and does this process:<br>
@@ -153,24 +183,71 @@
             <br>
             </p>
             <div style="text-align:left;width:max-content;">
-                <p>
-                {<br>
-                {"\\x00","\\x00","\\x00","\\x00"},<br>
-                {"\\x00","\\x00","\\x00","\\x00"},<br>
-                {"\\x00","\\x00","\\x00","\\x00"},<br>
-                {"\\x00","\\x00","\\x00","\\x00"} <br>
-                }
-                </p>
+            <p>{<br>
+            {"\\x00","\\x00","\\x00","\\x00"},<br>
+            {"\\x00","\\x00","\\x00","\\x00"},<br>
+            {"\\x00","\\x00","\\x00","\\x00"},<br>
+            {"\\x00","\\x00","\\x00","\\x00"}<br>
+            }</p>
             </div><br>
             <p>
             This example is a map of 4x4 grass tiles<br><br>
             Map when rendered:<br><br>
             <img src="help/fig6.png" alt="Example map rendered" title="Example map rendered">
-            </p>
+            </p><br>
+        <h3 id="how-the-terrain-is-shown">How the terrain is shown</h3><br>
+            <p>First of all, you need to know than the terrain you are standing on when in game is stored in  a 2D vector of tiles indexes (\x00 is a tile index, grass is not)<br>
+            <br>Once the terraini vector is set, every frame the <a href="#function-showTerrain">showTerrain</a> function is called                
+            </p><br>
+
+        <div class="line"></div>
+
+        <!-- Functions -->
+
+        <h2 id="functions">Functions</h2><br>
+        <h4>Explainations on GSC Online functions</h4><br>
+        <h4 style="color:#ffff00">Important informations:</h4><p>GSC Online is fully written in C++ and uses the <a href="https://sfml-dev.org" target="_blank">SFML 2</a> library</p><br>
+        <h3>Terrain functions</h3><br>
+        <!-- <tr><td style="font-weight:bold;"></td><td></td></tr> -->
+        <p><b id="function-terrainForm">terrainForm</b>(<span class="small">terrain_vector , map_path</span>)<br><br>
+            Reading the map file at the given path and then reading the file line by line, then every 4 letters, it adds the tile in the <span class="small">terrain_vector</span>.<br><br></p>
+            <div style="text-align:left;width:max-content;color:#ffffff"><p>
+            <span class="small">terrain_vector</span> = std::vector&lt;std::vector&lt;std::string&gt;&gt;<br>
+            <span class="small">map_path </span>= std::string</div><br>
+            <span class="small">returns the terrain_vector</span><br><br>
+            <p>
+        <b id="function-showTerrain">showTerrain</b>(<span class="small">terrain_vector , player_pos , time_otd , window , player_camera , light_stand , frame_index</span>)<br><br>
+            Display the terrain. (no shit)<br><br></p>
+            <div style="text-align:left;width:max-content;color:#ffffff">
+            <span class="small">terrain_vector</span> = std::vector&lt;std::vector&lt;std::string&gt;&gt;<br>
+            <span class="small">player_pos</span> = std::vector&lt;int&gt;<br>
+            <span class="small">time_otd</span> = char<br>
+            <span class="small">window</span> = sf::RenderWindow&<br>
+            <span class="small">player_camera</span> = std::vector&lt;int&gt;<br>
+            <span class="small">light_stand</span> = bool<br>
+            <span class="small">frame_index</span> = int<br><br>
+            </div>
+            <div style="text-align:left;width:max-content;color:#ffffff">
+            <span class="small">returns 0 by default<br>
+            returns 1 if it displays under the player's view<br>
+            returns 2 if more than 200 tiles are displayed</span>
+            </div><br><br>
+
+        <h3>Tiles functions</h3><br>
+        <!-- <tr><td style="font-weight:bold;"></td><td></td></tr> -->
+        <p><b id="function-terrainForm">getIndex</b>(<span class="small">index</span>)<br><br>
+            Go for each tile in the tiles vector and if the <span class="small">index</span> matches an index in the <br><br></p>
+            <div style="text-align:left;width:max-content;color:#ffffff">
+            <span class="small">terrain_vector</span> = std::vector&lt;std::vector&lt;std::string&gt;&gt;<br>
+            <span class="small">map_path </span>= std::string</div><br>
+            <span class="small">returns the terrain_vector</span><br><br>
+            <p>
+        </div>
+
     </div>
     <footer>
         <font color="#ffffff">
-            Pokémon GSC Online is open-source you can visit the repository <a href="https://www.github.com/Rhubarb06150/gsc_online" target="_blank">here</a>, for any questions, suggestions or any help needed you can contact me on <a href="https://www.twitter.com/rhubarb06150" target="_blank">twitter</a> or at mail <a href="mailto:rhubarb@smbxworld.net">rhubarb@smbxworld.net</a>
+            <p>Pokémon GSC Online is open-source you can visit the repository <a href="https://www.github.com/Rhubarb06150/gsc_online" target="_blank">here</a>, for any questions, suggestions or any help needed you can contact me on <a href="https://www.twitter.com/rhubarb06150" target="_blank">twitter</a> or at mail <a href="mailto:rhubarb@smbxworld.net">rhubarb@smbxworld.net</a></p>
         </font>
     </footer>
     </center>
