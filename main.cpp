@@ -207,6 +207,7 @@ class Game{
         sf::Event event;//I'm just intializing this here so I don't have to pass it as an argument in every function
         sf::Image icon;//that's for the icon
         sf::Clock clock;//the clock that's used for ??? I don't even remember but I let it here bc Idk if it break the program
+        bool gpp_installed;
     Game(){
         version=0.0;
         log("ENGINE","GSC Online is launcing in version "+std::to_string(version).substr(0,4));
@@ -239,6 +240,7 @@ class Game{
         time_otd_str=time_otd;//same value as time_otd but is string, not char
         record=false;
         record_images={};
+        gpp_installed=false;
         srand(time(NULL));//reset the random values
 
         if (!std::filesystem::is_directory(functions.getUserPath()+"/.gsc_o/")){// here we verify if a game folder exists
@@ -1686,6 +1688,7 @@ int main()
     #ifdef __linux__
     if (system("g++ --help > /dev/null 2>&1")==0){
         G.log("ENGINE","The game can be modded, g++ is installed.");
+        G.gpp_installed=true;
     }else{
         G.log("WARN","g++ is not installed. If you want to use mods, you need to have g++ installed.");
         //G.crash("g++ is not installed on this system.\nIf you want to use mods,\nyou need to have g++ intalled.");
@@ -1693,6 +1696,7 @@ int main()
     #elif _WIN32
     if (system("g++ --help > nul")==0){
         G.log("ENGINE","The game can be modded, g++ is installed.");
+        G.gpp_installed=true;
     }else{
         G.log("WARN","g++ is not installed. If you want to use mods, you need to have g++ installed.");
         //G.crash("g++ is not installed on this system.\nIf you want to use mods,\nyou need to have g++ intalled.");
@@ -1702,6 +1706,12 @@ int main()
     if (!std::filesystem::is_directory("/tmp/.gsc_o/")){
         std::filesystem::create_directory("/tmp/.gsc_o/");
         G.log("INFO","an folder has been created in /tmp folder, it will be for in-game processes, it will be cleaned automatically everytime you quit the game.");
+    };
+
+    if (G.gpp_installed){
+        std::string path = "mods/";
+        for (const auto & entry : std::filesystem::directory_iterator(path))
+            std::cout << entry.path() << std::endl;
     };
     
     if (!std::filesystem::is_directory(G.functions.getUserPath()+"/.gsc_o/")){
