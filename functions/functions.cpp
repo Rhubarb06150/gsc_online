@@ -71,10 +71,12 @@ class GSC_Functions{
     };
 
     int quitGame(sf::RenderWindow& window){
-        //if linux
+        #ifdef __linux__
         system("rm -f /tmp/.gsc_o/*.png");
         system("rm -f /tmp/.gsc_o/*.txt");
         system("rm -f /tmp/.gsc_o/*.json");
+        system("rm -f /tmp/.gsc_o/mods/*");
+        #endif
         std::cout << "[INFO] "+currentHour()+" // Closing game" << std::endl;
         window.close();
         return 0;
