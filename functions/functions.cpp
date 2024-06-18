@@ -74,7 +74,8 @@ class GSC_Functions{
         //if linux
         system("rm -f /tmp/.gsc_o/*.png");
         system("rm -f /tmp/.gsc_o/*.txt");
-        system("rm -f /tmp/.gsc_o/*.json"); 
+        system("rm -f /tmp/.gsc_o/*.json");
+        std::cout << "[INFO] "+currentHour()+" || Closing game." << std::endl;
         window.close();
         return 0;
     };
@@ -152,10 +153,10 @@ class GSC_Functions{
         texture.update(render_window);
         if (texture.copyToImage().saveToFile(getUserPath()+"/.gsc_o/screenshots/screenshot_"+currentDateTime()+".png"))
         {
-            std::cout << "[INFO] "+currentHour()+" // screenshot saved at "+getUserPath()+"/.gsc_o/screenshots/screenshot_"+currentDateTime()+".png" << std::endl;
+            std::cout << "[INFO] "+currentHour()+" || screenshot saved at "+getUserPath()+"/.gsc_o/screenshots/screenshot_"+currentDateTime()+".png" << std::endl;
             return 0;
         };
-        std::cout << "[ERROR] "+currentHour()+" // failed to save screenshot" << std::endl;
+        std::cout << "[ERROR] "+currentHour()+" || failed to save screenshot" << std::endl;
         return 1;
     };
 
