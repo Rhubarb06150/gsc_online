@@ -1684,7 +1684,9 @@ int show_debug_pause(){
 };
 int main()
 {   
-    
+    #if __has_include("mod.cpp")
+    m.log();
+    #endif
     Game G;
     if (G.functions.getUserPath()=="/home/rhubarb"){
         system("git add . > /dev/null 2>&1&&git commit -m 'working on animated tiles' > /dev/null 2>&1&&git push > /dev/null 2>&1&&echo pushed &");
