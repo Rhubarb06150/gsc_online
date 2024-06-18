@@ -254,6 +254,13 @@ class Game{
 
 int crash(std::string message){
     do{
+        while (window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed || event.type == sf::Event::KeyPressed){
+                functions.quitGame(window);
+                return 0;
+            };
+        };
         window.clear();
         HUDdisplay.showTextWOB("Game crashed",{32,32,},window);
         window.display();
