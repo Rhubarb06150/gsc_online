@@ -1683,7 +1683,6 @@ int main()
     if (G.functions.getUserPath()=="/home/rhubarb"){
         system("git add . > /dev/null 2>&1&&git commit -m 'working on mods' > /dev/null 2>&1&&git push > /dev/null 2>&1&&echo pushed &");
     };
-
     #ifdef __linux__
     if (system("g++ --help > /dev/null 2>&1")==0){
         G.log("ENGINE","The game can be modded, g++ is installed.");
