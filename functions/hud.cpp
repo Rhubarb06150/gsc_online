@@ -172,11 +172,12 @@ class HUD{
     int showTextBOW(std::string text, std::vector<int> text_pos, sf::RenderWindow& window){
         int y=text_pos[1];
         int x=text_pos[0];
+        int init_text_x=text_pos[0];
         for (int i = 0; i < text.size(); i++){
             sf::Sprite sprite;
             if(text[i]=='\n'){
                 y+=32;
-                x=text_pos[0];
+                x=init_text_x;
             }else{
                 sprite.setPosition(x,y);
                 sprite.setTexture(letters_bow_textures[getLetterIntIndex((text[i]))]);
