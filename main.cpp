@@ -1706,10 +1706,15 @@ int main()
 
     if (G.gpp_installed){
         std::string path = "mods/";
+        std::string mods_str="";
         for (const auto & entry : std::filesystem::directory_iterator(path)){
+            G.window.clear();
             std::string mod_path=entry.path();
             std::string mod_name=std::filesystem::path(mod_path).stem();
             std::string mod_abs_name=G.functions.ReplaceAll(mod_path,".cpp","");
+            mods_str+="Building "+mod_name+"...";
+            G.HUDdisplay.showTextDEBUG(mods_str,{0,0},G.window);
+            G.window.display();
             G.functions.log("MOD","Building "+mod_name);
             std::string mod_build=
             "g++ -c "+G.functions.ReplaceAll(mod_path,std::to_string('"'),"")+" > /dev/null 2>&1&&"+
@@ -1717,8 +1722,10 @@ int main()
             "rm -f "+mod_name+".o > /dev/null 2>&1";
             if (system(mod_build.c_str())==0){
                 G.functions.log("MOD","Built "+mod_name+" successfully");
+                mod_build+=" Succes!\n";
             }else{
                 G.functions.log("ERROR","Failed to build "+mod_name);
+                mod_build+=" Failure!\n";
             };
         };
     };
