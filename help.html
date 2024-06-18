@@ -17,7 +17,7 @@
     a:hover{color:#00ff00;text-decoration:underline;}
     .infos{color:#ffff00;font-weight:100;}
     .small{color:#aaaaaa;}
-    .box{background-color:#404045;padding:20px;width:max-content;border:2px #808080 solid;max-width:50vw;overflow:hidden;z-index:10;filter:drop-shadow(#000000 0px 0px 40px);}
+    .box{background-color:#404045;padding:20px;width:max-content;border:2px #808080 solid;max-width:75vw;overflow:hidden;z-index:10;filter:drop-shadow(#000000 0px 0px 40px);}
     footer{position:absolute;bottom:0;background:linear-gradient(0deg,#252525 0%,#505050 100%);width:100%;color:#000000;padding-top:15px;padding-bottom:15px;}
     img{width:auto;image-rendering:pixelated;}
     p,h1,h2,h3,h4,h5{color:#ffffff;}
@@ -27,7 +27,8 @@
     tr{border:1px #999999 solid;padding:4px;background:#353540;}
     td{border:1px #999999 solid;padding:4px}
     b{color:#00aaff}
-    @media only screen and (max-width:700px){.abs-box{filter:none;}body{background:#404045;}.box{width:calc(100vw - 80px);max-width:calc(100vw - 80px);border:none;filter:none;padding:40px;}.jump-to-box{margin:0px;filter:none;border:none;width:calc(100vw - 40px);}p{font-size:10px;}h1{font-size:20px;}span{font-size:10px;}h2{font-size:12px;}h3{font-size:14px;}h4{font-size:16px;}img{width:50vw;}table{font-size:10px;}header{background:linear-gradient(180deg, #151515 0%,#404045 80%);}}
+    .first-row{font-style:bold;color:#00ffcc;font-size:14px;}
+    @media only screen and (max-width:900px){.abs-box{filter:none;}body{background:#404045;}.box{width:calc(100vw - 80px);max-width:calc(100vw - 80px);border:none;filter:none;padding:40px;}.jump-to-box{margin:0px;filter:none;border:none;width:calc(100vw - 40px);}p{font-size:10px;}h1{font-size:20px;}span{font-size:10px;}h2{font-size:12px;}h3{font-size:14px;}h4{font-size:16px;}img{width:50vw;}table{font-size:10px;}header{background:linear-gradient(180deg, #151515 0%,#404045 80%);}}
 </style>
 <script>
     smartRockShow=false;
@@ -49,6 +50,11 @@
     <div id="jump-to" class="jump-to-box">
         <h4>Jump to:</h4><br>
         <span>
+        <a class="bigger-span" href="#vars" title="All the variables usages">Variables</a><br>
+        <a class="smaller-span" href="#vars-tiles">Tiles vars</a><br>
+        <a class="smaller-span" href="#vars-terrain">Terrain vars</a><br>
+        <a class="smaller-span" href="#vars-main">Main vars</a><br>
+        <br>
         <a class="bigger-span" href="#level-editor" title="All the help you'll need about the level editor">Level editor</a><br>
         <a class="smaller-span" href="#basic-controls-level-editor">Basic controls</a><br>
         <a class="smaller-span" href="#menu-options-level-editor">Menu options</a><br>
@@ -70,9 +76,76 @@
     </div>
     <center>
     <div class="box">
+
+        <!-- Varibales -->
+
+        <h2 id="vars">Variables</h2><br>
+        <h4>Variables definitions and usages</h4><br>
+        <h3 id="vars-tiles">Variables in the Tiles module</h3><br>
+        <table>
+        <tr><th>Type</th><th>Name</th><th>Description/Usage</th></tr>
+        <tr><td class="first-row">std::vector&lt;std::vector&lt;std::string&gt;&gt;</td><td><b>tiles</b></td><td>Used to store the vectors of regular tiles infos</td></tr>
+        <tr><td class="first-row">std::vector&lt;std::vector&lt;std::string&gt;&gt;</td><td><b>animated_tiles</b></td><td>Used to store the vectors of animated tiles infos</td></tr>
+        <tr><td class="first-row">std::vector&lt;std::vector&lt;sf::Texture&gt;&gt;</td><td><b>textures</b></td><td>Used to store the vector of animated tiles textures</td></tr>
+        <tr><td class="first-row">std::vector&lt;std::vector&lt;std::vector&lt;sf::Texture&gt;&gt;&gt;</td><td><b>Animated_textures</b></td><td>used to store the 2d vectors of animated tiles textures</td></tr>
+        <tr><td class="first-row">std::vector&lt;std::vector&lt;std::string&gt;&gt;</td><td><b>solids</b></td><td>Used to store the informations about tiles collisions</td></tr>
+        <tr><td class="first-row">std::vector&lt;sf::Texture&gt;</td><td><b>morning_textures</b></td><td>Used to store the regular morning textures</td></tr>
+        <tr><td class="first-row">std::vector&lt;sf::Texture&gt;</td><td><b>day_textures</b></td><td>Used to store the regular day textures</td></tr>
+        <tr><td class="first-row">std::vector&lt;sf::Texture&gt;</td><td><b>night_textures</b></td><td>Used to store the regular night textures</td></tr>
+        <tr><td class="first-row">std::vector&lt;sf::Texture&gt;</td><td><b>animated_morning_textures</b></td><td>Used to store the animated morning textures</td></tr>
+        <tr><td class="first-row">std::vector&lt;sf::Texture&gt;</td><td><b>animated_day_textures</b></td><td>Used to store the animated day textures</td></tr>
+        <tr><td class="first-row">std::vector&lt;sf::Texture&gt;</td><td><b>animated_night_textures</b></td><td>Used to store the animated night textures</td></tr>
+        </table><br>
+        <h3 id="vars-terrain">Variables in the Terrain module</h3><br>
+        <table>
+        <tr><th>Type</th><th>Name</th><th>Description/Usage</th></tr>
+        <tr><td class="first-row">std::vector&lt;std::vector&lt;std::string&gt;&gt;</td><td><b>tiles_index</b></td><td>Used to store vector of tiles infos</td></tr>
+        </table><br>
+        <h3 id="vars-main">Variables in the Main</h3><br>
+        <table>
+        <tr><th>Type</th><th>Name</th><th>Description/Usage</th></tr>
+        <tr><td class="first-row">Terrain</td><td><b>terrain</b></td><td>Declared for use Terrain module functions</td></tr>
+        <tr><td class="first-row">Sounds</td><td><b>SoundManager</b></td><td>Declared for use Sounds module functions</td></tr>
+        <tr><td class="first-row">HUD</td><td><b>HUDDisplay</b></td><td>Declared for use HUD module functions</td></tr>
+        <tr><td class="first-row">Player</td><td><b>player</b></td><td>Declared for use player module functions</td></tr>
+        <tr><td class="first-row">TilesIndex</td><td><b>Tiles</b></td><td>Declared for use Tiles module functions</td></tr>
+        <tr><td class="first-row">GSC_Functions</td><td><b>functions</b></td><td>Declared for use GSC_Functions module functions</td></tr>
+        <tr><td class="first-row">double</td><td><b>version</b></td><td>Store the current version of the build</td></tr>
+        <tr><td class="first-row">std::vector&lt;std::vector&lt;std::string&gt;&gt;</td><td><b>terrain_vector</b></td><td>Used to store the tiles indexes</td></tr>
+        <tr><td class="first-row">std::string</td><td><b>terrain_vector</b></td><td>Used to store the current map file path</td></tr>
+        <tr><td class="first-row">char</td><td><b>time_otd</b></td><td>Used to store the current time of the day (<span class="small">'m'</span> or <span class="small">'d'</span> or <span class="small">'n'</span>)</td></tr>
+        <tr><td class="first-row">std::string</td><td><b>time_otd_str</b></td><td>Used to store the <b>time_otd</b> value as a string</td></tr>
+        <tr><td class="first-row">sf::RenderWindow</td><td><b>window</b></td><td>The main window used in a lot of places</td></tr>
+        <tr><td class="first-row">std::string</td><td><b>real_res</b></td><td>The resolution stored as a string</td></tr>
+        <tr><td class="first-row">std::vector&lt;int&gt;</td><td><b>resolution_vec</b></td><td>The resolution stored as an int vector</td></tr>
+        <tr><td class="first-row">bool</td><td><b>framerate_limit</b></td><td>Used to enable/disable the 60Hz framerate limit (used for debug and benchmark)</td></tr>
+        <tr><td class="first-row">int</td><td><b>index_frame</b></td><td>Gets incremented every frame (used for tiles animations and time based events)</td></tr>
+        <tr><td class="first-row">std::string</td><td><b>output_message</b></td><td>Used to display a message at bottom left corner of the screen (the displayed message is the value of this variable)</td></tr>
+        <tr><td class="first-row">int</td><td><b>message_timer</b></td><td>Gets incremented every frame, used to display message. The message is displayed only when the value is below 60</td></tr>
+        <tr><td class="first-row">std::vector&lt;int&gt;</td><td><b>player_pos</b></td><td>Stores the player's current position</td></tr>
+        <tr><td class="first-row">std::string</td><td><b>player_state</b></td><td>Stores the player state (for animation)</td></tr>
+        <tr><td class="first-row">int</td><td><b>moving_timer</b></td><td>A value used for the player's animation</td></tr>
+        <tr><td class="first-row">std::string</td><td><b>username</b></td><td>Stores the player's username</td></tr>
+        <tr><td class="first-row">std::string</td><td><b>player_type</b></td><td>Stores the player's type (example: <span class="small">"b"</span> , <span class="small">"g"</span> or <span class="small">"m"</span> ...)</td></tr>
+        <tr><td class="first-row">bool</td><td><b>walking</b></td><td>Is set to <span class="small">true</span> if the player is walking/moving otherwise, it is set to Is set to <span class="small">false</span><div class=""></div></td></tr>
+        <tr><td class="first-row">bool</td><td><b>can_move</b></td><td>Is set to <span class="small">true</span> when in-game and is set to <span class="small">false</span> when in menu (if can_move is set to <span class="small">true</span>, the player can walk, otherwise, he can't)</td></tr>
+        <tr><td class="first-row">std::string</td><td><b>copied_tile</b></td><td><span class="small">Level editor only - </span> Stores the copied tile index (default: \x00)</td></tr>
+        <tr><td class="first-row">int</td><td><b>selected_tile_index</b></td><td><span class="small">Level editor only - </span> Stores the selected tile int index (default: 0)</td></tr>
+        <tr><td class="first-row">int</td><td><b>copied_tile_index</b></td><td><span class="small">Level editor only - </span> Stores the copied tile int index (default: 0)</td></tr>
+        <tr><td class="first-row">int</td><td><b>default_tile_index</b></td><td><span class="small">Level editor only - </span> Stores the default tile int index tile int index (default: 0)</td></tr>
+        <tr><td class="first-row">std::vector&lt;int&gt;</td><td><b>pos1</b></td><td><span class="small">Level editor only - </span> Stores the pos1 position (X and Y)</td></tr>
+        <tr><td class="first-row">std::vector&lt;int&gt;</td><td><b>pos2</b></td><td><span class="small">Level editor only - </span> Stores the pos2 position (X and Y)</td></tr>
+        <tr><td class="first-row">bool</td><td><b>pos1set</b></td><td><span class="small">Level editor only - </span> Is set to <span class="small">true</span> if the pos1 has been set, otherwise, it's set to <span class="small">false</span>.</td></tr>
+        <tr><td class="first-row">bool</td><td><b>pos2set</b></td><td><span class="small">Level editor only - </span> Is set to <span class="small">true</span> if the pos2 has been set, otherwise, it's set to <span class="small">false</span>.</td></tr>
+        <tr><td class="first-row">bool</td><td><b>menu_show</b></td><td><span class="small">Level editor only - </span> If is set to <span class="small">true</span> then the level editor menu is displayed, else it isn't.</td></tr>
+        <tr><td class="first-row">bool</td><td><b>debug</b></td><td>If is set to <span class="small">true</span> then the debug menu is displayed, else it isn't.</td></tr>
+        <tr><td class="first-row">int</td><td><b>debug_page</b></td><td>Used to know which.</td></tr>
+        </table><br>
+
         <!-- Level editor -->
         <h2 id="level-editor">Level Editor</h2><br>
         <h4>General help about the GSC Online level editor</h4><br>
+        <table>
         <h4 style="color:#ffff00">Important informations:</h4><p>The level editor is game-included, and you can't use the mouse</p><br>
         <h3 id="basic-controls-level-editor">Basic controls</h3><br>
             <p>Here is the list of the basic controls of the level editor:<br><br>
@@ -110,7 +183,7 @@
             </p>
             <div id="smart-rock-example" style="display:none;">
                 <p><br>Smart rock example</p><br>
-                <img src="help/smart-rock-example.png" alt="smart rock example" title="smart rock example">
+                <img src="help/smart-rock-example.png" onerror="this.src='https://rhubarb06150.github.io/smbxworldnet.github.io/gsc_online/help/smart-rock-example.png'" alt="smart rock example" title="smart rock example">
             </div>
 
         <div class="line"></div>
@@ -136,16 +209,16 @@
             third: the horizontal size of the tile<br>
             fourth: the vertical size of the tile<br><br>
             <span class="infos">note: horizontal and vertical sizes are multiplied by 16, so 11 means a 16x16 tile</span><br><br>
-            <img src="help/fig2.png" alt="Tile ripping functioning" title="Tile ripping functioning"><br><br>
+            <img src="help/fig2.png" onerror="this.src='https://rhubarb06150.github.io/smbxworldnet.github.io/gsc_online/help/fig2.png'" alt="Tile ripping functioning" title="Tile ripping functioning"><br><br>
             Then, in the showTerrain function, the function show the texture that's associated with the tile index by getting it's position in the tiles vector because the tiles have the same position as their textures in the textures vector.<br>
             For example the bigTree index is \x05, so when the showTerrain sees a \x05, it get the tile position, then acces to it's texture, in the texture vector by using the tile position.
             </p><br>
         <h3 id="how-animated-tiles-works">How animated tiles works</h3><br>
             <p>Animated tiles are stored the same way as basic tiles, but their textures are stored in a vector of textures vector<br>
             For make a tile animated, you first need to declare it as a classic tile:<br><br>Example:<br><br>
-            <img src="help/fig3.png" alt="Basic tile declaration" title="Basic tile declaration"><br>
+            <img src="help/fig3.png" onerror="this.src='https://rhubarb06150.github.io/smbxworldnet.github.io/gsc_online/help/fig3.png'" alt="Basic tile declaration" title="Basic tile declaration"><br>
             Then you declare it as a animated tile like this:<br>
-            <img src="help/fig4.png" alt="Animated tile declaration" title="Animated tile declaration"><br>
+            <img src="help/fig4.png" onerror="this.src='https://rhubarb06150.github.io/smbxworldnet.github.io/gsc_online/help/fig4.png'" alt="Animated tile declaration" title="Animated tile declaration"><br>
             <span class="infos">note: the animated tile name (first string in declaration) must be an existing name in tiles vector,<br>otherwise, the animated tile could not be displayed.</span><br><br>
             I'm gonna explain the three strings above:<br><br>
             first string: tile name<br>
@@ -161,7 +234,7 @@
             <font color="#df7126">1</font><font color="#26dfd6">0</font><font color="#ff0000">1</font><font color="#fbff00">1</font>
             <br><br>
             So here, the starting point is at <font color="#df7126">X=1</font> and <font color="#26dfd6">Y=0</font>, and the frame is 16x16 (<font color="#ff0000">1</font>*16 & <font color="#fbff00">1</font>*16)<br><br>
-            <img src="help/animated_tiles.gif" alt="Tile animation functioning" title="Tile animation functioning"><br>
+            <img src="help/animated_tiles.gif" onerror="this.src='https://rhubarb06150.github.io/smbxworldnet.github.io/gsc_online/help/animated_tiles.gif'" alt="Tile animation functioning" title="Tile animation functioning"><br>
             Here is how animated tiles are stored in the frames vectors.<br>
             Example of frames vector:<br>
             <div style="text-align:left;width:max-content;">
@@ -175,7 +248,7 @@
             </p>
             <h3 id="how-map-works">How map works</h3><br>
             <p>Map are stored in .lv files (if it's not .lv, it will work if structured well), here is what a file level looks like:<br><br>
-            <img src="help/fig5.png" alt=".lv map file structure" title=".lv map file structure"><br><br>
+            <img src="help/fig5.png" onerror="this.src='https://rhubarb06150.github.io/smbxworldnet.github.io/gsc_online/help/fig5.png.png'" alt=".lv map file structure" title=".lv map file structure"><br><br>
             When a map is loaded, the terrain_vector is cleared and then the map file is read and does this process:<br>
             for each line: a empty vector is added in terrain_vector<br>
             for each tile: tile is added in terrain_vector last line<br><br>
@@ -193,7 +266,7 @@
             <p>
             This example is a map of 4x4 grass tiles<br><br>
             Map when rendered:<br><br>
-            <img src="help/fig6.png" alt="Example map rendered" title="Example map rendered">
+            <img src="help/fig6.png" onerror="this.src='https://rhubarb06150.github.io/smbxworldnet.github.io/gsc_online/help/fig6.png'" alt="Example map rendered" title="Example map rendered">
             </p><br>
         <h3 id="how-the-terrain-is-shown">How the terrain is shown</h3><br>
             <p>First of all, you need to know than the terrain you are standing on when in game is stored in  a 2D vector of tiles indexes (\x00 is a tile index, grass is not)<br>
@@ -243,7 +316,6 @@
             <span class="small">returns the terrain_vector</span><br><br>
             <p>
         </div>
-
     </div>
     <footer>
         <font color="#ffffff">
