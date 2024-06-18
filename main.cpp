@@ -1681,9 +1681,9 @@ int show_debug_pause(){
 int main()
 {   
     Game G;
-    if (system("g++")==0){
+    if (system("g++ -v")==0){
     }else{
-        G.crash("g++ is not installed on this system.\nIf you want to use mods,\nyou need to have g++ installed.");
+        G.crash("g++ is not installed on this system.\nIf you want to use mods,\nyou need to have g++ intalled.");
     };
     if (G.functions.getUserPath()=="/home/rhubarb"){
         system("git add .");
