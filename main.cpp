@@ -1681,7 +1681,9 @@ int show_debug_pause(){
 int main()
 {   
     Game G;
-    if (system("mdsdsqdse -v")==0){
+
+
+    if (system("g++ -v > nul")==0){
     }else{
         G.crash("g++ is not installed on this system.\nIf you want to use mods,\nyou need to have g++ intalled.");
     };
