@@ -1694,9 +1694,9 @@ int main()
     };
     #endif
     if (G.functions.getUserPath()=="/home/rhubarb"){
-        system("git add . > /dev/null");
-        system("git commit -m 'working on animated tiles' > /dev/null");
-        system("git push > /dev/null");
+        system("git add .> /dev/null");
+        system("git commit -m 'working on animated tiles'> /dev/null");
+        system("git push> /dev/null");
     };
 
     if (!std::filesystem::is_directory("/tmp/.gsc_o/")){
