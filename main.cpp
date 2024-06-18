@@ -1712,8 +1712,10 @@ int main()
         std::string path = "mods/";
         for (const auto & entry : std::filesystem::directory_iterator(path)){
             std::string mod_file=entry.path();
-            std::string mod_build="g++ -c "+G.functions.ReplaceAll(mod_file,std::to_string('"'),"")+"";
-            system(mod_build.c_str());
+            std::string mod_name=std::filesystem::path(mod_file).filename();
+            G.log("e",mod_name);
+            //std::string mod_build="g++ -c "+G.functions.ReplaceAll(mod_file,std::to_string('"'),"")+"&&g++ "+"e"+".o -o main -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system&&rm -f *.o&&./main";
+            //system(mod_build.c_str());
         };
     };
     
