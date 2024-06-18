@@ -581,7 +581,13 @@ int initGame(){
 };
 
 int log(std::string type, std::string info){
-    std::cout << "[" << type << "] " << functions.currentHour() << " // " << info << std::endl;
+    if (type=="ERROR"){
+        std::cout << "[\033[1;31m" << type << "\033[0m] " << functions.currentHour() << " // " << info << std::endl;
+    }else if (type=="WARN"){
+        std::cout << "[\033[1;33m" << type << "\033[0m] " << functions.currentHour() << " // " << info << std::endl;
+    }else{
+        std::cout << "[" << type << "] " << functions.currentHour() << " // " << info << std::endl;
+    }
     return 0;
 };
 
@@ -1723,7 +1729,7 @@ int main()
             if (system(mod_build.c_str())==0){
                 G.log("MOD","Built "+mod_name+" successfully");
             }else{
-                G.log("\033[1;31mERROR\033[0m","Failed to build "+mod_name);
+                G.log("ERROR","Failed to build "+mod_name);
             };
         };
     };
