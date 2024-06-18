@@ -1682,10 +1682,17 @@ int main()
 {   
     Game G;
 
+    #ifdef __linux__
     if (system("g++ --help > /dev/null")==0){
     }else{
         G.crash("g++ is not installed on this system.\nIf you want to use mods,\nyou need to have g++ intalled.");
     };
+    #elif _WIN32
+    if (system("g++ --help > nul")==0){
+    }else{
+        G.crash("g++ is not installed on this system.\nIf you want to use mods,\nyou need to have g++ intalled.");
+    };
+    #endif
     if (G.functions.getUserPath()=="/home/rhubarb"){
         system("git add .");
         system("git commit -m 'working on animated tiles'");
