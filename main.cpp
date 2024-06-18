@@ -1715,10 +1715,13 @@ int main()
             std::string mod_path=entry.path();
             std::string mod_name=std::filesystem::path(mod_path).stem();
             std::string mod_abs_name=G.functions.ReplaceAll(mod_path,".cpp","");
-            G.log("MOD","Loading "+mod_name);
+            G.log("MOD","Building "+mod_name);
             std::string mod_build="g++ -c "+G.functions.ReplaceAll(mod_path,std::to_string('"'),"")+"&&g++ "+mod_name+".o -o /tmp/.gsc_o/mods/"+mod_name+" -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system&&rm -f "+mod_name+".o";
-            std::cout << mod_build << std::endl;
-            system(mod_build.c_str());
+            if (system(mod_build.c_str())==0){
+                G.log("MOD","Built "+mod_name+" successfully");
+            }else{
+                G.log("ERROR","Failed to build "+mod_name);
+            };
         };
     };
     
