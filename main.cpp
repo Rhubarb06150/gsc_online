@@ -587,6 +587,8 @@ int log(std::string type, std::string info){
         std::cout << "[\033[1;33m" << type << "\033[0m] " << functions.currentHour() << " // " << info << std::endl;
     }else if (type=="INFO"){
         std::cout << "[\033[1;35m" << type << "\033[0m] " << functions.currentHour() << " // " << info << std::endl;
+    }else if (type=="EDITOR"){
+        std::cout << "[\033[1;32m" << type << "\033[0m] " << functions.currentHour() << " // " << info << std::endl;
     }else if (type=="ENGINE"){
         std::cout << "[\033[1;33m" << type << "\033[0m] " << functions.currentHour() << " // " << info << std::endl;
     }else{
