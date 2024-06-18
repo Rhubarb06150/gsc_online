@@ -1712,7 +1712,7 @@ int main()
         std::string path = "mods/";
         for (const auto & entry : std::filesystem::directory_iterator(path)){
             std::string mod_file=entry.path();
-            std::string mod_build="g++ "+mod_file;
+            std::string mod_build="g++ "+G.functions.ReplaceAll(mod_file,std::to_string('"'),"")+" -o mod";
             system(mod_build.c_str());
         };
     };
