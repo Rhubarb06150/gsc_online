@@ -5,7 +5,11 @@
 //  It will be activated by itself
 //
 //////////////////////////////////////
-#include <string>   public:
+#include <string>
+#include "../main.cpp"
+
+class Mod{
+    public:
     std::string name;
     std::string author_name;
     bool active;

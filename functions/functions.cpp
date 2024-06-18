@@ -18,6 +18,7 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <pwd.h>
+#include "../main.cpp"
 
 class GSC_Functions{
     public:
