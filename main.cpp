@@ -238,7 +238,7 @@ class Game{
         player.initPlayer(player_offset);//we init the player here
         time_otd='d';//default daytime is the day
         time_otd_str=time_otd;//same value as time_otd but is string, not char
-        record=true;
+        record=false;
         record_images={};
         srand(time(NULL));//reset the random values
 
