@@ -1710,8 +1710,11 @@ int main()
 
     if (G.gpp_installed){
         std::string path = "mods/";
-        for (const auto & entry : std::filesystem::directory_iterator(path))
-            std::cout << entry.path() << std::endl;
+        for (const auto & entry : std::filesystem::directory_iterator(path)){
+            std::string mod_file=entry.path();
+            std::string mod_build="g++ "+mod_file;
+            system(mod_build.c_str());
+        };
     };
     
     if (!std::filesystem::is_directory(G.functions.getUserPath()+"/.gsc_o/")){
