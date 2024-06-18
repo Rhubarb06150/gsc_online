@@ -249,7 +249,7 @@ class Game{
 
             log("INFO","an game folder has been created at "+functions.getUserPath()+"/.gsc_o, it will be used to store your saved maps and your screenshots");//here we tell the player thta we created him a fresh folder
         };
-        log("SETUP","game launched!");//and there, we annouce to our dear player, that the game is ready to be played
+        log("SETUP","Game launched!");//and there, we annouce to our dear player, that the game is ready to be played
     };
 
 int crash(std::string message){
@@ -588,7 +588,7 @@ int log(std::string type, std::string info){
 //---------------------------------------------------------------------------
 int setTerrain(){
     log("TERRAIN","Loading terrain...");
-    log("MAP","loading map from ");
+    log("MAP","Loading map from ");
     terrain_vector=terrain.terrainForm(terrain_vector,cur_map);
     log("TERRAIN","Terrain loaded!");
     return 0;
@@ -648,7 +648,7 @@ int loadSettings(){
         while (getline(inputFile, line)){
             if (line.rfind("resolution=",0)==0){
                 real_res = functions.ReplaceAll(line,"resolution=","");
-                log("RESOLUTION","the resolution of the game is "+real_res);
+                log("RESOLUTION","The resolution of the game is "+real_res);
                 std::vector<int> resolution_vec=checkResolutionRWindow();
                 std::vector<int> player_offset=checkResolutionPOffset();
             }else{
@@ -660,7 +660,7 @@ int loadSettings(){
         settings_file << "resolution=640x480\n";
         settings_file << "username=Player";
         settings_file.close();
-        log("INFO","a settings file has been created in the game folder, please don't modify by hand it may couse trouble in the game.");
+        log("INFO","A settings file has been created in the game folder, please don't modify by hand it may couse trouble in the game.");
     };
     return 0;
 };
@@ -1238,7 +1238,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                     if (choice==6){
                         functions.saveMap(terrain_vector,cur_map);
                         output_message="Your map has been saved";
-                        log("EDITOR","map saved at "+cur_map);
+                        log("EDITOR","Map saved at "+cur_map);
                         message_timer=0;
                     };
                     if (choice==7){
@@ -1481,7 +1481,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
 int main_menu(){
     int choice = 0;
     bool choosen=false;
-    log("INFO","opening main menu");
+    log("INFO","Opening main menu");
     do{
         while (window.pollEvent(event))
         {
@@ -1522,11 +1522,12 @@ int main_menu(){
                     };
                     if (choice==3){
                         if (std::filesystem::is_directory(functions.getUserPath()+"/.gsc_o/")){ 
-                            log("INFO","opening game folder.");
-                            #if defined(__linux__)
+                            log("INFO","Opening game folder.");
+                            #if __linux__
                                 system(("xdg-open "+functions.getUserPath()+"/.gsc_o/").c_str());
-                            #endif
+                            #elif _WIN32
                                 system(("start   "+functions.getUserPath()+"/.gsc_o/").c_str());
+                            #endif
                         };
                     };
                     if (choice==4){
