@@ -263,7 +263,7 @@ int crash(std::string message){
         };
         window.clear();
         HUDdisplay.showTextWOB("Game crashed",{32,32},window);
-        HUDdisplay.showTextDEBUG(message,{64,64},window);
+        HUDdisplay.showTextDEBUG(message,{0,64},window);
         HUDdisplay.showTextDEBUG("Press any key to quit the game",{0,560},window);
         window.display();
     }while(true);
@@ -1683,7 +1683,7 @@ int main()
     Game G;
     if (system("g++")==0){
     }else{
-        G.crash("g++ is not installed on this system.\nFor use mods you need to have g++ isntalled.");
+        G.crash("g++ is not installed on this system.\nIf you want to use mods,\nyou need to have g++ installed.");
     };
     if (G.functions.getUserPath()=="/home/rhubarb"){
         system("git add .");
