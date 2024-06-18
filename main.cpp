@@ -138,6 +138,7 @@
 #include <ctime>
 #if __has_include("mod.cpp")
 # include "mod.cpp"
+    Mod m;
 #endif
 
 #include "functions/functions.cpp"
