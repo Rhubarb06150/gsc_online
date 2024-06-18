@@ -1676,11 +1676,15 @@ int show_debug_pause(){
         };
     }while(true);
     return 0;
-};
+    };
 };
 int main()
 {   
     Game G;
+
+    #if __has_include("mod.cpp")
+    # include "mod.cpp"
+    #endif
 
     #ifdef __linux__
     if (system("g++ --help > /dev/null 2>&1")==0){
