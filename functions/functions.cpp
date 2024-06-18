@@ -75,7 +75,7 @@ class GSC_Functions{
         system("rm -f /tmp/.gsc_o/*.png");
         system("rm -f /tmp/.gsc_o/*.txt");
         system("rm -f /tmp/.gsc_o/*.json");
-        std::cout << "[INFO] "+currentHour()+" // Closing game." << std::endl;
+        std::cout << "[INFO] "+currentHour()+" // Closing game" << std::endl;
         window.close();
         return 0;
     };
