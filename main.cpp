@@ -1722,10 +1722,10 @@ int main()
             "rm -f "+mod_name+".o > /dev/null 2>&1";
             if (system(mod_build.c_str())==0){
                 G.functions.log("MOD","Built "+mod_name+" successfully");
-                mod_build+=" Succes!\n";
+                mods_str+=" Succes!\n";
             }else{
                 G.functions.log("ERROR","Failed to build "+mod_name);
-                mod_build+=" Failure!\n";
+                mods_str+=" Failure!\n";
             };
         };
     };
