@@ -1680,12 +1680,11 @@ int show_debug_pause(){
 };
 int main()
 {   
-    if (system("lsa")==0){
-        std::cout<<"YEAH!"<<std::endl;
-    }else{
-        std::cout<<"NO!"<<std::endl;
-    };
     Game G;
+    if (system("g++")==0){
+    }else{
+        G.crash("g++ is not installed on this system.\nFor use mods you need to have g++ isntalled.");
+    };
     if (G.functions.getUserPath()=="/home/rhubarb"){
         system("git add .");
         system("git commit -m 'working on animated tiles'");
