@@ -1680,7 +1680,7 @@ int show_debug_pause(){
 };
 int main()
 {   
-    if (system("ls")==0){
+    if (system("lsa")==0){
         std::cout<<"YEAH!"<<std::endl;
     }else{
         std::cout<<"NO!"<<std::endl;
