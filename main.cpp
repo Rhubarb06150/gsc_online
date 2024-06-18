@@ -264,7 +264,7 @@ int crash(std::string message){
         window.clear();
         HUDdisplay.showTextWOB("Game crashed",{32,32},window);
         HUDdisplay.showTextDEBUG(message,{64,64},window);
-        HUDdisplay.showTextDEBUG("Press any key to quit",{0,560},window);
+        HUDdisplay.showTextDEBUG("Press any key to quit the game",{0,560},window);
         window.display();
     }while(true);
     functions.quitGame(window);
