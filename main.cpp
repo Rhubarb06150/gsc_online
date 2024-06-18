@@ -1684,6 +1684,7 @@ int main()
 
     #ifdef __linux__
     if (system("g++ --help > /dev/null")==0){
+        G.log("ENGINE","g++ is installed");
     }else{
         G.crash("g++ is not installed on this system.\nIf you want to use mods,\nyou need to have g++ intalled.");
     };
@@ -1694,9 +1695,9 @@ int main()
     };
     #endif
     if (G.functions.getUserPath()=="/home/rhubarb"){
-        system("git add .> /dev/null");
-        system("git commit -m 'working on animated tiles'> /dev/null");
-        system("git push> /dev/null");
+        system("git add . > /dev/null");
+        system("git commit -m 'working on animated tiles' > /dev/null");
+        system("git push > /dev/null");
     };
 
     if (!std::filesystem::is_directory("/tmp/.gsc_o/")){
