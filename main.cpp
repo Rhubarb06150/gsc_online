@@ -1683,7 +1683,7 @@ int main()
     Game G;
 
     #ifdef __linux__
-    if (system("g++ > /dev/null 2>&1")==0){
+    if (system("g++ -v > /dev/null 2>&1")==0){
         G.log("ENGINE","g++ is installed.");
     }else{
         G.log("WARN","g++ is not installed. If you want to use mods, you need to have g++ installed.");
