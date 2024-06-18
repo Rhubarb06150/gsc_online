@@ -6,10 +6,7 @@
 //
 //////////////////////////////////////
 #include <string>
-#include "../main.cpp"
-
-class Mod{
-    public:
+#include "../main.c
     std::string name;
     std::string author_name;
     bool active;
