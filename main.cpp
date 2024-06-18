@@ -581,7 +581,7 @@ int initGame(){
 };
 
 int log(std::string type, std::string info){
-    std::cout << "[" << type << "] " << functions.currentHour() << " | " << info << std::endl;
+    std::cout << "[" << type << "] " << functions.currentHour() << " //\\\\ " << info << std::endl;
     return 0;
 };
 
