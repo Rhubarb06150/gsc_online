@@ -1711,10 +1711,10 @@ int main()
     if (G.gpp_installed){
         std::string path = "mods/";
         for (const auto & entry : std::filesystem::directory_iterator(path)){
-            std::string mod_file=entry.path();
-            std::string mod_name=std::filesystem::path(mod_file).stem();
+            std::string mod_path=entry.path();
+            std::string mod_name=std::filesystem::path(mod_path).stem();
             G.log("MOD","Loading "+mod_name);
-            std::string mod_build="g++ -c "+G.functions.ReplaceAll(mod_file,std::to_string('"'),"")+"&&g++ "+mod_name+".o -o "+mod_name+" -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system&&rm -f "+mod_name+".o&&";
+            std::string mod_build="g++ -c "+G.functions.ReplaceAll(mod_path,std::to_string('"'),"")+"&&g++ "+mod_name+".o -o "+mod_name+" -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system&&rm -f "+mod_name+".o&&";
             std::cout << mod_build << std::endl;
             //system(mod_build.c_str());
         };
