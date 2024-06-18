@@ -263,7 +263,8 @@ int crash(std::string message){
         };
         window.clear();
         HUDdisplay.showTextWOB("Game crashed",{32,32},window);
-        HUDdisplay.showTextDEBUG("Game crashed\noops\npenguin",{64,64},window);
+        HUDdisplay.showTextDEBUG(message,{64,64},window);
+        HUDdisplay.showTextWOB("Press any key to quit",{0,544},window);
         window.display();
     }while(true);
     functions.quitGame(window);
@@ -1697,7 +1698,7 @@ int main()
         std::filesystem::create_directory(G.functions.getUserPath()+"/.gsc_o/maps/");
         G.log("INFO","an game folder has been created at "+G.functions.getUserPath()+"/.gsc_o, it will be used to store your saved maps and your screenshots");
     };
-    G.crash("oops");
+    G.crash("Some mods are not functionning correctly or are broken.");
     G.main_menu();
     while (G.window.isOpen()){
         G.mainLoop();
