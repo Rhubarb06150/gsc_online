@@ -136,7 +136,6 @@
 #include <chrono>
 #include <regex>
 #include <ctime>
-
 #include "functions/functions.cpp"
 #include "functions/terrain.cpp"
 #include "functions/player.cpp"
