@@ -233,14 +233,22 @@ class HUD{
     };
 
     int showTextDEBUG(std::string text, std::vector<int> text_pos, sf::RenderWindow& window){
+        int y=text_pos[1];
+        int x=text_pos[0];
         for (int i = 0; i < text.size(); i++){
             sf::Sprite sprite;
-            sprite.setPosition(text_pos[0]+(i*16),text_pos[1]);
-            sprite.setTexture(letters_debug_textures[getLetterIntIndex((text[i]))]);
-            sprite.scale(2.f,2.f);
-            window.draw(sprite);
+            if(text[i]=='\n'){
+                y+=16;
+                x=text_pos[0];
+            }else{
+                sprite.setPosition(x,y);
+                sprite.setTexture(letters_debug_textures[getLetterIntIndex((text[i]))]);
+                sprite.scale(2.f,2.f);
+                window.draw(sprite);
+                x+=16;
+            };
         };
-        return 0;  
+        return 0; 
     };
 
     int showTextSELDEBUG(std::string text, std::vector<int> text_pos, sf::RenderWindow& window){
