@@ -8,7 +8,7 @@
 //  Yup I coded this like a dick, but it wasn't intended to be public
 //
 //  If you want to build the app:
-//      Make sure to have SFML 2, and g++ or gcc installed.
+//      Make sure to have SFML 2, and g++ installed.
 //
 //  For install last SFML version on Linux:
 //      type: sudo apt-get install libsfml-dev
@@ -246,7 +246,6 @@ class Game{
             std::filesystem::create_directory(functions.getUserPath()+"/.gsc_o");//if not, we create a folder called ".gsc_o" located in the user folder
             std::filesystem::create_directory(functions.getUserPath()+"/.gsc_o/screenshots/");//we create the screenshots folder
             std::filesystem::create_directory(functions.getUserPath()+"/.gsc_o/maps/");//we create the maps folder
-
             log("INFO","an game folder has been created at "+functions.getUserPath()+"/.gsc_o, it will be used to store your saved maps and your screenshots");//here we tell the player thta we created him a fresh folder
         };
         log("SETUP","Game launched!");//and there, we annouce to our dear player, that the game is ready to be played
@@ -1684,7 +1683,7 @@ int main()
     Game G;
 
     #ifdef __linux__
-    if (system("g++ -v > /dev/null 2>&1")==0){
+    if (system("g++ --help > /dev/null 2>&1")==0){
         G.log("ENGINE","The game can be modded, g++ is installed.");
     }else{
         G.log("WARN","g++ is not installed. If you want to use mods, you need to have g++ installed.");
@@ -1715,7 +1714,7 @@ int main()
         std::filesystem::create_directory(G.functions.getUserPath()+"/.gsc_o/maps/");
         G.log("INFO","an game folder has been created at "+G.functions.getUserPath()+"/.gsc_o, it will be used to store your saved maps and your screenshots");
     };
-    G.crash("Some mods are not functionning\ncorrectly or are broken.");
+    //G.crash("Some mods are not functionning\ncorrectly or are broken.");
     G.main_menu();
     while (G.window.isOpen()){
         G.mainLoop();
