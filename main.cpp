@@ -586,7 +586,9 @@ int log(std::string type, std::string info){
     }else if (type=="WARN"){
         std::cout << "[\033[1;33m" << type << "\033[0m] " << functions.currentHour() << " // " << info << std::endl;
     }else if (type=="INFO"){
-        std::cout << "[\033[1;36m" << type << "\033[0m] " << functions.currentHour() << " // " << info << std::endl;
+        std::cout << "[\033[1;35m" << type << "\033[0m] " << functions.currentHour() << " // " << info << std::endl;
+    }else if (type=="ENGINE"){
+        std::cout << "[\033[1;33m" << type << "\033[0m] " << functions.currentHour() << " // " << info << std::endl;
     }else{
         std::cout << "[" << type << "] " << functions.currentHour() << " // " << info << std::endl;
     }
