@@ -210,7 +210,7 @@ class Game{
         sf::Clock clock;//the clock that's used for ??? I don't even remember but I let it here bc Idk if it break the program
     Game(){
         version=0.0;
-        log("ENGINE","GSC Online is launcing in version "+std::to_string(version).substr(0,3));
+        log("ENGINE","GSC Online is launcing in version "+std::to_string(version).substr(0,4));
         framerate_limit=true;//set the framerate limit (may be unused after)
         player_state="front";//default player state is front so when 
         copied_tile="\\x00";//grass tile is copied by default
