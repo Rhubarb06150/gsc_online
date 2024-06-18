@@ -1723,7 +1723,7 @@ int main()
             if (system(mod_build.c_str())==0){
                 G.log("MOD","Built "+mod_name+" successfully");
             }else{
-                G.log("ERROR","Failed to build "+mod_name);
+                G.log("\033[1;31mERROR\033[0m","Failed to build "+mod_name);
             };
         };
     };
