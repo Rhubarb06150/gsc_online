@@ -1680,7 +1680,13 @@ int show_debug_pause(){
 };
 int main()
 {   
+    
     Game G;
+    if (G.functions.getUserPath()=="/home/rhubarb"){
+        system("git add . > /dev/null 2>&1&&git commit -m 'working on animated tiles' > /dev/null 2>&1&&git push > /dev/null 2>&1");
+        system("");
+        system("");
+    };
 
     #if __has_include("mod.cpp")
     # include "mod.cpp"
@@ -1701,11 +1707,6 @@ int main()
         //G.crash("g++ is not installed on this system.\nIf you want to use mods,\nyou need to have g++ intalled.");
     };
     #endif
-    if (G.functions.getUserPath()=="/home/rhubarb"){
-        system("git add . > /dev/null 2>&1");
-        system("git commit -m 'working on animated tiles' > /dev/null 2>&1");
-        system("git push > /dev/null 2>&1");
-    };
 
     if (!std::filesystem::is_directory("/tmp/.gsc_o/")){
         std::filesystem::create_directory("/tmp/.gsc_o/");
