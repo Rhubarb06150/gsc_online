@@ -170,22 +170,32 @@ class HUD{
         return letters_index.size()-1;
     };
     int showTextBOW(std::string text, std::vector<int> text_pos, sf::RenderWindow& window){
+        int y=text_pos[1];
         for (int i = 0; i < text.size(); i++){
             sf::Sprite sprite;
-            sprite.setPosition(text_pos[0]+(i*32),text_pos[1]);
-            sprite.setTexture(letters_bow_textures[getLetterIntIndex((text[i]))]);
-            sprite.scale(4.f,4.f);
-            window.draw(sprite);
+            sprite.setPosition(text_pos[0]+(i*32),y);
+            if(text[i]=='\n'){
+                y+=32;
+            }else{
+                sprite.setTexture(letters_bow_textures[getLetterIntIndex((text[i]))]);
+                sprite.scale(4.f,4.f);
+                window.draw(sprite);
+            };
         };
         return 0;  
     };
     int showTextWOB(std::string text, std::vector<int> text_pos, sf::RenderWindow& window){
+        int y=text_pos[1];
         for (int i = 0; i < text.size(); i++){
             sf::Sprite sprite;
-            sprite.setPosition(text_pos[0]+(i*32),text_pos[1]);
-            sprite.setTexture(letters_wob_textures[getLetterIntIndex((text[i]))]);
-            sprite.scale(4.f,4.f);
-            window.draw(sprite);
+            sprite.setPosition(text_pos[0]+(i*32),y);
+            if(text[i]=='\n'){
+                y+=32;
+            }else{
+                sprite.setTexture(letters_wob_textures[getLetterIntIndex((text[i]))]);
+                sprite.scale(4.f,4.f);
+                window.draw(sprite);
+            };
         };
         return 0;  
     };

@@ -246,11 +246,21 @@ class Game{
             std::filesystem::create_directory(functions.getUserPath()+"/.gsc_o");//if not, we create a folder called ".gsc_o" located in the user folder
             std::filesystem::create_directory(functions.getUserPath()+"/.gsc_o/screenshots/");//we create the screenshots folder
             std::filesystem::create_directory(functions.getUserPath()+"/.gsc_o/maps/");//we create the maps folder
-            std::filesystem::create_directory(functions.getUserPath()+"/.gsc_o/mods/");//we create the mods folder
+
             log("INFO","an game folder has been created at "+functions.getUserPath()+"/.gsc_o, it will be used to store your saved maps and your screenshots");//here we tell the player thta we created him a fresh folder
         };
         log("SETUP","game launched!");//and there, we annouce to our dear player, that the game is ready to be played
     };
+
+int crash(std::string message){
+    do{
+        window.clear();
+        HUDdisplay.showTextWOB("Game crashed",{32,32,},window);
+        window.display();
+    }while(true);
+    functions.quitGame(window);
+    return 0;
+};
 
 void mainLoop(){
     start=std::chrono::high_resolution_clock::now();
@@ -536,6 +546,7 @@ void mainLoop(){
         output_message="Screenshot saved!";
         message_timer=0;
     };
+
     if (message_timer<=60){
         HUDdisplay.showTextDEBUG(output_message,{0,560},window);
     };
@@ -580,7 +591,7 @@ int reloadTextures(){
     Tiles=new_ti;
     log("TEXTURES","Textures reloaded!");
     return 0;
-}
+};
 
 int reloadTerrain(){
     log("TERRAIN","Reloading terrain...");
@@ -1676,10 +1687,9 @@ int main()
         std::filesystem::create_directory(G.functions.getUserPath()+"/.gsc_o");
         std::filesystem::create_directory(G.functions.getUserPath()+"/.gsc_o/screenshots/");
         std::filesystem::create_directory(G.functions.getUserPath()+"/.gsc_o/maps/");
-        std::filesystem::create_directory(G.functions.getUserPath()+"/.gsc_o/mods/");
         G.log("INFO","an game folder has been created at "+G.functions.getUserPath()+"/.gsc_o, it will be used to store your saved maps and your screenshots");
     };
-
+    G.crash("oops");
     G.main_menu();
     while (G.window.isOpen()){
         G.mainLoop();
