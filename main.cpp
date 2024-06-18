@@ -1683,7 +1683,7 @@ int main()
     Game G;
 
 
-    if (system("g++ -v > nul")==0){
+    if (system("g++ -v > /dev/null")==0){
     }else{
         G.crash("g++ is not installed on this system.\nIf you want to use mods,\nyou need to have g++ intalled.");
     };
