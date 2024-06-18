@@ -126,7 +126,6 @@
 //  I found that funny so here is Ho-Oh
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma once
 
 #include <SFML/Graphics.hpp>
 #include <filesystem>
@@ -211,7 +210,7 @@ class Game{
         bool gpp_installed;
     Game(){
         version=0.0;
-        log("ENGINE","GSC Online is launcing in version "+std::to_string(version).substr(0,4));
+        functions.log("ENGINE","GSC Online is launcing in version "+std::to_string(version).substr(0,4));
         framerate_limit=true;//set the framerate limit (may be unused after)
         player_state="front";//default player state is front so when 
         copied_tile="\\x00";//grass tile is copied by default
@@ -248,9 +247,9 @@ class Game{
             std::filesystem::create_directory(functions.getUserPath()+"/.gsc_o");//if not, we create a folder called ".gsc_o" located in the user folder
             std::filesystem::create_directory(functions.getUserPath()+"/.gsc_o/screenshots/");//we create the screenshots folder
             std::filesystem::create_directory(functions.getUserPath()+"/.gsc_o/maps/");//we create the maps folder
-            log("INFO","an game folder has been created at "+functions.getUserPath()+"/.gsc_o, it will be used to store your saved maps and your screenshots");//here we tell the player thta we created him a fresh folder
+            functions.log("INFO","an game folder has been created at "+functions.getUserPath()+"/.gsc_o, it will be used to store your saved maps and your screenshots");//here we tell the player thta we created him a fresh folder
         };
-        log("SETUP","Game launched!");//and there, we annouce to our dear player, that the game is ready to be played
+        functions.log("SETUP","Game launched!");//and there, we annouce to our dear player, that the game is ready to be played
     };
 
 int crash(std::string message){
@@ -342,9 +341,9 @@ void mainLoop(){
                 if (moy[i]<lowest)lowest=moy[i];
                 sum_moy+=moy[i];
             };
-            log("DEBUG","AVG FPS: "+std::to_string(sum_moy/moy.size()));
-            log("DEBUG","Lowest FPS: "+std::to_string(lowest));
-            log("DEBUG","Highest FPS: "+std::to_string(biggest));
+            functions.log("DEBUG","AVG FPS: "+std::to_string(sum_moy/moy.size()));
+            functions.log("DEBUG","Lowest FPS: "+std::to_string(lowest));
+            functions.log("DEBUG","Highest FPS: "+std::to_string(biggest));
             functions.quitGame(window);
         };
         if (event.type==sf::Event::KeyPressed){
@@ -581,46 +580,29 @@ int initGame(){
     return 0;
 };
 
-int log(std::string type, std::string info){
-    if (type=="ERROR"){
-        std::cout << "[\033[1;31m" << type << "\033[0m] " << functions.currentHour() << " // " << info << std::endl;
-    }else if (type=="WARN"){
-        std::cout << "[\033[1;33m" << type << "\033[0m] " << functions.currentHour() << " // " << info << std::endl;
-    }else if (type=="INFO"){
-        std::cout << "[\033[1;35m" << type << "\033[0m] " << functions.currentHour() << " // " << info << std::endl;
-    }else if (type=="EDITOR"){
-        std::cout << "[\033[1;32m" << type << "\033[0m] " << functions.currentHour() << " // " << info << std::endl;
-    }else if (type=="ENGINE"){
-        std::cout << "[\033[1;33m" << type << "\033[0m] " << functions.currentHour() << " // " << info << std::endl;
-    }else{
-        std::cout << "[" << type << "] " << functions.currentHour() << " // " << info << std::endl;
-    }
-    return 0;
-};
-
 //---------------------------------------------------------------------------
 int setTerrain(){
-    log("TERRAIN","Loading terrain...");
-    log("MAP","Loading map from ");
+    functions.log("TERRAIN","Loading terrain...");
+    functions.log("MAP","Loading map from ");
     terrain_vector=terrain.terrainForm(terrain_vector,cur_map);
-    log("TERRAIN","Terrain loaded!");
+    functions.log("TERRAIN","Terrain loaded!");
     return 0;
 };
 
 int reloadTextures(){
-    log("TEXTURES","Reloading textures...");
+    functions.log("TEXTURES","Reloading textures...");
     TilesIndex new_ti;
     Tiles=new_ti;
-    log("TEXTURES","Textures reloaded!");
+    functions.log("TEXTURES","Textures reloaded!");
     return 0;
 };
 
 int reloadTerrain(){
-    log("TERRAIN","Reloading terrain...");
+    functions.log("TERRAIN","Reloading terrain...");
     Terrain new_tr;
     terrain=new_tr;
     terrain_vector=terrain.terrainForm(terrain_vector,cur_map);
-    log("TERRAIN","Terrain reloaded!");
+    functions.log("TERRAIN","Terrain reloaded!");
     return 0;
 };
 
@@ -661,7 +643,7 @@ int loadSettings(){
         while (getline(inputFile, line)){
             if (line.rfind("resolution=",0)==0){
                 real_res = functions.ReplaceAll(line,"resolution=","");
-                log("RESOLUTION","The resolution of the game is "+real_res);
+                functions.log("RESOLUTION","The resolution of the game is "+real_res);
                 std::vector<int> resolution_vec=checkResolutionRWindow();
                 std::vector<int> player_offset=checkResolutionPOffset();
             }else{
@@ -673,7 +655,7 @@ int loadSettings(){
         settings_file << "resolution=640x480\n";
         settings_file << "username=Player";
         settings_file.close();
-        log("INFO","A settings file has been created in the game folder, please don't modify by hand it may couse trouble in the game.");
+        functions.log("INFO","A settings file has been created in the game folder, please don't modify by hand it may couse trouble in the game.");
     };
     return 0;
 };
@@ -1140,7 +1122,7 @@ std::string askPath(std::string path,sf::Event event,sf::RenderWindow& window){
 
 int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
 
-    log("EDITOR","Launching editor");
+    functions.log("EDITOR","Launching editor");
 
     std::vector<std::string> actions;//actions list for they are  displayed in the editor menu
     std::vector<int> player_pos = {0,0};//Begins at top left of the map
@@ -1188,7 +1170,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
         };
     };
 
-    log("EDITOR","Editor launched!");//logs in the console that the editor is launched
+    functions.log("EDITOR","Editor launched!");//logs in the console that the editor is launched
     
     do{
         message_timer++;//increase the message timer for display messages
@@ -1236,7 +1218,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                         std::string wanted_map=askPath(std::filesystem::absolute("."),event,window);
                         if (wanted_map!=""){
                             cur_map=wanted_map;
-                            log("EDITOR","Loaded "+cur_map+" map");
+                            functions.log("EDITOR","Loaded "+cur_map+" map");
                             terrain_vector=terrain.terrainForm(terrain_vector,cur_map);
                             map_height=terrain_vector.size();
                             int init_size=terrain_vector[0].size();
@@ -1251,12 +1233,12 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                     if (choice==6){
                         functions.saveMap(terrain_vector,cur_map);
                         output_message="Your map has been saved";
-                        log("EDITOR","Map saved at "+cur_map);
+                        functions.log("EDITOR","Map saved at "+cur_map);
                         message_timer=0;
                     };
                     if (choice==7){
                     }else if(choice==9){
-                        log("EDITOR","Format rock");
+                        functions.log("EDITOR","Format rock");
                         terrain_vector=formatRock(terrain_vector);
                     }else if(choice==10){
                         randomPatternLoop();
@@ -1494,7 +1476,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
 int main_menu(){
     int choice = 0;
     bool choosen=false;
-    log("INFO","Opening main menu");
+    functions.log("INFO","Opening main menu");
     do{
         while (window.pollEvent(event))
         {
@@ -1535,7 +1517,7 @@ int main_menu(){
                     };
                     if (choice==3){
                         if (std::filesystem::is_directory(functions.getUserPath()+"/.gsc_o/")){ 
-                            log("INFO","Opening game folder.");
+                            functions.log("INFO","Opening game folder.");
                             #if __linux__
                                 system(("xdg-open "+functions.getUserPath()+"/.gsc_o/").c_str());
                             #elif _WIN32
@@ -1639,9 +1621,9 @@ int show_debug_pause(){
                     if (moy[i]<lowest)lowest=moy[i];
                     sum_moy+=moy[i];
                 };
-                log("DEBUG","AVG FPS: "+std::to_string(sum_moy/moy.size()));
-                log("DEBUG","Lowest FPS: "+std::to_string(lowest));
-                log("DEBUG","Highest FPS: "+std::to_string(biggest));
+                functions.log("DEBUG","AVG FPS: "+std::to_string(sum_moy/moy.size()));
+                functions.log("DEBUG","Lowest FPS: "+std::to_string(lowest));
+                functions.log("DEBUG","Highest FPS: "+std::to_string(biggest));
                 functions.quitGame(window);
                 return 0;
             };
@@ -1700,18 +1682,18 @@ int main()
     };
     #ifdef __linux__
     if (system("g++ --help > /dev/null 2>&1")==0){
-        G.log("ENGINE","The game can be modded, g++ is installed.");
+        G.functions.log("ENGINE","The game can be modded, g++ is installed.");
         G.gpp_installed=true;
     }else{
-        G.log("WARN","g++ is not installed. If you want to use mods, you need to have g++ installed.");
+        G.functions.log("WARN","g++ is not installed. If you want to use mods, you need to have g++ installed.");
         //G.crash("g++ is not installed on this system.\nIf you want to use mods,\nyou need to have g++ intalled.");
     };
     #elif _WIN32
     if (system("g++ --help > nul")==0){
-        G.log("ENGINE","The game can be modded, g++ is installed.");
+        G.functions.log("ENGINE","The game can be modded, g++ is installed.");
         G.gpp_installed=true;
     }else{
-        G.log("WARN","g++ is not installed. If you want to use mods, you need to have g++ installed.");
+        G.functions.log("WARN","g++ is not installed. If you want to use mods, you need to have g++ installed.");
         //G.crash("g++ is not installed on this system.\nIf you want to use mods,\nyou need to have g++ intalled.");
     };
     #endif
@@ -1719,7 +1701,7 @@ int main()
     if (!std::filesystem::is_directory("/tmp/.gsc_o/")){
         std::filesystem::create_directory("/tmp/.gsc_o/");
         std::filesystem::create_directory("/tmp/.gsc_o/mods/");
-        G.log("INFO","an folder has been created in /tmp folder, it will be for in-game processes, it will be cleaned automatically everytime you quit the game.");
+        G.functions.log("INFO","an folder has been created in /tmp folder, it will be for in-game processes, it will be cleaned automatically everytime you quit the game.");
     };
 
     if (G.gpp_installed){
@@ -1728,15 +1710,15 @@ int main()
             std::string mod_path=entry.path();
             std::string mod_name=std::filesystem::path(mod_path).stem();
             std::string mod_abs_name=G.functions.ReplaceAll(mod_path,".cpp","");
-            G.log("MOD","Building "+mod_name);
+            G.functions.log("MOD","Building "+mod_name);
             std::string mod_build=
             "g++ -c "+G.functions.ReplaceAll(mod_path,std::to_string('"'),"")+" > /dev/null 2>&1&&"+
             "g++ "+mod_name+".o -o /tmp/.gsc_o/mods/"+mod_name+" -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system > /dev/null 2>&1&&"+
             "rm -f "+mod_name+".o > /dev/null 2>&1";
             if (system(mod_build.c_str())==0){
-                G.log("MOD","Built "+mod_name+" successfully");
+                G.functions.log("MOD","Built "+mod_name+" successfully");
             }else{
-                G.log("ERROR","Failed to build "+mod_name);
+                G.functions.log("ERROR","Failed to build "+mod_name);
             };
         };
     };
@@ -1745,7 +1727,7 @@ int main()
         std::filesystem::create_directory(G.functions.getUserPath()+"/.gsc_o");
         std::filesystem::create_directory(G.functions.getUserPath()+"/.gsc_o/screenshots/");
         std::filesystem::create_directory(G.functions.getUserPath()+"/.gsc_o/maps/");
-        G.log("INFO","an game folder has been created at "+G.functions.getUserPath()+"/.gsc_o, it will be used to store your saved maps and your screenshots");
+        G.functions.log("INFO","an game folder has been created at "+G.functions.getUserPath()+"/.gsc_o, it will be used to store your saved maps and your screenshots");
     };
     //G.crash("Some mods are not functionning\ncorrectly or are broken.");
     G.main_menu();

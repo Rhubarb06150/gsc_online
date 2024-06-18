@@ -18,7 +18,6 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <pwd.h>
-#include "../main.cpp"
 
 class GSC_Functions{
     public:
@@ -69,6 +68,23 @@ class GSC_Functions{
             };
         };
         return res;
+    };
+
+    int log(std::string type, std::string info){
+        if (type=="ERROR"){
+            std::cout << "[\033[1;31m" << type << "\033[0m] " << currentHour() << " // " << info << std::endl;
+        }else if (type=="WARN"){
+            std::cout << "[\033[1;33m" << type << "\033[0m] " << currentHour() << " // " << info << std::endl;
+        }else if (type=="INFO"){
+            std::cout << "[\033[1;35m" << type << "\033[0m] " << currentHour() << " // " << info << std::endl;
+        }else if (type=="EDITOR"){
+            std::cout << "[\033[1;32m" << type << "\033[0m] " << currentHour() << " // " << info << std::endl;
+        }else if (type=="ENGINE"){
+            std::cout << "[\033[1;33m" << type << "\033[0m] " << currentHour() << " // " << info << std::endl;
+        }else{
+            std::cout << "[" << type << "] " << currentHour() << " // " << info << std::endl;
+        }
+        return 0;
     };
 
     int quitGame(sf::RenderWindow& window){
