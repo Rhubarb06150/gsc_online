@@ -94,7 +94,7 @@ class GSC_Functions{
         system("rm -f /tmp/.gsc_o/*.json");
         system("rm -f /tmp/.gsc_o/mods/*");
         #endif
-        std::cout << "[INFO] "+currentHour()+" // Closing game" << std::endl;
+        log("INFO","Closing game");
         window.close();
         return 0;
     };
@@ -172,10 +172,10 @@ class GSC_Functions{
         texture.update(render_window);
         if (texture.copyToImage().saveToFile(getUserPath()+"/.gsc_o/screenshots/screenshot_"+currentDateTime()+".png"))
         {
-            std::cout << "[INFO] "+currentHour()+" // screenshot saved at "+getUserPath()+"/.gsc_o/screenshots/screenshot_"+currentDateTime()+".png" << std::endl;
+            log("INFO","screenshot saved at "+getUserPath()+"/.gsc_o/screenshots/screenshot_"+currentDateTime()+".png");
             return 0;
         };
-        std::cout << "[ERROR] "+currentHour()+" // failed to save screenshot" << std::endl;
+        log("ERROR","Failed to save screenshot");
         return 1;
     };
 
