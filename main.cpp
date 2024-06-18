@@ -1679,7 +1679,12 @@ int show_debug_pause(){
 };
 };
 int main()
-{
+{   
+    if (system("ls")==0){
+        std::cout<<"YEAH!"<<std::endl;
+    }else{
+        std::cout<<"NO!"<<std::endl;
+    };
     Game G;
     if (G.functions.getUserPath()=="/home/rhubarb"){
         system("git add .");
