@@ -1717,7 +1717,7 @@ int main()
             G.window.display();
             G.functions.log("MOD","Building "+mod_name);
             std::string mod_build=
-            "g++ -c "+G.functions.ReplaceAll(mod_path,std::to_string('"'),"")+" > /dev/null 2>&1&&"+
+            "g++ -c '"+G.functions.ReplaceAll(mod_path,std::to_string('"'),"")+"' > /dev/null 2>&1&&"+
             "g++ '"+mod_name+".o' -o '/tmp/.gsc_o/mods/"+mod_name+"' -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system > /dev/null 2>&1&&"+
             "rm -f '"+mod_name+".o' > /dev/null 2>&1";
             if (system(mod_build.c_str())==0){
