@@ -1723,6 +1723,9 @@ int loadMods(){
             };
         };
     };
+    #ifdef __linux__
+    system("rm -f *.o");
+    #endif
     return 0;
     };
 };
