@@ -1711,9 +1711,12 @@ int loadMods(){
             }else{
                 functions.log("ERROR","Failed to build "+mod_name);
                 mods_str+=" Failure!\n";
-                #ifdef MOD_OK
-                #undef MOD_OK
-                #endif
+                if (1==0
+                    #ifdef MOD_OK
+                    #endif
+                    ){
+                    #undef MOD_OK
+                };
             };
             #ifndef MOD_OK
                 functions.log("ERROR","Mod not loaded");
