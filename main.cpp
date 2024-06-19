@@ -1738,6 +1738,7 @@ int main()
                 //MOD LOADED
                 #ifdef true
                     #include "mods.cpp"
+                    G.log("MOD","AAAAAAAAAAAAAAAAAAAA")
                 #endif
             }else{
                 G.functions.log("ERROR","Failed to build "+mod_name);
