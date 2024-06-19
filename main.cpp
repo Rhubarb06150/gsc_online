@@ -207,7 +207,10 @@ class Game{
         sf::Event event;//I'm just intializing this here so I don't have to pass it as an argument in every function
         sf::Image icon;//that's for the icon
         sf::Clock clock;//the clock that's used for ??? I don't even remember but I let it here bc Idk if it break the program
+        
+        //MODS VARS
         bool gpp_installed;
+        std::vector<std::string> mods_list;
     Game(){
         version=0.0;
         functions.log("ENGINE","GSC Online is launcing in version "+std::to_string(version).substr(0,4));
@@ -241,6 +244,7 @@ class Game{
         record=false;
         record_images={};
         gpp_installed=false;
+        mods_list={};
         srand(time(NULL));//reset the random values
 
         if (!std::filesystem::is_directory(functions.getUserPath()+"/.gsc_o/")){// here we verify if a game folder exists
@@ -1574,6 +1578,7 @@ int main_menu(){
         HUDdisplay.showTextDEBUG("Pokemon GSC Online build "+std::to_string(version).substr(0,4),{0,0},window);
         HUDdisplay.showTextDEBUG("27/05/24",{0,16},window);
         HUDdisplay.showTextDEBUG("F5 or X to confirm, F6 to cancel",{0,32},window);
+        HUDdisplay.showTextDEBUG(std::to_string(mods_list.size())+" mod loaded",{0,48},window);
         HUDdisplay.showCursor({32,288+(choice*32)},window);
         HUDdisplay.showTextBOW("Level Editor",{64,288},window);
         HUDdisplay.showTextBOW("Launch game",{64,320},window);
@@ -1727,6 +1732,7 @@ int main()
                 G.functions.log("MOD","Built '"+mod_name+"' successfully");
                 mods_str+=" Succes!\n";
                 #define MOD_OK
+                G.mods_list.push_back(mod_abs_name);
             }else{
                 G.functions.log("ERROR","Failed to build "+mod_name);
                 mods_str+=" Failure!\n";
