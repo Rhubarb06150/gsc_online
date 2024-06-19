@@ -1686,7 +1686,7 @@ int show_debug_pause(){
         };
     }while(true);
     return 0;
-    };
+};
 int loadMods(){
     if (gpp_installed){
         std::string path = "mods/";
@@ -1731,7 +1731,8 @@ int main()
     {
     Game G;
     if (G.functions.getUserPath()=="/home/rhubarb"){
-        system("git add . > /dev/null 2>&1&&git commit -m 'working on mods' > /dev/null 2>&1&&git push > /dev/null 2>&1&");
+        std::string branch_version = std::to_string(G.version).substr(0,4);
+        system(("git add . > /dev/null 2>&1&&git commit -m 'working on mods' > /dev/null 2>&1&&git push origin "+branch_version+" > /dev/null 2>&1&").c_str());
     };
     #ifdef __linux__
     if (system("g++ --help > /dev/null 2>&1")==0){
