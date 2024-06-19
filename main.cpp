@@ -1713,14 +1713,14 @@ int loadMods(){
                 mods_str+=" Failure!\n";
                 #ifdef MOD_OK
                 #undef MOD_OK
-                #endif
+                #endif 
             };
             #ifndef MOD_OK
                 functions.log("ERROR","Mod not loaded");
             #endif
             #ifdef MOD_OK
                 #include "mods.cpp"
-                functions.log("MOD","AAAAAAAAAAAAAAAAAAAA")
+                functions.log("MOD","AAAAAAAAAAAAAAAAAAAA");
             #endif
             while (window.pollEvent(event))
             {
