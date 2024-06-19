@@ -72,7 +72,7 @@ class GSC_Functions{
 
     int log(std::string type, std::string info){
         if (type=="ERROR"){
-            std::cout << "[\033[1;31m" << type << "\033[0m] " << currentHour() << " //\033[1;31m" << info << "\033[0m" << std::endl;
+            std::cout << "[\033[1;31m" << type << "\033[0m] " << currentHour() << " // \033[1;31m" << info << "\033[0m" << std::endl;
         }else if (type=="WARN"){
             std::cout << "[\033[1;33m" << type << "\033[0m] " << currentHour() << " // " << info << std::endl;
         }else if (type=="INFO"){
