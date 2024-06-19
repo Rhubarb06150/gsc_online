@@ -1700,7 +1700,7 @@ int loadMods(){
             std::string mod_build=
             "g++ -c '"+functions.ReplaceAll(mod_path,std::to_string('"'),"")+"' > /dev/null 2>&1&&"+
             "g++ '"+mod_name+".o' -o '/tmp/.gsc_o/mods/"+mod_name+"' -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system > /dev/null 2>&1&&"+
-            "rm -f '"+mod_name+".o' > /dev/null 2>&1";
+            "rm -f '"+mod_name+".o' > /dev/null 2>&1"; 
             if (system(mod_build.c_str())==0){
                 functions.log("MOD","Built '"+mod_name+"' successfully");
                 mods_str+=" Succes!\n";
@@ -1709,8 +1709,7 @@ int loadMods(){
                 functions.log("ERROR","Failed to build "+mod_name);
                 mods_str+=" Failure!\n";
             };
-            while (window.pollEvent(event))
-            {
+            while (window.pollEvent(event)){
                 if (event.type == sf::Event::Closed){
                     functions.quitGame(window);
                     return 0;
