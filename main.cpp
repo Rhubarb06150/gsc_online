@@ -1746,6 +1746,7 @@ int main()
                 #undef MOD_OK
                 #endif
             };
+            std::cout<<"|"<<std::endl;
             #ifdef MOD_OK
                 G.functions.log("MOD","Mod loaded!");
             #endif
