@@ -1750,8 +1750,7 @@ int main()
         //G.crash("g++ is not installed on this system.\nIf you want to use mods,\nyou need to have g++ intalled.");
     };
     #endif
-    //G.loadMods();
-
+    G.loadMods();
     if (!std::filesystem::is_directory("/tmp/.gsc_o/")){
         std::filesystem::create_directory("/tmp/.gsc_o/");
         std::filesystem::create_directory("/tmp/.gsc_o/mods/");
@@ -1759,7 +1758,7 @@ int main()
     }else if (!std::filesystem::is_directory("/tmp/.gsc_o/mods/")){
         std::filesystem::create_directory("/tmp/.gsc_o/mods/");
     };
-    
+
     if (!std::filesystem::is_directory(G.functions.getUserPath()+"/.gsc_o/")){
         std::filesystem::create_directory(G.functions.getUserPath()+"/.gsc_o");
         std::filesystem::create_directory(G.functions.getUserPath()+"/.gsc_o/screenshots/");
