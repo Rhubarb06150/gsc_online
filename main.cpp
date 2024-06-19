@@ -249,6 +249,8 @@ class Game{
         gpp_installed=false;
         mods_list={};
         srand(time(NULL));//reset the random values
+        //DO NOT DELETE THIS PLS
+        //MOD INIT
 
         if (!std::filesystem::is_directory(functions.getUserPath()+"/.gsc_o/")){// here we verify if a game folder exists
             std::filesystem::create_directory(functions.getUserPath()+"/.gsc_o");//if not, we create a folder called ".gsc_o" located in the user folder
@@ -406,6 +408,8 @@ void mainLoop(){
     };
 
     //SHOW ALL
+    //DO NOT DELETE THIS PLS
+    //MOD ACT
     window.clear();
     terrain.showTerrain(terrain_vector,player_pos,time_otd,window,player_offset,(debug&&debug_page==9&&debug_choice==2),index_frame);
     player_state=player.animPlayer(player_state,moving_timer,walking);
@@ -566,6 +570,8 @@ void mainLoop(){
     if (message_timer<=60){
         HUDdisplay.showTextDEBUG(output_message,{0,560},window);
     };
+    //DO NOT DELETE THIS BELOW PLS
+    //MOD DISPLAY
     window.display();
 
     //if (record){
@@ -1732,7 +1738,7 @@ int main()
     Game G;
     if (G.functions.getUserPath()=="/home/rhubarb"){
         std::string branch_version = std::to_string(G.version).substr(0,4);
-        system(("git add . > /dev/null 2>&1&&git commit -m 'working on mods' > /dev/null 2>&1&&git push origin '"+branch_version+"' > /dev/null 2>&1&&echo pushed &").c_str());
+        system(("git add . > /dev/null 2>&1&&git commit -m 'working on mods' > /dev/null 2>&1&&git push origin  main:"+branch_version+" > /dev/null 2>&1&&echo pushed &").c_str());
     };
     #ifdef __linux__
     if (system("g++ --help > /dev/null 2>&1")==0){
