@@ -6,5 +6,5 @@ class Mod{
     std::string author_name;
     Mod(){};
     void act(){};
-    int show(){};
+    void show(){};
 };
