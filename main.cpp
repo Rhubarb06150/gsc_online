@@ -1730,12 +1730,12 @@ int main()
             }else{
                 G.functions.log("ERROR","Failed to build "+mod_name);
                 mods_str+=" Failure!\n";
-                #ifdef MOD_OK
-                #undef MOD_OK
-                #endif
+                //#ifdef MOD_OK
+                //#undef MOD_OK
+                //#endif
             };
             #ifdef MOD_OK
-                G.log("MOD","Mod loaded!");
+                G.functions.log("MOD","Mod loaded!");
             #endif
         };
     };
