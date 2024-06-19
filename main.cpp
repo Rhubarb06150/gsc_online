@@ -142,6 +142,11 @@
 #include "functions/sounds.cpp"
 #include "functions/hud.cpp"
 
+#include "headers/mods.hpp"
+
+#ifdef MOD
+#endif
+
 class Game{
 
     public:
