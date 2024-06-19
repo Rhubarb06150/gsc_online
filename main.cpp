@@ -1727,7 +1727,7 @@ int main()
                 G.functions.log("MOD","Built '"+mod_name+"' successfully");
                 mods_str+=" Succes!\n";
                 #ifndef MOD_OK
-                #define MOD_OK
+                #define MOD_OK 1
                 #endif
             }else{
                 G.functions.log("ERROR","Failed to build "+mod_name);
