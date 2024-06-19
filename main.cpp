@@ -1735,15 +1735,20 @@ int main()
                 G.functions.log("MOD","Built '"+mod_name+"' successfully");
                 mods_str+=" Succes!\n";
                 G.mods_list.push_back(mod_abs_name);
-                //MOD LOADED
-                #ifdef true
-                    #include "mods.cpp"
-                    G.log("MOD","AAAAAAAAAAAAAAAAAAAA")
+                #ifndef MOD_OK
+                #define MOD_OK
                 #endif
             }else{
                 G.functions.log("ERROR","Failed to build "+mod_name);
                 mods_str+=" Failure!\n";
+                #ifdef MOD_OK
+                #undef MOD_OK
+                #endif
             };
+            #ifdef MOD_OK
+                #include "mods.cpp"
+                G.log("MOD","AAAAAAAAAAAAAAAAAAAA")
+            #endif
         };
     };
     
