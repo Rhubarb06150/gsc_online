@@ -1728,7 +1728,7 @@ int main()
         system("git add . > /dev/null 2>&1&&git commit -m 'working on mods' > /dev/null 2>&1&&git push > /dev/null 2>&1&");
     };
     #ifdef __linux__
-    if (system("g++ --hel > /dev/null 2>&1")==0){
+    if (system("g++ -- > /dev/null 2>&1")==0){
         G.functions.log("ENGINE","The game can be modded, g++ is installed.");
         G.gpp_installed=true;
     }else{
