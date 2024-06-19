@@ -1689,6 +1689,9 @@ int loadMods(){
         std::string path = "mods/";
         std::string mods_str="";
         for (const auto & entry : std::filesystem::directory_iterator(path)){
+            #ifdef MOD_OK
+            #undef MOD_ok
+            #endif
             window.clear();
             std::string mod_path=entry.path();
             std::string mod_name=std::filesystem::path(mod_path).stem();
@@ -1715,13 +1718,12 @@ int loadMods(){
                 #undef MOD_OK
                 #endif 
             };
+            #ifndef MOD_OK
+                functions.log("ERROR","Mod not loaded");
+            #endif
             #ifdef MOD_OK
                 #include "mods.cpp"
                 functions.log("MOD","AAAAAAAAAAAAAAAAAAAA");
-                #define MOD_OK 1
-            #endif
-            #ifndef MOD_OK
-                functions.log("ERROR","Mod not loaded");
             #endif
             while (window.pollEvent(event))
             {
