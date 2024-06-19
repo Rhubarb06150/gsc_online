@@ -1734,7 +1734,7 @@ int main()
                 mods_str+=" Failure!\n";
             };
             #ifdef MOD_OK
-            std::cout<<"EEE"<<std::endl;
+                std::cout<<"EEE"<<std::endl;
             #endif
         };
     };
