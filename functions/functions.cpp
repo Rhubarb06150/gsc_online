@@ -92,7 +92,7 @@ class GSC_Functions{
     int quitGame(sf::RenderWindow& window){
         #ifdef __linux__
         log("INFO","Clearing /tmp/.gsc_o/ folder");
-        system("rm -r /tmp/.gsc_o/* < /dev/null 2&1");
+        system("rm -r /tmp/.gsc_o/* < /dev/null 2>&1");
         log("INFO","Temp folder cleared");
         #endif
         log("INFO","Closing game");
