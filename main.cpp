@@ -1732,7 +1732,7 @@ int main()
     Game G;
     if (G.functions.getUserPath()=="/home/rhubarb"){
         std::string branch_version = std::to_string(G.version).substr(0,4);
-        system(("git add . > /dev/null 2>&1&&git commit -m 'working on mods' > /dev/null 2>&1&&git push origin "+branch_version+" > /dev/null 2>&1&").c_str());
+        system(("git add . > /dev/null 2>&1&&git commit -m 'working on mods' > /dev/null 2>&1&&git push origin "+branch_version+" > /dev/null 2>&1&&echo pushed &").c_str());
     };
     #ifdef __linux__
     if (system("g++ --help > /dev/null 2>&1")==0){
