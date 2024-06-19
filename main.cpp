@@ -139,7 +139,7 @@ I found that funny so here is Ho-Oh
 #include "functions/sounds.cpp"
 #include "functions/hud.cpp"
 
-//#include "headers/mods.hpp"
+#include "mods/header.hpp"
 
 #ifdef MOD
 #endif
@@ -409,6 +409,7 @@ void mainLoop(){
 
     //SHOW ALL
     //DO NOT DELETE THIS PLS
+    //MOD PASSVARS
     //MOD ACT
     window.clear();
     terrain.showTerrain(terrain_vector,player_pos,time_otd,window,player_offset,(debug&&debug_page==9&&debug_choice==2),index_frame);

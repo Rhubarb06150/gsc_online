@@ -11,6 +11,10 @@ class Main{
     version="0.00";
     };
     int seekMods(){
+        if (!std::filesystem::is_directory("mods/")){
+            F.log("ERROR","No mods folder");
+            exit(1);
+        };
         F.log("INFO","Looking for mods...");
         for (const auto & entry : std::filesystem::directory_iterator("mods/")){
             std::filesystem::path file_path;
@@ -33,5 +37,6 @@ class Main{
 int main(){
     Main m;
     m.seekMods();
+    exit(0);
     return 0;
 };
