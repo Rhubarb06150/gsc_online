@@ -7,8 +7,9 @@
 //////////////////////////////////////
 #include <string>
 #include "../main.cpp"
+#define MOD
 
-class Mod=xsd
+class Mod{
     public:
     std::string name;
     std::string author_name;
