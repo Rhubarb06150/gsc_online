@@ -95,7 +95,7 @@ class GSC_Functions{
         system("rm -f /tmp/.gsc_o/*.png");
         system("rm -f /tmp/.gsc_o/*.txt");
         system("rm -f /tmp/.gsc_o/*.json");
-        system("rm -r /tmp/.gsc_o/mods/");
+        system("rm -r /tmp/.gsc_o/mods/.");
         log("INFO","Temp folder cleared");
         #endif
         log("INFO","Closing game");
