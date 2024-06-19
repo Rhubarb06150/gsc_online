@@ -253,7 +253,7 @@ class Game{
             std::filesystem::create_directory(functions.getUserPath()+"/.gsc_o/maps/");//we create the maps folder
             functions.log("INFO","an game folder has been created at "+functions.getUserPath()+"/.gsc_o, it will be used to store your saved maps and your screenshots");//here we tell the player thta we created him a fresh folder
         };
-        functions.log("SETUP","Game launched!");//and there, we annouce to our dear player, that the game is ready to be played
+        functions.log("ENGINE","Game launched!");//and there, we annouce to our dear player, that the game is ready to be played
     };
 
 int crash(std::string message){
@@ -647,7 +647,7 @@ int loadSettings(){
         while (getline(inputFile, line)){
             if (line.rfind("resolution=",0)==0){
                 real_res = functions.ReplaceAll(line,"resolution=","");
-                functions.log("RESOLUTION","The resolution of the game is "+real_res);
+                functions.log("ENGINE","The resolution of the game is "+real_res);
                 std::vector<int> resolution_vec=checkResolutionRWindow();
                 std::vector<int> player_offset=checkResolutionPOffset();
             }else{
