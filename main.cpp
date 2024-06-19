@@ -1689,9 +1689,6 @@ int loadMods(){
         std::string path = "mods/";
         std::string mods_str="";
         for (const auto & entry : std::filesystem::directory_iterator(path)){
-            #ifdef MOD_OK
-            #undef MOD_ok
-            #endif
             window.clear();
             std::string mod_path=entry.path();
             std::string mod_name=std::filesystem::path(mod_path).stem();
@@ -1708,23 +1705,10 @@ int loadMods(){
                 functions.log("MOD","Built '"+mod_name+"' successfully");
                 mods_str+=" Succes!\n";
                 mods_list.push_back(mod_abs_name);
-                #ifndef MOD_OK
-                #define MOD_OK 1
-                #endif
             }else{
                 functions.log("ERROR","Failed to build "+mod_name);
                 mods_str+=" Failure!\n";
-                #ifdef MOD_OK
-                #undef MOD_OK
-                #endif 
             };
-            #ifndef MOD_OK
-                functions.log("ERROR","Mod not loaded");
-            #endif
-            #ifdef MOD_OK
-                #include "mods.cpp"
-                functions.log("MOD","AAAAAAAAAAAAAAAAAAAA");
-            #endif
             while (window.pollEvent(event))
             {
                 if (event.type == sf::Event::Closed){
