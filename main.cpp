@@ -1578,7 +1578,13 @@ int main_menu(){
         HUDdisplay.showTextDEBUG("Pokemon GSC Online build "+std::to_string(version).substr(0,4),{0,0},window);
         HUDdisplay.showTextDEBUG("27/05/24",{0,16},window);
         HUDdisplay.showTextDEBUG("F5 or X to confirm, F6 to cancel",{0,32},window);
-        HUDdisplay.showTextDEBUG(std::to_string(mods_list.size())+" mod loaded",{0,48},window);
+        if (mods_list.size()==0){
+            HUDdisplay.showTextDEBUG("no mods loaded",{0,48},window);
+        }else if (mods_list.size()==1){
+            HUDdisplay.showTextDEBUG("1 mod loaded",{0,48},window);
+        }else{
+            HUDdisplay.showTextDEBUG(std::to_string(mods_list.size())+" mods loaded",{0,48},window);
+        }
         HUDdisplay.showCursor({32,288+(choice*32)},window);
         HUDdisplay.showTextBOW("Level Editor",{64,288},window);
         HUDdisplay.showTextBOW("Launch game",{64,320},window);
