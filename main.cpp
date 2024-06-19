@@ -1744,8 +1744,7 @@ int main()
         //G.crash("g++ is not installed on this system.\nIf you want to use mods,\nyou need to have g++ intalled.");
     };
     #endif
-
-    G.loadMods();
+    //G.loadMods();
 
     if (!std::filesystem::is_directory("/tmp/.gsc_o/")){
         std::filesystem::create_directory("/tmp/.gsc_o/");
