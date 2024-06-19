@@ -1719,7 +1719,7 @@ int main()
         std::string path = "mods/";
         std::string mods_str="";
         for (const auto & entry : std::filesystem::directory_iterator(path)){
-            #undef MOD_OK
+            //#undef MOD_OK
             G.window.clear();
             std::string mod_path=entry.path();
             std::string mod_name=std::filesystem::path(mod_path).stem();
@@ -1735,7 +1735,7 @@ int main()
             if (system(mod_build.c_str())==0){
                 G.functions.log("MOD","Built '"+mod_name+"' successfully");
                 mods_str+=" Succes!\n";
-                #define MOD_OK
+                //#define MOD_OK
                 G.mods_list.push_back(mod_abs_name);
             }else{
                 G.functions.log("ERROR","Failed to build "+mod_name);
@@ -1744,8 +1744,8 @@ int main()
                 //#undef MOD_OK
                 //#endif
             };
-            std::cout<<"|"<<std::endl;
-            #ifdef MOD_OK
+            #ifdef MOD
+                #undef MOD
                 G.functions.log("MOD","Mod loaded!");
             #endif
         };
