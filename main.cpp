@@ -1752,6 +1752,13 @@ int main()
                 #include "mods.cpp"
                 G.functions.log("MOD","AAAAAAAAAAAAAAAAAAAA")
             #endif
+            while (G.window.pollEvent(G.event))
+            {
+                if (G.event.type == sf::Event::Closed){
+                    G.functions.quitGame(G.window);
+                    return 0;
+                };
+            };
         };
     };
     
