@@ -8,7 +8,7 @@
 #include <string>
 #include "../main.cpp"
 
-class Mod{/
+class Mod{
     public:
     std::string name;
     std::string author_name;
