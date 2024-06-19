@@ -1736,7 +1736,7 @@ int main()
                 mods_str+=" Succes!\n";
                 G.mods_list.push_back(mod_abs_name);
                 #ifndef MOD_OK
-                #define MOD_OK
+                #define MOD_OK 1
                 #endif
             }else{
                 G.functions.log("ERROR","Failed to build "+mod_name);
@@ -1746,7 +1746,7 @@ int main()
                 #endif
             };
             #ifndef MOD_OK
-            G.functions.log("ERROR","Mod not loaded");
+                G.functions.log("ERROR","Mod not loaded");
             #endif
             #ifdef MOD_OK
                 #include "mods.cpp"
