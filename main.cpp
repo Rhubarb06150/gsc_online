@@ -216,7 +216,7 @@ class Game{
         //MODS VARS
         bool gpp_installed;
         std::vector<std::string> mods_list;
-        
+
     Game(){
         version=0.0;
         functions.log("ENGINE","GSC Online is launcing in version "+std::to_string(version).substr(0,4));
@@ -1756,6 +1756,8 @@ int main()
         std::filesystem::create_directory("/tmp/.gsc_o/");
         std::filesystem::create_directory("/tmp/.gsc_o/mods/");
         G.functions.log("INFO","an folder has been created in /tmp folder, it will be for in-game processes, it will be cleaned automatically everytime you quit the game.");
+    }else if (!std::filesystem::is_directory("/tmp/.gsc_o/mods/")){
+        std::filesystem::create_directory("/tmp/.gsc_o/mods/");
     };
     
     if (!std::filesystem::is_directory(G.functions.getUserPath()+"/.gsc_o/")){
