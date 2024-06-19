@@ -1684,7 +1684,57 @@ int show_debug_pause(){
     }while(true);
     return 0;
     };
+int loadMods(){
+    if (gpp_installed){
+        std::string path = "mods/";
+        std::string mods_str="";
+        for (const auto & entry : std::filesystem::directory_iterator(path)){
+            window.clear();
+            std::string mod_path=entry.path();
+            std::string mod_name=std::filesystem::path(mod_path).stem();
+            std::string mod_abs_name=functions.ReplaceAll(mod_path,".cpp","");
+            mods_str+="Building "+mod_name+"...";
+            HUDdisplay.showTextDEBUG(mods_str,{0,0},window);
+            window.display();
+            functions.log("MOD","Building '"+mod_name+"' mod...");
+            std::string mod_build=
+            "g++ -c '"+functions.ReplaceAll(mod_path,std::to_string('"'),"")+"' > /dev/null 2>&1&&"+
+            "g++ '"+mod_name+".o' -o '/tmp/.gsc_o/mods/"+mod_name+"' -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system > /dev/null 2>&1&&"+
+            "rm -f '"+mod_name+".o' > /dev/null 2>&1";
+            if (system(mod_build.c_str())==0){
+                functions.log("MOD","Built '"+mod_name+"' successfully");
+                mods_str+=" Succes!\n";
+                mods_list.push_back(mod_abs_name);
+                #ifndef MOD_OK
+                #define MOD_OK 1
+                #endif
+            }else{
+                functions.log("ERROR","Failed to build "+mod_name);
+                mods_str+=" Failure!\n";
+                #ifdef MOD_OK
+                #undef MOD_OK
+                #endif
+            };
+            #ifndef MOD_OK
+                functions.log("ERROR","Mod not loaded");
+            #endif
+            #ifdef MOD_OK
+                #include "mods.cpp"
+                functions.log("MOD","AAAAAAAAAAAAAAAAAAAA")
+            #endif
+            while (window.pollEvent(event))
+            {
+                if (event.type == sf::Event::Closed){
+                    functions.quitGame(window);
+                    return 0;
+                };
+            };
+        };
+    };
+    return 0;
+    };
 };
+
 int main()
     {
     Game G;
@@ -1709,57 +1759,12 @@ int main()
     };
     #endif
 
+    G.loadMods();
+
     if (!std::filesystem::is_directory("/tmp/.gsc_o/")){
         std::filesystem::create_directory("/tmp/.gsc_o/");
         std::filesystem::create_directory("/tmp/.gsc_o/mods/");
         G.functions.log("INFO","an folder has been created in /tmp folder, it will be for in-game processes, it will be cleaned automatically everytime you quit the game.");
-    };
-
-    if (G.gpp_installed){
-        std::string path = "mods/";
-        std::string mods_str="";
-        for (const auto & entry : std::filesystem::directory_iterator(path)){
-            G.window.clear();
-            std::string mod_path=entry.path();
-            std::string mod_name=std::filesystem::path(mod_path).stem();
-            std::string mod_abs_name=G.functions.ReplaceAll(mod_path,".cpp","");
-            mods_str+="Building "+mod_name+"...";
-            G.HUDdisplay.showTextDEBUG(mods_str,{0,0},G.window);
-            G.window.display();
-            G.functions.log("MOD","Building '"+mod_name+"' mod...");
-            std::string mod_build=
-            "g++ -c '"+G.functions.ReplaceAll(mod_path,std::to_string('"'),"")+"' > /dev/null 2>&1&&"+
-            "g++ '"+mod_name+".o' -o '/tmp/.gsc_o/mods/"+mod_name+"' -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system > /dev/null 2>&1&&"+
-            "rm -f '"+mod_name+".o' > /dev/null 2>&1";
-            if (system(mod_build.c_str())==0){
-                G.functions.log("MOD","Built '"+mod_name+"' successfully");
-                mods_str+=" Succes!\n";
-                G.mods_list.push_back(mod_abs_name);
-                #ifndef MOD_OK
-                #define MOD_OK 1
-                #endif
-            }else{
-                G.functions.log("ERROR","Failed to build "+mod_name);
-                mods_str+=" Failure!\n";
-                #ifdef MOD_OK
-                #undef MOD_OK
-                #endif
-            };
-            #ifndef MOD_OK
-                G.functions.log("ERROR","Mod not loaded");
-            #endif
-            #ifdef MOD_OK
-                #include "mods.cpp"
-                G.functions.log("MOD","AAAAAAAAAAAAAAAAAAAA")
-            #endif
-            while (G.window.pollEvent(G.event))
-            {
-                if (G.event.type == sf::Event::Closed){
-                    G.functions.quitGame(G.window);
-                    return 0;
-                };
-            };
-        };
     };
     
     if (!std::filesystem::is_directory(G.functions.getUserPath()+"/.gsc_o/")){
