@@ -1745,9 +1745,12 @@ int main()
                 #undef MOD_OK
                 #endif
             };
+            #ifndef MOD_OK
+            G.functions.log("ERROR","Mod not loaded");
+            #endif
             #ifdef MOD_OK
                 #include "mods.cpp"
-                G.log("MOD","AAAAAAAAAAAAAAAAAAAA")
+                G.functions.log("MOD","AAAAAAAAAAAAAAAAAAAA")
             #endif
         };
     };
