@@ -216,6 +216,7 @@ class Game{
         //MODS VARS
         bool gpp_installed;
         std::vector<std::string> mods_list;
+        
     Game(){
         version=0.0;
         functions.log("ENGINE","GSC Online is launcing in version "+std::to_string(version).substr(0,4));
