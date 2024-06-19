@@ -1718,13 +1718,13 @@ int main()
             mods_str+="Building "+mod_name+"...";
             G.HUDdisplay.showTextDEBUG(mods_str,{0,0},G.window);
             G.window.display();
-            G.functions.log("MOD","Building "+mod_name);
+            G.functions.log("MOD","Building '"+mod_name+"' mod...");
             std::string mod_build=
             "g++ -c '"+G.functions.ReplaceAll(mod_path,std::to_string('"'),"")+"' > /dev/null 2>&1&&"+
             "g++ '"+mod_name+".o' -o '/tmp/.gsc_o/mods/"+mod_name+"' -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system > /dev/null 2>&1&&"+
             "rm -f '"+mod_name+".o' > /dev/null 2>&1";
             if (system(mod_build.c_str())==0){
-                G.functions.log("MOD","Built "+mod_name+" successfully");
+                G.functions.log("MOD","Built '"+mod_name+"' successfully");
                 mods_str+=" Succes!\n";
                 #ifndef MOD_OK
                 #define MOD_OK
@@ -1737,7 +1737,7 @@ int main()
                 #endif
             };
             #ifdef MOD_OK
-                G.log("MOD","Mod loaded");
+                G.log("MOD","Mod loaded!");
             #endif
         };
     };
