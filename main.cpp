@@ -1737,7 +1737,7 @@ int main()
                 #endif
             };
             #ifdef MOD_OK
-                std::cout<<"EEE"<<std::endl;
+                G.log("MOD","Mod loaded");
             #endif
         };
     };
