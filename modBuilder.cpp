@@ -163,7 +163,7 @@ class Main{
         };
         F.log("CONFIG","Building the game...");
         std::string build_str;
-        build_str="g++ -c /tmp/.gsc_o/source/main.cpp&&g++ /tmp/.gsc_o/source/main.o -o main -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system";
+        build_str="g++ -c /tmp/.gsc_o/source/main.cpp&&g++ main.o -o GSC_Online_Modded -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system";
         if (system(build_str.c_str())==0){
             F.log("INFO","Game built with success!");
         };
