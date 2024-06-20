@@ -39,7 +39,7 @@ class MOD_MiniMAP{
         return 0;
     };
     int show(sf::RenderWindow& window){
-        sf::RectangleShape rectangle(sf::Vector2f(128,128));
+        sf::RectangleShape rectangle(sf::Vector2f(size,size));
         rectangle.setFillColor(sf::Color(50,50,50));
         rectangle.setPosition({0,0});
         sf::RectangleShape player(sf::Vector2f(8,8));
