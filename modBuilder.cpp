@@ -142,7 +142,7 @@ class Main{
             std::string header_content="";
             bool found;
             for (int i=0;i<mod_classes.size();i++){
-                const std::regex regexPassVars("(int passVars)*");
+                const std::regex regexPassVars = std::regex("(int passVars)*");
                 found=false;
 
                 types.append(mod_classes[i]);
