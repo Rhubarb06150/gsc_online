@@ -24,7 +24,7 @@ class MOD_MiniMAP{
         description="A simple mini map test\nI hope you'll enjoy :)";
         active=true;
         zoom=0.5f;
-        size=128;
+        size=196;
     };
     int init(){
         return 0;
