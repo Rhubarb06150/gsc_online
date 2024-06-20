@@ -1458,7 +1458,7 @@ int modManager(){
             };
         };
         if (choice>2){
-            offset=choice-12;
+            offset=choice-2;
         }else{
             offset=0;
         };
