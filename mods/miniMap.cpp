@@ -70,12 +70,12 @@ class MOD_MiniMAP{
                 sprite.setPosition((width*8)-(cur_player_pos[0]/8)+64,height*8-(cur_player_pos[1]/8)+64);
                 window.draw(sprite);    
                 cols++;
-                if (cols>17){
+                if (cols>size/8){
                     break;
                 };
         };
         rows++;
-        if (rows>20){
+        if (rows>size/8){
             break;
         }
         };
