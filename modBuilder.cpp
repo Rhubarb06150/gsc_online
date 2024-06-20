@@ -84,7 +84,7 @@ class Main{
                             mod_classes.push_back(class_name);
                             std::string inst;
                             F.log("INFO","Copying "+mod_paths[i]+" in build folder...");
-                            inst="cp "+mod_paths[i]+" /tmp/.gsc_o/source/mods/ > /dev/null 2>&1";
+                            inst="cp "+mod_paths[i]+" /tmp/.gsc_o/source/mods > /dev/null 2>&1";
                             system(inst.c_str());
                             F.log("INFO","Added");
                         }
