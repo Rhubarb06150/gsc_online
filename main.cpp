@@ -1480,9 +1480,11 @@ int main_menu(){
                     if (choice==4){
                         int choice=0;
                         while (true){
+                            window.clear(sf::Color(248,248,248));
                             for (int i=0;i<mods_list.size();i++){
                                 //DISPLAY MOD NAME
                             };
+                            window.display();
                         };
 
                     };
