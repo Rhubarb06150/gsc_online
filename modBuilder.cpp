@@ -298,6 +298,9 @@ class Main{
                 var="";
             };
         };
+        if (var!=""){
+            res.push_back(var);
+        };
         std::cout << line << std::endl;
         std::cout << "res size -> " << res.size() << std::endl;
         return res;
