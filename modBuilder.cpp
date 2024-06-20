@@ -154,7 +154,7 @@ class Main{
                 if (i+1<mod_classes.size()){
                     states.append(",");
                 };
-
+                
                 inits.append(mod_classes[i]);
                 inits.append(" ");
                 inits.append("mod_");
@@ -200,7 +200,7 @@ class Main{
                 line=F.ReplaceAll(line,"//MOD INIT",inits);
                 line=F.ReplaceAll(line,"//MOD ACT",acts);   
                 line=F.ReplaceAll(line,"std::vector<std::string> mods_list;",types);
-                line=F.ReplaceAll(line,"//DISPLAY ACTIVE MOD","HUDdisplay.showTextBOW(mods_names_list[i+offset],{64,96+(i*32)},window);std::cout<<mods_names_list[i+offset]<<std::endl;");
+                line=F.ReplaceAll(line,"//DISPLAY ACTIVE MOD","HUDdisplay.showTextBOW(mods_names_list[i+offset],{64,96+(i*32)},window);");
                 line=F.ReplaceAll(line,"//DISPLAY UNACTIVE MOD","HUDdisplay.showTextWOB(mods_names_list[i+offset],{64,96+(i*32)},window);");
                 line=F.ReplaceAll(line,"mods_list={};",mod_list);
                 line=F.ReplaceAll(line,"mods_names_list={};",names);

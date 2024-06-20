@@ -148,6 +148,7 @@ class Game{
         std::vector<std::string> mods_list;
         std::vector<std::string> mods_names_list;
         std::vector<bool> mods_states;
+        std::vector<std::string> mods_descriptions;
         //MOD INIT
 
     Game(){
@@ -186,6 +187,7 @@ class Game{
         mods_names_list={};
         mods_list={};
         mods_states={};
+        //MODS DESC
         srand(time(NULL));//reset the random values
 
         if (!std::filesystem::is_directory(functions.getUserPath()+"/.gsc_o/")){// here we verify if a game folder exists
