@@ -131,6 +131,7 @@ class Main{
 
             F.log("CONFIG","Adding mods in build source main file");
             std::string inits="";
+            std::string descs="";
             std::string acts="";
             std::string types="std::vector<std::variant<";
             std::string display="";
@@ -154,7 +155,10 @@ class Main{
                 if (i+1<mod_classes.size()){
                     states.append(",");
                 };
-                
+
+                descs.append("mods_descriptions.push_back(");
+                descs.append(F.ReplaceAll(mod_names_final[i]," ","_")+".description);");
+
                 inits.append(mod_classes[i]);
                 inits.append(" ");
                 inits.append("mod_");
@@ -198,7 +202,8 @@ class Main{
         std::string line;
             while (std::getline(main_input, line)){ 
                 line=F.ReplaceAll(line,"//MOD INIT",inits);
-                line=F.ReplaceAll(line,"//MOD ACT",acts);   
+                line=F.ReplaceAll(line,"//MOD ACT",acts);
+                line=F.ReplaceAll(line,"//MODS DESC",descs);
                 line=F.ReplaceAll(line,"std::vector<std::string> mods_list;",types);
                 line=F.ReplaceAll(line,"//DISPLAY ACTIVE MOD","HUDdisplay.showTextBOW(mods_names_list[i+offset],{64,96+(i*32)},window);");
                 line=F.ReplaceAll(line,"//DISPLAY UNACTIVE MOD","HUDdisplay.showTextWOB(mods_names_list[i+offset],{64,96+(i*32)},window);");

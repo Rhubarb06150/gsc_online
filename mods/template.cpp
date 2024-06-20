@@ -6,10 +6,12 @@ class MOD_mod{
     public:
     std::string name;
     std::string author_name;
+    std::string description;
     bool active;
     MOD_mod(){
         name="Demo mod";
         author_name="Rhubarb";
+        description="The basic template";
         active=true;
     };
     int init(){

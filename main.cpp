@@ -187,6 +187,7 @@ class Game{
         mods_names_list={};
         mods_list={};
         mods_states={};
+        mods_descriptions={};
         //MODS DESC
         srand(time(NULL));//reset the random values
 
