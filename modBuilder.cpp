@@ -83,7 +83,7 @@ class Main{
                         } else {
                             mod_classes.push_back(class_name);
                             std::string inst;
-                            inst="cp "+mod_paths[i]+" /tmp/.gsc_o/source/mods/.";
+                            inst="cp "+mod_paths[i]+" /tmp/.gsc_o/source/mods/"+mod_paths[i];
                             system(inst.c_str());
                             F.log("INFO","Added");
                         }
