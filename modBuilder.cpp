@@ -158,12 +158,8 @@ class Main{
                 modfile.open(mod_paths_final[i]);
                 std::string line;
                 while (std::getline(modfile, line)){
-                    if (found){
+                    if (line.find("int passVars(") != std::string::npos){
                         getVars(line);
-                        break;};
-                    if (line.find("int passVars(") != std::string::npos) {
-                        found=true;
-                        std::cout << "found!" << '\n';
                     }
 
                 };
