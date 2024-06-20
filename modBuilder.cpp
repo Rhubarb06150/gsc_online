@@ -282,6 +282,7 @@ class Main{
         for (int i=0;i<line.length();i++){
             if(line[i]==','||line[i]=='('){
                 res.push_back(var);
+                std::cout << var << std::endl;
                 std::cout << "add" << std::endl;
                 var="";
             }else if (line[i]!=' '){
