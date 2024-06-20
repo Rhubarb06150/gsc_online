@@ -107,7 +107,6 @@ class Main{
                             inst="cp "+F.ReplaceAll(mod_paths[i]," ","\\ ")+" /tmp/.gsc_o/source/mods > /dev/null 2>&1";
                             if (system(inst.c_str())==0){
                                 F.log("INFO","Copied!");
-                                
                             }else{
                                 F.log("ERROR","failed to copy "+mod_paths[i]+" in build folder");
                                 
@@ -142,6 +141,7 @@ class Main{
             std::string header_content="";
             bool found;
             for (int i=0;i<mod_classes.size();i++){
+                std::string vars="";
                 found=false;
 
                 types.append(mod_classes[i]);
@@ -159,8 +159,7 @@ class Main{
                 std::string line;
                 while (std::getline(modfile, line)){
                     if (line.find("int passVars(") != std::string::npos){
-                        std::vector<std::string> res;
-                        res=getVars(line);
+                        vars=getVars(line);
                     };
                 };
 
@@ -207,6 +206,7 @@ class Main{
                 var_pass.append("mod_");
                 var_pass.append(F.ReplaceAll(mod_names_final[i]," ","_"));
                 var_pass.append(".passvar(");
+                var_pass.append(vars);
                 var_pass.append(");};");
                 var_pass.append("\n");
 
@@ -272,7 +272,7 @@ class Main{
         return 0;
     };
 
-    std::vector<std::string> getVars(std::string function){
+    std::string getVars(std::string function){
         std::string line;
         line=function;
         std::vector<std::string> res = {};
@@ -301,9 +301,7 @@ class Main{
         if (var!=""){
             res.push_back(var);
         };
-        std::cout << line << std::endl;
-        std::cout << "res size -> " << res.size() << std::endl;
-        return res;
+        return line;
     };
 };
 int main(){
