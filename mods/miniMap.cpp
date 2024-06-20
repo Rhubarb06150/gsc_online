@@ -74,8 +74,10 @@ class MOD_MiniMAP{
                     break;
                 };
         };
-        std::cout << shown_sprites << std::endl;
         rows++;
+        if ((height*8-(cur_player_pos[1]/8)+64)>size-16){
+            break;
+        }
         if (rows>(size/8)+1){
             break;
         }
