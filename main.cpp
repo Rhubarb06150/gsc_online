@@ -1454,9 +1454,9 @@ int modManager(){
         for (int i = 0; i<mods_list.size();i++){
             if (i>5)break;
             if (mods_states[i]==true){
-            //DISPLAY ACTIVE MOD
+                HUDdisplay.showTextBOW(mods_names_list[i+offset],{64,96+(i*32)},window);
             }else{
-            //DISPLAY UnACTIVE MOD
+                HUDdisplay.showTextWOB(mods_names_list[i+offset],{64,96+(i*32)},window);
             };
         };
         if (choice>=5){
@@ -1471,6 +1471,7 @@ int modManager(){
         rectangle.setPosition({0,320});
         window.draw(rectangle);
         HUDdisplay.showTextWOB("Description:",{0,320},window);
+        HUDdisplay.showTextDEBUG(mods_descriptions[choice],{0,320},window);
         window.display();
     };
     return 0;
