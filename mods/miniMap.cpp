@@ -60,9 +60,9 @@ class MOD_MiniMAP{
             int cols=0;
             for (int width=real_player_pos_x;width<cur_terrain_vector[0].size();width++){
                 sf::Sprite sprite;
-                sprite.setTexture(tiles.textures[0][tiles.getIntIndex(cur_terrain_vector[height][width])]);
+                sprite.setTexture(tiles.textures[2][tiles.getIntIndex(cur_terrain_vector[height][width])]);
                 sprite.setScale(zoom,zoom);
-                sprite.setPosition((width*8)-(cur_player_pos[2]/8)+64,height*8-(cur_player_pos[1]/8)+64);
+                sprite.setPosition((width*8)-(cur_player_pos[0]/8)+64,height*8-(cur_player_pos[1]/8)+64);
                 window.draw(sprite);    
                 cols++;
                 if (cols>(size/8)+1){
