@@ -295,6 +295,7 @@ class Main{
                 var="";
             };
         };
+        std::cout << res.size() << std::endl;
         return res;
     };
 };
