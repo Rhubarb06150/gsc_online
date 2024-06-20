@@ -1481,6 +1481,7 @@ int main_menu(){
                         int choice=0;
                         while (true){
                             window.clear(sf::Color(248,248,248));
+                            HUDdisplay.showTextBOW("MODS",{32,0},window);
                             for (int i=0;i<mods_list.size();i++){
                                 //DISPLAY MOD NAME
                             };
