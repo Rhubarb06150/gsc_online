@@ -1471,7 +1471,7 @@ int modManager(){
         rectangle.setPosition({0,320});
         window.draw(rectangle);
         HUDdisplay.showTextWOB("Description:",{0,320},window);
-        HUDdisplay.showTextDEBUG(mods_descriptions[choice],{0,320},window);
+        HUDdisplay.showTextDEBUG(mods_descriptions[choice],{0,352},window);
         window.display();
     };
     return 0;
