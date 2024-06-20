@@ -15,6 +15,7 @@ class MOD_MiniMAP{
     std::string author_name;
     std::string description;
     std::vector<int> cur_player_pos;
+    std::string map_name;
     float zoom;
     std::vector<std::vector<std::string>> cur_terrain_vector;
     bool active;
@@ -29,10 +30,11 @@ class MOD_MiniMAP{
     int init(){
         return 0;
     };
-    int passVars(std::vector<int> player_pos, std::vector<std::vector<std::string>> terrain_vector,sf::Event event){
+    int passVars(std::vector<int> player_pos, std::vector<std::vector<std::string>> terrain_vector,sf::Event event, std::string cur_map){
         cur_player_pos=player_pos;
         cur_terrain_vector=terrain_vector;
         events=event;
+        map_name=cur_map;
         return 0;
     };
     int act(){
