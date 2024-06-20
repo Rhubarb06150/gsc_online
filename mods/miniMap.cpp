@@ -9,7 +9,6 @@ class MOD_MiniMAP{
     HUD display;
     TilesIndex tiles;
     public:
-    sf::Event events;
     std::string name;
     std::string author_name;
     std::string description;
@@ -30,14 +29,13 @@ class MOD_MiniMAP{
     int passVars(std::vector<int> player_pos, std::vector<std::vector<std::string>> terrain_vector,sf::Event event){
         cur_player_pos=player_pos;
         cur_terrain_vector=terrain_vector;
-        events=event;
         return 0;
     };
-    int act(sf::RenderWindow& window){
-        while (window.pollEvent(events))
+    int act(sf::RenderWindow& window,sf::Event event){
+        while (window.pollEvent(event))
         {
-            if(events.type==sf::Event::KeyPressed){
-                if (events.key.code==sf::Keyboard::Z){
+            if(event.type==sf::Event::KeyPressed){
+                if (event.key.code==sf::Keyboard::Z){
                     if (zoom==0.5f){
                         zoom=1.0f;
                     }else if(zoom==0.25f){
@@ -46,7 +44,7 @@ class MOD_MiniMAP{
                         zoom=0.25f;
                     };
                 };
-                if (events.key.code==sf::Keyboard::X){
+                if (event.key.code==sf::Keyboard::X){
                     if (zoom==1.0f){
                         zoom=0.5f;
                     }else if(zoom==0.5f){
