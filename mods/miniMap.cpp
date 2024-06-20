@@ -44,16 +44,22 @@ class MOD_MiniMAP{
         player.setFillColor(sf::Color(255,128,0));
         player.setPosition({64,64});
         window.draw(rectangle);
-        for (int height=(cur_player_pos[1]/64)-9;height<cur_terrain_vector.size();height++){
-            std::cout<<height<<std::endl;
-            if (height<0){
-                height=0;
-            };
-            for (int width=(cur_player_pos[0]/64)-8;width<cur_terrain_vector[0].size();width++){
-                std::cout<<width<<std::endl;
-                if (width<0){
-                    width=0;
-                };
+        int real_player_pos_x = cur_player_pos[0]/64;
+        int real_player_pos_y = cur_player_pos[1]/64;
+        
+        if (real_player_pos_x<6){
+            real_player_pos_x=0;
+        }else{
+            real_player_pos_x-=6;
+        };
+
+        if (real_player_pos_y<5){
+            real_player_pos_y=0;
+        }else{
+            real_player_pos_y-=5;
+        };
+        for (int height=real_player_pos_y;height<cur_terrain_vector.size();height++){
+            for (int width=real_player_pos_x;width<cur_terrain_vector[0].size();width++){
                 sf::Sprite sprite;
                 sprite.setTexture(tiles.textures[0][tiles.getIntIndex(cur_terrain_vector[height][width])]);
                 sprite.setScale(zoom,zoom);
