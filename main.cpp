@@ -1424,7 +1424,7 @@ int modManager(){
     while (true){
         while (window.pollEvent(event))
         {
-            if (event.type == sf::Event::Closed || event.type == sf::Event::KeyPressed){
+            if (event.type == sf::Event::Closed){
                 functions.quitGame(window);
                 return 0;
             };
