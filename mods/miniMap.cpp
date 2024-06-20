@@ -11,7 +11,7 @@ class MOD_MiniMAP{
     std::string author_name;
     std::string description;
     std::vector<int> cur_player_pos;
-    bool debug_active;
+    std::vector<std::vector<std::string>> cur_terrain_vector;
     
     bool active;
     MOD_MiniMAP(){
@@ -23,19 +23,19 @@ class MOD_MiniMAP{
     int init(){
         return 0;
     };
-    int passVars(std::vector<int> player_pos,bool debug){
+    int passVars(std::vector<int> player_pos, std::vector<std::vector<std::string>> terrain_vector){
         cur_player_pos=player_pos;
-        debug_active=debug;
+        cur_terrain_vector=terrain_vector;
         return 0;
     };
     int act(){
         return 0;
     };
     int show(sf::RenderWindow& window){
-        if (!debug_active){
-        display.showTextDEBUG("x: "+std::to_string(cur_player_pos[0]),{0,0},window);
-        display.showTextDEBUG("y: "+std::to_string(cur_player_pos[1]),{0,16},window);
-        };
+        sf::RectangleShape rectangle(sf::Vector2f(128,128));
+        rectangle.setFillColor(sf::Color(0,0,0));
+        rectangle.setPosition({0,0});
+        window.draw(rectangle);
         return 0;
     };
 };
