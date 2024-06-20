@@ -71,9 +71,9 @@ class MOD_MiniMAP{
             if (cols>20){
                 break;
             }
-        };
+            };
         rows++;
-        if (rows>20){
+        if (rows>15){
             break;
         }
         };
