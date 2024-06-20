@@ -161,7 +161,6 @@ class Main{
                     if (line.find("int passVars(") != std::string::npos){
                         std::vector<std::string> res;
                         res=getVars(line);
-                        std::cout << "res size: "<<res.size()<<std::endl;
                     };
                 };
 
@@ -293,7 +292,7 @@ class Main{
                 }
             };
         };
-        std::cout << function << "size -> " << res.size() << std::endl;
+        std::cout << "res size -> " << res.size() << std::endl;
         return res;
     };
 };
