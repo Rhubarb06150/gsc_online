@@ -45,7 +45,7 @@ class Main{
         
         F.createMissingDir("/tmp/.gsc_o/");
         system("rm -r /tmp/.gsc_o/source -f  > /dev/null 2>&1");
-        F.log("INFO","Setup of the temp source folder");
+        F.log("CONFIG","Setup of the temp source folder");
         F.createMissingDir("/tmp/.gsc_o/source/");
         F.log("INFO","Getting your version source code from github...");
         std::string instruction;
@@ -104,6 +104,7 @@ class Main{
                 };
                 std::cout << std::endl;
             };
+
         }else{
             F.log("ERROR","Could not get source code from github");
             exit(2);
