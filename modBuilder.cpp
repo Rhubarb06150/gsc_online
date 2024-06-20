@@ -85,7 +85,9 @@ class Main{
                             std::string inst;
                             F.log("INFO","Copying "+mod_paths[i]+" in build folder...");
                             inst="cp "+mod_paths[i]+" /tmp/.gsc_o/source/mods > /dev/null 2>&1";
-                            system(inst.c_str());
+                            if (system(inst.c_str())==0){
+                                F.log("ERROR","failed to copy "+mod_paths[i]+" in build folder");
+                            };
                             F.log("INFO","Added");
                         }
                         break;
