@@ -293,7 +293,6 @@ class Main{
                     var="";
                 }
             };
-            std::cout << var << std::endl;
         };
         std::cout << "res size -> " << res.size() << std::endl;
         return res;
