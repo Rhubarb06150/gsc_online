@@ -1448,12 +1448,12 @@ int modManager(){
             };
         };
         for (int i = 0; i<mods_list.size();i++){
-            if (i>5)break;
             if (mods_states[i]==true){
             //DISPLAY ACTIVE MOD
             }else{
             //DISPLAY UnACTIVE MOD
             };
+            if (i>5)break;
         };
         if (choice>=6){
             offset=choice-6;
