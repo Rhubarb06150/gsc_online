@@ -157,7 +157,7 @@ class Main{
                 std::ifstream modfile;
                 modfile.open(mod_paths_final[i]);
                 std::string line;
-                std::regex regexPassVars = std::regex("(int passVars)");
+                std::regex regexPassVars = std::regex("(int passVars)*");
                 while (std::getline(modfile, line)){
                     if (found){
                         getVars(line);
