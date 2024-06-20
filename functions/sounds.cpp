@@ -1,7 +1,7 @@
 #include <SFML/Audio.hpp>
 #include <iostream>
 
-#pragma once
+
 
 class Sounds{
     public:

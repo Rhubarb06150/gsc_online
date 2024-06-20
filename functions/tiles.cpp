@@ -5,8 +5,6 @@
 #include <map>
 #include <iostream>
 
-#pragma once
-
 #include "functions.cpp"
 
 class TilesIndex{

@@ -2,8 +2,6 @@
 #include <string>
 #include <iostream>
 
-#pragma once
-
 class MOD_MiniMAP{
     public:
     std::string name;

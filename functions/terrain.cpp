@@ -33,7 +33,6 @@
 
 #include "tiles.cpp"
 
-#pragma once
 
 class Terrain{
 
