@@ -139,7 +139,7 @@ I found that funny so here is Ho-Oh
 #include "functions/sounds.cpp"
 #include "functions/hud.cpp"
 
-#include "mods/header.hpp"
+#include "mods/player copy.cpp"
 
 #ifdef MOD
 #endif

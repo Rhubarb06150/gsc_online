@@ -119,14 +119,18 @@ class Main{
             std::string inits="";
             std::string acts="";
             std::string display="";
+            std::string header;
             for (int i=0;i<mod_classes.size();i++){
                 inits.append("        ");
                 inits.append(mod_classes[i]);
                 inits.append(" ");
                 inits.append(F.ReplaceAll(mod_names_final[i]," ","_"));
                 inits.append(";\n");
+                
+                header.append("#include "+'"'+mod_paths_final[i]+'"');
             };
             std::cout<<inits<<std::endl;
+            std::cout<<header<<std::endl;
         }else{
             F.log("ERROR","Could not get source code from github");
             exit(2);
