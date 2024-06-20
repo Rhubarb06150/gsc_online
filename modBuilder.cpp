@@ -37,6 +37,7 @@ class Main{
             exit(3);
         };
         F.log("INFO","Looking for mods...");
+        timeWait();
         for (const auto & entry : std::filesystem::directory_iterator("mods/")){
             std::filesystem::path file_path;
             file_path=entry.path();
@@ -63,12 +64,15 @@ class Main{
         F.createMissingDir("/tmp/.gsc_o/");
         system("rm -r /tmp/.gsc_o/source -f > /dev/null 2>&1");
         F.log("CONFIG","Setup of the temp source folder");
+        timeWait();
         F.createMissingDir("/tmp/.gsc_o/source/");
         F.log("INFO","Getting your version source code from github...");
+        timeWait();
         std::string instruction;
         instruction="git clone -b "+version+" https://github.com/Rhubarb06150/gsc_online.git /tmp/.gsc_o/source > /dev/null 2>&1";
         if (system(instruction.c_str())==0){
             F.log("INFO","Cleaning...");
+            timeWait();
             system("rm -r /tmp/.gsc_o/source/help > /dev/null 2>&1");
             system("rm -r /tmp/.gsc_o/source/mods > /dev/null 2>&1");
             system("rm -f /tmp/.gsc_o/source/make > /dev/null 2>&1");
@@ -79,6 +83,7 @@ class Main{
             system("rm -f /tmp/.gsc_o/source/help.html > /dev/null 2>&1");
             F.createMissingDir("/tmp/.gsc_o/source/mods");
             F.log("INFO","Code has been retrieved from github");
+            timeWait();
             F.log("MOD","Configuring following mods:");
             for(int i=0;i<mod_paths.size();i++){
                 std::cout << "    -"+mod_names[i]<<std::endl;
@@ -86,6 +91,7 @@ class Main{
             for(int i=0;i<mod_paths.size();i++){
                 bool found=false;
                 F.log("MOD","Config of "+mod_names[i]);
+                timeWait();
                 std::ifstream file;
                 file.open(mod_paths[i]);
                 std::string line;
@@ -98,22 +104,28 @@ class Main{
                         class_name=F.ReplaceAll(class_name,"{","");
                         class_name=F.ReplaceAll(class_name,"class","");
                         F.log("INFO","Found "+mod_names[i]+" main class ("+class_name+"), adding mod to header and to main source file...");
+                        timeWait();
                         if(std::find(mod_classes.begin(), mod_classes.end(), class_name) != mod_classes.end()) {
                             F.log("ERROR","A mod with the same class is already configured, "+mod_names[i]+" mod will not be included.");
+                            timeWait();
                         } else {
                             std::string inst;
                             F.log("INFO","Copying "+mod_paths[i]+" in build folder...");
+                            timeWait();
                             inst="cp "+F.ReplaceAll(mod_paths[i]," ","\\ ")+" /tmp/.gsc_o/source/mods > /dev/null 2>&1";
                             if (system(inst.c_str())==0){
                                 F.log("INFO","Copied!");
+                                timeWait();
                             }else{
                                 F.log("ERROR","failed to copy "+mod_paths[i]+" in build folder");
+                                timeWait();
                                 break;
                             };
                             mod_classes.push_back(class_name);
                             mod_paths_final.push_back(mod_paths[i]);
                             mod_names_final.push_back(mod_names[i]);
                             F.log("INFO",mod_names[i]+" has been configured correctly!");
+                            timeWait();
                         }
                         break;
                     };
@@ -122,9 +134,9 @@ class Main{
                     };
                 };
                 std::cout << std::endl;
-                usleep(100000);
-                
+                timeWait();
             };
+
             F.log("CONFIG","Adding mods in build source main file");
             std::string inits="";
             std::string acts="";
@@ -209,6 +221,7 @@ class Main{
         system("mv /tmp/.gsc_o/source/main_bis.cpp /tmp/.gsc_o/source/main.cpp");
         system("cp /tmp/.gsc_o/source/main.cpp /tmp/main.cpp");
         F.log("INFO","Creating header");
+        timeWait();
         std::ofstream header_ouput("/tmp/.gsc_o/source/mods/header.hpp");
         header_ouput<<header_content;
         header_ouput.close();
@@ -231,6 +244,15 @@ class Main{
             //system("rm -r /tmp/.gsc_o/* -f > /dev/null 2>&1");
             exit(5);
         };
+        return 0;
+    };
+    int timeWait(){
+        #ifdef __linux__
+        usleep(50000);
+        #endif
+        #ifdef _WIN32
+        Sleep(50000);
+        #endif
         return 0;
     };
 };
