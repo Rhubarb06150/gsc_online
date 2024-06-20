@@ -278,8 +278,28 @@ class Main{
         line=function;
         std::vector<std::string> res = {};
         std::reverse(line.begin(),line.end());
+        bool rip;
+        rip=false;
+        std::string var;
+        var="";
         for (int i=0;i<line.length();i++){
-            std::cout << line[i] << std::endl; 
+            if (line[i]==' '){
+                if (!rip){
+                    rip=true;
+                };
+            };
+            if (line[i]=='('){
+                break;
+            };
+            if (rip){
+                if(line[i]!=' '){
+                    rip=true;
+                }else if(line[i]==','){
+                    res.push_back(var);
+                }else{
+                    var.append(std::to_string(line[i]));
+                };
+            };
         };
         return {};
     };
