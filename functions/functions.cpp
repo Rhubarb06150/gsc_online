@@ -10,13 +10,14 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <filesystem>
+#include <sys/stat.h>
+#include <sys/types.h>
 #include <iostream>
+#include <unistd.h>
+#include <fstream>
 #include <string>
 #include <vector>
-#include <sys/stat.h>
-#include <fstream>
-#include <unistd.h>
-#include <sys/types.h>
 #include <pwd.h>
 
 class GSC_Functions{
