@@ -74,9 +74,7 @@ class MOD_MiniMAP{
                     break;
                 };
         };
-        if (shown_sprites>((size/8)*(size/8))){
-            break;
-        }
+        std::cout << shown_sprites << std::endl;
         rows++;
         if (rows>(size/8)+1){
             break;
