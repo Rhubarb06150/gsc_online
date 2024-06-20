@@ -159,7 +159,8 @@ class Main{
                 std::string line;
                 while (std::getline(modfile, line)){
                     if (line.find("int passVars(") != std::string::npos){
-                        std::vector<std::string> res; 
+                        std::vector<std::string> res;
+                        std::cout << "line:" << line << std::endl;
                         res=getVars(line);
                         for (int j=0;j<res.size();j++){
                             std::cout << res[j] << std::endl;
