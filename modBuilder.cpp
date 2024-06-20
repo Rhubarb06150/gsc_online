@@ -1,6 +1,14 @@
 #include <filesystem>
 #include <algorithm>
 #include <fstream>
+
+#ifdef __linux__
+    #include <unistd.h>
+#endif
+#ifdef _WIN32
+    #include <windows.h>
+#endif
+
 #include <regex>
 
 #include "functions/functions.cpp"
@@ -114,6 +122,8 @@ class Main{
                     };
                 };
                 std::cout << std::endl;
+                usleep(100000);
+                
             };
             F.log("CONFIG","Adding mods in build source main file");
             std::string inits="";
