@@ -9,6 +9,7 @@ class MOD_MiniMAP{
     HUD display;
     TilesIndex tiles;
     public:
+    int size;
     sf::Event events;
     std::string name;
     std::string author_name;
@@ -23,6 +24,7 @@ class MOD_MiniMAP{
         description="A simple mini map test\nI hope you'll enjoy :)";
         active=true;
         zoom=0.5f;
+        size=128;
     };
     int init(){
         return 0;
@@ -38,7 +40,7 @@ class MOD_MiniMAP{
     };
     int show(sf::RenderWindow& window){
         sf::RectangleShape rectangle(sf::Vector2f(128,128));
-        rectangle.setFillColor(sf::Color(0,0,0));
+        rectangle.setFillColor(sf::Color(50,50,50));
         rectangle.setPosition({0,0});
         sf::RectangleShape player(sf::Vector2f(8,8));
         player.setFillColor(sf::Color(255,128,0));
@@ -79,24 +81,24 @@ class MOD_MiniMAP{
         };
         window.draw(player);
 
-        sf::RectangleShape top_line({128,16});
+        sf::RectangleShape top_line({size,16});
         top_line.setFillColor({0,0,0});
         top_line.setPosition({0,0});
         window.draw(top_line);
         
-        sf::RectangleShape left_line({16,128});
+        sf::RectangleShape left_line({16,size});
         left_line.setFillColor({0,0,0});
         left_line.setPosition({0,0});
         window.draw(left_line);
 
-        sf::RectangleShape bottom_line({128,16});
+        sf::RectangleShape bottom_line({size,16});
         bottom_line.setFillColor({0,0,0});
-        bottom_line.setPosition({0,112});
+        bottom_line.setPosition({0,size-16});
         window.draw(bottom_line);
         
-        sf::RectangleShape right_line({16,128});
+        sf::RectangleShape right_line({16,size});
         right_line.setFillColor({0,0,0});
-        right_line.setPosition({112,0});
+        right_line.setPosition({size-16,0});
         window.draw(right_line);
 
         return 0;
