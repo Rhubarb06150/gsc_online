@@ -180,7 +180,7 @@ class Main{
                 line=F.ReplaceAll(line,"//MOD INIT",inits);
                 line=F.ReplaceAll(line,"//MOD ACT",acts);
                 line=F.ReplaceAll(line,"std::vector<std::string> mods_list;",types);
-                line=F.ReplaceAll(line,"//DISPLAY MOD NAME","HUDdisplay.showTextBOW(mods_names_list[i],{32,32+(i*32)});");
+                line=F.ReplaceAll(line,"//DISPLAY MOD NAME","HUDdisplay.showTextBOW(mods_names_list[i],{32,32+(i*32)},window);");
                 line=F.ReplaceAll(line,"mods_list={};",mod_list);
                 line=F.ReplaceAll(line,"mods_names_list={};",names);
                 main_output<<line<<"\n";
