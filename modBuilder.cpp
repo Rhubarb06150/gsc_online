@@ -287,8 +287,14 @@ class Main{
             if(line[i]==','||line[i]=='('){
                 res.push_back(var);
                 var="";
-            }else{
+            }else if (line[i]!=' '){
                 var.append(std::to_string(line[i]));
+            }else{
+                std::cout << "espace" << std::endl;
+                if (var!=""){
+                    res.push_back(var);
+                    var="";
+                }
             };
         };
         std::cout << res.size() << std::endl;
