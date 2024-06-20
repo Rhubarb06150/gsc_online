@@ -284,11 +284,12 @@ class Main{
         line=F.ReplaceAll(line,">","");
         line=F.ReplaceAll(line,"int ","");
         line=F.ReplaceAll(line,"<int>","");
-        line=F.ReplaceAll(line," ","");
         line=F.ReplaceAll(line,"passVars","");
         line=F.ReplaceAll(line,"(","");
         line=F.ReplaceAll(line,")","");
         line=F.ReplaceAll(line,"{","");
+        line=F.ReplaceAll(line,"sf::RenderWindow&","");
+        line=F.ReplaceAll(line," ","");
         std::cout << line << std::endl;
         std::cout << "res size -> " << res.size() << std::endl;
         return res;

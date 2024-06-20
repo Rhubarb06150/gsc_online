@@ -17,7 +17,7 @@ class MOD_MiniMAP{
     int init(){
         return 0;
     };
-    int passVars(std::vector<int> player_pos){
+    int passVars(std::vector<int> player_pos, sf::RenderWindow& window){
         return 0;
     };
     int act(){
