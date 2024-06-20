@@ -281,18 +281,14 @@ class Main{
         line=function;
         std::vector<std::string> res = {};
         std::reverse(line.begin(),line.end());
-        bool rip;
-        rip=false;
         std::string var;
         var="";
         for (int i=0;i<line.length();i++){
-            if(line[i]==' '){
-                rip=true;
-            }else if(line[i]==','||line[i]=='('){
+            if(line[i]==','||line[i]=='('){
                 res.push_back(var);
+                var="";
             }else{
                 var.append(std::to_string(line[i]));
-                var="";
             };
         };
         std::cout << res.size() << std::endl;
