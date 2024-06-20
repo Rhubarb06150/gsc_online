@@ -205,7 +205,7 @@ class Main{
                 var_pass.append("){");
                 var_pass.append("mod_");
                 var_pass.append(F.ReplaceAll(mod_names_final[i]," ","_"));
-                var_pass.append(".passvar(");
+                var_pass.append(".passVars(");
                 var_pass.append(vars);
                 var_pass.append(");};");
                 var_pass.append("\n");
