@@ -161,6 +161,7 @@ class Main{
             F.log("ERROR","Could not get source code from github");
             exit(2);
         };
+        exit(5);
         F.log("CONFIG","Building the game...");
         std::string build_str;
         build_str="g++ -c /tmp/.gsc_o/source/main.cpp&&g++ main.o -o GSC_Online_Modded -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system&&rm -f main.o";
