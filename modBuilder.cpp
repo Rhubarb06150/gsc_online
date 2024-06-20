@@ -119,6 +119,7 @@ class Main{
             std::string inits="";
             std::string acts="";
             std::string display="";
+            std::string mod_list="mods_list={";
             std::string header_content="";
             for (int i=0;i<mod_classes.size();i++){
                 
@@ -138,7 +139,13 @@ class Main{
                 header_content.append(F.ReplaceAll(mod_paths_final[i],"mods/",""));
                 header_content.append("\"");
                 header_content.append("\n");
+
+                mod_list.append("\""+mod_names[i]+"\"");
+                if (i<mod_classes.size()){
+                    mod_list.append(",");
+                };
             };
+            mod_list.append("};");
 
         std::ifstream main_input;
         main_input.open("/tmp/.gsc_o/source/main.cpp");
@@ -147,6 +154,7 @@ class Main{
             while (std::getline(main_input, line)){
                 line=F.ReplaceAll(line,"//MOD INIT",inits);
                 line=F.ReplaceAll(line,"//MOD ACT",acts);
+                line=F.ReplaceAll(line,"mods_list={};",mod_list);
                 main_output<<line<<"\n";
         };
         main_input.close();

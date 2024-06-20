@@ -76,9 +76,6 @@
 
 #include "mods/header.hpp"
 
-#ifdef MOD
-#endif
-
 class Game{
 
     public:
