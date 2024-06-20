@@ -142,7 +142,6 @@ class Main{
             std::string header_content="";
             bool found;
             for (int i=0;i<mod_classes.size();i++){
-                std::regex regexPassVars = std::regex("^    int passVars");
                 found=false;
 
                 types.append(mod_classes[i]);
@@ -158,7 +157,9 @@ class Main{
                 std::ifstream modfile;
                 modfile.open(mod_paths_final[i]);
                 std::string line;
+                std::regex regexPassVars = std::regex("^    int passVars");
                 while (std::getline(modfile, line)){
+                    std::cout << line << std::endl;
                     if (found){
                         getVars(line);
                         break;};
