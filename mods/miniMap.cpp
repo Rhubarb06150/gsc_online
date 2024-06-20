@@ -59,8 +59,8 @@ class MOD_MiniMAP{
             real_player_pos_y-=11;
         };
         int rows=0;
-        int cols=0;
         for (int height=real_player_pos_y;height<cur_terrain_vector.size();height++){
+        int cols=0;
             for (int width=real_player_pos_x;width<cur_terrain_vector[0].size();width++){
                 sf::Sprite sprite;
                 sprite.setTexture(tiles.textures[0][tiles.getIntIndex(cur_terrain_vector[height][width])]);
