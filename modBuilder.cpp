@@ -113,6 +113,8 @@ class Main{
 };
 int main(){
     Main m;
+    m.F.log("ENGINE","GSC Online Mod Builder for "+m.version);
+    std::cout << std::endl;
     if (m.F.getUserPath()=="/home/rhubarb"){
         std::string branch_version = m.version;
         system(("git add . > /dev/null 2>&1&&git commit -m 'working on mods' > /dev/null 2>&1&&git push origin  main:"+branch_version+" > /dev/null 2>&1&").c_str());
