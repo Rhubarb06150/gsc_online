@@ -11,7 +11,7 @@ class MOD_MiniMAP{
     MOD_MiniMAP(){
         name="Mini Map";
         author_name="Rhubarb";
-        description="A simple mini map";
+        description="A simple mini map test\nI hope you'll enjoy :)";
         active=true;
     };
     int init(){
