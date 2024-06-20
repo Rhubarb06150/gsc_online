@@ -156,7 +156,7 @@ class Main{
                     states.append(",");
                 };
 
-                descs.append("mods_descriptions.push_back(");
+                descs.append("mods_descriptions.push_back(mod_");
                 descs.append(F.ReplaceAll(mod_names_final[i]," ","_")+".description);");
 
                 inits.append(mod_classes[i]);
