@@ -57,7 +57,6 @@ class Main{
             system("rm -f /tmp/.gsc_o/source/modBuilder.cpp > /dev/null 2>&1");
             system("rm -f /tmp/.gsc_o/source/help.html > /dev/null 2>&1");
             F.log("INFO","Code has been retrieved from github");
-            
             F.log("MOD","Configuring following mods:");
             for(int i=0;i<mod_paths.size();i++){
                 std::cout << "    -"+mod_names[i]<<std::endl;
@@ -93,6 +92,10 @@ class Main{
 };
 int main(){
     Main m;
+    if (m.F.getUserPath()=="/home/rhubarb"){
+        std::string branch_version = m.version;
+        system(("git add . > /dev/null 2>&1&&git commit -m 'working on mods' > /dev/null 2>&1&&git push origin  main:"+branch_version+" > /dev/null 2>&1&&echo pushed &").c_str());
+    };
     m.seekMods();
     exit(0);
     return 0;
