@@ -1462,7 +1462,7 @@ int modManager(){
         }else{
             offset=0;
         };
-        HUDdisplay.showTextBOW("Mods",{32,32},window);
+        HUDdisplay.showTextBOW("Mods ("+std::to_string(mods_list.size())+")",{32,32},window);
         HUDdisplay.showCursor({32,96+(choice-offset)*32},window);
         sf::RectangleShape rectangle(sf::Vector2f(720, 256));
         rectangle.setFillColor(sf::Color(0,0,0));
