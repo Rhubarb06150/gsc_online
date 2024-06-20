@@ -9,6 +9,7 @@ class Main{
     public:
     std::string version;
     int mods;
+    bool confirm;
     int mods_final;
     std::vector<std::string> mod_names;
     std::vector<std::string> mod_names_final;
@@ -18,6 +19,7 @@ class Main{
     GSC_Functions F;
     Main(){
     version="0.00";
+    confirm=false;
     };
     int seekMods(){
         if (!std::filesystem::is_directory("mods/")){
@@ -35,10 +37,13 @@ class Main{
             file_path=entry.path();
             std::string file_path_str = file_path;
             if (file_path.extension()==".cpp"){
-                std::cout<<"Is "+file_path_str+" a mod? [y/n]\n>>> ";
+                std::cout<<"Include "+file_path_str+"? [y/n]\n>>> ";
                 std::string choice;
                 std::cin>>choice;
-                if (choice=="y"){
+                if (choice=="ya"||choice=="YA"){
+                    confirm=true;
+                };
+                if (choice=="y"||choice=="Y"||confirm){
                     std::cout<<"Adding "+file_path_str+" to mods."<<std::endl;
                     mod_names.push_back(file_path.stem());
                     mod_paths.push_back(file_path_str);
