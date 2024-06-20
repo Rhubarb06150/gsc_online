@@ -200,7 +200,7 @@ class Main{
             system("rm -r /tmp/.gsc_o/* -f > /dev/null 2>&1");
         }else{
             F.log("ERROR","Failed to build the game, verify if mods doesn't contain errors.");
-            system("rm -r /tmp/.gsc_o/* -f > /dev/null 2>&1");
+            //system("rm -r /tmp/.gsc_o/* -f > /dev/null 2>&1");
             exit(5);
         };
         return 0;
