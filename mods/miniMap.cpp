@@ -70,6 +70,9 @@ class MOD_MiniMAP{
                 };
         };
         rows++;
+        std::cout<<std::endl;
+        std::cout<<cols<<std::endl;
+        std::cout<<rows<<std::endl;
         if (rows>(size/8)+1){
             break;
         }
