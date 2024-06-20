@@ -136,7 +136,6 @@ class Main{
             std::string types="std::vector<std::variant<";
             std::string display="";
             std::string mod_list="mods_list={";
-            std::string names="mods_names_list={";
             std::string states="mods_states={";
             std::string header_content="";
             for (int i=0;i<mod_classes.size();i++){
@@ -144,11 +143,6 @@ class Main{
                 types.append(mod_classes[i]);
                 if (i+1<mod_classes.size()){
                     types.append(",");
-                };
-
-                names.append("\""+mod_names_final[i]+"\"");
-                if (i+1<mod_classes.size()){
-                    names.append(",");
                 };
 
                 states.append("true");
@@ -195,7 +189,6 @@ class Main{
             };
             mod_list.append("};");
             states.append("};");
-            names.append("};");
         types.append(">> mods_list;");
 
         std::cout << descs << std::endl;
@@ -210,7 +203,6 @@ class Main{
                 line=F.ReplaceAll(line,"//MODS DESC",descs);
                 line=F.ReplaceAll(line,"std::vector<std::string> mods_list;",types);
                 line=F.ReplaceAll(line,"mods_list={};",mod_list);
-                line=F.ReplaceAll(line,"mods_names_list={};",names);
                 line=F.ReplaceAll(line,"mods_states={};",states);
                 main_output<<line<<"\n";
         };

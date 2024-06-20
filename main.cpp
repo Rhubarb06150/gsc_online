@@ -146,7 +146,6 @@ class Game{
         //MODS VARS
         bool gpp_installed;
         std::vector<std::string> mods_list;
-        std::vector<std::string> mods_names_list;
         std::vector<bool> mods_states;
         std::vector<std::vector<std::string>> mods_descriptions;
         //MOD INIT
@@ -184,7 +183,6 @@ class Game{
         record=false;
         record_images={};
         gpp_installed=false;
-        mods_names_list={};
         mods_list={};
         mods_states={};
         mods_descriptions={};
@@ -1454,9 +1452,9 @@ int modManager(){
         for (int i = 0; i<mods_list.size();i++){
             if (i>5)break;
             if (mods_states[i]==true){
-                HUDdisplay.showTextBOW(mods_names_list[i+offset],{64,96+(i*32)},window);
+                HUDdisplay.showTextBOW(mods_descriptions[i+offset][2],{64,96+(i*32)},window);
             }else{
-                HUDdisplay.showTextWOB(mods_names_list[i+offset],{64,96+(i*32)},window);
+                HUDdisplay.showTextWOB(mods_descriptions[i+offset][2],{64,96+(i*32)},window);
             };
         };
         if (choice>=5){
@@ -1470,8 +1468,10 @@ int modManager(){
         rectangle.setFillColor(sf::Color(0,0,0));
         rectangle.setPosition({0,320});
         window.draw(rectangle);
-        HUDdisplay.showTextWOB("Description:",{0,320},window);
-        HUDdisplay.showTextDEBUG(mods_descriptions[choice][0],{0,368},window);
+        HUDdisplay.showTextDEBUG("Author:",{0,320},window);
+        HUDdisplay.showTextBluDEBUG(mods_descriptions[choice][1],{180,320},window);
+        HUDdisplay.showTextDEBUG("Description:",{0,336},window);
+        HUDdisplay.showTextDEBUG(mods_descriptions[choice][0],{16,352},window);
         window.display();
     };
     return 0;
