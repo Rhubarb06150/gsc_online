@@ -8,9 +8,13 @@
 class Main{
     public:
     std::string version;
+    int mods;
+    int mods_final;
     std::vector<std::string> mod_names;
+    std::vector<std::string> mod_names_final;
     std::vector<std::string> mod_classes;
     std::vector<std::string> mod_paths;
+    std::vector<std::string> mod_paths_final;
     GSC_Functions F;
     Main(){
     version="0.00";
@@ -37,10 +41,15 @@ class Main{
                     std::cout<<"Adding "+file_path_str+" to mods."<<std::endl;
                     mod_names.push_back(file_path.stem());
                     mod_paths.push_back(file_path_str);
+                    mods++;
                 }else{
                     std::cout<<"Not adding "+file_path_str+" to mods."<<std::endl;
                 };
             };
+        };
+        if(mods==0){
+            F.log("INFO","No mods to configure.");
+            exit(4);
         };
         
         F.createMissingDir("/tmp/.gsc_o/");
@@ -94,6 +103,8 @@ class Main{
                                 break;
                             };
                             mod_classes.push_back(class_name);
+                            mod_paths_final.push_back(mod_paths[i]);
+                            mod_names_final.push_back(mod_names[i]);
                             F.log("INFO",mod_names[i]+" has been configured correctly!");
                         }
                         break;
@@ -104,7 +115,17 @@ class Main{
                 };
                 std::cout << std::endl;
             };
-
+            F.log("CONFIG","Adding mods in build source main file");
+            std::string inits="";
+            std::string acts="";
+            std::string display="";
+            for (int i=0;i<mod_classes.size();i++){
+                inits.append(mod_classes[i]);
+                inits.append(" ");
+                inits.append(mod_names_final[i]);
+                inits.append(";\n");
+            };
+            std::cout<<inits<<std::endl;
         }else{
             F.log("ERROR","Could not get source code from github");
             exit(2);
