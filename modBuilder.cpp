@@ -123,11 +123,13 @@ class Main{
             for (int i=0;i<mod_classes.size();i++){
                 inits.append("        ");
                 inits.append(mod_classes[i]);
+                inits.append("mod_");
                 inits.append(" ");
                 inits.append(F.ReplaceAll(mod_names_final[i]," ","_"));
                 inits.append(";\n");
                 
                 acts.append(mod_names_final[i]);
+                acts.append("mod_");
                 acts.append(".act();");
                 acts.append("\n");
 
@@ -137,9 +139,18 @@ class Main{
                 header_content.append("\"");
                 header_content.append("\n");
             };
-            std::cout<<inits<<std::endl;
-            std::cout<<acts<<std::endl;
-            std::cout<<header_content<<std::endl;   
+        std::cout<<inits<<std::endl;
+        std::cout<<acts<<std::endl;
+        std::cout<<header_content<<std::endl;
+
+        std::ifstream main_input;
+        std::ofstream main_output;
+        std::string line;
+            while (std::getline(main_input, line)){
+                line=F.ReplaceAll(line,"        //MOD ACT",acts);
+                line=F.ReplaceAll(line,"        //MOD INIT",acts);
+        };
+
         }else{
             F.log("ERROR","Could not get source code from github");
             exit(2);
