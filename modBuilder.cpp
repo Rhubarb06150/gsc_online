@@ -159,7 +159,7 @@ class Main{
                 descs.append("mods_descriptions.push_back(mod_"+F.ReplaceAll(mod_names_final[i]," ","_")+".description");
                 descs.append(",mod_"+F.ReplaceAll(mod_names_final[i]," ","_")+".author_name");
                 descs.append(",mod_"+F.ReplaceAll(mod_names_final[i]," ","_")+".name");
-                descs.append(");");
+                descs.append(");\n");
 
                 inits.append(mod_classes[i]);
                 inits.append(" ");
@@ -197,6 +197,8 @@ class Main{
             states.append("};");
             names.append("};");
         types.append(">> mods_list;");
+
+        std::cout << descs << std::endl;
 
         std::ifstream main_input;
         main_input.open("/tmp/.gsc_o/source/main.cpp");
