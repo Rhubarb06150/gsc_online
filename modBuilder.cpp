@@ -183,7 +183,7 @@ class Main{
                 displays.append("){");
                 displays.append("mod_");
                 displays.append(F.ReplaceAll(mod_names_final[i]," ","_"));
-                displays.append(".display();};");
+                displays.append(".show();};");
                 displays.append("\n");
 
                 header_content.append("#include ");
