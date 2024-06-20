@@ -21,8 +21,6 @@
 #include <string>
 #include <iostream>
 
-
-
 #include "functions.cpp"
 
 class HUD{

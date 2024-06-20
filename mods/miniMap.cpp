@@ -4,19 +4,20 @@
 #include "../functions/hud.cpp"
 
 class MOD_MiniMAP{
+    private:
+    HUD display;
     public:
     std::string name;
     std::string author_name;
     std::string description;
     std::vector<int> cur_player_pos;
-    HUD display;
+    
     bool active;
     MOD_MiniMAP(){
         name="Mini Map";
         author_name="Rhubarb";
         description="A simple mini map test\nI hope you'll enjoy :)";
         active=true;
-        display=HUD();
     };
     int init(){
         return 0;
