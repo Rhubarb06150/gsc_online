@@ -58,6 +58,8 @@ class MOD_MiniMAP{
         }else{
             real_player_pos_y-=11;
         };
+        int rows=0;
+        int cols=0;
         for (int height=real_player_pos_y;height<cur_terrain_vector.size();height++){
             for (int width=real_player_pos_x;width<cur_terrain_vector[0].size();width++){
                 sf::Sprite sprite;
@@ -65,13 +67,15 @@ class MOD_MiniMAP{
                 sprite.setScale(zoom,zoom);
                 sprite.setPosition((width*8)-(cur_player_pos[0]/8)+64,height*8-(cur_player_pos[1]/8)+64);
                 window.draw(sprite);
-            if (width>20){
+            cols++;
+            if (cols>20){
                 break;
             }
-            };
-            if (height>20){
-                break;
-            }
+        };
+        rows++;
+        if (rows>20){
+            break;
+        }
         };
         window.draw(player);
         return 0;
