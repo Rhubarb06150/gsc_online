@@ -157,13 +157,15 @@ class Main{
                 std::ifstream modfile;
                 modfile.open(mod_paths_final[i]);
                 std::string line;
-                std::regex regexPassVars = std::regex("(int passVars)*");
                 while (std::getline(modfile, line)){
                     if (found){
                         getVars(line);
                         break;};
-                    if (regex_match(line,regexPassVars)){
-                        found=true;};
+                    if (line.find("int passVars(") != std::string::npos) {
+                        found=true;
+                        std::cout << "found!" << '\n';
+                    }
+
                 };
 
                 descs.append("mods_descriptions.push_back({mod_"+F.ReplaceAll(mod_names_final[i]," ","_")+".description");
