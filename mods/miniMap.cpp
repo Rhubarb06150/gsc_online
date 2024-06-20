@@ -40,13 +40,16 @@ class MOD_MiniMAP{
         sf::RectangleShape rectangle(sf::Vector2f(128,128));
         rectangle.setFillColor(sf::Color(0,0,0));
         rectangle.setPosition({0,0});
+        sf::RectangleShape player(sf::Vector2f(8,8));
+        rectangle.setFillColor(sf::Color(255,128,0));
+        rectangle.setPosition({64,64});
         window.draw(rectangle);
         for (int height=0;height<cur_terrain_vector.size();height++){
             for (int width=0;width<cur_terrain_vector[0].size();width++){
                 sf::Sprite sprite;
                 sprite.setTexture(tiles.textures[0][tiles.getIntIndex(cur_terrain_vector[height][width])]);
                 sprite.setScale(zoom,zoom);
-                sprite.setPosition((width*8)-(cur_player_pos[0]/8),height*8-(cur_player_pos[1]/8));
+                sprite.setPosition((width*8)-(cur_player_pos[0]/8)+64,height*8-(cur_player_pos[1]/8)+64);
                 window.draw(sprite);
             };
         };
