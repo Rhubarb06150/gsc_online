@@ -129,6 +129,7 @@ class Main{
                 
                 acts.append(mod_names_final[i]);
                 acts.append(".act();");
+                acts.append("\n");
 
                 header_content.append("#include ");
                 header_content.append("\"");
