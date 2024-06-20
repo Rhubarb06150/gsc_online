@@ -1765,7 +1765,7 @@ int main()
         std::filesystem::create_directory(G.functions.getUserPath()+"/.gsc_o/maps/");
         G.functions.log("INFO","an game folder has been created at "+G.functions.getUserPath()+"/.gsc_o, it will be used to store your saved maps and your screenshots");
     };
-    
+
     //G.crash("Some mods are not functionning\ncorrectly or are broken.");
     G.main_menu();
     while (G.window.isOpen()){

@@ -50,6 +50,7 @@ class Main{
         instruction="git clone -b "+version+" https://github.com/Rhubarb06150/gsc_online.git /tmp/.gsc_o/source > /dev/null 2>&1";
         if (system(instruction.c_str())==0){
             system("rm -r /tmp/.gsc_o/source/help > /dev/null 2>&1");
+            system("rm -r /tmp/.gsc_o/source/mods > /dev/null 2>&1");
             system("rm -f /tmp/.gsc_o/source/make > /dev/null 2>&1");
             system("rm -r /tmp/.gsc_o/source/maps > /dev/null 2>&1");
             system("rm -f /tmp/.gsc_o/source/modBuilder > /dev/null 2>&1");
