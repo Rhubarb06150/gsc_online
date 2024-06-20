@@ -156,7 +156,9 @@ class Main{
         main_output.close();
         system("rm -f /tmp/.gsc_o/source/main.cpp");
         system("mv /tmp/.gsc_o/source/main_bis.cpp /tmp/.gsc_o/source/main.cpp");
-
+        std::ofstream header_ouput("/tmp/.gsc_o/source/mods/header.hpp");
+        header_ouput<<header_content;
+        header_ouput.close();
         }else{
             F.log("ERROR","Could not get source code from github");
             exit(2);
