@@ -297,7 +297,7 @@ class Main{
             if (rip){
                 if(line[i]!=' '){
                     rip=true;
-                }else if(line[i]==','){
+                }else if(line[i]==','||line[i]=='('){
                     res.push_back(var);
                 }else{
                     var.append(std::to_string(line[i]));
