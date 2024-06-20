@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <string>
+#include <iostream>
 
 class MOD_mod{
     public:
@@ -18,6 +19,7 @@ class MOD_mod{
         return 0;
     };
     int act(){
+        std::cout << "mod works!" << std::endl;
         return 0;
     };
     int show(){
