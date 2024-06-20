@@ -1,18 +1,11 @@
-//////////////////////////////////////
-//
-//  Here is a mod template, GSC Online supports mods
-//  To activate a mod, just put it in a folder called "mods" at the root of the game folder
-//  It will be activated by itself
-//
-//////////////////////////////////////
 #include <string>
 
-class Mod{
+class MOD_Player{
     public:
     std::string name;
     std::string author_name;
     bool active;
-    Mod(){
+    MOD_Player(){
         name="Demo mod";
         author_name="Rhubarb";
         active=true;

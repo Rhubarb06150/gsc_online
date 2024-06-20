@@ -57,13 +57,32 @@ class Main{
             system("rm -f /tmp/.gsc_o/source/modBuilder.cpp > /dev/null 2>&1");
             system("rm -f /tmp/.gsc_o/source/help.html > /dev/null 2>&1");
             F.log("INFO","Code has been retrieved from github");
-            std::ifstream file;
-            file.open("/tmp/.gsc_o/source/main.cpp");
-            std::string line;
-            const std::regex txt_regex("class");
-            while (std::getline(file, line)){
-                std::cout<<std::regex_match(line,txt_regex)<<"| "<<line<<std::endl;
-                //line=F.ReplaceAll(line,"        //MOD INIT","hey");
+            
+            F.log("MOD","Configuring following mods:");
+            for(int i=0;i<mod_paths.size();i++){
+                std::cout << "    -"+mod_names[i]<<std::endl;
+            };
+            for(int i=0;i<mod_paths.size();i++){
+                bool found=false;
+                F.log("MOD","Config of "+mod_names[i]);
+                std::ifstream file;
+                file.open(mod_paths[i]);
+                std::string line;
+                const std::regex regex("(class MOD_)*");
+                while (std::getline(file, line)){
+                    line=F.ReplaceAll(line,"\n","");
+                    if (found){
+                        std::string class_name;
+                        class_name=F.ReplaceAll(line," ","");
+                        class_name=F.ReplaceAll(class_name,"{","");
+                        class_name=F.ReplaceAll(class_name,"class","");
+                        F.log("INFO","Found "+mod_names[i]+" main class ("+class_name+")");
+                        break;
+                    }
+                    if (regex_match(line,regex)){
+                        found=true;
+                    };
+                };
             };
         }else{
             F.log("ERROR","Could not get source code from github");

@@ -75,14 +75,12 @@ class GSC_Functions{
             std::cout << "[\033[1;31m" << type << "\033[0m] " << currentHour() << " // \033[1;31m" << info << "\033[0m" << std::endl;
         }else if (type=="WARN"){
             std::cout << "[\033[1;33m" << type << "\033[0m] " << currentHour() << " // \033[1;33m" << info << "\033[0m" << std::endl;
-        }else if (type=="INFO"){
+        }else if (type=="INFO"||type=="CONFIG"){
             std::cout << "[\033[1;35m" << type << "\033[0m] " << currentHour() << " // " << info << std::endl;
-        }else if (type=="EDITOR"){
+        }else if (type=="EDITOR"||type=="MOD"){
             std::cout << "[\033[1;32m" << type << "\033[0m] " << currentHour() << " // " << info << std::endl;
         }else if (type=="ENGINE"){
             std::cout << "[\033[1;33m" << type << "\033[0m] " << currentHour() << " // " << info << std::endl;
-        }else if (type=="MOD"){
-            std::cout << "[\033[1;32m" << type << "\033[0m] " << currentHour() << " // " << info << std::endl;
         }else{
             std::cout << "[" << type << "] " << currentHour() << " // " << info << std::endl;
         }
