@@ -24,7 +24,7 @@ class MOD_MiniMAP{
         std::cout << "mod works!" << std::endl;
         return 0;
     };
-    int show(){
+    int show(std::vector<int> player_pos){
         return 0;
     };
 };
