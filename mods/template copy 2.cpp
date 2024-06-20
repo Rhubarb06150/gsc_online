@@ -2,13 +2,13 @@
 #include <string>
 #include <iostream>
 
-class MOD_mod0{
+class MOD_mod1{
     public:
     std::string name;
     std::string author_name;
     std::string description;
     bool active;
-    MOD_mod0(){
+    MOD_mod1(){
         name="Demo mod";
         author_name="Rhubarb";
         description="The basic template";
