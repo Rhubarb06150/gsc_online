@@ -1419,7 +1419,12 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
 int main_menu(){
     int choice = 0;
     bool choosen=false;
-    int max_choice=3-(mods_list.size())>0;
+    int max_choice;
+    if (mods_list.size()>0){
+        max_choice=4;
+    }else{
+        max_choice=3;
+    }
     functions.log("INFO","Opening main menu");
     do{
         while (window.pollEvent(event))
