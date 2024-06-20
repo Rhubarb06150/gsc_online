@@ -184,9 +184,9 @@ class Main{
         build_str="g++ -c /tmp/.gsc_o/source/main.cpp&&g++ main.o -o GSC_Online_Modded -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system&&rm -f main.o";
         if (system(build_str.c_str())==0){
             if (mod_classes.size()>1){
-            F.log("INFO","Game built with success! (including "+std::to_string(mod_classes.size())+" mods)");
+            F.log("SUCCESS","Game built with success! (including "+std::to_string(mod_classes.size())+" mods)");
             }else{
-            F.log("INFO","Game built with success! (including 1 mod)");
+            F.log("SUCCESS","Game built with success! (including 1 mod)");
             }
             system("rm -r /tmp/.gsc_o/* -f > /dev/null 2>&1");
         }else{
