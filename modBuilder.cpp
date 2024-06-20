@@ -94,7 +94,7 @@ class Main{
                                 break;
                             };
                             mod_classes.push_back(class_name);
-                            F.log("INFO",mod_paths[i]+" has been configured correctly!");
+                            F.log("INFO",mod_names[i]+" has been configured correctly!");
                         }
                         break;
                     };
