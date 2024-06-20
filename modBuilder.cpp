@@ -88,10 +88,10 @@ class Main{
                             F.log("INFO","Copying "+mod_paths[i]+" in build folder...");
                             inst="cp "+F.ReplaceAll(mod_paths[i]," ","\\ ")+" /tmp/.gsc_o/source/mods > /dev/null 2>&1";
                             if (system(inst.c_str())==0){
+                                F.log("INFO","Copied!");
+                            }else{
                                 F.log("ERROR","failed to copy "+mod_paths[i]+" in build folder");
                                 break;
-                            }else{
-                                F.log("INFO","Copied!");
                             };
                             mod_classes.push_back(class_name);
                             F.log("INFO","Added!");
