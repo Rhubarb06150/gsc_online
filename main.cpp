@@ -1439,12 +1439,18 @@ int modManager(){
         };
         window.clear(sf::Color(248,248,248));
         HUDdisplay.showTextBOW("MODS",{32,32},window);
-        for (int i=0;i<mods_list.size();i++){
+        for (int i = 0; i<mods_list.size();i++){
+        if (i>11)break;
             if (mods_states[i]==true){
             //DISPLAY ACTIVE MOD
             }else{
             //DISPLAY UnACTIVE MOD
             };
+        };
+        if (choice>2){
+            offset=choice-12;
+        }else{
+            offset=0;
         };
         window.display();
     };
