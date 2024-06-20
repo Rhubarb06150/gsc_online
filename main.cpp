@@ -1433,7 +1433,7 @@ int main_menu(){
                         break;
                 };
                 if (event.key.code==sf::Keyboard::Down){
-                    if (choice<choosen){
+                    if (choice<max_choice){
                         choice++;
                     };
                     break;
