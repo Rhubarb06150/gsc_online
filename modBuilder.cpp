@@ -164,12 +164,10 @@ class Main{
                     if (line.find("int passVars(") != std::string::npos){
                         vars=getVars(line);
                     };
-                };
-                while (std::getline(modfile, line)){
                     if (line.find("int show(") != std::string::npos){
                         winvar=getVars(line);
                     };
-                };
+                    };
 
                 descs.append("mods_descriptions.push_back({mod_"+F.ReplaceAll(mod_names_final[i]," ","_")+".description");
                 descs.append(",mod_"+F.ReplaceAll(mod_names_final[i]," ","_")+".author_name");
