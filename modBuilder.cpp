@@ -140,9 +140,9 @@ class Main{
             std::string mod_list="mods_list={";
             std::string states="mods_states={";
             std::string header_content="";
-            const std::regex regexPassVars("(int passVars)*");
             bool found;
             for (int i=0;i<mod_classes.size();i++){
+                std::regex regexPassVars("(int passVars)*");
                 found=false;
 
                 types.append(mod_classes[i]);
