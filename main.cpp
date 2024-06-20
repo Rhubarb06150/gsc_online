@@ -1466,6 +1466,10 @@ int modManager(){
         };
         HUDdisplay.showTextBOW("MODS",{32,32},window);
         HUDdisplay.showCursor({32,96+(choice-offset)*32},window);
+        sf::RectangleShape rectangle(sf::Vector2f(720, 320));
+        rectangle.setFillColor(sf::Color(0,0,0));
+        rectangle.setPosition({0,256});
+        window.draw(rectangle);
         window.display();
     };
     return 0;
