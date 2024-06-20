@@ -49,7 +49,6 @@ class Main{
         std::string instruction;
         instruction="git clone -b "+version+" https://github.com/Rhubarb06150/gsc_online.git /tmp/.gsc_o/source > /dev/null 2>&1";
         if (system(instruction.c_str())==0){
-            system("rm -r /tmp/.gsc_o/source/mods > /dev/null 2>&1");
             system("rm -r /tmp/.gsc_o/source/help > /dev/null 2>&1");
             system("rm -f /tmp/.gsc_o/source/make > /dev/null 2>&1");
             system("rm -r /tmp/.gsc_o/source/maps > /dev/null 2>&1");
@@ -57,6 +56,7 @@ class Main{
             system("rm -f /tmp/.gsc_o/source/main > /dev/null 2>&1");
             system("rm -f /tmp/.gsc_o/source/modBuilder.cpp > /dev/null 2>&1");
             system("rm -f /tmp/.gsc_o/source/help.html > /dev/null 2>&1");
+            F.createMissingDir("/tmp/.gsc_o/source/mods");
             F.log("INFO","Code has been retrieved from github");
             F.log("MOD","Configuring following mods:");
             for(int i=0;i<mod_paths.size();i++){
@@ -76,12 +76,14 @@ class Main{
                         class_name=F.ReplaceAll(line," ","");
                         class_name=F.ReplaceAll(class_name,"{","");
                         class_name=F.ReplaceAll(class_name,"class","");
-                        F.log("INFO","Found "+mod_names[i]+" main class ("+class_name+"), adding it to classes list...");
+                        F.log("INFO","Found "+mod_names[i]+" main class ("+class_name+"), adding mod to header and to main source file...");
                         if(std::find(mod_classes.begin(), mod_classes.end(), class_name) != mod_classes.end()) {
                             F.log("ERROR","A mod with the same class is already configured, "+mod_names[i]+" mod will not be included.");
                         } else {
                             mod_classes.push_back(class_name);
-                            F.log("INFO","Added");  
+                            std::string inst;
+                            inst="cp "+mod_paths[i]+" /tmp/.gsc_o/source/mods/.";
+                            F.log("INFO","Added");
                         }
                         break;
                     };
