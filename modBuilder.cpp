@@ -161,11 +161,9 @@ class Main{
                 while (std::getline(modfile, line)){
                     if (found){
                         getVars(line);
-                        break;
-                    };
+                        break;};
                     if (regex_match(line,regexPassVars)){
-                        found=true;
-                    };
+                        found=true;};
                 };
 
                 descs.append("mods_descriptions.push_back({mod_"+F.ReplaceAll(mod_names_final[i]," ","_")+".description");
