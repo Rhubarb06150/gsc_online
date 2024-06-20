@@ -120,6 +120,7 @@ class Main{
             std::string acts="";
             std::string display="";
             for (int i=0;i<mod_classes.size();i++){
+                inits.append("        ");
                 inits.append(mod_classes[i]);
                 inits.append(" ");
                 inits.append(mod_names_final[i]);
