@@ -123,7 +123,7 @@ class Main{
                 inits.append("        ");
                 inits.append(mod_classes[i]);
                 inits.append(" ");
-                inits.append(mod_names_final[i]);
+                inits.append(F.ReplaceAll(mod_names_final[i]," ","_"));
                 inits.append(";\n");
             };
             std::cout<<inits<<std::endl;
