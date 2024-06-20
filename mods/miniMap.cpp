@@ -68,7 +68,7 @@ class MOD_MiniMAP{
                 sprite.setPosition((width*8)-(cur_player_pos[0]/8)+64,height*8-(cur_player_pos[1]/8)+64);
                 window.draw(sprite);    
                 cols++;
-                if (cols>18){
+                if (cols>17){
                     break;
                 };
         };
@@ -79,24 +79,24 @@ class MOD_MiniMAP{
         };
         window.draw(player);
 
-        sf::RectangleShape top_line({128,8});
+        sf::RectangleShape top_line({128,16});
         top_line.setFillColor({0,0,0});
         top_line.setPosition({0,0});
         window.draw(top_line);
         
-        sf::RectangleShape left_line({8,128});
+        sf::RectangleShape left_line({16,128});
         left_line.setFillColor({0,0,0});
         left_line.setPosition({0,0});
         window.draw(left_line);
 
-        sf::RectangleShape bottom_line({128,8});
+        sf::RectangleShape bottom_line({128,16});
         bottom_line.setFillColor({0,0,0});
-        bottom_line.setPosition({0,120});
+        bottom_line.setPosition({0,112});
         window.draw(bottom_line);
         
-        sf::RectangleShape right_line({8,128});
+        sf::RectangleShape right_line({16,128});
         right_line.setFillColor({0,0,0});
-        right_line.setPosition({120,0});
+        right_line.setPosition({112,0});
         window.draw(right_line);
 
         return 0;
