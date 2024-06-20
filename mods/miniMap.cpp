@@ -45,10 +45,12 @@ class MOD_MiniMAP{
         player.setPosition({64,64});
         window.draw(rectangle);
         for (int height=(cur_player_pos[1]/64)-9;height<cur_terrain_vector.size();height++){
+            std::cout<<height<<std::endl;
             if (height<0){
                 height=0;
             };
             for (int width=(cur_player_pos[0]/64)-8;width<cur_terrain_vector[0].size();width++){
+                std::cout<<width<<std::endl;
                 if (width<0){
                     width=0;
                 };
