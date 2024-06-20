@@ -80,12 +80,11 @@ class Main{
                         if(std::find(mod_classes.begin(), mod_classes.end(), class_name) != mod_classes.end()) {
                             F.log("ERROR","A mod with the same class is already configured, "+mod_names[i]+" mod will not be included.");
                         } else {
+                            mod_classes.push_back(class_name);
                             F.log("INFO","Added");  
                         }
-                        mod_classes.push_back(class_name);
-                        F.log("INFO","Added!");
                         break;
-                    }
+                    };
                     if (regex_match(line,regex)){
                         found=true;
                     };
