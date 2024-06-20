@@ -1468,6 +1468,7 @@ int main_menu(){
                             #endif
                         };
                     };
+                    /*
                     if (choice==4){
                         int choice=0;
                         while (true){
@@ -1500,6 +1501,7 @@ int main_menu(){
                         };
 
                     };
+                    */
                 };
             };
             if (event.type == sf::Event::Closed){
@@ -1529,8 +1531,9 @@ int main_menu(){
         HUDdisplay.showTextBOW("Launch game",{64,320},window);
         HUDdisplay.showTextBOW("Load map from dir",{64,352},window);
         HUDdisplay.showTextBOW("Open game folder",{64,384},window);
-        HUDdisplay.showTextBOW("Open settings",{64,416},window);
-
+        if (mods_list.size()>0){
+        HUDdisplay.showTextBOW("Mods",{64,416},window);
+        };
         if (isPressed(event,sf::Keyboard::F1)==0){
             functions.takeScreenshot(window);
             SoundManager.soundEffect("PRESS");
