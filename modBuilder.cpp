@@ -133,9 +133,15 @@ class Main{
                 inits.append(F.ReplaceAll(mod_names_final[i]," ","_"));
                 inits.append("_active=true;\n");
 
+                acts.append("if(");
+
+                acts.append("){");
                 acts.append("mod_");
                 acts.append(mod_names_final[i]);
-                acts.append(".act();");
+                inits.append("mod_");
+                inits.append(F.ReplaceAll(mod_names_final[i]," ","_"));
+                inits.append("_active==true");
+                acts.append(".act();}");
                 acts.append("\n");
 
                 header_content.append("#include ");
