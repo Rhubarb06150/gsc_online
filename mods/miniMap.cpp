@@ -73,10 +73,10 @@ class MOD_MiniMAP{
                 if (width>(size/8)){
                     break;
                 };
-                if (shown_sprites>((size/8)*(size/8))){
-                    return 0;
-                }
         };
+        if (shown_sprites>((size/8)*(size/8))){
+            break;
+        }
         rows++;
         if (rows>(size/8)+1){
             break;
