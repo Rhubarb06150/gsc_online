@@ -140,7 +140,7 @@ class Main{
             std::string mod_list="mods_list={";
             std::string states="mods_states={";
             std::string header_content="";
-            std::regex regexPassVars("(int passVars)*");
+            const std::regex regexPassVars("(int passVars)*");
             bool found;
             for (int i=0;i<mod_classes.size();i++){
                 found=false;
@@ -159,7 +159,6 @@ class Main{
                 modfile.open(mod_paths_final[i]);
                 std::string line;
                 while (std::getline(modfile, line)){
-                    line=F.ReplaceAll(line,"\n","");
                     if (found){
                         getVars(line);
                         break;
@@ -168,7 +167,6 @@ class Main{
                         found=true;
                     };
                 };
-
 
                 descs.append("mods_descriptions.push_back({mod_"+F.ReplaceAll(mod_names_final[i]," ","_")+".description");
                 descs.append(",mod_"+F.ReplaceAll(mod_names_final[i]," ","_")+".author_name");
