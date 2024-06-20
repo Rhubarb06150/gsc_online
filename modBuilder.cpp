@@ -273,7 +273,12 @@ class Main{
     };
 
     std::vector<std::string> getVars(std::string function){
-        std::cout << function << std::endl;
+        std::string line;
+        std::vector<std::string> res = {};
+        std::reverse(line.begin(),line.end());
+        for (int i=0;i<line.length();i++){
+            std::cout << line[i] << std::endl; 
+        };
         return {};
     };
 };
