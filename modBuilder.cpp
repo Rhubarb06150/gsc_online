@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <fstream>
 #include <regex>
+#include <variant>
 
 #include "functions/functions.cpp"
 
