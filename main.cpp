@@ -1441,7 +1441,7 @@ int modManager(){
                     };
                 };
                 if (event.key.code==sf::Keyboard::Down){
-                    if (choice<mods_list.size()-6){
+                    if (choice<mods_list.size()-4){
                         choice++;
                     };
                 };
