@@ -135,7 +135,7 @@ class Main{
 
                 header_content.append("#include ");
                 header_content.append("\"");
-                header_content.append(mod_paths_final[i]);
+                header_content.append(F.ReplaceAll(mod_paths_final[i],"mods/",""));
                 header_content.append("\"");
                 header_content.append("\n");
             };
