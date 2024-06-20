@@ -39,7 +39,9 @@ class Main{
             if (file_path.extension()==".cpp"){
                 std::cout<<"Include "+file_path_str+"? [y/n]\n>>> ";
                 std::string choice;
-                std::cin>>choice;
+                if (!confirm){
+                    std::cin>>choice;
+                };
                 if (choice=="ya"||choice=="YA"){
                     confirm=true;
                 };
