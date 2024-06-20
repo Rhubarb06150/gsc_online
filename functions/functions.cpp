@@ -71,17 +71,17 @@ class GSC_Functions{
     };
 
     int log(std::string type, std::string info){
-        if (type=="ERROR"){
+        if (type=="ERROR"){//red type and red text
             std::cout << "[\033[1;31m" << type << "\033[0m] " << currentHour()  << " // \033[1;31m" << info << "\033[0m" << std::endl;
-        }else if (type=="WARN"){
+        }else if (type=="WARN"){//yellow type and yellow text
             std::cout << "[\033[1;33m" << type << "\033[0m] " << currentHour()  << " // \033[1;33m" << info << "\033[0m" << std::endl;
-        }else if (type=="INFO"||type=="CONFIG"){
+        }else if (type=="INFO"||type=="CONFIG"){//cyan type
             std::cout << "[\033[1;35m" << type << "\033[0m] " << currentHour()  << " // " << info << std::endl;
-        }else if (type=="EDITOR"||type=="MOD"||type=="TERRAIN"){
+        }else if (type=="EDITOR"||type=="MOD"||type=="TERRAIN"){//green type
             std::cout << "[\033[1;32m" << type << "\033[0m] " << currentHour()  << " // " << info << std::endl;
-        }else if (type=="ENGINE"){
+        }else if (type=="ENGINE"){//yellow type
             std::cout << "[\033[1;33m" << type << "\033[0m] " << currentHour()  << " // " << info << std::endl;
-        }else{
+        }else{//basic terminal color for all
             std::cout << "[" << type << "] " << currentHour() << " // " << info << std::endl;
         }
         return 0;
