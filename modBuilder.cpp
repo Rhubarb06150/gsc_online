@@ -128,7 +128,11 @@ class Main{
                 inits.append("mod_");
                 inits.append(F.ReplaceAll(mod_names_final[i]," ","_"));
                 inits.append(";\n");
-                
+                inits.append("bool ");
+                inits.append("mod_");
+                inits.append(F.ReplaceAll(mod_names_final[i]," ","_"));
+                inits.append("=true;\n");
+
                 acts.append("mod_");
                 acts.append(mod_names_final[i]);
                 acts.append(".act();");
@@ -161,6 +165,7 @@ class Main{
         main_output.close();
         system("rm -f /tmp/.gsc_o/source/main.cpp");
         system("mv /tmp/.gsc_o/source/main_bis.cpp /tmp/.gsc_o/source/main.cpp");
+        system("cp /tmp/.gsc_o/source/main.cpp /tmp/main.cpp");
         F.log("INFO","Creating header");
         std::ofstream header_ouput("/tmp/.gsc_o/source/mods/header.hpp");
         header_ouput<<header_content;

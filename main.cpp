@@ -127,7 +127,7 @@ class Game{
         bool menu_show;//if set to trues, then the menu is showed, unless it doesnt
 
         //DEBUG VARS
-        bool debug;//when set to true, the debug menu is showed up
+        bool debug;//when set to true, the debug menu is showesd up
         int debug_page;//you can choose the debug page you want to display with this function
         int debug_choice;//used in debug page 9 for navigate throught options
         std::chrono::high_resolution_clock::time_point start;//used for fps measuring
