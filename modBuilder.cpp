@@ -197,7 +197,7 @@ class Main{
                 acts.append(F.ReplaceAll(mod_names_final[i]," ","_"));
                 acts.append(".act(");
                 acts.append(actvars);
-                acts.append("));};");
+                acts.append(");};");
                 acts.append("\n");
 
                 displays.append("if(");
