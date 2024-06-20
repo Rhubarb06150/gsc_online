@@ -53,6 +53,7 @@ class MOD_MiniMAP{
                 window.draw(sprite);
             };
         };
+        window.draw(player);
         return 0;
     };
 };
