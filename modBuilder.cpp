@@ -121,6 +121,7 @@ class Main{
             std::string display="";
             std::string header_content="";
             for (int i=0;i<mod_classes.size();i++){
+                
                 inits.append(mod_classes[i]);
                 inits.append(" ");
                 inits.append("mod_");
