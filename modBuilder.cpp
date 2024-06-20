@@ -150,7 +150,7 @@ class Main{
                 header_content.append("\n");
 
                 mod_list.append(mod_names[i]);
-                if (i<mod_classes.size()){
+                if (i+1<mod_classes.size()){
                     mod_list.append(",");
                 };
             };
