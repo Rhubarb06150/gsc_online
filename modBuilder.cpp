@@ -128,9 +128,9 @@ class Main{
                 inits.append(";\n");
                 
                 header_content.append("#include ");
-                header_content.append(std::to_string('"'));
+                header_content.append("\"");
                 header_content.append(mod_paths_final[i]);
-                header_content.append(std::to_string('"'));
+                header_content.append("\"");
                 header_content.append("\n");
             };
             std::cout<<inits<<std::endl;
