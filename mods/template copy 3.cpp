@@ -2,12 +2,12 @@
 #include <string>
 #include <iostream>
 
-class MOD_mod2{
+class MOD_mod3{
     public:
     std::string name;
     std::string author_name;
     bool active;
-    MOD_mod2(){
+    MOD_mod3(){
         name="Demo mod";
         author_name="Rhubarb";
         active=true;
