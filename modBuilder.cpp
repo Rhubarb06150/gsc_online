@@ -295,6 +295,7 @@ class Main{
         line=F.ReplaceAll(line,"int ","");
         line=F.ReplaceAll(line,"<int>","");
         line=F.ReplaceAll(line,"passVars","");
+        line=F.ReplaceAll(line,"show","");
         line=F.ReplaceAll(line,"(","");
         line=F.ReplaceAll(line,")","");
         line=F.ReplaceAll(line,"{","");
