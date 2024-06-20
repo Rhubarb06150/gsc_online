@@ -56,6 +56,7 @@ class MOD_MiniMAP{
         else{real_player_pos_y-=11;};
         
         int rows=0;
+        int shown_sprites=0;
         for (int height=real_player_pos_y;height<cur_terrain_vector.size();height++){
             int cols=0;
             for (int width=real_player_pos_x;width<cur_terrain_vector[0].size();width++){
@@ -64,12 +65,13 @@ class MOD_MiniMAP{
                 sprite.setScale(zoom,zoom);
                 sprite.setPosition((width*8)-(cur_player_pos[0]/8)+64,height*8-(cur_player_pos[1]/8)+64);
                 window.draw(sprite);    
+                shown_sprites++;
                 cols++;
                 if (cols>(size/8)+1){
-                    break;
+                    return 0;
                 };
                 if (width>(size/8)){
-                    break;
+                    return 0;
                 };
         };
         rows++;
