@@ -1449,6 +1449,7 @@ int modManager(){
         };
         window.clear(sf::Color(248,248,248));
         HUDdisplay.showTextBOW("MODS",{32,32},window);
+        HUDdisplay.showCursor({32,choice-offset},window);
         for (int i = 0; i<mods_list.size();i++){
         if (i>5)break;
             if (mods_states[i]==true){
