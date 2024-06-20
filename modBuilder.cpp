@@ -118,11 +118,17 @@ class Main{
             F.log("CONFIG","Adding mods in build source main file");
             std::string inits="";
             std::string acts="";
+            std::string types="";
             std::string display="";
             std::string mod_list="mods_list={";
             std::string header_content="";
             for (int i=0;i<mod_classes.size();i++){
-                
+
+                types.append(mod_classes[i]);
+                if (i+1<mod_classes.size()){
+                    types.append(",");
+                };
+
                 inits.append(mod_classes[i]);
                 inits.append(" ");
                 inits.append("mod_");
@@ -149,12 +155,14 @@ class Main{
                 header_content.append("\"");
                 header_content.append("\n");
 
-                mod_list.append(mod_names[i]);
-                if (i+1<mod_classes.size()){
+                mod_list.append("\""+mod_names[i]+"\"");
+                if (i<mod_classes.size()){
                     mod_list.append(",");
                 };
             };
             mod_list.append("};");
+
+        std::cout << types << std::endl;
 
         std::ifstream main_input;
         main_input.open("/tmp/.gsc_o/source/main.cpp");
