@@ -84,15 +84,17 @@ class Main{
                         if(std::find(mod_classes.begin(), mod_classes.end(), class_name) != mod_classes.end()) {
                             F.log("ERROR","A mod with the same class is already configured, "+mod_names[i]+" mod will not be included.");
                         } else {
-                            mod_classes.push_back(class_name);
                             std::string inst;
                             F.log("INFO","Copying "+mod_paths[i]+" in build folder...");
-                            inst="cp '"+mod_paths[i]+"' /tmp/.gsc_o/source/mods";
-                            system(inst.c_str());
+                            inst="cp '"+mod_paths[i]+"' /tmp/.gsc_o/source/mods > /dev/null 2>&1";
                             if (system(inst.c_str())==0){
                                 F.log("ERROR","failed to copy "+mod_paths[i]+" in build folder");
+                                break;
+                            }else{
+                                F.log("INFO","Copied!");
                             };
-                            F.log("INFO","Added");
+                            mod_classes.push_back(class_name);
+                            F.log("INFO","Added!");
                         }
                         break;
                     };
