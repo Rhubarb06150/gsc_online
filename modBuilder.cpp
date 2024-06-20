@@ -290,9 +290,10 @@ class Main{
         var="";
         line=F.ReplaceAll(line,"std::string","");
         line=F.ReplaceAll(line,"std::vector","");
+        line=F.ReplaceAll(line,"int ","");
+        line=F.ReplaceAll(line,"bool ","");
         line=F.ReplaceAll(line,"<","");
         line=F.ReplaceAll(line,">","");
-        line=F.ReplaceAll(line,"int ","");
         line=F.ReplaceAll(line,"<int>","");
         line=F.ReplaceAll(line,"passVars","");
         line=F.ReplaceAll(line,"show","");
