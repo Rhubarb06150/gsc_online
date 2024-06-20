@@ -6,10 +6,12 @@ class MOD_MiniMAP{
     public:
     std::string name;
     std::string author_name;
+    std::string description;
     bool active;
     MOD_MiniMAP(){
         name="Mini Map";
         author_name="Rhubarb";
+        description="A simple mini map";
         active=true;
     };
     int init(){
