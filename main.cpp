@@ -1435,6 +1435,16 @@ int modManager(){
                 if (event.key.code==sf::Keyboard::F6){
                     return 0;
                 };
+                if (event.key.code==sf::Keyboard::Up){
+                    if (choice>0){
+                        choice--;
+                    };
+                };
+                if (event.key.code==sf::Keyboard::Down){
+                    if (choice<mods_list.size()){
+                        choice++;
+                    };
+                };
             };
         };
         window.clear(sf::Color(248,248,248));
