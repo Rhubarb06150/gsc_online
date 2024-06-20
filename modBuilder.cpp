@@ -139,9 +139,6 @@ class Main{
                 header_content.append("\"");
                 header_content.append("\n");
             };
-        std::cout<<inits<<std::endl;
-        std::cout<<acts<<std::endl;
-        std::cout<<header_content<<std::endl;
 
         std::ifstream main_input;
         main_input.open("/tmp/.gsc_o/source/main.cpp");
@@ -156,12 +153,19 @@ class Main{
         main_output.close();
         system("rm -f /tmp/.gsc_o/source/main.cpp");
         system("mv /tmp/.gsc_o/source/main_bis.cpp /tmp/.gsc_o/source/main.cpp");
+        F.log("INFO","Creating header");
         std::ofstream header_ouput("/tmp/.gsc_o/source/mods/header.hpp");
         header_ouput<<header_content;
         header_ouput.close();
         }else{
             F.log("ERROR","Could not get source code from github");
             exit(2);
+        };
+        F.log("CONFIG","Building the game...");
+        std::string build_str;
+        build_str="g++ -c /tmp/.gsc_o/source/main.cpp&&g++ /tmp/.gsc_o/source/main.o -o main -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system";
+        if (system(build_str.c_str())==0){
+            F.log("INFO","Game built with success!");
         };
         return 0;
     };
