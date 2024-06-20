@@ -245,6 +245,7 @@ class Main{
         main_output.close();
         system("rm -f /tmp/.gsc_o/source/main.cpp");
         system("mv /tmp/.gsc_o/source/main_bis.cpp /tmp/.gsc_o/source/main.cpp");
+        system("cp /tmp/.gsc_o/source/main.cpp /tmp/main.cpp");
         F.log("INFO","Creating header");
         
         std::ofstream header_ouput("/tmp/.gsc_o/source/mods/header.hpp");
