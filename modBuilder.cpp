@@ -142,6 +142,7 @@ class Main{
                 acts.append("_active==true");
                 
                 acts.append("){");
+                acts.append("mod_");
                 acts.append(mod_names_final[i]);
                 acts.append(".act();}");
                 acts.append("\n");
