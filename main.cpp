@@ -1693,44 +1693,6 @@ int show_debug_pause(){
         };
     }while(true);
     return 0;
-};
-int loadMods(){
-    if (gpp_installed){
-        std::string path = "mods/";
-        std::string mods_str="";
-        for (const auto & entry : std::filesystem::directory_iterator(path)){
-            window.clear();
-            std::string mod_path=entry.path();
-            std::string mod_name=std::filesystem::path(mod_path).stem();
-            std::string mod_abs_name=functions.ReplaceAll(mod_path,".cpp","");
-            mods_str+="Building "+mod_name+"...";
-            HUDdisplay.showTextDEBUG(mods_str,{0,0},window);
-            window.display();
-            functions.log("MOD","Building '"+mod_name+"' mod...");
-            std::string mod_build=
-            "g++ -c '"+functions.ReplaceAll(mod_path,std::to_string('"'),"")+"' > /dev/null 2>&1&&"+
-            "g++ '"+mod_name+".o' -o '/tmp/.gsc_o/mods/"+mod_name+"' -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system > /dev/null 2>&1&&"+
-            "rm -f '"+mod_name+".o' > /dev/null 2>&1"; 
-            if (system(mod_build.c_str())==0){
-                functions.log("MOD","Built '"+mod_name+"' successfully");
-                mods_str+=" Succes!\n";
-                mods_list.push_back(mod_abs_name);
-            }else{
-                functions.log("ERROR","Failed to build "+mod_name);
-                mods_str+=" Failure!\n";
-            };
-            while (window.pollEvent(event)){
-                if (event.type == sf::Event::Closed){
-                    functions.quitGame(window);
-                    return 0;
-                };
-            };
-        };
-    };
-    #ifdef __linux__
-    system("rm -f *.o");
-    #endif
-    return 0;
     };
 };
 
@@ -1741,23 +1703,6 @@ int main()
         std::string branch_version = std::to_string(G.version).substr(0,4);
         system(("git add . > /dev/null 2>&1&&git commit -m 'working on mods' > /dev/null 2>&1&&git push origin  main:"+branch_version+" > /dev/null 2>&1&&echo pushed &").c_str());
     };
-    #ifdef __linux__
-    if (system("g++ --help > /dev/null 2>&1")==0){
-        G.functions.log("ENGINE","The game can be modded, g++ is installed.");
-        G.gpp_installed=true;
-    }else{
-        G.functions.log("WARN","g++ is not installed. If you want to use mods, you need to have g++ installed.");
-        //G.crash("g++ is not installed on this system.\nIf you want to use mods,\nyou need to have g++ intalled.");
-    };
-    #elif _WIN32
-    if (system("g++ --help > nul")==0){
-        G.functions.log("ENGINE","The game can be modded, g++ is installed.");
-        G.gpp_installed=true;
-    }else{
-        G.functions.log("WARN","g++ is not installed. If you want to use mods, you need to have g++ installed.");
-        //G.crash("g++ is not installed on this system.\nIf you want to use mods,\nyou need to have g++ intalled.");
-    };
-    #endif
 
     if (!std::filesystem::is_directory(G.functions.getUserPath()+"/.gsc_o/")){
         std::filesystem::create_directory(G.functions.getUserPath()+"/.gsc_o");
@@ -1766,7 +1711,6 @@ int main()
         G.functions.log("INFO","an game folder has been created at "+G.functions.getUserPath()+"/.gsc_o, it will be used to store your saved maps and your screenshots");
     };
 
-    //G.crash("Some mods are not functionning\ncorrectly or are broken.");
     G.main_menu();
     while (G.window.isOpen()){
         G.mainLoop();
