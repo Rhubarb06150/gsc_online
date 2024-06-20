@@ -1,4 +1,5 @@
 #include <filesystem>
+#include <algorithm>
 #include <fstream>
 #include <regex>
 
@@ -75,7 +76,14 @@ class Main{
                         class_name=F.ReplaceAll(line," ","");
                         class_name=F.ReplaceAll(class_name,"{","");
                         class_name=F.ReplaceAll(class_name,"class","");
-                        F.log("INFO","Found "+mod_names[i]+" main class ("+class_name+")");
+                        F.log("INFO","Found "+mod_names[i]+" main class ("+class_name+"), adding it to classes list...");
+                        if(std::find(mod_classes.begin(), mod_classes.end(), class_name) != mod_classes.end()) {
+                            F.log("ERROR","A mod with the same class is already configured, "+mod_names[i]+" mod will not be included.");
+                        } else {
+                            F.log("INFO","Added");  
+                        }
+                        mod_classes.push_back(class_name);
+                        F.log("INFO","Added!");
                         break;
                     }
                     if (regex_match(line,regex)){
