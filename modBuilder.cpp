@@ -285,12 +285,14 @@ class Main{
                 var="";
             }else if (line[i]!=' '){
                 var.append(std::to_string(line[i]));
+                std::cout << "add" << std::endl;
             }else{
                 if (var!=""){
                     res.push_back(var);
                     var="";
                 }
             };
+            std::cout << var << std::endl;
         };
         std::cout << "res size -> " << res.size() << std::endl;
         return res;
