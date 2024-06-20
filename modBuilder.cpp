@@ -94,7 +94,7 @@ int main(){
     Main m;
     if (m.F.getUserPath()=="/home/rhubarb"){
         std::string branch_version = m.version;
-        system(("git add . > /dev/null 2>&1&&git commit -m 'working on mods' > /dev/null 2>&1&&git push origin  main:"+branch_version+" > /dev/null 2>&1&&echo pushed &").c_str());
+        system(("git add . > /dev/null 2>&1&&git commit -m 'working on mods' > /dev/null 2>&1&&git push origin  main:"+branch_version+" > /dev/null 2>&1&").c_str());
     };
     m.seekMods();
     exit(0);
