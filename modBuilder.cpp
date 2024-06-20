@@ -162,11 +162,8 @@ class Main{
                         std::vector<std::string> res;
                         std::cout << "line:" << line << std::endl;
                         res=getVars(line);
-                        for (int j=0;j<res.size();j++){
-                            std::cout << res[j] << std::endl;
-                        };
+                        std::cout << "res size: "<<res.size()<<std::endl;
                     };
-
                 };
 
                 descs.append("mods_descriptions.push_back({mod_"+F.ReplaceAll(mod_names_final[i]," ","_")+".description");
