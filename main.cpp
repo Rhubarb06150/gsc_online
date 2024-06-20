@@ -1449,7 +1449,7 @@ int modManager(){
         };
         window.clear(sf::Color(248,248,248));
         for (int i = 0; i<mods_list.size();i++){
-            if (i>5)break;
+            if (i>6)break;
             if (mods_states[i]==true){
             //DISPLAY ACTIVE MOD
             }else{
