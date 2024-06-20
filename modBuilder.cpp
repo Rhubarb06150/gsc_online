@@ -279,21 +279,13 @@ class Main{
         std::reverse(line.begin(),line.end());
         std::string var;
         var="";
-        for (int i=0;i<line.length();i++){
-            if(line[i]==','||line[i]=='('){
-                res.push_back(var);
-                std::cout << var << std::endl;
-                std::cout << "add" << std::endl;
-                var="";
-            }else if (line[i]!=' '){
-                var.append(""+line[i]);
-            }else{
-                if (var!=""){
-                    res.push_back(var);
-                    var="";
-                }
-            };
-        };
+        line=F.ReplaceAll(line,"std::string","");
+        line=F.ReplaceAll(line,"std::vector","");
+        line=F.ReplaceAll(line,"<","");
+        line=F.ReplaceAll(line,">","");
+        line=F.ReplaceAll(line,"int ","");
+        line=F.ReplaceAll(line,"<int>","");
+        std::cout << var << std::endl;
         std::cout << "res size -> " << res.size() << std::endl;
         return res;
     };
