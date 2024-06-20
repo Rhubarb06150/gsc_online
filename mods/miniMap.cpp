@@ -17,14 +17,14 @@ class MOD_MiniMAP{
     int init(){
         return 0;
     };
-    int passVars(){
+    int passVars(std::vector<int> player_pos){
         return 0;
     };
     int act(){
         std::cout << "mod works!" << std::endl;
         return 0;
     };
-    int show(std::vector<int> player_pos){
+    int show(){
         return 0;
     };
 };
