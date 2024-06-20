@@ -132,6 +132,7 @@ class Main{
             F.log("CONFIG","Adding mods in build source main file");
             std::string inits="";
             std::string descs="";
+            std::string displays="";
             std::string acts="";
             std::string types="std::vector<std::variant<";
             std::string display="";
@@ -175,6 +176,16 @@ class Main{
                 acts.append(".act();};");
                 acts.append("\n");
 
+                displays.append("if(");
+                displays.append("mod_");
+                displays.append(F.ReplaceAll(mod_names_final[i]," ","_"));
+                displays.append("_active==true");
+                displays.append("){");
+                displays.append("mod_");
+                displays.append(F.ReplaceAll(mod_names_final[i]," ","_"));
+                displays.append(".display();};");
+                displays.append("\n");
+
                 header_content.append("#include ");
                 header_content.append("\"");
                 header_content.append(F.ReplaceAll(mod_paths_final[i],"mods/",""));
@@ -198,6 +209,7 @@ class Main{
             while (std::getline(main_input, line)){ 
                 line=F.ReplaceAll(line,"//MOD INIT",inits);
                 line=F.ReplaceAll(line,"//MOD ACT",acts);
+                line=F.ReplaceAll(line,"//MOD DISPLAY",displays);
                 line=F.ReplaceAll(line,"//MODS DESC",descs);
                 line=F.ReplaceAll(line,"std::vector<std::string> mods_list;",types);
                 line=F.ReplaceAll(line,"mods_list={};",mod_list);
