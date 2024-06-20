@@ -279,6 +279,7 @@ class Main{
 
     std::vector<std::string> getVars(std::string function){
         std::cout << function << std::endl;
+        return {};
     };
 };
 int main(){
