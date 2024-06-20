@@ -1480,6 +1480,18 @@ int main_menu(){
                     if (choice==4){
                         int choice=0;
                         while (true){
+                            while (window.pollEvent(event))
+                            {
+                                if (event.type == sf::Event::Closed || event.type == sf::Event::KeyPressed){
+                                    functions.quitGame(window);
+                                    return 0;
+                                };
+                                if (event.type == sf::Event::KeyPressed){
+                                    if (event.key.code==sf::Keyboard::F6){
+                                        break;
+                                    };
+                                };
+                            };
                             window.clear(sf::Color(248,248,248));
                             HUDdisplay.showTextBOW("MODS",{32,32},window);
                             for (int i=0;i<mods_list.size();i++){

@@ -170,7 +170,6 @@ class Main{
             mod_list.append("};");
             names.append("};");
         types.append(">> mods_list;");
-        std::cout << types << std::endl;
 
         std::ifstream main_input;
         main_input.open("/tmp/.gsc_o/source/main.cpp");
