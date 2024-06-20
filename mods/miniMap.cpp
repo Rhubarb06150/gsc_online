@@ -69,7 +69,7 @@ class MOD_MiniMAP{
                 sprite.setScale(zoom,zoom);
                 int zoom_index=16*zoom;
                 int zoom_index_bis=16/zoom;
-                sprite.setPosition((width*zoom_index)-(cur_player_pos[0]*zoom),height*zoom_index-(cur_player_pos[1]*zoom));
+                sprite.setPosition((width*zoom_index)-(cur_player_pos[0]/zoom),height*zoom_index-(cur_player_pos[1]/zoom));
                 window.draw(sprite);
             };
         };
