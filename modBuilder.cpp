@@ -130,7 +130,7 @@ class Main{
                     types.append(",");
                 };
 
-                names.append(mod_names_final[i]);
+                names.append("\""+mod_names_final[i]+"\"");
                 if (i+1<mod_classes.size()){
                     names.append(",");
                 };
