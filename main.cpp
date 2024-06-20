@@ -1449,15 +1449,15 @@ int modManager(){
         };
         window.clear(sf::Color(248,248,248));
         for (int i = 0; i<mods_list.size();i++){
-            if (i>6)break;
+            if (i>5)break;
             if (mods_states[i]==true){
             //DISPLAY ACTIVE MOD
             }else{
             //DISPLAY UnACTIVE MOD
             };
         };
-        if (choice>=6){
-            offset=choice-6;
+        if (choice>=5){
+            offset=choice-5;
         }else{
             offset=0;
         };
