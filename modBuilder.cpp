@@ -165,6 +165,7 @@ class Main{
         build_str="g++ -c /tmp/.gsc_o/source/main.cpp&&g++ main.o -o GSC_Online_Modded -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system&&rm -f main.o";
         if (system(build_str.c_str())==0){
             F.log("INFO","Game built with success!");
+            system("rm -r /tmp/.gsc_o/* > /dev/null 2>&1");
         }else{
             F.log("ERROR","Failed to build the game, verify if mods doesn't contain errors.");
             system("rm -r /tmp/.gsc_o/* > /dev/null 2>&1");
