@@ -150,7 +150,7 @@ class Main{
             while (std::getline(main_input, line)){
                 line=F.ReplaceAll(line,"        //MOD ACT",acts);
                 line=F.ReplaceAll(line,"        //MOD INIT",acts);
-                main_output<<line;
+                main_output<<line<<"\n";
         };
         main_input.close();
         main_output.close();
