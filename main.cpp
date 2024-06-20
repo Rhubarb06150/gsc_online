@@ -146,6 +146,7 @@ class Game{
         //MODS VARS
         bool gpp_installed;
         std::vector<std::string> mods_list;
+        std::vector<std::string> mods_names_list;
         //MOD INIT
 
     Game(){
@@ -182,6 +183,7 @@ class Game{
         record_images={};
         gpp_installed=false;
         mods_list={};
+        mods_names_list={};
         srand(time(NULL));//reset the random values
 
         if (!std::filesystem::is_directory(functions.getUserPath()+"/.gsc_o/")){// here we verify if a game folder exists

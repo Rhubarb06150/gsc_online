@@ -121,12 +121,18 @@ class Main{
             std::string types="std::vector<std::variant<";
             std::string display="";
             std::string mod_list="mods_list={";
+            std::string names="mods_names_list={";
             std::string header_content="";
             for (int i=0;i<mod_classes.size();i++){
 
                 types.append(mod_classes[i]);
                 if (i+1<mod_classes.size()){
                     types.append(",");
+                };
+
+                names.append(mod_names_final[i]);
+                if (i+1<mod_classes.size()){
+                    names.append(",");
                 };
 
                 inits.append(mod_classes[i]);
@@ -162,6 +168,7 @@ class Main{
                 };
             };
             mod_list.append("};");
+            names.append("};");
         types.append(">> mods_list;");
         std::cout << types << std::endl;
 
@@ -175,6 +182,7 @@ class Main{
                 line=F.ReplaceAll(line,"std::vector<std::string> mods_list;",types);
                 line=F.ReplaceAll(line,"//DISPLAY MOD NAME","HUDdisplay.showTextBOW(mods_list[i].name);");
                 line=F.ReplaceAll(line,"mods_list={};",mod_list);
+                line=F.ReplaceAll(line,"mods_names_list={};",mod_list);
                 main_output<<line<<"\n";
         };
         main_input.close();

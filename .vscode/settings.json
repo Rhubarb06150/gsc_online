@@ -57,6 +57,7 @@
         "streambuf": "cpp",
         "typeinfo": "cpp",
         "make": "c",
-        "filesystem": "cpp"
+        "filesystem": "cpp",
+        "variant": "cpp"
     }
 }
