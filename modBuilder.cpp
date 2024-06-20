@@ -144,12 +144,18 @@ class Main{
         std::cout<<header_content<<std::endl;
 
         std::ifstream main_input;
-        std::ofstream main_output;
+        main_input.open("/tmp/.gsc_o/source/main.cpp");
+        std::ofstream main_output("/tmp/.gsc_o/source/main_bis.cpp");
         std::string line;
             while (std::getline(main_input, line)){
                 line=F.ReplaceAll(line,"        //MOD ACT",acts);
                 line=F.ReplaceAll(line,"        //MOD INIT",acts);
+                main_output<<line;
         };
+        main_input.close();
+        main_output.close();
+        system("rm -f /tmp/.gsc_o/source/main.cpp");
+        system("mv /tmp/.gsc_o/source/main_bis.cpp /tmp/.gsc_o/source/main.cpp");
 
         }else{
             F.log("ERROR","Could not get source code from github");
