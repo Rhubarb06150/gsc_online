@@ -290,14 +290,13 @@ class Main{
             }else if (line[i]!=' '){
                 var.append(std::to_string(line[i]));
             }else{
-                std::cout << "espace" << std::endl;
                 if (var!=""){
                     res.push_back(var);
                     var="";
                 }
             };
         };
-        std::cout << res.size() << std::endl;
+        std::cout << function << "size -> " << res.size() << std::endl;
         return res;
     };
 };
