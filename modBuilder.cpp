@@ -145,8 +145,8 @@ class Main{
         std::ofstream main_output("/tmp/.gsc_o/source/main_bis.cpp");
         std::string line;
             while (std::getline(main_input, line)){
-                line=F.ReplaceAll(line,"    //MOD INIT",inits);
-                line=F.ReplaceAll(line,"    //MOD ACT",acts);
+                line=F.ReplaceAll(line,"//MOD INIT",inits);
+                line=F.ReplaceAll(line,"//MOD ACT",acts);
                 main_output<<line<<"\n";
         };
         main_input.close();
