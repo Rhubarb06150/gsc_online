@@ -131,7 +131,7 @@ class Main{
                 inits.append("bool ");
                 inits.append("mod_");
                 inits.append(F.ReplaceAll(mod_names_final[i]," ","_"));
-                inits.append("=true;\n");
+                inits.append("_active=true;\n");
 
                 acts.append("mod_");
                 acts.append(mod_names_final[i]);
