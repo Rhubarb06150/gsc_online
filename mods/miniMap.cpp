@@ -7,6 +7,7 @@ class MOD_MiniMAP{
     std::string name;
     std::string author_name;
     std::string description;
+    std::vector<int> cur_player_pos;
     bool active;
     MOD_MiniMAP(){
         name="Mini Map";
@@ -17,14 +18,14 @@ class MOD_MiniMAP{
     int init(){
         return 0;
     };
-    int passVars(std::vector<int> player_pos, sf::RenderWindow& window){
+    int passVars(std::vector<int> player_pos){
+        cur_player_pos=player_pos;
         return 0;
     };
     int act(){
-        std::cout << "mod works!" << std::endl;
         return 0;
     };
-    int show(){
+    int show(sf::RenderWindow& window){
         return 0;
     };
 };

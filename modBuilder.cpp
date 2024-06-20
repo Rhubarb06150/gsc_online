@@ -139,10 +139,13 @@ class Main{
             std::string mod_list="mods_list={";
             std::string states="mods_states={";
             std::string header_content="";
+            std::string vars="";
+            std::string winvar="";
             bool found;
             for (int i=0;i<mod_classes.size();i++){
-                std::string vars="";
                 found=false;
+                winvar="";
+                vars="";
 
                 types.append(mod_classes[i]);
                 if (i+1<mod_classes.size()){
@@ -160,6 +163,11 @@ class Main{
                 while (std::getline(modfile, line)){
                     if (line.find("int passVars(") != std::string::npos){
                         vars=getVars(line);
+                    };
+                };
+                while (std::getline(modfile, line)){
+                    if (line.find("int show(") != std::string::npos){
+                        winvar=getVars(line);
                     };
                 };
 
@@ -195,7 +203,9 @@ class Main{
                 displays.append("){");
                 displays.append("mod_");
                 displays.append(F.ReplaceAll(mod_names_final[i]," ","_"));
-                displays.append(".show();};");
+                displays.append(".show(");
+                displays.append(winvar);
+                displays.append(");};");
                 displays.append("\n");
 
                 var_pass.append("if(");
