@@ -133,6 +133,7 @@ class Main{
             std::string descs="";
             std::string displays="";
             std::string var_pass="";
+            std::string actvars="";
             std::string acts="";
             std::string types="std::vector<std::variant<";
             std::string display="";
@@ -167,6 +168,9 @@ class Main{
                     if (line.find("int show(") != std::string::npos){
                         winvar=getVars(line);
                     };
+                    if (line.find("int act(") != std::string::npos){
+                        actvars=getVars(line);
+                    };
                     };
 
                 descs.append("mods_descriptions.push_back({mod_"+F.ReplaceAll(mod_names_final[i]," ","_")+".description");
@@ -191,7 +195,9 @@ class Main{
                 acts.append("){");
                 acts.append("mod_");
                 acts.append(F.ReplaceAll(mod_names_final[i]," ","_"));
-                acts.append(".act();};");
+                acts.append(".act(");
+                acts.append(actvars);
+                acts.append("));};");
                 acts.append("\n");
 
                 displays.append("if(");
