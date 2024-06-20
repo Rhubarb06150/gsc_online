@@ -1457,8 +1457,8 @@ int modManager(){
             //DISPLAY UnACTIVE MOD
             };
         };
-        if (choice>4){
-            offset=choice-4;
+        if (choice>=6){
+            offset=choice-6;
         }else{
             offset=0;
         };
