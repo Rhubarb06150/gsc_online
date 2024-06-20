@@ -118,7 +118,7 @@ class Main{
             F.log("CONFIG","Adding mods in build source main file");
             std::string inits="";
             std::string acts="";
-            std::string types="";
+            std::string types="std::vector<std::variant<";
             std::string display="";
             std::string mod_list="mods_list={";
             std::string header_content="";
@@ -161,7 +161,7 @@ class Main{
                 };
             };
             mod_list.append("};");
-
+        acts.append(">> mods_list;");
         std::cout << types << std::endl;
 
         std::ifstream main_input;
