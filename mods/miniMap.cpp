@@ -42,7 +42,7 @@ class MOD_MiniMAP{
                 sf::Sprite sprite;
                 sprite.setTexture(tiles.textures[0][0]);
                 sprite.setScale(0.125f,0.125f);
-                sprite.setPosition(width,height);
+                sprite.setPosition(width*2,height*2);
                 window.draw(sprite);
             };
         };
