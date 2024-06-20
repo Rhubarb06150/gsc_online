@@ -6,7 +6,6 @@
 //
 //////////////////////////////////////
 #include <string>
-#include "../main.cpp"
 
 class Mod{
     public:

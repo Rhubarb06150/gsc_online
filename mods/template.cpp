@@ -5,8 +5,8 @@
 //  It will be activated by itself
 //
 //////////////////////////////////////
+#include <SFML/Graphics.hpp>
 #include <string>
-#include "../main.cpp"
 
 class Mod{
     public:
@@ -18,14 +18,16 @@ class Mod{
         author_name="Rhubarb";
         active=true;
     };
+    int init(){
+        return 0;
+    };
+    int passVars(){
+        return 0;
+    };
     int act(){
-        //Your code here
-        //The act function is called just before the window.clear()
         return 0;
     };
     int show(){
-        //Your code here
-        //The act function is called just before the window.display()
         return 0;
     };
 };

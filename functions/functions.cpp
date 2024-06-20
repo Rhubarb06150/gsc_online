@@ -100,6 +100,23 @@ class GSC_Functions{
         return 0;
     };
 
+    int createMissingDir(std::string path){
+        if (!std::filesystem::is_directory(path)){
+            std::string ins;
+            ins="mkdir "+path;
+            if (system(ins.c_str())==0){
+                //log("FOLDER",path+" has been created");
+                return 0;
+            }else{
+                //log("FOLDER",path+" could not been created");
+                return 2;
+            };
+        }else{
+            //log("FOLDER",path+" already exists");
+            return 1;
+        };
+    };
+
     std::vector<std::string> saveGifFrame(int index_frame, sf::RenderWindow& window, std::vector<std::string> vector){
         sf::Texture texture;
         int winx=window.getSize().x;

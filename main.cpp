@@ -1758,14 +1758,6 @@ int main()
         //G.crash("g++ is not installed on this system.\nIf you want to use mods,\nyou need to have g++ intalled.");
     };
     #endif
-    G.loadMods();
-    if (!std::filesystem::is_directory("/tmp/.gsc_o/")){
-        std::filesystem::create_directory("/tmp/.gsc_o/");
-        std::filesystem::create_directory("/tmp/.gsc_o/mods/");
-        G.functions.log("INFO","an folder has been created in /tmp folder, it will be for in-game processes, it will be cleaned automatically everytime you quit the game.");
-    }else if (!std::filesystem::is_directory("/tmp/.gsc_o/mods/")){
-        std::filesystem::create_directory("/tmp/.gsc_o/mods/");
-    };
 
     if (!std::filesystem::is_directory(G.functions.getUserPath()+"/.gsc_o/")){
         std::filesystem::create_directory(G.functions.getUserPath()+"/.gsc_o");
@@ -1773,6 +1765,7 @@ int main()
         std::filesystem::create_directory(G.functions.getUserPath()+"/.gsc_o/maps/");
         G.functions.log("INFO","an game folder has been created at "+G.functions.getUserPath()+"/.gsc_o, it will be used to store your saved maps and your screenshots");
     };
+    
     //G.crash("Some mods are not functionning\ncorrectly or are broken.");
     G.main_menu();
     while (G.window.isOpen()){
