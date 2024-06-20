@@ -9,7 +9,7 @@ class MOD_MiniMAP{
     HUD display;
     TilesIndex tiles;
     public:
-    int size;
+    float size;
     sf::Event events;
     std::string name;
     std::string author_name;
