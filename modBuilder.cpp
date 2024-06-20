@@ -291,7 +291,6 @@ class Main{
         line=F.ReplaceAll(line,"std::string","");
         line=F.ReplaceAll(line,"std::vector","");
         line=F.ReplaceAll(line,"bool ","");
-        line=F.ReplaceAll(line,"int ","");
         line=F.ReplaceAll(line,"<","");
         line=F.ReplaceAll(line,">","");
         line=F.ReplaceAll(line,"<int>","");
@@ -301,6 +300,7 @@ class Main{
         line=F.ReplaceAll(line,")","");
         line=F.ReplaceAll(line,"{","");
         line=F.ReplaceAll(line,"sf::RenderWindow&","");
+        line=F.ReplaceAll(line,"int ","");
         line=F.ReplaceAll(line," ","");
         for (int i=0;i<line.length();i++){
             if (line[i]!=','){
