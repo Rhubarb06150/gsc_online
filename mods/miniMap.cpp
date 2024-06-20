@@ -73,7 +73,7 @@ class MOD_MiniMAP{
                 };
         };
         rows++;
-        if (rows>10){
+        if (rows>20){
             break;
         }
         };
