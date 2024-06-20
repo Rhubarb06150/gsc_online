@@ -1424,7 +1424,7 @@ int main_menu(){
         max_choice=4;
     }else{
         max_choice=3;
-    }
+    };
     functions.log("INFO","Opening main menu");
     do{
         while (window.pollEvent(event))
