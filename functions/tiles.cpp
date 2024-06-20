@@ -7,6 +7,8 @@
 
 #include "functions.cpp"
 
+#pragma once
+
 class TilesIndex{
     private:
     GSC_Functions funs;
