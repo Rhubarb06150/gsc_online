@@ -248,10 +248,10 @@ class Main{
     };
     int timeWait(){
         #ifdef __linux__
-        usleep(50000);
+        usleep(25000);
         #endif
         #ifdef _WIN32
-        Sleep(50000);
+        Sleep(25000);
         #endif
         return 0;
     };
