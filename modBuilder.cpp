@@ -284,6 +284,7 @@ class Main{
     };
 
     std::string getVars(std::string function){
+        std::cout << function << std::endl;
         std::string line;
         line=function;
         std::vector<std::string> res = {};
@@ -312,6 +313,7 @@ class Main{
         if (var!=""){
             res.push_back(var);
         };
+        std::cout << line << std::endl;
         return line;
     };
 };
