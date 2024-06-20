@@ -41,8 +41,8 @@ class MOD_MiniMAP{
         rectangle.setFillColor(sf::Color(0,0,0));
         rectangle.setPosition({0,0});
         sf::RectangleShape player(sf::Vector2f(8,8));
-        rectangle.setFillColor(sf::Color(255,128,0));
-        rectangle.setPosition({64,64});
+        player.setFillColor(sf::Color(255,128,0));
+        player.setPosition({64,64});
         window.draw(rectangle);
         for (int height=0;height<cur_terrain_vector.size();height++){
             for (int width=0;width<cur_terrain_vector[0].size();width++){
