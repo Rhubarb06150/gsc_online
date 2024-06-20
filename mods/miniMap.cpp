@@ -105,7 +105,7 @@ class MOD_MiniMAP{
         right_line.setFillColor({0,0,0});
         right_line.setPosition({size-16,0});
         window.draw(right_line);
-
+        display.showTextSELDEBUG(map_name,{0,0},window);
         return 0;
     };
 };
