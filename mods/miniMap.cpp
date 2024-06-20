@@ -70,18 +70,12 @@ class MOD_MiniMAP{
                 if (cols>(size/8)+1){
                     break;
                 };
-                if (width>(size/8)){
-                    break;
-                };
         };
         std::cout << shown_sprites << std::endl;
         rows++;
         if (rows>(size/8)+1){
             break;
         }
-        if (height>(size/8)){
-            break;
-        };
         };
         window.draw(player);
 
