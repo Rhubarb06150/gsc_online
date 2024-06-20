@@ -162,6 +162,7 @@ class Main{
                     line=F.ReplaceAll(line,"\n","");
                     if (found){
                         getVars(line);
+                        break;
                     };
                     if (regex_match(line,regex)){
                         found=true;
@@ -235,7 +236,7 @@ class Main{
         main_input.open("/tmp/.gsc_o/source/main.cpp");
         std::ofstream main_output("/tmp/.gsc_o/source/main_bis.cpp");
         std::string line;
-            while (std::getline(main_input, line)){ 
+            while (std::getline(main_input, line)){
                 line=F.ReplaceAll(line,"//MOD INIT",inits);
                 line=F.ReplaceAll(line,"//MOD ACT",acts);
                 line=F.ReplaceAll(line,"//MOD DISPLAY",displays);
