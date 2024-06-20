@@ -1439,7 +1439,11 @@ int modManager(){
         window.clear(sf::Color(248,248,248));
         HUDdisplay.showTextBOW("MODS",{32,32},window);
         for (int i=0;i<mods_list.size();i++){
-            //DISPLAY MOD NAME
+            if (mods_states[i]==true){
+            //DISPLAY ACTIVE MOD
+            }else{
+            //DISPLAY UnACTIVE MOD
+            };
         };
         window.display();
     };
