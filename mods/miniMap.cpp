@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 #include <iostream>
+#include "../functions/hud.cpp"
 
 class MOD_MiniMAP{
     public:
@@ -8,6 +9,8 @@ class MOD_MiniMAP{
     std::string author_name;
     std::string description;
     std::vector<int> cur_player_pos;
+    HUD display;
+    
     bool active;
     MOD_MiniMAP(){
         name="Mini Map";
@@ -26,6 +29,8 @@ class MOD_MiniMAP{
         return 0;
     };
     int show(sf::RenderWindow& window){
+        display.showTextDEBUG("x: "+std::to_string(cur_player_pos[0]),{0,0},window);
+        display.showTextDEBUG("y: "+std::to_string(cur_player_pos[1]),{0,16},window);
         return 0;
     };
 };
