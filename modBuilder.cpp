@@ -290,6 +290,14 @@ class Main{
         line=F.ReplaceAll(line,"{","");
         line=F.ReplaceAll(line,"sf::RenderWindow&","");
         line=F.ReplaceAll(line," ","");
+        for (int i=0;i<line.length();i++){
+            if (line[i]!=','){
+                var.append(std::to_string(line[i]));
+            }else{
+                res.push_back(var);
+                var="";
+            };
+        };
         std::cout << line << std::endl;
         std::cout << "res size -> " << res.size() << std::endl;
         return res;
