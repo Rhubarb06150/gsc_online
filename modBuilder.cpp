@@ -234,8 +234,8 @@ class Main{
                 line=F.ReplaceAll(line,"//MOD INIT",inits);
                 line=F.ReplaceAll(line,"//MOD ACT",acts);
                 line=F.ReplaceAll(line,"//MOD DISPLAY",displays);
-                line=F.ReplaceAll(line,"//MODS DESC",descs);
-                line=F.ReplaceAll(line,"//MODS PASSVARS",var_pass);
+                line=F.ReplaceAll(line,"//MOD DESC",descs);
+                line=F.ReplaceAll(line,"//MOD PASSVARS",var_pass);
                 line=F.ReplaceAll(line,"std::vector<std::string> mods_list;",types);
                 line=F.ReplaceAll(line,"mods_list={};",mod_list);
                 line=F.ReplaceAll(line,"mods_states={};",states);
