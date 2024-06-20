@@ -286,23 +286,13 @@ class Main{
         std::string var;
         var="";
         for (int i=0;i<line.length();i++){
-            if (line[i]==' '){
-                if (!rip){
-                    rip=true;
-                };
-            };
-            if (line[i]=='('){
-                break;
-            };
-            if (rip){
-                if(line[i]==' '){
-                    rip=true;
-                }else if(line[i]==','||line[i]=='('){
-                    res.push_back(var);
-                }else{
-                    var.append(std::to_string(line[i]));
-                    var="";
-                };
+            if(line[i]==' '){
+                rip=true;
+            }else if(line[i]==','||line[i]=='('){
+                res.push_back(var);
+            }else{
+                var.append(std::to_string(line[i]));
+                var="";
             };
         };
         return res;
