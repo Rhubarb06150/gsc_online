@@ -284,7 +284,7 @@ class Main{
                 res.push_back(var);
                 var="";
             }else if (line[i]!=' '){
-                var.append(std::to_string(line[i]));
+                var.append(""+line[i]);
                 std::cout << "add" << std::endl;
             }else{
                 if (var!=""){
