@@ -127,7 +127,11 @@ class Main{
                 inits.append(F.ReplaceAll(mod_names_final[i]," ","_"));
                 inits.append(";\n");
                 
-                header_content.append("#include "+'"'+mod_paths_final[i]+'"'+"\n");
+                header_content.append("#include ");
+                header_content.append(std::to_string('"'));
+                header_content.append(mod_paths_final[i]);
+                header_content.append(std::to_string('"'));
+                header_content.append("\n");
             };
             std::cout<<inits<<std::endl;
             std::cout<<header_content<<std::endl;   
