@@ -1423,6 +1423,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
 
 int modManager(){
     int choice=0;
+    int offset=0;
     while (true){
         while (window.pollEvent(event))
         {
