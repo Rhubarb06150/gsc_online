@@ -47,13 +47,13 @@ class MOD_MiniMAP{
         int real_player_pos_x = cur_player_pos[0]/64;
         int real_player_pos_y = cur_player_pos[1]/64;
         
-        if (real_player_pos_x<9){
+        if (real_player_pos_x<11){
             real_player_pos_x=0;
         }else{
             real_player_pos_x-=6;
         };
 
-        if (real_player_pos_y<9){
+        if (real_player_pos_y<11){
             real_player_pos_y=0;
         }else{
             real_player_pos_y-=5;
