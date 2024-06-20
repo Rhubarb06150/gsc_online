@@ -122,9 +122,9 @@ class Main{
             std::string header_content="";
             for (int i=0;i<mod_classes.size();i++){
                 inits.append("        ");
-                inits.append("mod_");
                 inits.append(mod_classes[i]);
                 inits.append(" ");
+                inits.append("mod_");
                 inits.append(F.ReplaceAll(mod_names_final[i]," ","_"));
                 inits.append(";\n");
                 
