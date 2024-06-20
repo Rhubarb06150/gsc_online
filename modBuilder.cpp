@@ -156,7 +156,7 @@ class Main{
                 header_content.append("\n");
 
                 mod_list.append(mod_names[i]);
-                if (i<mod_classes.size()){
+                if (i+1<mod_classes.size()){
                     mod_list.append(",");
                 };
             };
@@ -171,8 +171,8 @@ class Main{
             while (std::getline(main_input, line)){
                 line=F.ReplaceAll(line,"//MOD INIT",inits);
                 line=F.ReplaceAll(line,"//MOD ACT",acts);
+                line=F.ReplaceAll(line,"std::vector<std::string> mods_list;",types);
                 line=F.ReplaceAll(line,"mods_list={};",mod_list);
-                line=F.ReplaceAll(line,"std::vector<std::string> mods_list;",mod_list);
                 main_output<<line<<"\n";
         };
         main_input.close();
