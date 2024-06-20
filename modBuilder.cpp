@@ -182,7 +182,7 @@ class Main{
                 line=F.ReplaceAll(line,"std::vector<std::string> mods_list;",types);
                 line=F.ReplaceAll(line,"//DISPLAY MOD NAME","HUDdisplay.showTextBOW(mods_names_list[i]);");
                 line=F.ReplaceAll(line,"mods_list={};",mod_list);
-                line=F.ReplaceAll(line,"mods_names_list={};",mod_list);
+                line=F.ReplaceAll(line,"mods_names_list={};",names);
                 main_output<<line<<"\n";
         };
         main_input.close();
