@@ -33,10 +33,7 @@ class MOD_MiniMAP{
         events=event;
         return 0;
     };
-    int act(){
-        return 0;
-    };
-    int show(sf::RenderWindow& window){
+    int act(sf::RenderWindow& window){
         while (window.pollEvent(events))
         {
             if(events.type==sf::Event::KeyPressed){
@@ -60,6 +57,9 @@ class MOD_MiniMAP{
                 };
             };
         };
+        return 0;
+    };
+    int show(sf::RenderWindow& window){
         sf::RectangleShape rectangle(sf::Vector2f(128,128));
         rectangle.setFillColor(sf::Color(0,0,0));
         rectangle.setPosition({0,0});
