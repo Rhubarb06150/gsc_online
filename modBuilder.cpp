@@ -127,6 +127,9 @@ class Main{
                 inits.append(F.ReplaceAll(mod_names_final[i]," ","_"));
                 inits.append(";\n");
                 
+                acts.append(mod_names_final[i]);
+                acts.append(".act();");
+
                 header_content.append("#include ");
                 header_content.append("\"");
                 header_content.append(mod_paths_final[i]);
@@ -134,6 +137,7 @@ class Main{
                 header_content.append("\n");
             };
             std::cout<<inits<<std::endl;
+            std::cout<<acts<<std::endl;
             std::cout<<header_content<<std::endl;   
         }else{
             F.log("ERROR","Could not get source code from github");
