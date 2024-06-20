@@ -160,7 +160,6 @@ class Main{
                 while (std::getline(modfile, line)){
                     if (line.find("int passVars(") != std::string::npos){
                         std::vector<std::string> res;
-                        std::cout << "line:" << line << std::endl;
                         res=getVars(line);
                         std::cout << "res size: "<<res.size()<<std::endl;
                     };
