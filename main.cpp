@@ -1475,40 +1475,15 @@ int main_menu(){
                             #endif
                         };
                     };
-                    /*
                     if (choice==4){
                         int choice=0;
                         while (true){
-                            if (event.type==sf::Event::KeyPressed){
-                                if (sf::Keyboard::Up){
-                                    if (choice>1){
-                                        choice--;
-                                    };
-                                };
-                                if (sf::Keyboard::Down){
-                                    if (choice<1){
-                                        choice++;
-                                    };
-                                };
+                            for (int i=0;i<mods_list.size();i++){
+                                //DISPLAY MOD NAME
                             };
-                            if (event.type==sf::Event::Closed){
-                                functions.quitGame(window);
-                                return 0;
-                            };
-                            
-                            window.clear(sf::Color(248,248,248));
-                            HUDdisplay.showTextDEBUG("Pokemon GSC Online build "+std::to_string(version).substr(0,4),{0,0},window);
-                            HUDdisplay.showTextDEBUG("27/05/24",{0,16},window);
-                            HUDdisplay.showTextDEBUG("F5 or X to confirm, F6 to cancel",{0,32},window);
-                            HUDdisplay.showTextBOW("Settings"+real_res,{64,64},window);
-                            HUDdisplay.showCursor({32,128+(choice*32)},window);
-                            HUDdisplay.showTextBOW("Resolution = "+real_res,{64,128},window);
-                            HUDdisplay.showTextBOW("Username = ",{64,160},window);
-                            window.display();
                         };
 
                     };
-                    */
                 };
             };
             if (event.type == sf::Event::Closed){
