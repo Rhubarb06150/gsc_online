@@ -2,6 +2,8 @@
 #include <string>
 #include <iostream>
 
+#pragma once
+
 class MOD_mod{
     public:
     std::string name;
