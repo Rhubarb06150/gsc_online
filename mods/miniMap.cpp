@@ -9,6 +9,7 @@ class MOD_MiniMAP{
     HUD display;
     TilesIndex tiles;
     public:
+    sf::Event events;
     std::string name;
     std::string author_name;
     std::string description;
@@ -21,7 +22,7 @@ class MOD_MiniMAP{
         author_name="Rhubarb";
         description="A simple mini map test\nI hope you'll enjoy :)";
         active=true;
-        zoom=1.0f;
+        zoom=0.5f;
     };
     int init(){
         return 0;
@@ -29,32 +30,10 @@ class MOD_MiniMAP{
     int passVars(std::vector<int> player_pos, std::vector<std::vector<std::string>> terrain_vector,sf::Event event){
         cur_player_pos=player_pos;
         cur_terrain_vector=terrain_vector;
+        events=event;
         return 0;
     };
-    int act(sf::RenderWindow& window,sf::Event event){
-        while (window.pollEvent(event))
-        {
-            if(event.type==sf::Event::KeyPressed){
-                if (event.key.code==sf::Keyboard::U){
-                    if (zoom==0.5f){
-                        zoom=1.0f;
-                    }else if(zoom==0.25f){
-                        zoom=0.5f;
-                    }else if (zoom==0.125f){
-                        zoom=0.25f;
-                    };
-                };
-                if (event.key.code==sf::Keyboard::D){
-                    if (zoom==1.0f){
-                        zoom=0.5f;
-                    }else if(zoom==0.5f){
-                        zoom=0.25f;
-                    }else if (zoom==0.25f){
-                        zoom=0.125f;
-                    };
-                };
-            };
-        };
+    int act(){
         return 0;
     };
     int show(sf::RenderWindow& window){
@@ -67,9 +46,7 @@ class MOD_MiniMAP{
                 sf::Sprite sprite;
                 sprite.setTexture(tiles.textures[0][tiles.getIntIndex(cur_terrain_vector[height][width])]);
                 sprite.setScale(zoom,zoom);
-                int zoom_index=16*zoom;
-                int zoom_index_bis=16/zoom;
-                sprite.setPosition((width*zoom_index)-(cur_player_pos[0]/zoom),height*zoom_index-(cur_player_pos[1]/zoom));
+                sprite.setPosition((width*8)-(cur_player_pos[0]/8),height*8-(cur_player_pos[1]/8));
                 window.draw(sprite);
             };
         };
