@@ -65,7 +65,13 @@ class MOD_MiniMAP{
                 sprite.setScale(zoom,zoom);
                 sprite.setPosition((width*8)-(cur_player_pos[0]/8)+64,height*8-(cur_player_pos[1]/8)+64);
                 window.draw(sprite);
+            if (width>20){
+                break;
+            }
             };
+            if (height>20){
+                break;
+            }
         };
         window.draw(player);
         return 0;
