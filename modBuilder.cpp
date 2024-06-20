@@ -2,7 +2,6 @@
 #include <algorithm>
 #include <fstream>
 #include <regex>
-#include <variant>
 
 #include "functions/functions.cpp"
 
@@ -156,7 +155,7 @@ class Main{
                 header_content.append("\"");
                 header_content.append("\n");
 
-                mod_list.append("\""+mod_names[i]+"\"");
+                mod_list.append(mod_names[i]);
                 if (i<mod_classes.size()){
                     mod_list.append(",");
                 };
@@ -172,7 +171,8 @@ class Main{
             while (std::getline(main_input, line)){
                 line=F.ReplaceAll(line,"//MOD INIT",inits);
                 line=F.ReplaceAll(line,"//MOD ACT",acts);
-                line=F.ReplaceAll(line,"mods_list={};",types);
+                line=F.ReplaceAll(line,"mods_list={};",mod_list);
+                line=F.ReplaceAll(line,"std::vector<std::string> mods_list;",mod_list);
                 main_output<<line<<"\n";
         };
         main_input.close();
