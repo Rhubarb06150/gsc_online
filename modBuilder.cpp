@@ -46,12 +46,12 @@ class Main{
                     confirm=true;
                 };
                 if (choice=="y"||choice=="Y"||confirm){
-                    std::cout<<"Adding "+file_path_str+" to mods."<<std::endl;
+                    F.log("MOD","Adding "+file_path_str+" to mods.");
                     mod_names.push_back(file_path.stem());
                     mod_paths.push_back(file_path_str);
                     mods++;
                 }else{
-                    std::cout<<"Not adding "+file_path_str+" to mods."<<std::endl;
+                    F.log("INFO","Not adding "+file_path_str+" to mods.");
                 };
             };
         };
