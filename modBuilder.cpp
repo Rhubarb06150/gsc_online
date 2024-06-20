@@ -133,6 +133,7 @@ class Main{
             std::string inits="";
             std::string descs="";
             std::string displays="";
+            std::string var_pass="";
             std::string acts="";
             std::string types="std::vector<std::variant<";
             std::string display="";
@@ -186,6 +187,17 @@ class Main{
                 displays.append(".show();};");
                 displays.append("\n");
 
+                var_pass.append("if(");
+                var_pass.append("mod_");
+                var_pass.append(F.ReplaceAll(mod_names_final[i]," ","_"));
+                var_pass.append("_active==true");
+                var_pass.append("){");
+                var_pass.append("mod_");
+                var_pass.append(F.ReplaceAll(mod_names_final[i]," ","_"));
+                var_pass.append(".passvar(");
+                var_pass.append(");};");
+                var_pass.append("\n");
+
                 header_content.append("#include ");
                 header_content.append("\"");
                 header_content.append(F.ReplaceAll(mod_paths_final[i],"mods/",""));
@@ -211,6 +223,7 @@ class Main{
                 line=F.ReplaceAll(line,"//MOD ACT",acts);
                 line=F.ReplaceAll(line,"//MOD DISPLAY",displays);
                 line=F.ReplaceAll(line,"//MODS DESC",descs);
+                line=F.ReplaceAll(line,"//MODS PASSVARS",var_pass);
                 line=F.ReplaceAll(line,"std::vector<std::string> mods_list;",types);
                 line=F.ReplaceAll(line,"mods_list={};",mod_list);
                 line=F.ReplaceAll(line,"mods_states={};",states);

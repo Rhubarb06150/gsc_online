@@ -186,7 +186,7 @@ class Game{
         mods_list={};
         mods_states={};
         mods_descriptions={};
-        //MODS DESC
+        //MOD DESC
         srand(time(NULL));//reset the random values
 
         if (!std::filesystem::is_directory(functions.getUserPath()+"/.gsc_o/")){// here we verify if a game folder exists
@@ -507,6 +507,7 @@ void mainLoop(){
     if (message_timer<=60){
         HUDdisplay.showTextDEBUG(output_message,{0,560},window);
     };
+    //DO NOT DELETE THIS PLS
     //MOD DISPLAY
     window.display();
 
