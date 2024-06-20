@@ -187,7 +187,7 @@ class Main{
             F.log("SUCCESS","Game built with success! (including "+std::to_string(mod_classes.size())+" mods)");
             }else{
             F.log("SUCCESS","Game built with success! (including 1 mod)");
-            }
+            };
             system("rm -r /tmp/.gsc_o/* -f > /dev/null 2>&1");
         }else{
             F.log("ERROR","Failed to build the game, verify if mods doesn't contain errors.");
