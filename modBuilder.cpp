@@ -161,7 +161,7 @@ class Main{
                 };
             };
             mod_list.append("};");
-        acts.append(">> mods_list;");
+        types.append(">> mods_list;");
         std::cout << types << std::endl;
 
         std::ifstream main_input;
@@ -171,7 +171,7 @@ class Main{
             while (std::getline(main_input, line)){
                 line=F.ReplaceAll(line,"//MOD INIT",inits);
                 line=F.ReplaceAll(line,"//MOD ACT",acts);
-                line=F.ReplaceAll(line,"mods_list={};",mod_list);
+                line=F.ReplaceAll(line,"mods_list={};",types);
                 main_output<<line<<"\n";
         };
         main_input.close();
