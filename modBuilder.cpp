@@ -89,6 +89,7 @@ class Main{
                         found=true;
                     };
                 };
+                std::cout << std::endl;
             };
         }else{
             F.log("ERROR","Could not get source code from github");
