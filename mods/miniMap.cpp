@@ -9,10 +9,12 @@ class MOD_MiniMAP{
     HUD display;
     TilesIndex tiles;
     public:
+    sf::Event events;
     std::string name;
     std::string author_name;
     std::string description;
     std::vector<int> cur_player_pos;
+    float zoom;
     std::vector<std::vector<std::string>> cur_terrain_vector;
     bool active;
     MOD_MiniMAP(){
@@ -20,19 +22,44 @@ class MOD_MiniMAP{
         author_name="Rhubarb";
         description="A simple mini map test\nI hope you'll enjoy :)";
         active=true;
+        zoom=0.5f;
     };
     int init(){
         return 0;
     };
-    int passVars(std::vector<int> player_pos, std::vector<std::vector<std::string>> terrain_vector){
+    int passVars(std::vector<int> player_pos, std::vector<std::vector<std::string>> terrain_vector,sf::Event event){
         cur_player_pos=player_pos;
         cur_terrain_vector=terrain_vector;
+        events=event;
         return 0;
     };
     int act(){
         return 0;
     };
     int show(sf::RenderWindow& window){
+        while (window.pollEvent(events))
+        {
+            if(events.type==sf::Event::KeyPressed){
+                if (events.key.code==sf::Keyboard::Z){
+                    if (zoom==0.5f){
+                        zoom=1.0f;
+                    }else if(zoom==0.25f){
+                        zoom=0.5f;
+                    }else if (zoom==0.125f){
+                        zoom=0.25f;
+                    };
+                };
+                if (events.key.code==sf::Keyboard::X){
+                    if (zoom==1.0f){
+                        zoom=0.5f;
+                    }else if(zoom==0.5f){
+                        zoom=0.25f;
+                    }else if (zoom==0.25f){
+                        zoom=0.125f;
+                    };
+                };
+            };
+        };
         sf::RectangleShape rectangle(sf::Vector2f(128,128));
         rectangle.setFillColor(sf::Color(0,0,0));
         rectangle.setPosition({0,0});
@@ -41,8 +68,8 @@ class MOD_MiniMAP{
             for (int width=0;width<cur_terrain_vector[0].size();width++){
                 sf::Sprite sprite;
                 sprite.setTexture(tiles.textures[0][tiles.getIntIndex(cur_terrain_vector[height][width])]);
-                sprite.setScale(0.5f,0.5f);
-                sprite.setPosition((width*8)-(cur_player_pos[0]/8),height*8-(cur_player_pos[1]/8));
+                sprite.setScale(zoom,zoom);
+                sprite.setPosition((width*(16*zoom))-(cur_player_pos[0]/(16/zoom)),height*(16*zoom)-(cur_player_pos[1]/(16/zoom)));
                 window.draw(sprite);
             };
         };
