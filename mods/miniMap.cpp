@@ -49,17 +49,12 @@ class MOD_MiniMAP{
         int real_player_pos_x = cur_player_pos[0]/64;
         int real_player_pos_y = cur_player_pos[1]/64;
         
-        if (real_player_pos_x<11){
-            real_player_pos_x=0;
-        }else{
-            real_player_pos_x-=11;
-        };
+        if (real_player_pos_x<11){real_player_pos_x=0;}
+        else{real_player_pos_x-=11;}
 
-        if (real_player_pos_y<11){
-            real_player_pos_y=0;
-        }else{
-            real_player_pos_y-=11;
-        };
+        if (real_player_pos_y<11){real_player_pos_y=0;}
+        else{real_player_pos_y-=11;};
+        
         int rows=0;
         for (int height=real_player_pos_y;height<cur_terrain_vector.size();height++){
             int cols=0;
@@ -70,12 +65,12 @@ class MOD_MiniMAP{
                 sprite.setPosition((width*8)-(cur_player_pos[0]/8)+64,height*8-(cur_player_pos[1]/8)+64);
                 window.draw(sprite);    
                 cols++;
-                if (cols-real_player_pos_x>(size/8)+1){
+                if (cols>(size/8)+1){
                     break;
                 };
         };
         rows++;
-        if (rows-real_player_pos_y>(size/8)+1){
+        if (rows>(size/8)+1){
             break;
         }
         };
