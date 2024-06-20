@@ -276,7 +276,6 @@ class Main{
         std::string line;
         line=function;
         std::vector<std::string> res = {};
-        std::reverse(line.begin(),line.end());
         std::string var;
         var="";
         line=F.ReplaceAll(line,"std::string","");
