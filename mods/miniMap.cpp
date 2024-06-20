@@ -35,7 +35,7 @@ class MOD_MiniMAP{
         while (window.pollEvent(event))
         {
             if(event.type==sf::Event::KeyPressed){
-                if (event.key.code==sf::Keyboard::Z){
+                if (event.key.code==sf::Keyboard::U){
                     if (zoom==0.5f){
                         zoom=1.0f;
                     }else if(zoom==0.25f){
@@ -44,7 +44,7 @@ class MOD_MiniMAP{
                         zoom=0.25f;
                     };
                 };
-                if (event.key.code==sf::Keyboard::X){
+                if (event.key.code==sf::Keyboard::D){
                     if (zoom==1.0f){
                         zoom=0.5f;
                     }else if(zoom==0.5f){
