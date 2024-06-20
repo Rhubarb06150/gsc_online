@@ -50,13 +50,13 @@ class MOD_MiniMAP{
         if (real_player_pos_x<11){
             real_player_pos_x=0;
         }else{
-            real_player_pos_x-=6;
+            real_player_pos_x-=11;
         };
 
         if (real_player_pos_y<11){
             real_player_pos_y=0;
         }else{
-            real_player_pos_y-=5;
+            real_player_pos_y-=11;
         };
         for (int height=real_player_pos_y;height<cur_terrain_vector.size();height++){
             for (int width=real_player_pos_x;width<cur_terrain_vector[0].size();width++){
