@@ -36,6 +36,7 @@ class MOD_MiniMAP{
                 std::cout << ">d" << std::endl;
             };
         };
+        return 0;
     };
     int passVars(std::vector<int> player_pos, std::vector<std::vector<std::string>> terrain_vector,sf::Event event, std::string cur_map){
         cur_player_pos=player_pos;
