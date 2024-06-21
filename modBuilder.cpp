@@ -340,6 +340,7 @@ class Main{
         line=F.ReplaceAll(line,"sf::RenderWindow&","");
         line=F.ReplaceAll(line,"sf::Event","");
         line=F.ReplaceAll(line,"int ","");
+        line=F.ReplaceAll(line,"char ","");
         line=F.ReplaceAll(line," ","");
         for (int i=0;i<line.length();i++){
             if (line[i]!=','){
