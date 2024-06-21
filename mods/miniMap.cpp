@@ -48,7 +48,7 @@ class MOD_MiniMAP{
     int act(sf::Event event){
         return 0;
     };
-    int show(sf::RenderWindow& window, char time_otd, bool debug){
+    int show(sf::RenderWindow& window, std::string time_otd_str, bool debug){
         if (show_minimap){
             if (!debug){
             sf::RectangleShape rectangle(sf::Vector2f(size,size));
@@ -69,9 +69,9 @@ class MOD_MiniMAP{
 
             int time_index=0;
 
-            if (time_otd=='m'){time_index=0;}
-            else if (time_otd=='d'){time_index=0;}
-            else if (time_otd=='n'){time_index=0;}
+            if (time_otd_str=="m"){time_index=0;}
+            else if (time_otd_str=="d"){time_index=0;}
+            else if (time_otd_str=="n"){time_index=0;}
 
             int rows=0;
             int shown_sprites=0;
