@@ -34,7 +34,9 @@ class Connection{
         int client_socket = accept(main_socket, nullptr, nullptr);
         recv(main_socket , buffer , sizeof(buffer) , 0);
         connected=true;
-        F.log("SERVER","Client connected!");
+        std::string result;
+        result=buffer;
+        F.log("SERVER","Client connected!"+result);
         server=true;
         return 0;
     };
