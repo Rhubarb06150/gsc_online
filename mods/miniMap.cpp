@@ -48,8 +48,8 @@ class MOD_MiniMAP{
     int act(sf::Event event){
         return 0;
     };
-    int show(sf::RenderWindow& window){
-        if (show_minimap){
+    int show(sf::RenderWindow& window, char time_otd, bool debug){
+        if (show_minimap&&!debug){
             sf::RectangleShape rectangle(sf::Vector2f(size,size));
             rectangle.setFillColor(sf::Color(50,50,50));
             rectangle.setPosition({0,0});
@@ -66,13 +66,19 @@ class MOD_MiniMAP{
             if (real_player_pos_y<11){real_player_pos_y=0;}
             else{real_player_pos_y-=11;};
 
+            int time_index=0;
+
+            if (time_otd=='m'){time_index=0;}
+            else if (time_otd=='d'){time_index=0;}
+            else if (time_otd=='n'){time_index=0;}
+
             int rows=0;
             int shown_sprites=0;
             for (int height=real_player_pos_y;height<cur_terrain_vector.size();height++){
                 int cols=0;
                 for (int width=real_player_pos_x;width<cur_terrain_vector[0].size();width++){
                     sf::Sprite sprite;
-                    sprite.setTexture(tiles.textures[2][tiles.getIntIndex(cur_terrain_vector[height][width])]);
+                    sprite.setTexture(tiles.textures[time_index][tiles.getIntIndex(cur_terrain_vector[height][width])]);
                     sprite.setScale(zoom,zoom);
                     sprite.setPosition((width*8)-(cur_player_pos[0]/8)+64,height*8-(cur_player_pos[1]/8)+64);
                     window.draw(sprite);    
