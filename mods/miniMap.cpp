@@ -29,7 +29,7 @@ class MOD_MiniMAP{
         active=true;
         zoom=0.5f;
         show_minimap=true;
-        size=128;
+        size=196;
     };
     int init(){
         return 0;
