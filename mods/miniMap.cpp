@@ -81,7 +81,7 @@ class MOD_MiniMAP{
                 sf::Sprite sprite;
                 sprite.setTexture(tiles.textures[2][tiles.getIntIndex(cur_terrain_vector[height][width])]);
                 sprite.setScale(zoom,zoom);
-                sprite.setPosition((width*8)-(cur_player_pos[0]/8)+64,height*8-(cur_player_pos[1]/8)+64);
+                sprite.setPosition(((width*8)-(cur_player_pos[0]/8)+64)*(zoom*2),(height*8-(cur_player_pos[1]/8)+64)*(zoom*2));
                 window.draw(sprite);    
                 shown_sprites++;
                 cols++;
