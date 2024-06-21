@@ -280,6 +280,7 @@ class Main{
                 line=F.ReplaceAll(line,"//MOD DISPLAY",displays);
                 line=F.ReplaceAll(line,"//MOD DESC",descs);
                 line=F.ReplaceAll(line,"//MOD PASSVARS",var_pass);
+                line=F.ReplaceAll(line,"//MOD KEYPRESS",key_press);
                 line=F.ReplaceAll(line,"std::vector<std::string> mods_list;",types);
                 line=F.ReplaceAll(line,"mods_list={};",mod_list);
                 line=F.ReplaceAll(line,"mods_states={};",states);
@@ -332,6 +333,7 @@ class Main{
         line=F.ReplaceAll(line,"passVars(","");
         line=F.ReplaceAll(line,"show(","");
         line=F.ReplaceAll(line,"act(","");
+        line=F.ReplaceAll(line,"keyPress(","");
         line=F.ReplaceAll(line,"(","");
         line=F.ReplaceAll(line,")","");
         line=F.ReplaceAll(line,"{","");
