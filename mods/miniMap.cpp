@@ -24,8 +24,8 @@ class MOD_MiniMAP{
         author_name="Rhubarb";
         description="A simple mini map test\nI hope you'll enjoy :)";
         active=true;
-        zoom=0.5f;
-        size=196;
+        zoom=1.5f;
+        size=156;
     };
     int init(){
         return 0;
