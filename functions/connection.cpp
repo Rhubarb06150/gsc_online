@@ -57,14 +57,14 @@ class Connection{
         F.log("SERVER","Waiting for other player pos");
         std::string fish="salut";
         const char* message = fish.c_str();
-        send(main_socket,(char *)&message,strlen(message),0);
+        send(main_socket,message,strlen(message),0);
         F.log("SERVER","Recieved!");
         return 0;
     };
 
     int recvPos(){
         F.log("SERVER","Waiting for other player pos");
-        recv(main_socket,(char *)&buffer,sizeof(buffer),0);
+        recv(main_socket,buffer,sizeof(buffer),0);
         F.log("SERVER","Recieved!");
         return 0;
     };
