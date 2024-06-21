@@ -49,7 +49,8 @@ class MOD_MiniMAP{
         return 0;
     };
     int show(sf::RenderWindow& window, char time_otd, bool debug){
-        if (show_minimap&&!debug){
+        if (show_minimap){
+            if (!debug){
             sf::RectangleShape rectangle(sf::Vector2f(size,size));
             rectangle.setFillColor(sf::Color(50,50,50));
             rectangle.setPosition({0,0});
@@ -121,6 +122,7 @@ class MOD_MiniMAP{
             right_line.setPosition({size-16,0});
             window.draw(right_line);
             display.showTextSELDEBUG(std::filesystem::path(map_name).stem(),{0,0},window);
+        };
         };
         return 0;
     };
