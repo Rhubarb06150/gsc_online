@@ -20,6 +20,12 @@ class Main{
     Main(){
     version="0.00";
     confirm=false;
+    #ifdef __linux__
+    F.log("CONFIG","Linux detected");
+    #endif 
+    #ifdef _WIN32
+    F.log("CONFIG","Windows detected");
+    #endif
     };
     int seekMods(){
         if (!std::filesystem::is_directory("mods/")){
