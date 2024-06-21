@@ -75,13 +75,9 @@
         <a class="smaller-span" href="#how-map-works">How map works</a><br>
         <a class="smaller-span" href="#how-the-terrain-is-shown">How the terrain in shown</a><br>
         <br>
-        <a class="bigger-span" href="#functions" title="Explainations of how functions works and what they do">Functions</a><br>
-        <p class="smaller-span small">Terrain functions</p>
-        <a class="smaller-span" href="#function-terrainForm">terrainForm</a><br>
-        <a class="smaller-span" href="#function-showTerrain">showTerrain</a><br>
-        <br>
         <a class="bigger-span" href="#mod-help" title="Explainations of how to create a mod">Mod help</a><br>
         <a class="smaller-span" href="#mod-template">Mod template</a><br>
+        <a class="smaller-span" href="#mod-before-anything">Before Anything</a><br>
 
     </span>
     </div>
@@ -284,58 +280,17 @@
             </p><br>
         <h3 id="how-the-terrain-is-shown">How the terrain is shown</h3><br>
             <p>First of all, you need to know than the terrain you are standing on when in game is stored in  a 2D vector of tiles indexes (\x00 is a tile index, grass is not)<br>
-            <br>Once the terraini vector is set, every frame the <a href="#function-showTerrain">showTerrain</a> function is called                
+            <br>Once the terraini vector is set, every frame the <span class="var">showTerrain</span> function is called                
             </p><br>
 
         <div class="line"></div>
 
-        <!-- Functions -->
+        <!-- Mod Help -->
 
-        <h2 id="functions">Functions</h2><br>
-        <h4>Explainations on GSC Online functions</h4><br>
-        <h4 style="color:#ffff00">Important informations:</h4><p>GSC Online is fully written in C++ and uses the <a href="https://sfml-dev.org" target="_blank">SFML 2</a> library</p><br>
-        <h3>Terrain functions</h3><br>
-        <!-- <tr><td style="font-weight:bold;"></td><td></td></tr> -->
-        <p><b id="function-terrainForm">terrainForm</b>(<span class="small">terrain_vector , map_path</span>)<br><br>
-            Reading the map file at the given path and then reading the file line by line, then every 4 letters, it adds the tile in the <span class="small">terrain_vector</span>.<br><br></p>
-            <div style="text-align:left;width:max-content;color:#ffffff"><p>
-            <span class="small">terrain_vector</span> = std::vector&lt;std::vector&lt;std::string&gt;&gt;<br>
-            <span class="small">map_path </span>= std::string</div><br>
-            <span class="small">returns the terrain_vector</span><br><br>
-            <p>
-        <b id="function-showTerrain">showTerrain</b>(<span class="small">terrain_vector , player_pos , time_otd , window , player_camera , light_stand , frame_index</span>)<br><br>
-            Display the terrain. (no shit)<br><br></p>
-            <div style="text-align:left;width:max-content;color:#ffffff">
-            <span class="small">terrain_vector</span> = std::vector&lt;std::vector&lt;std::string&gt;&gt;<br>
-            <span class="small">player_pos</span> = std::vector&lt;int&gt;<br>
-            <span class="small">time_otd</span> = char<br>
-            <span class="small">window</span> = sf::RenderWindow&<br>
-            <span class="small">player_camera</span> = std::vector&lt;int&gt;<br>
-            <span class="small">light_stand</span> = bool<br>
-            <span class="small">frame_index</span> = int<br><br>
-            </div>
-            <div style="text-align:left;width:max-content;color:#ffffff">
-            <span class="small">returns 0 by default<br>
-            returns 1 if it displays under the player's view<br>
-            returns 2 if more than 200 tiles are displayed</span>
-            </div><br><br>
-
-        <h3>Tiles functions</h3><br>
-        <!-- <tr><td style="font-weight:bold;"></td><td></td></tr> -->
-        <p><b id="function-terrainForm">getIndex</b>(<span class="small">index</span>)<br><br>
-            Go for each tile in the tiles vector and if the <span class="small">index</span> matches an index in the <br><br></p>
-            <div style="text-align:left;width:max-content;color:#ffffff">
-            <span class="small">terrain_vector</span> = std::vector&lt;std::vector&lt;std::string&gt;&gt;<br>
-            <span class="small">map_path </span>= std::string</div><br>
-            <span class="small">returns the terrain_vector</span><br><br>
-            <p></p>
-        <!-- Varibales -->
-
-        <div class="line"></div>
         <h2 id="mod-help">Mod Help</h2><br>
         <h4>Explainations on how to create a GSC Online mod</h4><br>
         <h4 style="color:#ffff00">Important informations:</h4><p>Mods needs to be saved as .cpp format and to be in a folder called "mods" next to the game file</p><br>
-        <div id="mod-template"></div>
+        <h3 id="mod-template">Mod Template</h3><br>
         <div class="code" id="mod-template-code">
             #include &lt;SFML/Graphics.hpp&gt;<br>
             #include &lt;string&gt;<br>
@@ -373,10 +328,21 @@
             <tab>};<br>
             };<br>
         </div><br>
-        <span class="small">Mod template</span><br>
+        <h2 id="mod-before-anything">Before anything</h2><br>
         <p>
+            What you need to know before making a mod:<br><br>
+            <div style="text-align:left;width:max-content;color:#ffffff">
+                Your mod main class needs to start with "MOD_".<br>
+                You need to have the five functions from the template (with or without the parameters).<br>
+                You can use functions from functions folder by writing <span class="spec">#include</span> <span class="string">"../functions/'func_file'.cpp"</span><br>
+            </div><br>
         </p>
-    </div>
+        <h2 id="mod-use-main-variables">Use variables from Main</h2><br>
+        <p>For use variables from main file, just put variables as parameters in your functions with the same name as in main.<br>
+        (You can refer to <a href=#vars>variables tables</a>)<br><br>
+        For example, if you want to call the <span class="var">player_pos</span> vector.
+        </p>
+    </div>  
     <footer>
         <font color="#ffffff">
             <p>Pokémon GSC Online is open-source you can visit the repository <a href="https://www.github.com/Rhubarb06150/gsc_online" target="_blank">here</a>, for any questions, suggestions or any help needed you can contact me on <a href="https://www.twitter.com/rhubarb06150" target="_blank">twitter</a> or at mail <a href="mailto:rhubarb@smbxworld.net">rhubarb@smbxworld.net</a></p>

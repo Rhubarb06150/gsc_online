@@ -1,5 +1,5 @@
 #include <SFML/Graphics.hpp>
-#include <iostream>
+#include <string>
 
 class MOD_Template{
     public:
@@ -12,18 +12,24 @@ class MOD_Template{
         description="A super template!";
     };
     int init(){
+        // Called at end of Game()
         return 0;
     };
-    int keyPress(){
+    int keyPress(sf::Event event){
+        // Called in event loop after
+        // if (event.type==sf::Event::KeyPressed)
         return 0;
     };
     int passVars(){
+        // Called before your_mod.act
         return 0;
     };
-    int act(sf::Event event){
+    int act(){
+        // Called before window.clear
         return 0;
     };
     int show(sf::RenderWindow& window){
+        // Called just before window.display
         return 0;
     };
 };

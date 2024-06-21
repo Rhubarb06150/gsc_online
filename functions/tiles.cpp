@@ -247,7 +247,6 @@ class TilesIndex{
         };
         return sprite;
     };
-
     std::string getTileName(std::string index){
         for (int i = 0;i<tiles.size();i++){
             if (index==tiles[i][2]){
