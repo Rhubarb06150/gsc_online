@@ -51,7 +51,7 @@ class Main{
                     mod_paths.push_back(file_path_str);
                     mods++;
                 }else{
-                    F.log("INFO","Not adding "+file_path_str+" to mods.");
+                    F.log("INFO ","Not adding "+file_path_str+" to mods.");
                 };
             };
         };
