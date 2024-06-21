@@ -38,10 +38,10 @@ class MOD_MiniMAP{
                 zoom=0.5f;
             };
         }else if(event.key.code==sf::Keyboard::Subtract){
-            if (zoom==0.25f){
+            if (zoom==0.5f){
+                zoom=0.25f;
+            }else if(zoom==1.0f){
                 zoom=0.5f;
-            }else if(zoom==0.5f){
-                zoom=1.0f;
             };
         };
         return 0;
