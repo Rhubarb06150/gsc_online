@@ -28,6 +28,16 @@
     td{border:1px #999999 solid;padding:4px}
     b{color:#00aaff}
     .first-row{font-style:bold;color:#00ffcc;font-size:14px;}
+    .code{background:#202020;color:#ffffff;border:2px #ffffff solid;width:75%;overflow:scroll;text-align:left;padding:10px;}
+    .commentary{color:#6a9955;}
+    .function{color:#d9d9a8;}
+    .var{color:#9cdcfe;}
+    .var2{color:#4dc7ae;}
+    .declaration{color:#569cd6;}
+    .spec{color:#c586c0;}
+    .string{color:#ce9178;}
+    .spec2{color:#ffd700;}
+    tab{width:1px;margin-left:30px;};
     @media only screen and (max-width:900px){.abs-box{filter:none;}body{background:#404045;}.box{width:calc(100vw - 80px);max-width:calc(100vw - 80px);border:none;filter:none;padding:40px;}.jump-to-box{margin:0px;filter:none;border:none;width:calc(100vw - 40px);}p{font-size:10px;}h1{font-size:20px;}span{font-size:10px;}h2{font-size:12px;}h3{font-size:14px;}h4{font-size:16px;}img{width:50vw;}table{font-size:10px;}header{background:linear-gradient(180deg, #151515 0%,#404045 80%);}}
 </style>
 <script>
@@ -69,6 +79,10 @@
         <p class="smaller-span small">Terrain functions</p>
         <a class="smaller-span" href="#function-terrainForm">terrainForm</a><br>
         <a class="smaller-span" href="#function-showTerrain">showTerrain</a><br>
+        <br>
+        <a class="bigger-span" href="#mod-help" title="Explainations of how to create a mod">Mod help</a><br>
+        <a class="smaller-span" href="#mod-template">Mod template</a><br>
+
     </span>
     </div>
     <div class="abs-box">
@@ -314,14 +328,98 @@
             <span class="small">terrain_vector</span> = std::vector&lt;std::vector&lt;std::string&gt;&gt;<br>
             <span class="small">map_path </span>= std::string</div><br>
             <span class="small">returns the terrain_vector</span><br><br>
-            <p>
-        </div>
+            <p></p>
+        <!-- Varibales -->
+
+        <div class="line"></div>
+        <h2 id="mod-help">Mod Help</h2><br>
+        <h4>Explainations on how to create a GSC Online mod</h4><br>
+        <h4 style="color:#ffff00">Important informations:</h4><p>Mods needs to be saved as .cpp format and to be in a folder called "mods" next to the game file</p><br>
+        <div id="mod-template"></div>
+        <div class="code" id="mod-template-code">
+            #include &lt;SFML/Graphics.hpp&gt;<br>
+            #include &lt;string&gt;<br>
+            <br>
+            class MOD_Template{<br>
+            <tab>public:<br>
+            <tab>std::string name;<br>
+            <tab>std::string author_name;<br>
+            <tab>std::string description;<br>
+            <tab>MOD_Template(){<br>
+            <tab><tab>name="Mod template";<br>
+            <tab><tab>author_name="Rhubarb";<br>
+            <tab><tab>description="A super template!";<br>
+            <tab>};<br>
+            <tab>int init(){<br>
+            <tab><tab><span class="commentary">// Called at end of Game()</span><br>
+            <tab><tab>return 0;<br>
+            <tab>};<br>
+            <tab>int keyPress(sf::Event event){<br>
+            <tab><tab><span class="commentary">// Called in event loop after</span><br>
+            <tab><tab><span class="commentary">// if (event.type==sf::Event::KeyPressed)</span><br>
+            <tab><tab>return 0;<br>
+            <tab>};<br>
+            <tab>int passVars(){<br>
+            <tab><tab><span class="commentary">// Called before your_mod.act</span><br>
+            <tab><tab>return 0;<br>
+            <tab>};<br>
+            <tab>int act(){<br>
+            <tab><tab><span class="commentary">// Called before window.clear</span><br>
+            <tab><tab>return 0;<br>
+            <tab>};<br>
+            <tab>int show(sf::RenderWindow<span class="declaration">&</span> <span class="var">window</span>){<br>
+            <tab><tab><span class="commentary">// Called just before window.display</span><br>
+            <tab><tab>return 0;<br>
+            <tab>};<br>
+            };<br>
+        </div><br>
+        <span class="small">Mod template</span><br>
+        <p>
+        </p>
     </div>
     <footer>
         <font color="#ffffff">
             <p>Pokémon GSC Online is open-source you can visit the repository <a href="https://www.github.com/Rhubarb06150/gsc_online" target="_blank">here</a>, for any questions, suggestions or any help needed you can contact me on <a href="https://www.twitter.com/rhubarb06150" target="_blank">twitter</a> or at mail <a href="mailto:rhubarb@smbxworld.net">rhubarb@smbxworld.net</a></p>
         </font>
     </footer>
+    <script>
+        code_template=document.getElementById("mod-template-code");
+        inner=code_template.innerHTML;
+        inner=inner.replaceAll("<tab>","&nbsp;&nbsp;&nbsp;&nbsp;")
+        inner=inner.replaceAll("#include","<span class=spec>#include</span>");
+        inner=inner.replaceAll("int","<span class='declaration'>int</span>");
+        inner=inner.replaceAll("class ","<span class='declaration'>class </span>");
+        inner=inner.replaceAll("MOD_Template{","<span class='var2'>MOD_Template</span>{");
+        inner=inner.replaceAll("MOD_Template()","<span class='function'>MOD_Template</span>()");
+        inner=inner.replaceAll("author_name=","<span class='var'>author_name</span>=");
+        inner=inner.replaceAll("description=","<span class='var'>description</span>=");
+        inner=inner.replaceAll('"Mod template"','<span class=string>"Mod template"</span>');
+        inner=inner.replaceAll('"Rhubarb"','<span class=string>"Rhubarb"</span>');
+        inner=inner.replaceAll('&lt;SFML/Graphics.hpp&gt;','<span class=string>&lt;SFML/Graphics.hpp&gt;</span>');
+        inner=inner.replaceAll('&lt;string&gt;','<span class=string>&lt;string&gt;</span>');
+        inner=inner.replaceAll('"A super template!"','<span class=string>"A super template!"</span>');
+        inner=inner.replaceAll('std::string','<span class="var2">std::string </span>');
+        inner=inner.replaceAll("name=","<span class='var'>name</span>=");
+        inner=inner.replaceAll("public:","<span class='var'>public:</span>");
+        inner=inner.replaceAll("author_name;","<span class='var'>author_name</span>;");
+        inner=inner.replaceAll("description;","<span class='var'>description</span>;");
+        inner=inner.replaceAll("name;","<span class='var'>name</span>;");
+        inner=inner.replaceAll("init","<span class='function'>init</span>");
+        inner=inner.replaceAll("keyPress","<span class='function'>keyPress</span>");
+        inner=inner.replaceAll("passVars","<span class='function'>passVars</span>");
+        inner=inner.replaceAll("act","<span class='function'>act</span>");
+        inner=inner.replaceAll("show","<span class='function'>show</span>");
+        inner=inner.replaceAll("0;","<span class='var2'>0</span>;");
+        inner=inner.replaceAll("return","<span class='spec'>return</span>");
+        inner=inner.replaceAll("{","<span class='spec2'>{</span>");
+        inner=inner.replaceAll("}","<span class='spec2'>}</span>");
+        inner=inner.replaceAll("(","<span class='spec'>(</span>");
+        inner=inner.replaceAll(")","<span class='spec'>)</span>");
+        inner=inner.replaceAll("sf::Event event","<span class='var2'>sf::Event</span><span class=var> event</span>");
+        inner=inner.replaceAll("sf::RenderWindow","<span class='var2'>sf::RenderWindow</span>");
+        inner=inner.replaceAll("window&#41;","<span class='var'>window</span>&#41;");
+        code_template.innerHTML=inner;
+    </script>
     </center>
 </body>
 </html>
