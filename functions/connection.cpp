@@ -55,14 +55,16 @@ class Connection{
     };
     int sendPos(std::vector<int> player_pos){
         F.log("SERVER","Waiting for other player pos");
-        send(main_socket,(char *)&player_pos,sizeof(player_pos),0);
+        std::string fish="salut";
+        const char* message = fish.c_str();
+        send(main_socket,(char *)&message,strlen(message),0);
         F.log("SERVER","Recieved!");
         return 0;
     };
 
     int recvPos(){
         F.log("SERVER","Waiting for other player pos");
-        recv(main_socket,(char *)&other_player_pos,sizeof(other_player_pos),0);
+        recv(main_socket,(char *)&buffer,sizeof(buffer),0);
         F.log("SERVER","Recieved!");
         return 0;
     };
