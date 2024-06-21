@@ -155,6 +155,8 @@ class Main{
             std::string header_content="";
             std::string vars="";
             std::string winvar="";
+            std::string pressvars="";
+            std::string key_press="";
             bool found;
             for (int i=0;i<mod_classes.size();i++){
                 found=false;
@@ -183,6 +185,9 @@ class Main{
                     };
                     if (line.find("int act(") != std::string::npos){
                         actvars=getVars(line);
+                    };
+                    if (line.find("int keyPress(") != std::string::npos){
+                        pressvars=getVars(line);
                     };
                     };
 
@@ -224,6 +229,18 @@ class Main{
                 displays.append(winvar);
                 displays.append(");};");
                 displays.append("\n");
+
+                key_press.append("if(");
+                key_press.append("mod_");
+                key_press.append(F.ReplaceAll(mod_names_final[i]," ","_"));
+                key_press.append("_active==true");
+                key_press.append("){");
+                key_press.append("mod_");
+                key_press.append(F.ReplaceAll(mod_names_final[i]," ","_"));
+                key_press.append(".keyPress(");
+                key_press.append(pressvars);
+                key_press.append(");};");
+                key_press.append("\n");
 
                 var_pass.append("if(");
                 var_pass.append("mod_");

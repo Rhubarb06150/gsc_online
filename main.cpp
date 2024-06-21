@@ -293,6 +293,7 @@ void mainLoop(){
             functions.quitGame(window);
         };
         if (event.type==sf::Event::KeyPressed){
+            //MOD KEYPRESS
             if (event.key.code==sf::Keyboard::F2){
                 debug=!debug;
                 SoundManager.soundEffect("PRESS");
@@ -341,12 +342,12 @@ void mainLoop(){
                     };
                 };
             };
-            //MOD ACT
         };
     };
 
     //SHOW ALL
     //MOD PASSVARS
+    //MOD ACT
     window.clear();
     terrain.showTerrain(terrain_vector,player_pos,time_otd,window,player_offset,(debug&&debug_page==9&&debug_choice==2),index_frame);
     player_state=player.animPlayer(player_state,moving_timer,walking);

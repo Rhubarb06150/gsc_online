@@ -30,6 +30,13 @@ class MOD_MiniMAP{
     int init(){
         return 0;
     };
+    int keyPress(sf::Event event){
+        if (event.type==sf::Event::KeyPressed){
+            if (event.key.code==sf::Keyboard::D){
+                std::cout << ">d" << std::endl;
+            };
+        };
+    };
     int passVars(std::vector<int> player_pos, std::vector<std::vector<std::string>> terrain_vector,sf::Event event, std::string cur_map){
         cur_player_pos=player_pos;
         cur_terrain_vector=terrain_vector;
@@ -38,11 +45,6 @@ class MOD_MiniMAP{
         return 0;
     };
     int act(sf::Event event){
-        if (event.type==sf::Event::KeyPressed){
-            if (event.key.code==sf::Keyboard::D){
-                std::cout << ">d" << std::endl;
-            };
-        };
         return 0;
     };
     int show(sf::RenderWindow& window){
