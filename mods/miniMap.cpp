@@ -37,7 +37,12 @@ class MOD_MiniMAP{
         map_name=cur_map;
         return 0;
     };
-    int act(){
+    int act(sf::Event event){
+        if (event.type==sf::Event::KeyPressed){
+            if (event.key.code==sf::Keyboard::D){
+                std::cout << ">d" << std::endl;
+            };
+        };
         return 0;
     };
     int show(sf::RenderWindow& window){
