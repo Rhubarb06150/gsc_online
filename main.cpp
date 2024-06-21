@@ -338,6 +338,7 @@ void mainLoop(){
                         }else{
                             debug_choice=4;
                         };
+                //MOD ACT
                     };
                 };
             };
@@ -346,7 +347,6 @@ void mainLoop(){
 
     //SHOW ALL
     //MOD PASSVARS
-    //MOD ACT
     window.clear();
     terrain.showTerrain(terrain_vector,player_pos,time_otd,window,player_offset,(debug&&debug_page==9&&debug_choice==2),index_frame);
     player_state=player.animPlayer(player_state,moving_timer,walking);
