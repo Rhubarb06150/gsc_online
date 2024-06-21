@@ -36,8 +36,15 @@ class MOD_MiniMAP{
     };
     int keyPress(sf::Event event){
         if (event.key.code==sf::Keyboard::Tab){
-            if(show_minimap){show_minimap=false;F.log("MOD","Mini-Map: hiding mini map.");return 0;}
-            if(!show_minimap){show_minimap=true;F.log("MOD","Mini-Map: showing mini map.");return 0;}
+            if(show_minimap){
+                show_minimap=false;
+                F.log("MOD","Mini-Map: hiding mini map.");
+                return 0;}
+            if(!show_minimap){
+                show_minimap=true;
+                F.log("MOD","Mini-Map: showing mini map.");
+                return 0;
+            };
         };
         return 0;
     };
@@ -73,8 +80,8 @@ class MOD_MiniMAP{
             int time_index=0;
 
             if (time_otd_str=="m"){time_index=0;}
-            else if (time_otd_str=="d"){time_index=0;}
-            else if (time_otd_str=="n"){time_index=0;}
+            else if (time_otd_str=="d"){time_index=1;}
+            else if (time_otd_str=="n"){time_index=2;}
 
             int rows=0;
             int shown_sprites=0;
