@@ -19,6 +19,7 @@ class MOD_MiniMAP{
     float zoom;
     std::vector<std::vector<std::string>> cur_terrain_vector;
     bool active;
+    bool show;
     MOD_MiniMAP(){
         name="Mini Map";
         author_name="Rhubarb";
@@ -31,18 +32,8 @@ class MOD_MiniMAP{
         return 0;
     };
     int keyPress(sf::Event event){
-        if (event.key.code==sf::Keyboard::Add){
-            if (zoom==0.5f){
-                zoom=1.0f;
-            }else if(zoom==0.25f){
-                zoom=0.5f;
-            };
-        }else if(event.key.code==sf::Keyboard::Subtract){
-            if (zoom==0.5f){
-                zoom=0.25f;
-            }else if(zoom==1.0f){
-                zoom=0.5f;
-            };
+        if (event.key.code==sf::Keyboard::M){
+            show=!show;
         };
         return 0;
     };
@@ -57,6 +48,7 @@ class MOD_MiniMAP{
         return 0;
     };
     int show(sf::RenderWindow& window){
+        if (show){
         sf::RectangleShape rectangle(sf::Vector2f(size,size));
         rectangle.setFillColor(sf::Color(50,50,50));
         rectangle.setPosition({0,0});
@@ -81,14 +73,14 @@ class MOD_MiniMAP{
                 sf::Sprite sprite;
                 sprite.setTexture(tiles.textures[2][tiles.getIntIndex(cur_terrain_vector[height][width])]);
                 sprite.setScale(zoom,zoom);
-                sprite.setPosition(((width*8)-(cur_player_pos[0]/8)+64)*(zoom*2),(height*8-(cur_player_pos[1]/8)+64)*(zoom*2));
+                sprite.setPosition((width*8)-(cur_player_pos[0]/8)+64,height*8-(cur_player_pos[1]/8)+64);
                 window.draw(sprite);    
                 shown_sprites++;
                 cols++;
-                if ((((width*8)-(cur_player_pos[0]/8)+64)*(zoom*2))>size-24){
+                if (((width*8)-(cur_player_pos[0]/8)+64)>size-24){
                     break;
                 }
-                if ((cols>(size/8)+1)/(zoom*2)){
+                if (cols>(size/8)+1){
                     break;
                 };
         };
@@ -96,7 +88,7 @@ class MOD_MiniMAP{
         if ((height*8-(cur_player_pos[1]/8)+64)>size-24){
             break;
         }
-        if ((rows>(size/8)+2)/(zoom*2)){
+        if (rows>(size/8)+2){
             break;
         }
         };
@@ -122,6 +114,7 @@ class MOD_MiniMAP{
         right_line.setPosition({size-16,0});
         window.draw(right_line);
         display.showTextSELDEBUG(std::filesystem::path(map_name).stem(),{0,0},window);
+        };
         return 0;
     };
 };
