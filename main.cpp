@@ -283,7 +283,8 @@ void mainLoop(){
             output_message="Server";
             connection.recvPos();
             connection.sendPos(player_pos);
-        }else if (connection.client){
+        };
+        if (connection.client){
             output_message="Client";
             connection.recvPos();
             connection.sendPos(player_pos);
