@@ -12,6 +12,7 @@ class Connection{
     public:
     bool connected;
     int main_socket;
+    char buffer[1024];
     sockaddr_in server_adress;
     Connection(){
         main_socket = socket(AF_INET, SOCK_STREAM, 0);
@@ -25,8 +26,12 @@ class Connection{
         bind(main_socket,(struct sockaddr*)&server_adress,sizeof(server_adress));
         listen(main_socket,5);
         int client_socket = accept(main_socket, nullptr, nullptr);
-        F.log("SERVER","Connected to client!");
-        connected=true;
+        if( recv(main_socket , buffer , sizeof(buffer) , 0) < 0){
+            puts("recv failed");
+        }else{
+            connected=true;
+            F.log("SERVER","Connected to client!");
+        };
         return 0;
     };
     int clientConnect(){
@@ -34,6 +39,9 @@ class Connection{
         server_adress.sin_port=htons(12500);
         server_adress.sin_addr.s_addr=INADDR_ANY;
         connect(main_socket,(struct sockaddr*)&server_adress,sizeof(server_adress));
+        std::string fish="salut";
+        const char* message = fish.c_str();
+        send(main_socket, message, strlen(message), 0); 
         connected=true;
         F.log("SERVER","Connected to server!");
         return 0;
