@@ -33,7 +33,8 @@ class MOD_MiniMAP{
     };
     int keyPress(sf::Event event){
         if (event.key.code==sf::Keyboard::Tab){
-            show_minimap=!show_minimap;
+            if(show_minimap){show_minimap=false;return 0;}
+            if(!show_minimap){show_minimap=true;return 0;}
         };
         return 0;
     };
