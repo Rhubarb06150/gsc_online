@@ -278,10 +278,13 @@ void mainLoop(){
     };
 
     if (connection.connected){
+        message_timer=0;
         if (connection.server){
+            output_message="Server";
             connection.recvPos();
             connection.sendPos(player_pos);
         }else if (connection.client){
+            output_message="Client";
             connection.sendPos(player_pos);
             connection.recvPos();
         };
