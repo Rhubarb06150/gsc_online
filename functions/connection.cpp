@@ -27,14 +27,16 @@ class Connection{
         int client_socket = accept(main_socket, nullptr, nullptr);
         F.log("SERVER","Connected to client!");
         connected=true;
+        return 0;
     };
     int clientConnect(){
-        server_adress.sin_family=AF_INET; 
-        server_adress.sin_port=htons(12500); 
-        server_adress.sin_addr.s_addr=INADDR_ANY; 
+        server_adress.sin_family=AF_INET;
+        server_adress.sin_port=htons(12500);
+        server_adress.sin_addr.s_addr=INADDR_ANY;
         connect(main_socket,(struct sockaddr*)&server_adress,sizeof(server_adress));
         connected=true;
         F.log("SERVER","Connected to server!");
+        return 0;
     };
 
 };
