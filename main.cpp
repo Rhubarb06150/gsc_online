@@ -279,11 +279,11 @@ void mainLoop(){
 
     if (connection.connected){
         if (connection.server){
+            connection.recvPos();
             connection.sendPos(player_pos);
-            //connection.recvPos();
         }else if (connection.client){
-            //connection.recvPos();
             connection.sendPos(player_pos);
+            connection.recvPos();
         };
     };
 
