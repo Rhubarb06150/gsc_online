@@ -48,7 +48,7 @@ class MOD_MiniMAP{
         return 0;
     };
     int show(sf::RenderWindow& window){
-        if (show){
+        if (show_minimap){
             sf::RectangleShape rectangle(sf::Vector2f(size,size));
             rectangle.setFillColor(sf::Color(50,50,50));
             rectangle.setPosition({0,0});
