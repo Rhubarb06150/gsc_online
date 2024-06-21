@@ -53,10 +53,12 @@ class Connection{
     };
     int sendPos(std::vector<int> player_pos){
         send(main_socket,(char *)&player_pos,sizeof(player_pos),0);
+        return 0;
     };
-    
+
     int recvPos(){
         recv(main_socket,(char *)&other_player_pos,sizeof(other_player_pos),0);
+        return 0;
     };
 
     std::vector<int> getOtherPlayerPos(){
