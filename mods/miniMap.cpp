@@ -85,18 +85,18 @@ class MOD_MiniMAP{
                 window.draw(sprite);    
                 shown_sprites++;
                 cols++;
-                if ((((width*8)-(cur_player_pos[0]/8)+64)>size-24)*(zoom*2)){
+                if (((width*8)-(cur_player_pos[0]/8)+64)>size-24){
                     break;
                 }
-                if ((cols>(size/8)+1)*(zoom*2)){
+                if ((cols>(size/8)+1)/(zoom*2)){
                     break;
                 };
         };
         rows++;
-        if (((height*8-(cur_player_pos[1]/8)+64)>size-24)*(zoom*2)){
+        if ((height*8-(cur_player_pos[1]/8)+64)>size-24){
             break;
         }
-        if ((rows>(size/8)+2)*(zoom*2)){
+        if ((rows>(size/8)+2)/(zoom*2)){
             break;
         }
         };
