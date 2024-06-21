@@ -277,6 +277,11 @@ void mainLoop(){
         walking=false;moving_timer=20;
     };
 
+    if (connection.connected){
+        connection.sendPos(player_pos);
+        connection.recvPos();
+    };
+
     // WHILE EVENT LOOP HERE
     while (window.pollEvent(event))
     {

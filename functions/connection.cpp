@@ -4,6 +4,8 @@
 #include <iostream>
 #include <cstring>
 #include <string>
+#include <vector>
+
 #include "functions.cpp"
 
 class Connection{
@@ -11,12 +13,16 @@ class Connection{
     GSC_Functions F;
     public:
     bool connected;
+    bool server;
+    bool client;
     int main_socket;
     char buffer[1024];
+    std::vector<int> other_player_pos;
     sockaddr_in server_adress;
     Connection(){
         main_socket = socket(AF_INET, SOCK_STREAM, 0);
         connected=false;
+        other_player_pos={0,0};
         F.log("SERVER","Socket created!");
     };
     int serverStart(){
@@ -29,6 +35,7 @@ class Connection{
         recv(main_socket , buffer , sizeof(buffer) , 0);
         connected=true;
         F.log("SERVER","Client connected!");
+        server=true;
         return 0;
     };
     int clientConnect(){
@@ -41,7 +48,19 @@ class Connection{
         send(main_socket, message, strlen(message), 0); 
         connected=true;
         F.log("SERVER","Connected to server!");
+        client=true;
         return 0;
+    };
+    int sendPos(std::vector<int> player_pos){
+        send(main_socket,(char *)&player_pos,sizeof(player_pos),0);
+    };
+    
+    int recvPos(){
+        recv(main_socket,(char *)&other_player_pos,sizeof(other_player_pos),0);
+    };
+
+    std::vector<int> getOtherPlayerPos(){
+        return other_player_pos;
     };
 
 };
