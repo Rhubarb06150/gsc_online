@@ -2,12 +2,14 @@
 #include <string>
 #include <iostream>
 #include "../functions/hud.cpp"
+#include "../functions/functions.cpp"
 #include "../functions/tiles.cpp"
 
 class MOD_MiniMAP{
     private:
     HUD display;
     TilesIndex tiles;
+    GSC_Functions F;
     public:
     float size;
     sf::Event events;
@@ -26,15 +28,16 @@ class MOD_MiniMAP{
         description="A simple mini map test\nI hope you'll enjoy :)";
         active=true;
         zoom=0.5f;
-        size=196;
+        show_minimap=true;
+        size=128;
     };
     int init(){
         return 0;
     };
     int keyPress(sf::Event event){
         if (event.key.code==sf::Keyboard::Tab){
-            if(show_minimap){show_minimap=false;return 0;}
-            if(!show_minimap){show_minimap=true;return 0;}
+            if(show_minimap){show_minimap=false;return 0;F.log("MOD","Mini-Map: hiding mini map.");}
+            if(!show_minimap){show_minimap=true;return 0;F.log("MOD","Mini-Map: showing mini map.");}
         };
         return 0;
     };
@@ -100,6 +103,7 @@ class MOD_MiniMAP{
                 break;
             }
             };
+            
             window.draw(player);
 
             sf::RectangleShape top_line({size,16});
