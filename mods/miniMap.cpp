@@ -77,10 +77,10 @@ class MOD_MiniMAP{
                 };
         };
         rows++;
-        if ((height*8-(cur_player_pos[1]/8)+64)>size){
+        if ((height*8-(cur_player_pos[1]/8)+64)>size-24){
             break;
         }
-        if (rows>(size/8)+1){
+        if (rows>(size/8)+2){
             break;
         }
         };
