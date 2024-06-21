@@ -85,7 +85,7 @@ class MOD_MiniMAP{
                 window.draw(sprite);    
                 shown_sprites++;
                 cols++;
-                if (((width*8)-(cur_player_pos[0]/8)+64)>size-24){
+                if ((((width*8)-(cur_player_pos[0]/8)+64)/(zoom*2))>size-24){
                     break;
                 }
                 if ((cols>(size/8)+1)/(zoom*2)){
