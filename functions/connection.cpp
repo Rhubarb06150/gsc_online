@@ -26,12 +26,9 @@ class Connection{
         bind(main_socket,(struct sockaddr*)&server_adress,sizeof(server_adress));
         listen(main_socket,5);
         int client_socket = accept(main_socket, nullptr, nullptr);
-        if( recv(main_socket , buffer , sizeof(buffer) , 0) < 0){
-            puts("recv failed");
-        }else{
-            connected=true;
-            F.log("SERVER","Connected to client!");
-        };
+        recv(main_socket , buffer , sizeof(buffer) , 0);
+        connected=true;
+        F.log("SERVER","Client connected!");
         return 0;
     };
     int clientConnect(){
