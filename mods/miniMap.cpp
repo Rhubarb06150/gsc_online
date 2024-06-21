@@ -19,7 +19,7 @@ class MOD_MiniMAP{
     float zoom;
     std::vector<std::vector<std::string>> cur_terrain_vector;
     bool active;
-    bool show;
+    bool show_minimap;
     MOD_MiniMAP(){
         name="Mini Map";
         author_name="Rhubarb";
@@ -33,7 +33,7 @@ class MOD_MiniMAP{
     };
     int keyPress(sf::Event event){
         if (event.key.code==sf::Keyboard::M){
-            show=!show;
+            show_minimap=!show_minimap;
         };
         return 0;
     };
@@ -49,71 +49,71 @@ class MOD_MiniMAP{
     };
     int show(sf::RenderWindow& window){
         if (show){
-        sf::RectangleShape rectangle(sf::Vector2f(size,size));
-        rectangle.setFillColor(sf::Color(50,50,50));
-        rectangle.setPosition({0,0});
-        sf::RectangleShape player(sf::Vector2f(8,8));
-        player.setFillColor(sf::Color(255,128,0));
-        player.setPosition({64,64});
-        window.draw(rectangle);
-        int real_player_pos_x = cur_player_pos[0]/64;
-        int real_player_pos_y = cur_player_pos[1]/64;
-        
-        if (real_player_pos_x<11){real_player_pos_x=0;}
-        else{real_player_pos_x-=11;}
+            sf::RectangleShape rectangle(sf::Vector2f(size,size));
+            rectangle.setFillColor(sf::Color(50,50,50));
+            rectangle.setPosition({0,0});
+            sf::RectangleShape player(sf::Vector2f(8,8));
+            player.setFillColor(sf::Color(255,128,0));
+            player.setPosition({64,64});
+            window.draw(rectangle);
+            int real_player_pos_x = cur_player_pos[0]/64;
+            int real_player_pos_y = cur_player_pos[1]/64;
 
-        if (real_player_pos_y<11){real_player_pos_y=0;}
-        else{real_player_pos_y-=11;};
-        
-        int rows=0;
-        int shown_sprites=0;
-        for (int height=real_player_pos_y;height<cur_terrain_vector.size();height++){
-            int cols=0;
-            for (int width=real_player_pos_x;width<cur_terrain_vector[0].size();width++){
-                sf::Sprite sprite;
-                sprite.setTexture(tiles.textures[2][tiles.getIntIndex(cur_terrain_vector[height][width])]);
-                sprite.setScale(zoom,zoom);
-                sprite.setPosition((width*8)-(cur_player_pos[0]/8)+64,height*8-(cur_player_pos[1]/8)+64);
-                window.draw(sprite);    
-                shown_sprites++;
-                cols++;
-                if (((width*8)-(cur_player_pos[0]/8)+64)>size-24){
-                    break;
-                }
-                if (cols>(size/8)+1){
-                    break;
-                };
-        };
-        rows++;
-        if ((height*8-(cur_player_pos[1]/8)+64)>size-24){
-            break;
-        }
-        if (rows>(size/8)+2){
-            break;
-        }
-        };
-        window.draw(player);
+            if (real_player_pos_x<11){real_player_pos_x=0;}
+            else{real_player_pos_x-=11;}
 
-        sf::RectangleShape top_line({size,16});
-        top_line.setFillColor({0,0,0});
-        top_line.setPosition({0,0});
-        window.draw(top_line);
-        
-        sf::RectangleShape left_line({16,size});
-        left_line.setFillColor({0,0,0});
-        left_line.setPosition({0,0});
-        window.draw(left_line);
+            if (real_player_pos_y<11){real_player_pos_y=0;}
+            else{real_player_pos_y-=11;};
 
-        sf::RectangleShape bottom_line({size,16});
-        bottom_line.setFillColor({0,0,0});
-        bottom_line.setPosition({0,size-16});
-        window.draw(bottom_line);
-        
-        sf::RectangleShape right_line({16,size});
-        right_line.setFillColor({0,0,0});
-        right_line.setPosition({size-16,0});
-        window.draw(right_line);
-        display.showTextSELDEBUG(std::filesystem::path(map_name).stem(),{0,0},window);
+            int rows=0;
+            int shown_sprites=0;
+            for (int height=real_player_pos_y;height<cur_terrain_vector.size();height++){
+                int cols=0;
+                for (int width=real_player_pos_x;width<cur_terrain_vector[0].size();width++){
+                    sf::Sprite sprite;
+                    sprite.setTexture(tiles.textures[2][tiles.getIntIndex(cur_terrain_vector[height][width])]);
+                    sprite.setScale(zoom,zoom);
+                    sprite.setPosition((width*8)-(cur_player_pos[0]/8)+64,height*8-(cur_player_pos[1]/8)+64);
+                    window.draw(sprite);    
+                    shown_sprites++;
+                    cols++;
+                    if (((width*8)-(cur_player_pos[0]/8)+64)>size-24){
+                        break;
+                    }
+                    if (cols>(size/8)+1){
+                        break;
+                    };
+            };
+            rows++;
+            if ((height*8-(cur_player_pos[1]/8)+64)>size-24){
+                break;
+            }
+            if (rows>(size/8)+2){
+                break;
+            }
+            };
+            window.draw(player);
+
+            sf::RectangleShape top_line({size,16});
+            top_line.setFillColor({0,0,0});
+            top_line.setPosition({0,0});
+            window.draw(top_line);
+
+            sf::RectangleShape left_line({16,size});
+            left_line.setFillColor({0,0,0});
+            left_line.setPosition({0,0});
+            window.draw(left_line);
+
+            sf::RectangleShape bottom_line({size,16});
+            bottom_line.setFillColor({0,0,0});
+            bottom_line.setPosition({0,size-16});
+            window.draw(bottom_line);
+
+            sf::RectangleShape right_line({16,size});
+            right_line.setFillColor({0,0,0});
+            right_line.setPosition({size-16,0});
+            window.draw(right_line);
+            display.showTextSELDEBUG(std::filesystem::path(map_name).stem(),{0,0},window);
         };
         return 0;
     };
