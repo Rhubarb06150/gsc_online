@@ -36,8 +36,8 @@ class MOD_MiniMAP{
     };
     int keyPress(sf::Event event){
         if (event.key.code==sf::Keyboard::Tab){
-            if(show_minimap){show_minimap=false;return 0;F.log("MOD","Mini-Map: hiding mini map.");}
-            if(!show_minimap){show_minimap=true;return 0;F.log("MOD","Mini-Map: showing mini map.");}
+            if(show_minimap){show_minimap=false;F.log("MOD","Mini-Map: hiding mini map.");return 0;}
+            if(!show_minimap){show_minimap=true;F.log("MOD","Mini-Map: showing mini map.");return 0;}
         };
         return 0;
     };
