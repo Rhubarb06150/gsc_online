@@ -31,8 +31,18 @@ class MOD_MiniMAP{
         return 0;
     };
     int keyPress(sf::Event event){
-        if (event.key.code==sf::Keyboard::D){
-            std::cout << ">d" << std::endl;
+        if (event.key.code==sf::Keyboard::Add){
+            if (zoom==0.5f){
+                zoom=1.0f;
+            }else if(zoom==0.25f){
+                zoom=0.5f;
+            };
+        }else if(event.key.code==sf::Keyboard::Subtract){
+            if (zoom==0.25f){
+                zoom=0.5f;
+            }else if(zoom==0.5f){
+                zoom=1.0f;
+            };
         };
         return 0;
     };
