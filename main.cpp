@@ -232,6 +232,15 @@ void mainLoop(){
 
     //PLAYER MOVE
     if (can_move){
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)||
+            sf::Keyboard::isKeyPressed(sf::Keyboard::Down)||
+            sf::Keyboard::isKeyPressed(sf::Keyboard::Left)||
+            sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
+            moving_timer+=1;
+        }else{
+            walking=false;
+            moving_timer=20;
+        };
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
             if (player_pos[0]<terrain_vector[0].size()*64-64){
                 if (Tiles.checkCollision(player_pos,'r',terrain_vector)==0){
@@ -275,15 +284,6 @@ void mainLoop(){
                 walking=true;
                 player_state="back";
             };
-        };
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)||
-            sf::Keyboard::isKeyPressed(sf::Keyboard::Down)||
-            sf::Keyboard::isKeyPressed(sf::Keyboard::Left)||
-            sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
-            moving_timer+=1;
-        }else{
-            walking=false;
-            moving_timer=20;
         };
     }else{
         walking=false;moving_timer=20;
