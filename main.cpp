@@ -277,11 +277,14 @@ void mainLoop(){
             };
         };
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)||
-        sf::Keyboard::isKeyPressed(sf::Keyboard::Down)||
-        sf::Keyboard::isKeyPressed(sf::Keyboard::Left)||
-        sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
+            sf::Keyboard::isKeyPressed(sf::Keyboard::Down)||
+            sf::Keyboard::isKeyPressed(sf::Keyboard::Left)||
+            sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
             moving_timer+=1;
-        }else {walking=false;moving_timer=20;};
+        }else{
+            walking=false;
+            moving_timer=20;
+        };
     }else{
         walking=false;moving_timer=20;
     };
