@@ -247,10 +247,8 @@ void mainLoop(){
                     player_pos[0]+=4;
                 };
             }else{SoundManager.soundEffect("COLLISION");}
-            if (!walking){
-                walking=true;
-                player_state="right";
-            };
+            walking=true;
+            player_state="right";
         }
         else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){ 
             if(player_pos[0]>0){
@@ -258,10 +256,8 @@ void mainLoop(){
                     player_pos[0]-=4;
                 };
             }else{SoundManager.soundEffect("COLLISION");}
-            if (!walking){
-                walking=true;
-                player_state="left";
-            };
+            walking=true;
+            player_state="left";
         };
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){ 
             if(player_pos[1]<terrain_vector.size()*64-64){
@@ -269,10 +265,8 @@ void mainLoop(){
                     player_pos[1]+=4;
                 };
             }else{SoundManager.soundEffect("COLLISION");}
-            if (!walking){
-                walking=true;
-                player_state="front";
-            };
+            walking=true;
+            player_state="front";
         }   
         else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){   
             if(player_pos[1]>0){
@@ -280,10 +274,8 @@ void mainLoop(){
                     player_pos[1]-=4;
                 };
             }else{SoundManager.soundEffect("COLLISION");}
-            if (!walking){
-                walking=true;
-                player_state="back";
-            };
+            walking=true;
+            player_state="back";
         };
     }else{
         walking=false;moving_timer=20;
