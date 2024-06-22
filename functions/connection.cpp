@@ -16,6 +16,8 @@ class Connection{
     bool server;
     bool client;
     int main_socket;
+    int server_socket;
+    int client_socket;
     char buffer[1024];
     std::vector<int> other_player_pos;
     sockaddr_in server_adress;
@@ -31,7 +33,7 @@ class Connection{
         server_adress.sin_addr.s_addr=INADDR_ANY;
         bind(main_socket,(struct sockaddr*)&server_adress,sizeof(server_adress));
         listen(main_socket,5);
-        int client_socket = accept(main_socket, nullptr, nullptr);
+        client_socket = accept(main_socket, nullptr, nullptr);
         recv(main_socket , buffer , sizeof(buffer) , 0);
         connected=true;
         std::string result;
@@ -44,7 +46,7 @@ class Connection{
         server_adress.sin_family=AF_INET;
         server_adress.sin_port=htons(12500);
         server_adress.sin_addr.s_addr=INADDR_ANY;
-        connect(main_socket,(struct sockaddr*)&server_adress,sizeof(server_adress));
+        connect(server_socket,(struct sockaddr*)&server_adress,sizeof(server_adress));
         std::string fish="salut";
         const char* message = fish.c_str();
         send(main_socket, message, strlen(message), 0); 

@@ -251,8 +251,8 @@ void mainLoop(){
             walking=true;
             moving_timer+=1;
             player_state="left";
-        }
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){ 
+        };
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){ 
             if(player_pos[1]<terrain_vector.size()*64-64){
                 if (Tiles.checkCollision(player_pos,'d',terrain_vector)==0){
                     player_pos[1]+=4;
