@@ -544,6 +544,7 @@ void mainLoop(){
     };
     //DO NOT DELETE THIS PLS
     //MOD DISPLAY
+    HUDdisplay.showTextDEBUG(std::to_string(moving_timer),{0,0},window);
     window.display();
 
     //if (record){
