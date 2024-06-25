@@ -221,6 +221,7 @@ class HUD{
             bar.setTexture(border_textures[4]);
             float bar_pos;
             bar_pos=(i*32)+pos[0];
+            bar.setScale(4.f,4.f);
             bar.setPosition({bar_pos,pos1tl});
             window.draw(bar);
         };
