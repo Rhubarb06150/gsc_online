@@ -1394,7 +1394,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                         };
                         if (choice==3){
                             std::string tile_ask;
-                            tile_ask=askText("Tile? (name or index)");
+                            tile_ask=askText("Tile? \n(name or index)");
                             for (int i=0;i<Tiles.tiles.size()-1;i++){
 
                             };
