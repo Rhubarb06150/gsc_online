@@ -183,7 +183,7 @@ class GSC_Functions{
 
     int renderMap(std::vector<std::vector<std::string>> terrain_vector,TilesIndex Tiles){
         sf::RenderWindow window(sf::VideoMode(16,16),"Render window");
-        sf::FloatRect visibleArea(0, 0, terrain_vector[0].size()*16, terrain_vector.size()*16);
+        sf::FloatRect visibleArea(0,0,terrain_vector[0].size()*16,terrain_vector.size()*16);
         window.setView(sf::View(visibleArea));
         for (int i=0;i<terrain_vector.size();i++){
             for (int j=0;j<terrain_vector[0].size();j++){
