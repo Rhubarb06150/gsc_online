@@ -788,7 +788,7 @@ int randomPatternLoop(){
             };
         if (isPressed(event,sf::Keyboard::F5)==0){
             if (pos1set&&pos2set){
-            for (int i = 0; i<terrain_vector.size();i++){
+                for (int i = 0; i<terrain_vector.size();i++){
                 for (int j = 0; j<terrain_vector[i].size();j++){
                     if ((pos1[0]<=j&&j<=pos2[0])&&(pos1[1]<=i&&i<=pos2[1])){
                         if (rand()%chance+1==chance){
@@ -1149,12 +1149,11 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
     std::vector<int> player_pos = {0,0};//Begins at top left of the map
     std::vector<int> player_offset = {290,256};//Yup, that's a strange offset but I like it
     
-    std::vector<int> pos1;// init pos1 for filling and other stuff here
-    std::vector<int> pos2;// init pos2 for filling and other stuff here
+    pos1;// init pos1 for filling and other stuff here
+    pos2;// init pos2 for filling and other stuff here
 
-
-    bool pos1set=false;//used for verify if pos1 is set
-    bool pos2set=false;//used for verify if pos2 is set
+    pos1set=false;//used for verify if pos1 is set
+    pos2set=false;//used for verify if pos2 is set
 
     bool help_tiles_show=false;//for display or not tiles viewer
     output_message="Welcome to level editor";//a welcome message when you launch level editor
@@ -1278,6 +1277,23 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                     menu_show=!menu_show;
                 };
 
+                if (event.key.code==sf::Keyboard::F3){
+                    int real_pos_x=player_pos[0]/64;
+                    int real_pos_y=player_pos[1]/64;
+                    pos1 = {real_pos_x,real_pos_y};
+                    output_message="Pos 1 set to "+std::to_string(pos1[0])+":"+std::to_string(pos1[1]);
+                    pos1set=true;
+                    message_timer=0;
+                };
+                if (event.key.code==sf::Keyboard::F4){
+                    int real_pos_x=player_pos[0]/64;
+                    int real_pos_y=player_pos[1]/64;
+                    pos2 = {real_pos_x,real_pos_y};
+                    output_message="Pos 2 set to "+std::to_string(pos1[0])+":"+std::to_string(pos1[1]);
+                    pos2set=true;
+                    message_timer=0;
+                };
+
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift)){//for forced fill verify first if left shift is pressed
                     if (event.key.code==sf::Keyboard::F){
                         if (pos1set&&pos2set){//verify if pos1 and pos2 is set
@@ -1361,27 +1377,6 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                 output_message="Nothing has been copied yet";
                 message_timer=0;
             };
-        };
-
-        if (event.key.code==sf::Keyboard::F3){
-            int real_pos_x=player_pos[0]/64;
-            int real_pos_y=player_pos[1]/64;
-            pos1 = {real_pos_x,real_pos_y};
-            output_message="Pos 1 set to "+std::to_string(pos1[0])+":"+std::to_string(pos1[1]);
-            pos1set=true;
-            message_timer=0;
-        };
-        if (event.key.code==sf::Keyboard::F4){
-            int real_pos_x=player_pos[0]/64;
-            int real_pos_y=player_pos[1]/64;
-            if (real_pos_x>pos1[0]&&real_pos_y>pos1[1]){
-                pos2 = {real_pos_x,real_pos_y};
-                output_message="Pos 2 set to "+std::to_string(pos2[0])+":"+std::to_string(pos2[1]);
-                pos2set=true;
-            }else{
-                output_message="Can't place pos2 here";
-            };
-            message_timer=0;
         };
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::X)){
