@@ -1346,14 +1346,15 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                                 height_ask=askText("Map height?");
                                 height_convert = std::stoi(height_ask);
                                 if (map_height<height_convert){
-                                    while(map_height!=height_convert){
-                                        for (int i=0;i<terrain_vector.size();i++){
-                                            map_height++;
-                                            terrain_vector[i].push_back(Tiles.tiles[default_tile_index][2]);
+                                    while(map_height!=height_convert){//ADDING HEIGHT
+                                        map_height++;
+                                        std::vector<std::string> terrain_line;
+                                        for (int i=0;i<terrain_vector[0].size();i++){
+                                            terrain_line.push_back(Tiles.tiles[default_tile_index][2]);
                                         };
                                     };
                                 }else if (map_height>height_convert){
-                                    while(map_height!=height_convert){
+                                    while(map_height!=height_convert){//REMOVING HEIGHT
                                         map_height--;
                                         terrain_vector.pop_back();
                                     };
