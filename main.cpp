@@ -1332,7 +1332,27 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                             try{
                                 width_ask=askText("Map width?");
                                 width_convert = std::stoi(width_ask);
-                                map_width=width_convert;
+                                if (width_convert<=0){
+                                    functions.log("ERROR","Can't enter a negative or null value as map width");
+                                    message_timer=0;
+                                    output_message="Can't enter a negative value, or 0.";
+                                    break;
+                                };
+                                if (map_width<width_convert){
+                                    while(map_width!=width_convert){//ADDING WIDTH
+                                        map_width++;
+                                        for (int i=0;i<terrain_vector.size();i++){
+                                            terrain_vector[i].push_back(Tiles.tiles[default_tile_index][2]);
+                                        };
+                                    };
+                                }else if (map_width>width_convert){
+                                    while(map_width!=width_convert){//REMOVING WIDTH
+                                        map_width--;
+                                        for (int i = 0;i<map_height;i++){
+                                        terrain_vector[i].pop_back();
+                                        };
+                                    };
+                                };
                             }catch (std::exception &err){
                                 functions.log("ERROR","Can't convert '"+width_ask+"' to int.");
                                 message_timer=0;
@@ -1346,7 +1366,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                                 height_ask=askText("Map height?");
                                 height_convert = std::stoi(height_ask);
                                 if (height_convert<=0){
-                                    functions.log("ERROR","Can't enter a negative value, or 0.");
+                                    functions.log("ERROR","Can't enter a negative or null value as map height");
                                     message_timer=0;
                                     output_message="Can't enter a negative value, or 0.";
                                     break;
