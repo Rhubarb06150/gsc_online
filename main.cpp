@@ -186,6 +186,7 @@ class Game{
         pos1set=false;//so we dont start with already set pos1
         pos2set=false;//so we dont start with already set pos2
         loadSettings();//it loadSettings (no shit)
+        real_res="720x576";
         resolution_vec=checkResolutionRWindow();//gets the resolution
         player_offset=checkResolutionPOffset();//gets the player offset
         window.create(sf::VideoMode(resolution_vec[0],resolution_vec[1]), "Pokemon GSC Online",sf::Style::Titlebar | sf::Style::Close);//create the window with the resolution we just got
@@ -201,7 +202,6 @@ class Game{
         mods_list={};
         mods_states={};
         mods_descriptions={};
-        real_res="720x576";
         //MOD DESC
         srand(time(NULL));//reset the random values
 
