@@ -141,6 +141,8 @@ class HUD{
         editor_background.push_back(texture);
         texture.loadFromFile("assets/hud/editor_bg2.png");
         editor_background.push_back(texture);
+        texture.loadFromFile("assets/hud/editor_bg3.png");
+        editor_background.push_back(texture);
 
         int x;
         int y;
