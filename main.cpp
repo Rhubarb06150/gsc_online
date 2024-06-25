@@ -1810,6 +1810,7 @@ int main_menu(){
         HUDdisplay.showTextBOW("Open game folder",{64,384},window);
         if (mods_list.size()>0){
         HUDdisplay.showTextBOW("Mods",{64,416},window);
+        if (debug_launch)
         HUDdisplay.showTextWOB("DEBUG",{debug_x,0},window);
         };
         if (event.key.code==sf::Keyboard::F1){
