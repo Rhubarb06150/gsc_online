@@ -1231,7 +1231,8 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                         output_message="You need to set Pos1 and Pos2 first!";//in case pos1 and/or pos2 arent set
                         message_timer=0;//reset timer
                         };
-                if (event.key.code==sf::Keyboard::F5||event.key.code==sf::Keyboard::X){
+                    };};
+                    if (event.key.code==sf::Keyboard::F5||event.key.code==sf::Keyboard::X){
                     if (choice==5){
                         std::string wanted_map=askPath(std::filesystem::absolute("."),event,window);
                         if (wanted_map!=""){
@@ -1245,9 +1246,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                                 init_size=terrain_vector[i].size();
                             };
                             map_width=init_size;
-                            };
-                        };
-                    };
+                    };};};
                     if (choice==6){
                         functions.saveMap(terrain_vector,askText("Map name?"));
                         output_message="Your map has been saved";
@@ -1260,24 +1259,18 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                         terrain_vector=formatRock(terrain_vector);
                     }else if(choice==10){
                         randomPatternLoop();
-                }else if (choice==11){
-                    showEditorControls();
+                    }else if (choice==11){
+                        showEditorControls();
+                    };
+                    if (event.key.code==sf::Keyboard::T){
+                        help_tiles_show=!help_tiles_show;//show/hide the tile viewer
+                    };
                 };
-
-                if (event.key.code==sf::Keyboard::T){
-                    help_tiles_show=!help_tiles_show;//show/hide the tile viewer
+                if (event.type == sf::Event::Closed){
+                    functions.quitGame(window);
+                    return 0;
                 };
-                
-                };
-            };                
-        };
-
-            
-        };
-        if (event.type == sf::Event::Closed){
-            functions.quitGame(window);
-            return 0;
-        };
+            };
         };//END OF MENU ACTIONS
 
         if (isPressed(event,sf::Keyboard::C)==0){
