@@ -132,8 +132,6 @@ class HUD{
 
         // MENU TEXTURES
         sf::Texture texture;
-        texture.loadFromFile("assets/hud/pause.png");
-        menu_textures.push_back(texture);
         texture.loadFromFile("assets/hud/r_arrow.png");
         menu_textures.push_back(texture);
         texture.loadFromFile("assets/hud/logo.png");
