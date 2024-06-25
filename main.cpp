@@ -201,6 +201,7 @@ class Game{
         mods_list={};
         mods_states={};
         mods_descriptions={};
+        real_res="720x576";
         //MOD DESC
         srand(time(NULL));//reset the random values
 
