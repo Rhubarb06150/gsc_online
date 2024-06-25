@@ -853,7 +853,7 @@ int randomPatternLoop(){
         HUDdisplay.showTextDEBUG("  Replace? ",{32,144},window);
         if (replace){
             if (choice==1){
-                HUDdisplay.showTextSELDEBUG("yes",{208,144},window);
+                HUDdisplay.showTextSELDEBUG("yes        ",{208,144},window);
             };
         };
         if (!replace){
