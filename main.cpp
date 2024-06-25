@@ -1940,7 +1940,7 @@ int main(int argc, char** argv)
     Game G;
     if (argc>1){
         std::cout<<"|"<<argv[1]<<"|"<<std::endl;
-        if (argv[1]=="debug"){
+        if (strcmp(argv[1],"debug")){
             G.functions.log("DEBUG","Launching in debug mode.");
         };
     };
