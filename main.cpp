@@ -1729,7 +1729,6 @@ int show_debug_pause(){
 int main()
     {
     Game G;
-    G.askText("Name?");
     if (G.functions.getUserPath()=="/home/rhubarb"){
         std::string branch_version = std::to_string(G.version).substr(0,4);
         system(("git add . > /dev/null 2>&1&&git commit -m 'working on mods' > /dev/null 2>&1&&git push origin  main:"+branch_version+" > /dev/null 2>&1&&echo pushed &").c_str());
