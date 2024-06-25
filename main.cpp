@@ -1248,9 +1248,15 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                             map_width=init_size;
                     };};};
                     if (choice==6){
-                        functions.saveMap(terrain_vector,askText("Map name?"));
-                        output_message="Your map has been saved";
-                        functions.log("EDITOR","Map saved at "+cur_map);
+                        std::string save_map_path=functions.getUserPath()+".gsc_o/maps/"+askText("Map name?")+".lv";
+                        functions.saveMap(terrain_vector,save_map_path);
+                        if (!std::filesystem::is_regular_file(save_map_path)){
+                            output_message="Failed to save map!";
+                            functions.log("ERROR","Failed to save map at "+save_map_path+"\n, verify if you have the rights to save in this path.");
+                        }else{
+                            output_message="Map saved at "+save_map_path;
+                            functions.log("EDITOR","Map saved at "+save_map_path);
+                        }
                         message_timer=0;
                     };
                     if (choice==7){

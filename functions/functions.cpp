@@ -54,7 +54,6 @@ class GSC_Functions{
     std::string goParentFolder(std::string path){
         std::string res;
         res=path;
-        std::cout << "going in parent folder of " << res << std::endl;
         if (res[res.length()-1]=='.')
             res.pop_back();
         if (res[res.length()-1]=='/'||res[res.length()-1]=='\\')
@@ -63,7 +62,6 @@ class GSC_Functions{
             if (res[res.length()-1]!='/'&&res[res.length()-1]!='\\'){
                 res.pop_back();
             }else{
-                std::cout << "parent folder is " << res << std::endl;
                 std::cout << res << std::endl;
                 break;
             };

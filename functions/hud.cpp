@@ -187,7 +187,7 @@ class HUD{
                 x+=32;
             };
         };
-        return 0;  
+        return 0;
     };
     int showTextAskBOW(std::string text, std::vector<int> text_pos, sf::RenderWindow& window){
         int y=text_pos[1];
