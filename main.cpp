@@ -1465,11 +1465,11 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                         }else if (choice==11){
                             showEditorControls();
                         };
-                    if(event.key.code==sf::Keyboard::T){
-                        help_tiles_show=!help_tiles_show;//show/hide the tile viewer
-                    };
-                };//END OF IF MENU SHOW  
-            };//END IF F5 / X
+                };//END OF IF F5 / X  
+            if(event.key.code==sf::Keyboard::T){
+                help_tiles_show=!help_tiles_show;//show/hide the tile viewer
+            };
+            };//END IF MENU SHOW
         };//ENF OF KEYPRESSED
         if (event.type == sf::Event::Closed){
             functions.quitGame(window);
