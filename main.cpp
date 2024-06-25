@@ -553,6 +553,7 @@ void mainLoop(){
 
 int initGame(){
     //INIT EVERYTHIN
+    askText("Name?");
     main_menu();
 
     return 0;
@@ -693,11 +694,10 @@ int yesNoQuestion(std::string question,sf::Event event,sf::RenderWindow& window)
     return 1;
 };
 
-std::string askText(sf::RenderWindow& window,sf::Event event, std::string caption){
+std::string askText(std::string caption){
     std::string text_entry;
-    int index;
     do{
-        index++;
+        index_frame++;
         while (window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed){
@@ -708,7 +708,7 @@ std::string askText(sf::RenderWindow& window,sf::Event event, std::string captio
         window.clear(sf::Color(248,248,248));
         HUDdisplay.showTextBOW("Text Enter",{32,32},window);
         HUDdisplay.showTextBOW(caption,{32,96},window);
-        if (index%30<=30){
+        if (index_frame%30<=30){
             HUDdisplay.showTextBOW(text_entry,{64,128},window);
         }else{
             HUDdisplay.showTextBOW(text_entry+"_",{64,128},window);
