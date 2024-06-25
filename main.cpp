@@ -859,6 +859,11 @@ int randomPatternLoop(){
             }
         }
         else{
+            if (choice==1){
+                HUDdisplay.showTextSELDEBUG("no           ",{208,144},window);
+            }else{
+                HUDdisplay.showTextDEBUG("no           ",{208,144},window);
+            }
             HUDdisplay.showTextDEBUG("                        ",{32,160},window);
             HUDdisplay.showTextDEBUG("  Press F6 to cancel    ",{32,176},window);
             HUDdisplay.showTextDEBUG("                        ",{32,192},window);
