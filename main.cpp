@@ -387,7 +387,7 @@ void mainLoop(){
     terrain.showTerrain(terrain_vector,player_pos,time_otd,window,player_offset,(debug&&debug_page==9&&debug_choice==2),index_frame);
     player_state=player.animPlayer(player_state,moving_timer,walking);
     player.showPlayer(player_type,player_state,window);
-    HUDdisplay.drawSquare(window,{0,0},{256,128});
+    HUDdisplay.drawSquare(window,{0,0},{322,128});
     if (debug){
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1)&&debug){debug_page=1;};
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2)&&debug){debug_page=2;};
