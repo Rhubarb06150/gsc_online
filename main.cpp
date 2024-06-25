@@ -1196,10 +1196,6 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
         {
             if (event.type==sf::Event::KeyPressed){
                 if (menu_show){
-
-                    /////////////////////////////////////////:
-                    //DO ACTION
-
                     if (event.key.code==sf::Keyboard::Left){
                         if (choice==0){
                             if (camera_speed>4){
@@ -1227,12 +1223,26 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                             };
                         };
                     };
+                    if (event.key.code==sf::Keyboard::Down){
+                        if (choice==actions.size()){
+                            choice=0;
+                        }else{
+                            choice++;
+                        };
+                    }
+                    else if (event.key.code==sf::Keyboard::Up){
+                        if (choice==0){
+                            choice=actions.size()-1;
+                        }else{
+                            choice--;
+                        }
+                    };
                 };
 
                 if (event.key.code==sf::Keyboard::RShift){
                     menu_show=!menu_show;
                 };
-                
+
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift)){//for forced fill verify first if left shift is pressed
                     if (event.key.code==sf::Keyboard::F){
                         if (pos1set&&pos2set){//verify if pos1 and pos2 is set
