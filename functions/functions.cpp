@@ -194,7 +194,6 @@ class GSC_Functions{
                 sprite.setTexture(Tiles.day_textures[Tiles.getIntIndex(terrain_vector[i][j])]);
                 window.draw(sprite);
             };
-            window.display();
         };
         sf::Texture render;
         render.create(window.getSize().x, window.getSize().y);
