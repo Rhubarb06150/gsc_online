@@ -1225,11 +1225,20 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                         }
                     };
                 };
-            }else if (event.type==sf::Event::KeyPressed){
+            };
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::LControl)){
+                if (event.type==sf::Event::KeyPressed){
+                    if (event.key.code==sf::Keyboard::R){
+                        functions.renderMap(terrain_vector);
+                    };
+                };
+            };
+            if (event.type==sf::Event::KeyPressed){
 
                 if (event.key.code==sf::Keyboard::RShift){
                     menu_show=!menu_show;
                 };
+                
 
                 if (menu_show){
 
