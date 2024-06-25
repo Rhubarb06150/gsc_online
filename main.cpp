@@ -546,7 +546,7 @@ void mainLoop(){
     };
     //DO NOT DELETE THIS PLS
     //MOD DISPLAY
-    HUDdisplay.showTextDEBUG(std::to_string(moving_timer),{0,0},window);
+    HUDdisplay.showTextDEBUG(std::to_string(fps_),{0,0},window);
     window.display();
 
     //if (record){
@@ -1647,7 +1647,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
         if (message_timer<=60){
             HUDdisplay.showTextDEBUG(output_message,{0,560},window);
         };
-        HUDdisplay.drawSquare(window,{0,348},{640,224});
+        //HUDdisplay.drawSquare(window,{0,352},{640,224});
         window.display();
     }while(true);
     return 0;
