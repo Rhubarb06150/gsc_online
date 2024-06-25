@@ -1347,8 +1347,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                                 message_timer=0;
                                 output_message="Can't convert result to int";
                             };
-                        };
-                        if (choice==1){
+                        }else if (choice==1){
                             std::string width_ask;
                             int width_convert;
                             try{
@@ -1383,8 +1382,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                                 message_timer=0;
                                 output_message="Can't convert result to int";
                             };
-                        };
-                        if (choice==2){
+                        }else if (choice==2){
                             std::string height_ask;
                             int height_convert;
                             try{
@@ -1419,66 +1417,65 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                                 message_timer=0;
                                 output_message="Can't convert result to int";
                             };
-                        };
-                    }else if (choice==3){
-                        std::string tile_ask;
-                        tile_ask=askText("Tile? \n(name or index)");
-                        for (int i=0;i<Tiles.tiles.size()-1;i++){
-                            if (tile_ask==Tiles.tiles[i][2]){// grass
-                                default_tile_index=i;
-                                break;
-                            }else if (tile_ask==Tiles.tiles[i][0]){// \x00
-                                default_tile_index=i;
-                                break;
+                        }else if (choice==3){
+                            std::string tile_ask;
+                            tile_ask=askText("Tile? \n(name or index)");
+                            for (int i=0;i<Tiles.tiles.size()-1;i++){
+                                if (tile_ask==Tiles.tiles[i][2]){// grass
+                                    default_tile_index=i;
+                                    break;
+                                }else if (tile_ask==Tiles.tiles[i][0]){// \x00
+                                    default_tile_index=i;
+                                    break;
+                                };
                             };
-                        };
-                    }else if (choice==5){
-                        std::string wanted_map=askPath(std::filesystem::absolute("."),event,window);
-                        if (wanted_map!=""){
-                            cur_map=wanted_map;
-                            functions.log("EDITOR","Loaded "+cur_map+" map");
-                            terrain_vector=terrain.terrainForm(terrain_vector,cur_map);
-                            map_height=terrain_vector.size();
-                            int init_size=terrain_vector[0].size();
-                            for (int i=0;i<map_height;i++){
-                                if (terrain_vector[i].size()<init_size){
-                                init_size=terrain_vector[i].size();
+                        }else if (choice==5){
+                            std::string wanted_map=askPath(std::filesystem::absolute("."),event,window);
+                            if (wanted_map!=""){
+                                cur_map=wanted_map;
+                                functions.log("EDITOR","Loaded "+cur_map+" map");
+                                terrain_vector=terrain.terrainForm(terrain_vector,cur_map);
+                                map_height=terrain_vector.size();
+                                int init_size=terrain_vector[0].size();
+                                for (int i=0;i<map_height;i++){
+                                    if (terrain_vector[i].size()<init_size){
+                                    init_size=terrain_vector[i].size();
+                                };
+                                map_width=init_size;
+                                };
                             };
-                            map_width=init_size;
-                            };
+                        }else if (choice==6){
+                            std::string save_map_path=functions.getUserPath()+"/.gsc_o/maps/"+askText("Map name?")+".lv";
+                            functions.saveMap(terrain_vector,save_map_path);
+                            if (!std::filesystem::is_regular_file(save_map_path)){
+                                output_message="Failed to save map!";
+                                functions.log("ERROR","Failed to save map at "+save_map_path+".\nYou should verify if you have the rights to save in this path.");
+                            }else{
+                                output_message="Map saved at "+save_map_path;
+                                functions.log("EDITOR","Map saved at "+save_map_path);
+                            }
+                            message_timer=0;
+                        }else if (choice==7){
+
+                        }else if(choice==9){
+                            functions.log("EDITOR","Format rock");
+                            terrain_vector=formatRock(terrain_vector);
+                        }else if(choice==10){
+                            randomPatternLoop();
+                        }else if (choice==11){
+                            showEditorControls();
                         };
-                    }else
-                    if (choice==6){
-                        std::string save_map_path=functions.getUserPath()+"/.gsc_o/maps/"+askText("Map name?")+".lv";
-                        functions.saveMap(terrain_vector,save_map_path);
-                        if (!std::filesystem::is_regular_file(save_map_path)){
-                            output_message="Failed to save map!";
-                            functions.log("ERROR","Failed to save map at "+save_map_path+".\nYou should verify if you have the rights to save in this path.");
-                        }else{
-                            output_message="Map saved at "+save_map_path;
-                            functions.log("EDITOR","Map saved at "+save_map_path);
-                        }
-                        message_timer=0;
-                    }else
-                    if (choice==7){
-                    }else if(choice==9){
-                        functions.log("EDITOR","Format rock");
-                        terrain_vector=formatRock(terrain_vector);
-                    }else if(choice==10){
-                        randomPatternLoop();
-                    }else if (choice==11){
-                        showEditorControls();
+                        if (event.key.code==sf::Keyboard::T){
+                            help_tiles_show=!help_tiles_show;//show/hide the tile viewer
+                        };
+                    };//END OF F5 / X  
+                    if (event.type == sf::Event::Closed){
+                        functions.quitGame(window);
+                        return 0;
                     };
-                    if (event.key.code==sf::Keyboard::T){
-                        help_tiles_show=!help_tiles_show;//show/hide the tile viewer
-                    };
-                };
-            };
-            if (event.type == sf::Event::Closed){
-                functions.quitGame(window);
-                return 0;
-            };
-        };//END OF MENU ACTIONS
+            };//END OF KEYPRESSED
+        };
+        };//END OF POLYEVENTS
 
         if (event.key.code==sf::Keyboard::C){
             int real_pos_x=player_pos[0]/64;
