@@ -1938,6 +1938,11 @@ int main(int argc, char** argv)
     {
     setlocale(LC_ALL, "");
     Game G;
+    if (argc>1){
+        if (argv[1]=="debug"){
+            G.functions.log("DEBUG","Launching in debug mode.");
+        };
+    };
     if (G.functions.getUserPath()=="/home/rhubarb"){
         std::string branch_version = std::to_string(G.version).substr(0,4);
         system(("git add .&&git commit -m 'working on level editor'&&git push origin  main:"+branch_version+"&&echo pushed &").c_str());
