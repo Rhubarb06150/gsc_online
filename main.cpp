@@ -1396,10 +1396,10 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                             std::string tile_ask;
                             tile_ask=askText("Tile? \n(name or index)");
                             for (int i=0;i<Tiles.tiles.size()-1;i++){
-                                if (tile_ask==Tiles.tiles[i][2]){
+                                if (tile_ask==Tiles.tiles[i][2]){// grass
                                     default_tile_index=i;
                                     break;
-                                }else if (tile_ask==Tiles.tiles[i][0]){
+                                }else if (tile_ask==Tiles.tiles[i][0]){// \x00
                                     default_tile_index=i;
                                     break;
                                 };
