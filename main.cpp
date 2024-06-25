@@ -428,7 +428,7 @@ void mainLoop(){
             can_move=true;
             HUDdisplay.showTextDEBUG("Debug page 3 (Display)",{0,0},window);
             HUDdisplay.showTextDEBUG("                      ",{0,16},window);
-            HUDdisplay.showTextDEBUG(("FPS: "+std::to_string(fps_)),{0,32},window);        
+            HUDdisplay.showTextDEBUG(("FPS: "+std::to_string(fps_)),{0,560},window);        
             HUDdisplay.showTextDEBUG(("Frames elapsed: "+std::to_string(index_frame)),{0,48},window);
             HUDdisplay.showTextDEBUG("Resolution: "+real_res,{0,64},window);
             HUDdisplay.showTextDEBUG("Press [F5] to reload textures",{0,80},window);
