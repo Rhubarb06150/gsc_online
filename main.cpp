@@ -1315,9 +1315,12 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                     if (event.key.code==sf::Keyboard::F5||event.key.code==sf::Keyboard::X){
                     if (choice==0){
                         int camera_ask;
-                        if (camera_ask=std::stoi(askText("Camera speed?"))==0){
+                        try{
+                            camera_ask=std::stoi(askText("Camera speed?"));
                             camera_speed=camera_ask;
-                        }else{
+                        }
+                        catch (std::exception &err){
+                            std::cout << err.what() << std::endl;
                             message_timer=0;
                             output_message="Can't convert result to int";
                         };
