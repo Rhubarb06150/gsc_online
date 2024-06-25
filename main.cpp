@@ -335,6 +335,7 @@ void mainLoop(){
             if (event.key.code==sf::Keyboard::Escape){
                 pauseMenu();
             };
+            /*
             if (event.key.code==sf::Keyboard::F2){
                 debug=!debug;
                 SoundManager.soundEffect("PRESS");
@@ -345,6 +346,7 @@ void mainLoop(){
                 }
                 message_timer=0;
             };
+            */
             if (debug){
                 if (debug_page==9&&debug_choice==0){
                 if (event.key.code==sf::Keyboard::Right){
@@ -1937,11 +1939,12 @@ int show_debug_pause(){
 
 int main(int argc, char** argv)
     {
-    setlocale(LC_ALL, "");
+    setlocale(LC_ALL,"");
     Game G;
     if (argc>1){
         if (strcmp(argv[1],"debug")==0){
             G.functions.log("DEBUG","Launching in debug mode.");
+            G.debug=true;
         };
     };
     if (G.functions.getUserPath()=="/home/rhubarb"){
