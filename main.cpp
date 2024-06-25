@@ -1215,7 +1215,17 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
         message_timer++;//increase the message timer for display messages
         while (window.pollEvent(event))//level editor true loop
         {
-            if (event.type==sf::Event::KeyPressed){
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::LControl)){
+                if (event.type==sf::Event::KeyPressed){
+                    if (event.key.code==sf::Keyboard::B){
+                        if (HUDdisplay.editor_bg_index==HUDdisplay.editor_background.size()-1){
+                            HUDdisplay.editor_bg_index=0;
+                        }else{
+                            HUDdisplay.editor_bg_index++;
+                        }
+                    };
+                };
+            }else if (event.type==sf::Event::KeyPressed){
 
                 if (event.key.code==sf::Keyboard::RShift){
                     menu_show=!menu_show;

@@ -29,6 +29,7 @@ class HUD{
     private:
     GSC_Functions funs;
     public:
+    int editor_bg_index;
     std::vector<std::vector<std::string>> letters_index;
     std::vector<sf::Texture> letters_wob_textures;
     std::vector<sf::Texture> letters_bow_textures;
@@ -36,6 +37,7 @@ class HUD{
     std::vector<sf::Texture> letters_debug_sel_textures;
     std::vector<sf::Texture> letters_debug_blu_textures;
     std::vector<sf::Texture> menu_textures;
+    std::vector<sf::Texture> editor_background;
 
     HUD(){
         letters_index.push_back({" ","ef"});
@@ -133,8 +135,12 @@ class HUD{
         menu_textures.push_back(texture);
         texture.loadFromFile("assets/hud/logo.png");
         menu_textures.push_back(texture);
+
+        //EDITOR TEXTURES
         texture.loadFromFile("assets/hud/editor_bg.png");
-        menu_textures.push_back(texture);
+        editor_background.push_back(texture);
+        texture.loadFromFile("assets/hud/editor_bg2.png");
+        editor_background.push_back(texture);
 
         int x;
         int y;
@@ -250,7 +256,7 @@ class HUD{
     int editorBG(sf::RenderWindow& window){
         sf::Sprite sprite;
         sprite.setPosition(0,0);
-        sprite.setTexture(menu_textures[3]);
+        sprite.setTexture(editor_background[editor_bg_index]);
         sprite.scale(4.f,4.f);
         window.draw(sprite);
         return 0;  
