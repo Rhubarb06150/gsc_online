@@ -1343,7 +1343,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                             std::string height_ask;
                             int height_convert;
                             try{
-                                height_ask=askText("Map width?");
+                                height_ask=askText("Map height?");
                                 height_convert = std::stoi(height_ask);
                                 map_height=height_convert;
                             }catch (std::exception &err){
