@@ -388,6 +388,7 @@ void mainLoop(){
     player_state=player.animPlayer(player_state,moving_timer,walking);
     player.showPlayer(player_type,player_state,window);
     HUDdisplay.drawSquare(window,{0,0},{320,128});
+    HUDdisplay.showTextBOW("Rhubarb",{32,32},window);
     if (debug){
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1)&&debug){debug_page=1;};
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2)&&debug){debug_page=2;};
