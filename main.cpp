@@ -1348,6 +1348,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                                 if (map_height<height_convert){
                                     while(map_height!=height_convert){
                                         for (int i=0;i<terrain_vector.size();i++){
+                                            map_height++;
                                             terrain_vector[i].push_back(Tiles.tiles[default_tile_index][2]);
                                         };
                                     };
