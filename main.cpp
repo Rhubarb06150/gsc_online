@@ -1345,7 +1345,18 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                             try{
                                 height_ask=askText("Map height?");
                                 height_convert = std::stoi(height_ask);
-                                map_height=height_convert;
+                                if (map_height<height_convert){
+                                    while(map_height!=height_convert){
+                                        for (int i=0;i<terrain_vector.size();i++){
+                                            terrain_vector[i].push_back(Tiles.tiles[default_tile_index][2]);
+                                        };
+                                    };
+                                }else if (map_height>height_convert){
+                                    while(map_height!=height_convert){
+                                        map_height--;
+                                        terrain_vector.pop_back();
+                                    };
+                                };
                             }catch (std::exception &err){
                                 functions.log("ERROR","Can't convert '"+height_ask+"' to int.");
                                 message_timer=0;
