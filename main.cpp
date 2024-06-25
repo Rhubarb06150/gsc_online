@@ -1859,6 +1859,8 @@ int main_menu(){
 int pauseMenu(){
     int choice=0;
     do{
+        moving_timer=20;
+        walking=false;
         while (window.pollEvent(event))
         {
             if (event.type==sf::Event::KeyPressed){
