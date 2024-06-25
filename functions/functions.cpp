@@ -82,7 +82,7 @@ class GSC_Functions{
         }else if (type=="ENGINE"||type=="DEBUG"){//yellow type
             std::cout << "[\033[1;33m" << type << "\033[0m] " << currentHour()  << " // " << info << std::endl;
         }else{//basic terminal color for all
-            std::cout << "[" << type << "] " << currentHour() << " // " << info << std::endl;
+            std::cout << "\033[0m][" << type << "] " << currentHour() << " // " << info << std::endl;
         }
         return 0;
     };
