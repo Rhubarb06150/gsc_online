@@ -780,10 +780,12 @@ int randomPatternLoop(){
                     functions.quitGame(window);
                     return 0;
                 };
+                if (event.type==sf::Event::KeyPressed){
+                    if (event.key.code==sf::Keyboard::F6){
+                        break;
+                    };
+                };
             };
-        if (isPressed(event,sf::Keyboard::F6)==0){
-            break;
-        };
         if (isPressed(event,sf::Keyboard::F5)==0){
             if (pos1set&&pos2set){
             for (int i = 0; i<terrain_vector.size();i++){
@@ -802,6 +804,7 @@ int randomPatternLoop(){
             }else{
             output_message="You need to set Pos1 and Pos2 first!";
             message_timer=0;
+            return 0;
             };
         };
         if (isPressed(event,sf::Keyboard::Right)==0){
