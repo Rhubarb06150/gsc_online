@@ -1297,42 +1297,42 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
 
                 }else{
 
-                if (event.key.code==sf::Keyboard::F3){
-                    int real_pos_x=player_pos[0]/64;
-                    int real_pos_y=player_pos[1]/64;
-                    pos1 = {real_pos_x,real_pos_y};
-                    output_message="Pos 1 set to "+std::to_string(pos1[0])+":"+std::to_string(pos1[1]);
-                    pos1set=true;
-                    message_timer=0;
-                };
-                if (event.key.code==sf::Keyboard::F4){
-                    int real_pos_x=player_pos[0]/64;
-                    int real_pos_y=player_pos[1]/64;
-                    pos2 = {real_pos_x,real_pos_y};
-                    output_message="Pos 2 set to "+std::to_string(pos1[0])+":"+std::to_string(pos1[1]);
-                    pos2set=true;
-                    message_timer=0;
-                };
+                    if (event.key.code==sf::Keyboard::F3){
+                        int real_pos_x=player_pos[0]/64;
+                        int real_pos_y=player_pos[1]/64;
+                        pos1 = {real_pos_x,real_pos_y};
+                        output_message="Pos 1 set to "+std::to_string(pos1[0])+":"+std::to_string(pos1[1]);
+                        pos1set=true;
+                        message_timer=0;
+                    };
+                    if (event.key.code==sf::Keyboard::F4){
+                        int real_pos_x=player_pos[0]/64;
+                        int real_pos_y=player_pos[1]/64;
+                        pos2 = {real_pos_x,real_pos_y};
+                        output_message="Pos 2 set to "+std::to_string(pos1[0])+":"+std::to_string(pos1[1]);
+                        pos2set=true;
+                        message_timer=0;
+                    };
 
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift)){//for forced fill verify first if left shift is pressed
-                    if (event.key.code==sf::Keyboard::F){
-                        if (pos1set&&pos2set){//verify if pos1 and pos2 is set
-                        for (int i = 0; i<terrain_vector.size();i++){
-                            for (int j = 0; j<terrain_vector[i].size();j++){
-                                if ((pos1[0]<=j&&j<=pos2[0])&&(pos1[1]<=i&&i<=pos2[1])){// if the tile is in the pos1/pos2 zone
-                                    terrain_vector[i][j]=Tiles.tiles[selected_tile_index][2];//then its replaced with the selected tile
+                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift)){//for forced fill verify first if left shift is pressed
+                        if (event.key.code==sf::Keyboard::F){
+                            if (pos1set&&pos2set){//verify if pos1 and pos2 is set
+                            for (int i = 0; i<terrain_vector.size();i++){
+                                for (int j = 0; j<terrain_vector[i].size();j++){
+                                    if ((pos1[0]<=j&&j<=pos2[0])&&(pos1[1]<=i&&i<=pos2[1])){// if the tile is in the pos1/pos2 zone
+                                        terrain_vector[i][j]=Tiles.tiles[selected_tile_index][2];//then its replaced with the selected tile
+                                        };
                                     };
                                 };
+                                output_message="the selected area has been filled!";//here's the output message
+                                message_timer=0;//then timer reset
+                            }else{
+                            output_message="You need to set Pos1 and Pos2 first!";//in case pos1 and/or pos2 arent set
+                            message_timer=0;//reset timer
                             };
-                            output_message="the selected area has been filled!";//here's the output message
-                            message_timer=0;//then timer reset
-                        }else{
-                        output_message="You need to set Pos1 and Pos2 first!";//in case pos1 and/or pos2 arent set
-                        message_timer=0;//reset timer
                         };
-                    };};
+                    };
                     if (event.key.code==sf::Keyboard::F5||event.key.code==sf::Keyboard::X){
-                    if (menu_show){
                         if (choice==0){
                             std::string camera_ask;
                             int camera_convert;
@@ -1469,7 +1469,6 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                 };//END OF IF F5 / X  
             if(event.key.code==sf::Keyboard::T){
                 help_tiles_show=!help_tiles_show;//show/hide the tile viewer
-            };
             };
             };//END IF MENU SHOW
         };//ENF OF KEYPRESSED
