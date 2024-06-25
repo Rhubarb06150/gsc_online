@@ -1826,11 +1826,17 @@ int pauseMenu(){
         while (window.pollEvent(event))
         {
             if (event.type==sf::Event::KeyPressed){
-                if (event.key.code==sf::Keyboard::Up){
+                if (event.key.code==sf::Keyboard::Down){
                     if (choice==7){
                         choice=0;
                     }else{
                         choice++;
+                    };
+                }else if (event.key.code==sf::Keyboard::Up){
+                    if (choice==0){
+                        choice=7;
+                    }else{
+                        choice--;
                     };
                 };
             };
