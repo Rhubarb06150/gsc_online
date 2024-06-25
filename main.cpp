@@ -792,6 +792,20 @@ int randomPatternLoop(){
                     if (event.key.code==sf::Keyboard::F6){
                         break;
                     };
+                    if (event.key.code==sf::Keyboard::Right){
+                        chance++;
+                    };
+                    if (event.key.code==sf::Keyboard::Left){
+                        if (chance>1){
+                            chance--;
+                        }
+                    };
+                    if (event.key.code==sf::Keyboard::Up){
+                        choice=0;
+                    };
+                    if (event.key.code==sf::Keyboard::Down){
+                        choice=1;
+                    };
                 };
             };
         if (isPressed(event,sf::Keyboard::F5)==0){
@@ -815,20 +829,6 @@ int randomPatternLoop(){
             return 0;
             };
         };
-        if (isPressed(event,sf::Keyboard::Right)==0){
-            chance++;
-        };
-        if (isPressed(event,sf::Keyboard::Left)==0){
-            if (chance>1){
-                chance--;
-            }
-        };
-        if (isPressed(event,sf::Keyboard::Up)==0){
-            choice=0;
-        };
-        if (isPressed(event,sf::Keyboard::Down)==0){
-            choice=1;
-        };
 
         window.clear(sf::Color(148,148,148));
         HUDdisplay.editorBG(window);
@@ -845,21 +845,21 @@ int randomPatternLoop(){
         HUDdisplay.showTextDEBUG("                        ",{32,96},window);
         HUDdisplay.showTextDEBUG("  1 chance on ",{32,112},window);
         if (choice==0){
-        HUDdisplay.showTextSELDEBUG(std::to_string(chance)+std::string(10-std::to_string(chance).length(),' '),{256,112},window);
+            HUDdisplay.showTextSELDEBUG(std::to_string(chance)+std::string(10-std::to_string(chance).length(),' '),{256,112},window);
         }else{
-        HUDdisplay.showTextDEBUG(std::to_string(chance)+std::string(10-std::to_string(chance).length(),' '),{256,112},window);
+            HUDdisplay.showTextDEBUG(std::to_string(chance)+std::string(10-std::to_string(chance).length(),' '),{256,112},window);
         }
         HUDdisplay.showTextDEBUG("                        ",{32,128},window);
         HUDdisplay.showTextDEBUG("  Replace? ",{32,144},window);
         if (replace){
             if (choice==1){
-            HUDdisplay.showTextSELDEBUG("yes",{208,144},window);
+                HUDdisplay.showTextSELDEBUG("yes",{208,144},window);
             };
         };
         if (!replace){
-        HUDdisplay.showTextDEBUG("                        ",{32,160},window);
-        HUDdisplay.showTextDEBUG("  Press F6 to cancel    ",{32,176},window);
-        HUDdisplay.showTextDEBUG("                        ",{32,192},window);
+            HUDdisplay.showTextDEBUG("                        ",{32,160},window);
+            HUDdisplay.showTextDEBUG("  Press F6 to cancel    ",{32,176},window);
+            HUDdisplay.showTextDEBUG("                        ",{32,192},window);
         };
         window.display();   
         if (isPressed(event,sf::Keyboard::F1)==0){
@@ -1380,7 +1380,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                                 height_ask=askText("Map height?");
                                 if (height_ask==""){
                                     break;
-                                }
+                                };
                                 height_convert = std::stoi(height_ask);
                                 if (height_convert<=0){//REFUSE NULL OR NEGATIVE VALUE
                                     functions.log("ERROR","Can't enter a negative or null value as map height");
