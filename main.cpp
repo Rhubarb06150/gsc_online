@@ -762,7 +762,6 @@ std::string askText(std::string caption){
             text_input=takeLetter(text_input);
         };
         window.clear(sf::Color(248,248,248));
-        HUDdisplay.showTextBOW("Text Enter",{0,0},window);
         HUDdisplay.showTextBOW(caption,{32,32},window);
         if (index_frame%60<=30){
             HUDdisplay.showTextAskBOW(text_input,{32,96},window);

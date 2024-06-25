@@ -38,6 +38,7 @@ class HUD{
     std::vector<sf::Texture> letters_debug_blu_textures;
     std::vector<sf::Texture> menu_textures;
     std::vector<sf::Texture> editor_background;
+    std::vector<sf::Texture> border_textures;
 
     HUD(){
         letters_index.push_back({" ","ef"});
@@ -167,9 +168,29 @@ class HUD{
             texture.loadFromFile("assets/hud/font_debug_blu.png",sf::IntRect(x*8,y*8,8,8));
             letters_debug_blu_textures.push_back(texture);
 
+        };
 
-        };    
+        for (int i=0;i<6;i++){
+            texture.loadFromFile("assets/hud/def_border.png",sf::IntRect(0,0,8,8));
+            border_textures.push_back(texture);
+            texture.loadFromFile("assets/hud/def_border.png",sf::IntRect(8,0,8,8));
+            border_textures.push_back(texture);
+            texture.loadFromFile("assets/hud/def_border.png",sf::IntRect(0,8,8,8));
+            border_textures.push_back(texture);
+            texture.loadFromFile("assets/hud/def_border.png",sf::IntRect(8,8,8,8));
+            border_textures.push_back(texture);
+            texture.loadFromFile("assets/hud/def_border.png",sf::IntRect(16,8,8,8));
+            border_textures.push_back(texture);
+            texture.loadFromFile("assets/hud/def_border.png",sf::IntRect(16,0,8,8));
+            border_textures.push_back(texture);
+        };
     };
+
+    int drawSquare(sf::RenderWindow& window){
+        
+        return 0;
+    };
+
     int getLetterIntIndex(char index){
         std::string fish;
         fish=index;
