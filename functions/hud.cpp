@@ -200,9 +200,9 @@ class HUD{
         corner_bl.setScale(4.f,4.f);
         corner_br.setScale(4.f,4.f);
         corner_tl.setPosition({pos[0],pos[1]});
-        corner_tr.setPosition({pos[0]+size[0],pos[1]});
-        corner_bl.setPosition({pos[0],pos[1]});
-        corner_br.setPosition({pos[0]+size[0],pos[1]+size[1]});
+        corner_tr.setPosition({(pos[0]+size[0]),pos[1]});
+        corner_bl.setPosition({pos[0],(pos[1]+size[1])});
+        corner_br.setPosition({(pos[0]+size[0]),(pos[1]+size[1])});
         window.draw(corner_tl);
         window.draw(corner_tr);
         window.draw(corner_bl);
