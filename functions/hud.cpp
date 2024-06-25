@@ -189,6 +189,28 @@ class HUD{
         };
         return 0;  
     };
+    int showTextAskBOW(std::string text, std::vector<int> text_pos, sf::RenderWindow& window){
+        int y=text_pos[1];
+        int x=text_pos[0];
+        for (int i = 0; i < text.size(); i++){
+            sf::Sprite sprite;
+            if (i%18==0&&i!=0){
+                y+=32;
+                x=text_pos[0];
+            }
+            if(text[i]=='\n'){
+                y+=32;
+                x=text_pos[0];
+            }else{
+                sprite.setPosition(x,y);
+                sprite.setTexture(letters_bow_textures[getLetterIntIndex((text[i]))]);
+                sprite.scale(4.f,4.f);
+                window.draw(sprite);
+                x+=32;
+            };
+        };
+        return 0;  
+    };
     int showTextWOB(std::string text, std::vector<int> text_pos, sf::RenderWindow& window){
         int y=text_pos[1];
         int x=text_pos[0];

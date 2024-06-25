@@ -1,13 +1,11 @@
 #include <SFML/Audio.hpp>
 #include <iostream>
-
-
+#include <fstream>
 
 class Sounds{
     public:
     sf::SoundBuffer buffer;
     sf::Sound sound;
-
     Sounds(){
         sf::SoundBuffer buffer;
         sf::Sound sound;

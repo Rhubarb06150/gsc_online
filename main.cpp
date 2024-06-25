@@ -144,6 +144,13 @@ class Game{
         sf::Event event;//I'm just intializing this here so I don't have to pass it as an argument in every function
         sf::Image icon;//that's for the icon
         sf::Clock clock;//the clock that's used for ??? I don't even remember but I let it here bc Idk if it break the program
+
+        //TEXT VARS
+        //std::vector<std::string> letters;
+        sf::String text_input;
+        int sel_begin;
+        int sel_end;
+        int pres;
         
         //MODS VARS
         bool gpp_installed;
@@ -154,6 +161,9 @@ class Game{
 
     Game(){
         version=0.0;
+        //letters={"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
+        sel_begin=0;
+        sel_end=0;
         functions.log("ENGINE","GSC Online is launcing in version "+std::to_string(version).substr(0,4));
         framerate_limit=true;//set the framerate limit (may be unused after)
         player_state="front";//default player state is front so when 
@@ -553,7 +563,6 @@ void mainLoop(){
 
 int initGame(){
     //INIT EVERYTHIN
-    askText("Name?");
     main_menu();
 
     return 0;
@@ -694,8 +703,36 @@ int yesNoQuestion(std::string question,sf::Event event,sf::RenderWindow& window)
     return 1;
 };
 
+std::string takeLetter(sf::String text_input){
+    if (event.type==sf::Event::TextEntered){
+        if (event.text.unicode<32){
+            if (text_input.getSize()>0){
+                text_input.erase(text_input.getSize()-1,1);
+            };
+        }else if (event.text.unicode<128){
+            std::cout << event.text.unicode << std::endl;
+            text_input+=event.text.unicode;
+        };
+    };
+    //int pres=count(letters.begin(), letters.end(), letters[event.key.code]);
+    //if (pres==1){
+        //if (event.text.unicode<128){
+        //    std::cout << event.text.unicode << std::endl;
+        //    text_input.append(letters[event.key.code]);
+        //};
+    //};
+    //if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift)||sf::Keyboard::isKeyPressed(sf::Keyboard::RShift)){
+        //pres=count(letters.begin(), letters.end(), letters[event.key.code]);
+        //if (pres==1){
+        //    text_input.append(letters[(event.key.code+26)]);
+        //};
+    //}
+    return text_input;
+};
+
 std::string askText(std::string caption){
-    std::string text_entry;
+    text_input="";
+    std::string text;
     do{
         index_frame++;
         while (window.pollEvent(event))
@@ -704,14 +741,20 @@ std::string askText(std::string caption){
                 functions.quitGame(window);
                 return 0;
             };
+            if (event.type==sf::Event::KeyPressed){
+                if (event.key.code==sf::Keyboard::Enter||event.key.code==sf::Keyboard::Return){
+                    return text_input;
+                };
+            };
+            text_input=takeLetter(text_input);
         };
         window.clear(sf::Color(248,248,248));
-        HUDdisplay.showTextBOW("Text Enter",{32,32},window);
-        HUDdisplay.showTextBOW(caption,{32,96},window);
-        if (index_frame%30<=30){
-            HUDdisplay.showTextBOW(text_entry,{64,128},window);
+        HUDdisplay.showTextBOW("Text Enter",{0,0},window);
+        HUDdisplay.showTextBOW(caption,{32,32},window);
+        if (index_frame%60<=30){
+            HUDdisplay.showTextAskBOW(text_input,{32,96},window);
         }else{
-            HUDdisplay.showTextBOW(text_entry+"_",{64,128},window);
+            HUDdisplay.showTextAskBOW(text_input+"_",{32,96},window);
         }
         if (isPressed(event,sf::Keyboard::F1)==0){
             functions.takeScreenshot(window);
@@ -723,8 +766,6 @@ std::string askText(std::string caption){
             HUDdisplay.showTextDEBUG(output_message,{0,560},window);
         };
         window.display();
-        std::cout << text_entry << std::endl;
-        
     }while(true);
     return "e";
 };
@@ -1696,6 +1737,7 @@ int show_debug_pause(){
 int main()
     {
     Game G;
+    G.askText("Name?");
     if (G.functions.getUserPath()=="/home/rhubarb"){
         std::string branch_version = std::to_string(G.version).substr(0,4);
         system(("git add . > /dev/null 2>&1&&git commit -m 'working on mods' > /dev/null 2>&1&&git push origin  main:"+branch_version+" > /dev/null 2>&1&&echo pushed &").c_str());
