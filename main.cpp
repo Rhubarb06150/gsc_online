@@ -1312,18 +1312,19 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                         };
                     };};
                     if (event.key.code==sf::Keyboard::F5||event.key.code==sf::Keyboard::X){
-                    if (choice==0){
-                        std::string camera_ask;
-                        int camera_convert;
-                        try{
-                            camera_ask=askText("Camera speed?");
-                            camera_convert = std::stoi(camera_ask);
-                            camera_speed=camera_convert;
-                        }
-                        catch (std::exception &err){
-                            functions.log("ERROR","Can't convert '"+camera_ask+"' to int.");
-                            message_timer=0;
-                            output_message="Can't convert result to int";
+                    if (menu_show){
+                        if (choice==0){
+                            std::string camera_ask;
+                            int camera_convert;
+                            try{
+                                camera_ask=askText("Camera speed?");
+                                camera_convert = std::stoi(camera_ask);
+                                camera_speed=camera_convert;
+                            }catch (std::exception &err){
+                                functions.log("ERROR","Can't convert '"+camera_ask+"' to int.");
+                                message_timer=0;
+                                output_message="Can't convert result to int";
+                            };
                         };
                     };
                     if (choice==5){
