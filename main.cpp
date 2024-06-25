@@ -1223,7 +1223,9 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
 
                 if (menu_show){
 
-                    if (event.key.code==sf::Keyboard::F5||event.key.code==sf::Keyboard::X){
+                    if(event.key.code==sf::Keyboard::T){
+                        help_tiles_show=!help_tiles_show;//show/hide the tile viewer
+                    }else if (event.key.code==sf::Keyboard::F5||event.key.code==sf::Keyboard::X){
                         if (choice==0){
                             std::string camera_ask;
                             int camera_convert;
@@ -1462,8 +1464,6 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                             message_timer=0;//reset timer
                             };
                         };
-                    }else if(event.key.code==sf::Keyboard::T){
-                        help_tiles_show=!help_tiles_show;//show/hide the tile viewer
                     };
                 };//END IF !menu_show
             };//ENF OF KEYPRESSED
