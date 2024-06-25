@@ -1718,7 +1718,7 @@ int modManager(){
 
 int main_menu(){
     int debug_x;
-    debug_x=window.getSize().x-160;
+    debug_x=160;
     int choice = 0;
     bool choosen=false;
     int max_choice;
