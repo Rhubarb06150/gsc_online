@@ -1349,6 +1349,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                                     functions.log("ERROR","Can't enter a negative value, or 0.");
                                     message_timer=0;
                                     output_message="Can't enter a negative value, or 0.";
+                                    break;
                                 };
                                 if (map_height<height_convert){
                                     while(map_height!=height_convert){//ADDING HEIGHT
