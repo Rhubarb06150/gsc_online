@@ -79,7 +79,7 @@ class GSC_Functions{
             std::cout << "[\033[1;35m" << type << "\033[0m] " << currentHour()  << " // " << info << std::endl;
         }else if (type=="EDITOR"||type=="MOD"||type=="TERRAIN"||"SUCCESS"){//green type
             std::cout << "[\033[1;32m" << type << "\033[0m] " << currentHour()  << " // " << info << std::endl;
-        }else if (type=="ENGINE"){//yellow type
+        }else if (type=="ENGINE"||type=="DEBUG"){//yellow type
             std::cout << "[\033[1;33m" << type << "\033[0m] " << currentHour()  << " // " << info << std::endl;
         }else{//basic terminal color for all
             std::cout << "[" << type << "] " << currentHour() << " // " << info << std::endl;
