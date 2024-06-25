@@ -215,6 +215,12 @@ class HUD{
         window.draw(corner_tr);
         window.draw(corner_bl);
         window.draw(corner_br);
+        for(int i=0;i<(size[0]/32)-64;i++){
+            sf::Sprite bar;
+            bar.setTexture(border_textures[4]);
+            bar.setPosition({(i)*32+pos[0],pos[1]});
+            window.draw(bar);
+        };
         return 0;
     };
 
