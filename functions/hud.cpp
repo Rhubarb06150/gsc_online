@@ -219,7 +219,7 @@ class HUD{
             sf::Sprite bar;
             bar.setTexture(border_textures[4]);
             float bar_pos;
-            bar_pos=(64)+pos[0];
+            bar_pos=(i*32)+pos[0];
             bar.setPosition({bar_pos,pos[1]});
             window.draw(bar);
         };
