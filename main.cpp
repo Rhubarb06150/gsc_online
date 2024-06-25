@@ -117,10 +117,6 @@ class Game{
         std::string player_type;//that's your type (boy, girl etc...)
         bool walking;//is set to true when player is moving for animate the player
         bool can_move;//when set to true, the player can move, so when false, the player can't (for example it's set to false when some menus are opened)
-        bool walkingl;
-        bool walkingr;
-        bool walkingu;
-        bool walkingd;
         
         //EDITOR VARS
         std::string copied_tile;//the copied tile id (not index but id for example "\x00")
@@ -251,18 +247,17 @@ void mainLoop(){
                     player_pos[0]+=4;
                 };
             }else{SoundManager.soundEffect("COLLISION");}
-            walkingr=true;
             walking=true;
-            //player_state="right";
-        }if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){ 
+            player_state="right";
+        }
+        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){ 
             if(player_pos[0]>0){
                 if (Tiles.checkCollision(player_pos,'l',terrain_vector)==0){
                     player_pos[0]-=4;
                 };
             }else{SoundManager.soundEffect("COLLISION");}
-            walkingl=true;
             walking=true;
-            //player_state="left";
+            player_state="left";
         };
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){ 
             if(player_pos[1]<terrain_vector.size()*64-64){
@@ -270,23 +265,17 @@ void mainLoop(){
                     player_pos[1]+=4;
                 };
             }else{SoundManager.soundEffect("COLLISION");}
-            walkingd=true;
             walking=true;
-            
-            //if (player_state!="left"&&player_state!="right"&&player_state!="left1"&&player_state!="right1"){
-                //player_state="front";
-            //};
-        }if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){   
+            player_state="front";
+        }   
+        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){   
             if(player_pos[1]>0){
                 if (Tiles.checkCollision(player_pos,'u',terrain_vector)==0){
                     player_pos[1]-=4;
                 };
             }else{SoundManager.soundEffect("COLLISION");}
-            walkingu=true;
             walking=true;
-            //if (player_state!="left"&&player_state!="right"&&player_state!="left1"&&player_state!="right1"){
-                //player_state="back";
-            //};
+            player_state="back";
         };
     }else{
         walking=false;moving_timer=20;
