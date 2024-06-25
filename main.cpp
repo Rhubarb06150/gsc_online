@@ -744,6 +744,15 @@ std::string askText(std::string caption){
                 if (event.key.code==sf::Keyboard::Enter||event.key.code==sf::Keyboard::Return){
                     return text_input.toAnsiString();
                 };
+                if (event.key.code==sf::Keyboard::F1){
+                    functions.takeScreenshot(window);
+                    SoundManager.soundEffect("PRESS");
+                    output_message="Screenshot saved!";
+                    message_timer=0;
+                };
+                if (event.key.code==sf::Keyboard::F6){
+                    return "";
+                };
             };
             text_input=takeLetter(text_input);
         };
@@ -755,12 +764,6 @@ std::string askText(std::string caption){
         }else{
             HUDdisplay.showTextAskBOW(text_input+"_",{32,96},window);
         }
-        if (isPressed(event,sf::Keyboard::F1)==0){
-            functions.takeScreenshot(window);
-            SoundManager.soundEffect("PRESS");
-            output_message="Screenshot saved!";
-            message_timer=0;
-        };
         if (message_timer<=60){
             HUDdisplay.showTextDEBUG(output_message,{0,560},window);
         };
