@@ -1459,7 +1459,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
             HUDdisplay.showTextDEBUG(std::to_string(terrain_vector.size()*terrain_vector[0].size())+" tiles",{0,16},window);
             HUDdisplay.showTextDEBUG("X: "+std::to_string(player_pos[0]/64)+" Y: "+std::to_string(player_pos[1]/64),{0,32},window);
             if (!pos1set||!pos2set){
-                HUDdisplay.showTextDEBUG("You need to set pos1 and pos2,\n to see the square size.",{0,64},window);
+                HUDdisplay.showTextDEBUG("You need to set pos1 and pos2,\nto see the square size.",{0,64},window);
             }else{
                 int x_size=0;
                 int y_size=0;
