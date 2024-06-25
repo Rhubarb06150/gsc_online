@@ -1647,6 +1647,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
         if (message_timer<=60){
             HUDdisplay.showTextDEBUG(output_message,{0,560},window);
         };
+        HUDdisplay.drawSquare(window,{0,0},{64,64});
         window.display();
     }while(true);
     return 0;
