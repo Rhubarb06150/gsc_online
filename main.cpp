@@ -1312,6 +1312,15 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                         };
                     };};
                     if (event.key.code==sf::Keyboard::F5||event.key.code==sf::Keyboard::X){
+                    if (choice==0){
+                        int camera_ask;
+                        if (camera_ask=std::stoi(askText("Camera speed?"))==0){
+                            camera_speed=camera_ask;
+                        }else{
+                            message_timer=0;
+                            output_message="Can't convert result to int";
+                        };
+                    };
                     if (choice==5){
                         std::string wanted_map=askPath(std::filesystem::absolute("."),event,window);
                         if (wanted_map!=""){
