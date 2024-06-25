@@ -1242,7 +1242,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                             };
                             terrain_vector.push_back(terrain_line);
                         }else if(choice==3){
-                            if (default_tile_index==Tiles.tiles.size()){
+                            if (default_tile_index==Tiles.tiles.size()-1){
                                 default_tile_index=0;
                             }else{
                                 default_tile_index++;
