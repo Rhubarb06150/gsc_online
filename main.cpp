@@ -1821,7 +1821,7 @@ int main_menu(){
 };
 
 int pauseMenu(){
-    int choice;
+    int choice=0;
     do{
         while (window.pollEvent(event))
         {
@@ -1842,7 +1842,6 @@ int pauseMenu(){
         player.showPlayer(player_type,player_state,window);
         int screen_width=window.getSize().x;
         HUDdisplay.drawSquare(window,{screen_width-320,0},{320,576});
-
         HUDdisplay.showTextBOW(username,{screen_width-256,320},window);
         HUDdisplay.showCursor({screen_width-288,64+(choice*32)},window);
         window.display();
