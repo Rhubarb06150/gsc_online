@@ -1822,6 +1822,7 @@ int main_menu(){
 
 int pauseMenu(){
     do{
+        index_frame++;
         window.clear();
         terrain.showTerrain(terrain_vector,player_pos,time_otd,window,player_offset,(debug&&debug_page==9&&debug_choice==2),index_frame);
         player_state=player.animPlayer(player_state,moving_timer,walking);
@@ -1829,7 +1830,7 @@ int pauseMenu(){
         int screen_width=window.getSize().x;
         HUDdisplay.drawSquare(window,{screen_width-320,0},{320,576});
         HUDdisplay.showTextBOW(username,{screen_width-256,320},window);
-        return 0;
+        window.display();
     }while(true);
 };
 
