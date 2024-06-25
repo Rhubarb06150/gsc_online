@@ -10,8 +10,6 @@
 #pragma once
 
 class TilesIndex{
-    private:
-    GSC_Functions funs;
     public:
 
     std::vector<std::vector<std::string>> tiles;
@@ -109,10 +107,10 @@ class TilesIndex{
 
         std::string fish = tiles[i][1];
 
-        x = funs.hexToInt(fish[0]);
-        y = funs.hexToInt(fish[1]);
-        xsize = funs.hexToInt(fish[2]);
-        ysize = funs.hexToInt(fish[3]);
+        x = hexToInt(fish[0]);
+        y = hexToInt(fish[1]);
+        xsize = hexToInt(fish[2]);
+        ysize = hexToInt(fish[3]);
 
         //le xsize et le ysize foncitonnent correctement;
 
@@ -137,10 +135,10 @@ class TilesIndex{
 
         int frames_nb=std::stoi(animated_tiles[i][1]);
 
-        x = funs.hexToInt(fish[0]);
-        y = funs.hexToInt(fish[1]);
-        xsize = funs.hexToInt(fish[2]);
-        ysize = funs.hexToInt(fish[3]);
+        x = hexToInt(fish[0]);
+        y = hexToInt(fish[1]);
+        xsize = hexToInt(fish[2]);
+        ysize = hexToInt(fish[3]);
 
         sf::Texture texture_morning;
         sf::Texture texture_day;
@@ -176,7 +174,30 @@ class TilesIndex{
 
         //les textures fonctionnent bien
     };
-        
+
+    std::string ReplaceAll(std::string str, const std::string& from, const std::string& to) {
+        size_t start_pos = 0;
+        while((start_pos = str.find(from, start_pos)) != std::string::npos) {
+            str.replace(start_pos, from.length(), to);
+            start_pos += to.length();
+        };
+        return str;
+    };
+
+    int hexToInt(char hexa){
+
+        std::string res;
+        res=hexa;
+
+        res=ReplaceAll(res, "a", "10");
+        res=ReplaceAll(res, "b", "11");
+        res=ReplaceAll(res, "c", "12");
+        res=ReplaceAll(res, "d", "13");
+        res=ReplaceAll(res, "e", "14");
+        res=ReplaceAll(res, "f", "15");
+
+        return std::stoi(res);
+    };
 
     std::string getIndex(std::string index){
         std::string res="";
@@ -238,10 +259,10 @@ class TilesIndex{
         for (int i = 0;i<tiles.size();i++){
             if (tiles[i][0]==index){
                 std::string fish = tiles[i][1];
-                x = funs.hexToInt(fish[0]);
-                y = funs.hexToInt(fish[1]);
-                xsize = funs.hexToInt(fish[2])*16;
-                ysize = funs.hexToInt(fish[3])*16;
+                x = hexToInt(fish[0]);
+                y = hexToInt(fish[1]);
+                xsize = hexToInt(fish[2])*16;
+                ysize = hexToInt(fish[3])*16;
                 break;
             };
         };

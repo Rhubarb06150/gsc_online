@@ -1229,7 +1229,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::LControl)){
                 if (event.type==sf::Event::KeyPressed){
                     if (event.key.code==sf::Keyboard::R){
-                        functions.renderMap(terrain_vector);
+                        functions.renderMap(terrain_vector,Tiles);
                     };
                 };
             };

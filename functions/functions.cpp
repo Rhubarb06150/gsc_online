@@ -20,10 +20,11 @@
 #include <vector>
 #include <pwd.h>
 
+#include "tiles.cpp"
+
 class GSC_Functions{
     public:
-    GSC_Functions(){
-    };
+    GSC_Functions(){};
     std::string currentDateTime() {
         time_t now=time(0);
         struct tm tstruct;
@@ -180,16 +181,24 @@ class GSC_Functions{
         return homedir;
     };
 
-    int renderMap(std::vector<std::vector<std::string>> terrain_vector){
-        sf::Texture texture;
-        texture.create(terrain_vector.size(), terrain_vector[0].size());
-        texture.loadFromFile("assets/tiles/morning.png");
-        texture.setRepeated(true);
-        if (texture.copyToImage().saveToFile(getUserPath()+"/.gsc_o/renders/render_"+currentDateTime()+".png"))
-        {
-            log("INFO","map render saved at "+getUserPath()+"/.gsc_o/renders/render_"+currentDateTime()+".png");
+    int renderMap(std::vector<std::vector<std::string>> terrain_vector,TilesIndex Tiles){
+        sf::RenderWindow window(sf::VideoMode(terrain_vector.size(),terrain_vector[0].size()),"Render window");
+        for (int i=0;i<terrain_vector.size();i++){
+            for (int j=0;j<terrain_vector[0].size();j++){
+                sf::Sprite sprite;
+                sprite.setPosition(j*16,i*16);
+                sprite.setTexture(Tiles.day_textures[Tiles.getIntIndex(terrain_vector[i][j])]);
+                window.draw(sprite);
+            };
+        };
+        sf::Texture render;
+        render.create(window.getSize().x, window.getSize().y);
+        render.update(window);
+        if (render.copyToImage().saveToFile(getUserPath()+"/.gsc_o/renders/render_"+currentDateTime()+".png")){
+            log("INFO","Render saved at "+getUserPath()+"/.gsc_o/renders/render_"+currentDateTime()+".png");
             return 0;
         };
+        log("ERROR","Failed to save render");
         return 1;
     };
 
@@ -206,6 +215,4 @@ class GSC_Functions{
         log("ERROR","Failed to save screenshot");
         return 1;
     };
-
-    
 };
