@@ -341,6 +341,7 @@ void mainLoop(){
                 message_timer=0;
             };
             if (debug){
+                HUDdisplay.drawSquare(window,{0,0},{128,128});
                 if (debug_page==9&&debug_choice==0){
                 if (event.key.code==sf::Keyboard::Right){
                     if (time_otd == 'd'){
