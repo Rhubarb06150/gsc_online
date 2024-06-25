@@ -1326,6 +1326,32 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                                 output_message="Can't convert result to int";
                             };
                         };
+                        if (choice==1){
+                            std::string width_ask;
+                            int width_convert;
+                            try{
+                                width_ask=askText("Map width?");
+                                width_convert = std::stoi(width_ask);
+                                map_width=width_convert;
+                            }catch (std::exception &err){
+                                functions.log("ERROR","Can't convert '"+width_ask+"' to int.");
+                                message_timer=0;
+                                output_message="Can't convert result to int";
+                            };
+                        };
+                        if (choice==2){
+                            std::string height_ask;
+                            int height_convert;
+                            try{
+                                height_ask=askText("Map width?");
+                                height_convert = std::stoi(height_ask);
+                                map_height=height_convert;
+                            }catch (std::exception &err){
+                                functions.log("ERROR","Can't convert '"+height_ask+"' to int.");
+                                message_timer=0;
+                                output_message="Can't convert result to int";
+                            };
+                        };
                     };
                     if (choice==5){
                         std::string wanted_map=askPath(std::filesystem::absolute("."),event,window);
