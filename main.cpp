@@ -251,7 +251,8 @@ void mainLoop(){
                     player_pos[0]+=4;
                 };
             }else{SoundManager.soundEffect("COLLISION");}
-                walkingr=true;
+            walkingr=true;
+            walking=true;
             //player_state="right";
         }if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){ 
             if(player_pos[0]>0){
@@ -260,6 +261,7 @@ void mainLoop(){
                 };
             }else{SoundManager.soundEffect("COLLISION");}
             walkingl=true;
+            walking=true;
             //player_state="left";
         };
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){ 
@@ -269,6 +271,7 @@ void mainLoop(){
                 };
             }else{SoundManager.soundEffect("COLLISION");}
             walkingd=true;
+            walking=true;
             
             //if (player_state!="left"&&player_state!="right"&&player_state!="left1"&&player_state!="right1"){
                 //player_state="front";
@@ -280,6 +283,7 @@ void mainLoop(){
                 };
             }else{SoundManager.soundEffect("COLLISION");}
             walkingu=true;
+            walking=true;
             //if (player_state!="left"&&player_state!="right"&&player_state!="left1"&&player_state!="right1"){
                 //player_state="back";
             //};
