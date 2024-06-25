@@ -251,7 +251,11 @@ class HUD{
             bar.setPosition({pos0br,bar_pos});
             window.draw(bar);
         };
-        sf::RectangleShape fill({size[0]-64,size[1]-64});
+        float fx;
+        fx=size[0]-64;
+        float fy;
+        fy=size[1]-64;
+        sf::RectangleShape fill({fx,fy});
         fill.setFillColor({248,248,248});
         fill.setPosition(pos0tl+32,pos1tl+32);
         window.draw(fill);
