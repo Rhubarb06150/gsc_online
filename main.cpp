@@ -1228,7 +1228,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                         }else if(choice==1){
                             map_width++;
                             for (int i=0;i<terrain_vector.size();i++){
-                                terrain_vector[i].push_back(Tiles.tiles[i][2]);
+                                terrain_vector[i].push_back(Tiles.tiles[default_tile_index][2]);
                             };
                         }else if(choice==2){
                             if (map_height>1){
