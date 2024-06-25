@@ -1196,6 +1196,42 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
         {
             if (event.type==sf::Event::KeyPressed){
                 if (menu_show){
+
+                /////////////////////////////////////////:
+                //DO ACTION
+
+                if (event.key.code==sf::Keyboard::F5||event.key.code==sf::Keyboard::X){
+                };
+
+                if (event.key.code==sf::Keyboard::Left){
+                    if (choice==0){
+                        if (camera_speed>4){
+                            camera_speed--;
+                        };
+                    }else if(choice==1){
+                        if (map_width>1){
+                            map_width--;
+                            for (int i = 0;i<map_height;i++){
+                            terrain_vector[i].pop_back();
+                            };
+                        };
+                    }else if(choice==2){
+                        if (map_height>1){
+                            map_height--;
+                            terrain_vector.pop_back();
+                        };
+                    }else if(choice==3){
+                        if (default_tile_index>0){
+                            default_tile_index--;
+                        };
+                    }else if(choice==4){
+                        if (selected_tile_index>0){
+                            selected_tile_index--;
+                        };
+                    };
+                };
+                };
+                if (menu_show){
                     if (event.key.code==sf::Keyboard::Up){
                         if (choice>0){
                             choice--;
@@ -1342,43 +1378,8 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
             output_message="Placed "+Tiles.getTileName(terrain_vector[real_pos_y][real_pos_x])+" ("+terrain_vector[real_pos_y][real_pos_x]+")";
             message_timer=0;
         };
-        if (menu_show){
 
-            /////////////////////////////////////////:
-            //DO ACTION
-            
-            if (event.key.code==sf::Keyboard::F5||event.key.code==sf::Keyboard::X){
-            };
-
-            if (event.key.code==sf::Keyboard::Left){
-                if (choice==0){
-                    if (camera_speed>4){
-                        camera_speed--;
-                    };
-                }else if(choice==1){
-                    if (map_width>1){
-                        map_width--;
-                        for (int i = 0;i<map_height;i++){
-                        terrain_vector[i].pop_back();
-                        };
-                    };
-                }else if(choice==2){
-                    if (map_height>1){
-                        map_height--;
-                        terrain_vector.pop_back();
-                    };
-                }else if(choice==3){
-                    if (default_tile_index>0){
-                        default_tile_index--;
-                    };
-                }else if(choice==4){
-                    if (selected_tile_index>0){
-                        selected_tile_index--;
-                    };
-                };
-            };
-
-        }else{
+        if(!menu_show){
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
             player_pos[0]+=camera_speed;
             };
