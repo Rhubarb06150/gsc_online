@@ -1326,6 +1326,9 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                             int camera_convert;
                             try{
                                 camera_ask=askText("Camera speed?");
+                                if (camera_ask==""){
+                                    break;
+                                }
                                 camera_convert = std::stoi(camera_ask);
                                 camera_speed=camera_convert;
                             }catch (std::exception &err){
@@ -1339,6 +1342,9 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                             int width_convert;
                             try{
                                 width_ask=askText("Map width?");
+                                if (width_ask==""){
+                                    break;
+                                }
                                 width_convert = std::stoi(width_ask);
                                 if (width_convert<=0){//REFUSE NULL OR NEGATIVE VALUE
                                     functions.log("ERROR","Can't enter a negative or null value as map width");
@@ -1372,6 +1378,9 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                             int height_convert;
                             try{
                                 height_ask=askText("Map height?");
+                                if (height_ask==""){
+                                    break;
+                                }
                                 height_convert = std::stoi(height_ask);
                                 if (height_convert<=0){//REFUSE NULL OR NEGATIVE VALUE
                                     functions.log("ERROR","Can't enter a negative or null value as map height");
