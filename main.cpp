@@ -754,6 +754,11 @@ std::string askText(std::string caption){
                     return "";
                 };
             };
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::LControl)||sf::Keyboard::isKeyPressed(sf::Keyboard::RControl)){
+                if (event.type==sf::Event::KeyPressed&&event.key.code==sf::Keyboard::C){
+                    return "";
+                };
+            };
             text_input=takeLetter(text_input);
         };
         window.clear(sf::Color(248,248,248));
