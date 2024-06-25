@@ -186,6 +186,7 @@ class GSC_Functions{
         sf::FloatRect visibleArea(0,0,terrain_vector[0].size()*16,terrain_vector.size()*16);
         window.setView(sf::View(visibleArea));
         window.setSize(sf::Vector2u(terrain_vector[0].size()*16,terrain_vector.size()*16));
+        window.clear();
         for (int i=0;i<terrain_vector.size();i++){
             for (int j=0;j<terrain_vector[0].size();j++){
                 sf::Sprite sprite;
@@ -194,6 +195,7 @@ class GSC_Functions{
                 window.draw(sprite);
             };
         };
+        window.display();
         sf::Texture render;
         render.create(window.getSize().x, window.getSize().y);
         render.update(window);
