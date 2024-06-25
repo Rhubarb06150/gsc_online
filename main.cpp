@@ -1216,7 +1216,13 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
         while (window.pollEvent(event))//level editor true loop
         {
             if (event.type==sf::Event::KeyPressed){
+
+                if (event.key.code==sf::Keyboard::RShift){
+                    menu_show=!menu_show;
+                };
+
                 if (menu_show){
+
                     if (event.key.code==sf::Keyboard::Left){
                         if (choice==0){
                             if (camera_speed>1){
@@ -1275,26 +1281,21 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                                 selected_tile_index++;
                             };
                         };
-                    };
-                    if (event.key.code==sf::Keyboard::Down){
+                    }else if (event.key.code==sf::Keyboard::Down){
                         if (choice==actions.size()-1){
                             choice=0;
                         }else{
                             choice++;
                         };
-                    }
-                    else if (event.key.code==sf::Keyboard::Up){
+                    }else if (event.key.code==sf::Keyboard::Up){
                         if (choice==0){
                             choice=actions.size()-1;
                         }else{
                             choice--;
                         }
                     };
-                };
 
-                if (event.key.code==sf::Keyboard::RShift){
-                    menu_show=!menu_show;
-                };
+                }else{
 
                 if (event.key.code==sf::Keyboard::F3){
                     int real_pos_x=player_pos[0]/64;
@@ -1468,6 +1469,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                 };//END OF IF F5 / X  
             if(event.key.code==sf::Keyboard::T){
                 help_tiles_show=!help_tiles_show;//show/hide the tile viewer
+            };
             };
             };//END IF MENU SHOW
         };//ENF OF KEYPRESSED
