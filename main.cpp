@@ -1319,7 +1319,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                             camera_speed=camera_ask;
                         }
                         catch (std::exception &err){
-                            functions.log("ERROR",err.what());
+                            functions.log("ERROR","Can't convert '"+std::to_string(camera_ask)+"' to int.");
                             message_timer=0;
                             output_message="Can't convert result to int";
                         };
