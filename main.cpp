@@ -1248,7 +1248,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                             map_width=init_size;
                     };};};
                     if (choice==6){
-                        std::string save_map_path=functions.getUserPath()+".gsc_o/maps/"+askText("Map name?")+".lv";
+                        std::string save_map_path=functions.getUserPath()+"/.gsc_o/maps/"+askText("Map name?")+".lv";
                         functions.saveMap(terrain_vector,save_map_path);
                         if (!std::filesystem::is_regular_file(save_map_path)){
                             output_message="Failed to save map!";
