@@ -182,6 +182,8 @@ class GSC_Functions{
 
     int renderMap(std::vector<std::vector<std::string>> terrain_vector){
         sf::Texture texture;
+        texture.setRepeated(true);
+        texture.loadFromFile("../assets/tiles/morning.png");
         texture.create(terrain_vector.size(), terrain_vector[0].size());
         if (texture.copyToImage().saveToFile(getUserPath()+"/.gsc_o/renders/render_"+currentDateTime()+".png"))
         {
