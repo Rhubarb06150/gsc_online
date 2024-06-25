@@ -710,7 +710,6 @@ std::string takeLetter(sf::String text_input){
                 text_input.erase(text_input.getSize()-1,1);
             };
         }else if (event.text.unicode<128){
-            std::cout << event.text.unicode << std::endl;
             text_input+=event.text.unicode;
         };
     };
@@ -767,7 +766,7 @@ std::string askText(std::string caption){
         };
         window.display();
     }while(true);
-    return "e";
+    return text_input;
 };
 
 int randomPatternLoop(){
@@ -1250,7 +1249,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                         };
                     };
                     if (choice==6){
-                        functions.saveMap(terrain_vector,cur_map);
+                        functions.saveMap(terrain_vector,askText("Map name?"));
                         output_message="Your map has been saved";
                         functions.log("EDITOR","Map saved at "+cur_map);
                         message_timer=0;

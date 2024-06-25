@@ -141,12 +141,12 @@ class GSC_Functions{
             };
         };
         map_file.close();
-        std::cout << "map saved at /home/rhubarb/.gsc_o/maps/"+cur_map+"_"+currentDateTime()+".lv" << std::endl;
+        std::cout << "map saved at "+getUserPath()+"/.gsc_o/maps/"+cur_map+"_"+currentDateTime()+".lv" << std::endl;
         return 0;
     };
 
     int saveMap(std::vector<std::vector<std::string>> terrain_tiles, std::string map_path){
-        std::ofstream map_file(map_path);
+        std::ofstream map_file(getUserPath()+".gsc_o/maps/"+map_path+".lv");
         for (int i = 0; i < terrain_tiles.size() ; i++){
             for (int j = 0; j < terrain_tiles[i].size();j++){
                 map_file << terrain_tiles[i][j];
