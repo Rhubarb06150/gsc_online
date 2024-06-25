@@ -1718,7 +1718,7 @@ int modManager(){
 
 int main_menu(){
     int debug_x;
-    debug_x=160;
+    debug_x=window.getSize().x-160;
     int choice = 0;
     bool choosen=false;
     int max_choice;
@@ -1810,8 +1810,6 @@ int main_menu(){
         HUDdisplay.showTextBOW("Open game folder",{64,384},window);
         if (mods_list.size()>0){
         HUDdisplay.showTextBOW("Mods",{64,416},window);
-        if (debug_launch)
-        HUDdisplay.showTextWOB("DEBUG",{debug_x,0},window);
         };
         if (event.key.code==sf::Keyboard::F1){
             functions.takeScreenshot(window);
@@ -1822,6 +1820,8 @@ int main_menu(){
         if (message_timer<=60){
             HUDdisplay.showTextDEBUG(output_message,{0,560},window);
         };
+        if (debug_launch)
+        HUDdisplay.showTextWOB("DEBUG",{debug_x,0},window);
         window.display();
         if (choosen)return 0;
     }
