@@ -1313,13 +1313,15 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                     };};
                     if (event.key.code==sf::Keyboard::F5||event.key.code==sf::Keyboard::X){
                     if (choice==0){
-                        int camera_ask;
+                        std::string camera_ask;
+                        int camera_convert;
                         try{
-                            camera_ask=std::stoi(askText("Camera speed?"));
-                            camera_speed=camera_ask;
+                            camera_ask=askText("Camera speed?");
+                            camera_convert = std::stoi(camera_ask);
+                            camera_speed=camera_convert;
                         }
                         catch (std::exception &err){
-                            functions.log("ERROR","Can't convert '"+std::to_string(camera_ask)+"' to int.");
+                            functions.log("ERROR","Can't convert '"+std::to_string(camera_convert)+"' to int.");
                             message_timer=0;
                             output_message="Can't convert result to int";
                         };
