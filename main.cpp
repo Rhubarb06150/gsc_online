@@ -1821,7 +1821,20 @@ int main_menu(){
 };
 
 int pauseMenu(){
+    int choice;
     do{
+        while (window.pollEvent(event))
+        {
+            if (event.type==sf::Event::KeyPressed){
+                if (event.key.code==sf::Keyboard::Up){
+                    if (choice==7){
+                        choice=0;
+                    }else{
+                        choice++;
+                    };
+                };
+            };
+        };
         index_frame++;
         window.clear();
         terrain.showTerrain(terrain_vector,player_pos,time_otd,window,player_offset,(debug&&debug_page==9&&debug_choice==2),index_frame);
@@ -1829,7 +1842,9 @@ int pauseMenu(){
         player.showPlayer(player_type,player_state,window);
         int screen_width=window.getSize().x;
         HUDdisplay.drawSquare(window,{screen_width-320,0},{320,576});
+
         HUDdisplay.showTextBOW(username,{screen_width-256,320},window);
+        HUDdisplay.showCursor({screen_width-288,64+(choice*32)},window);
         window.display();
     }while(true);
 };
