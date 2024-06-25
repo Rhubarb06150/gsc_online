@@ -1332,7 +1332,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                             try{
                                 width_ask=askText("Map width?");
                                 width_convert = std::stoi(width_ask);
-                                if (width_convert<=0){
+                                if (width_convert<=0){//REFUSE NULL OR NEGATIVE VALUE
                                     functions.log("ERROR","Can't enter a negative or null value as map width");
                                     message_timer=0;
                                     output_message="Can't enter a negative value, or 0.";
@@ -1365,7 +1365,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                             try{
                                 height_ask=askText("Map height?");
                                 height_convert = std::stoi(height_ask);
-                                if (height_convert<=0){
+                                if (height_convert<=0){//REFUSE NULL OR NEGATIVE VALUE
                                     functions.log("ERROR","Can't enter a negative or null value as map height");
                                     message_timer=0;
                                     output_message="Can't enter a negative value, or 0.";
@@ -1391,6 +1391,8 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                                 message_timer=0;
                                 output_message="Can't convert result to int";
                             };
+                        };
+                        if (choice==3){
                         };
                     };
                     if (choice==5){
