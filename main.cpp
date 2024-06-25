@@ -811,29 +811,28 @@ int randomPatternLoop(){
                         choice=1;
                     };
                 };
-            };
-        if (isPressed(event,sf::Keyboard::F5)==0){
-            if (pos1set&&pos2set){
-                for (int i = 0; i<terrain_vector.size();i++){
-                for (int j = 0; j<terrain_vector[i].size();j++){
-                    if ((pos1[0]<=j&&j<=pos2[0])&&(pos1[1]<=i&&i<=pos2[1])){
-                        if (rand()%chance+1==chance){
-                        terrain_vector[i][j]=Tiles.tiles[selected_tile_index][2];
+                if (event.key.code==sf::Keyboard::F5){
+                if (pos1set&&pos2set){
+                    for (int i = 0; i<terrain_vector.size();i++){
+                    for (int j = 0; j<terrain_vector[i].size();j++){
+                        if ((pos1[0]<=j&&j<=pos2[0])&&(pos1[1]<=i&&i<=pos2[1])){
+                            if (rand()%chance+1==chance){
+                            terrain_vector[i][j]=Tiles.tiles[selected_tile_index][2];
+                            };
+                        };
                         };
                     };
-                    };
-                };
-                menu_show=false;
-                break;
-                output_message="The random pattern has been applied";
+                    menu_show=false;
+                    break;
+                    output_message="The random pattern has been applied";
+                    message_timer=0;
+                }else{
+                output_message="You need to set Pos1 and Pos2 first!";
                 message_timer=0;
-            }else{
-            output_message="You need to set Pos1 and Pos2 first!";
-            message_timer=0;
-            return 0;
+                return 0;
+                };
+                };
             };
-        };
-
         window.clear(sf::Color(148,148,148));
         HUDdisplay.editorBG(window);
         terrain.showTerrain(terrain_vector,player_pos,time_otd,window,player_offset,true,index_frame);
