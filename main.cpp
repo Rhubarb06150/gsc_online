@@ -1252,7 +1252,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                         functions.saveMap(terrain_vector,save_map_path);
                         if (!std::filesystem::is_regular_file(save_map_path)){
                             output_message="Failed to save map!";
-                            functions.log("ERROR","Failed to save map at "+save_map_path+"\n, verify if you have the rights to save in this path.");
+                            functions.log("ERROR","Failed to save map at "+save_map_path+",\n verify if you have the rights to save in this path.");
                         }else{
                             output_message="Map saved at "+save_map_path;
                             functions.log("EDITOR","Map saved at "+save_map_path);
