@@ -63,6 +63,7 @@
 #include <filesystem>
 #include <algorithm>
 #include <iostream>
+#include <string.h>
 #include <clocale>
 #include <variant>
 #include <vector>
