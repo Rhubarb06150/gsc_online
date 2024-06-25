@@ -1279,7 +1279,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
             };
         };//END OF MENU ACTIONS
 
-        if (isPressed(event,sf::Keyboard::C)==0){
+        if (event.key.code==sf::Keyboard::C){
             int real_pos_x=player_pos[0]/64;
             int real_pos_y=player_pos[1]/64;
             copied_tile=terrain_vector[real_pos_y][real_pos_x];
@@ -1300,7 +1300,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
             };
         };
 
-        if (isPressed(event,sf::Keyboard::F3)==0){
+        if (event.key.code==sf::Keyboard::F3){
             int real_pos_x=player_pos[0]/64;
             int real_pos_y=player_pos[1]/64;
             pos1 = {real_pos_x,real_pos_y};
@@ -1308,7 +1308,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
             pos1set=true;
             message_timer=0;
         };
-        if (isPressed(event,sf::Keyboard::F4)==0){
+        if (event.key.code==sf::Keyboard::F4){
             int real_pos_x=player_pos[0]/64;
             int real_pos_y=player_pos[1]/64;
             if (real_pos_x>pos1[0]&&real_pos_y>pos1[1]){
@@ -1347,10 +1347,10 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
             /////////////////////////////////////////:
             //DO ACTION
             
-            if (isPressed(event,sf::Keyboard::F5)==0||isPressed(event,sf::Keyboard::X)==0){
+            if (event.key.code==sf::Keyboard::F5||event.key.code==sf::Keyboard::X){
             };
 
-            if (isPressed(event,sf::Keyboard::Left)==0){
+            if (event.key.code==sf::Keyboard::Left){
                 if (choice==0){
                     if (camera_speed>4){
                         camera_speed--;
@@ -1472,11 +1472,11 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
             HUDdisplay.showTextDEBUG("      Press F6 to exit        ",{32,384},window);
             HUDdisplay.showTextDEBUG("                              ",{32,400},window);
             
-            if (isPressed(event,sf::Keyboard::F6)==0){
+            if (event.key.code==sf::Keyboard::F6){
                 help_tiles_show=false;
             };
         };
-        if (isPressed(event,sf::Keyboard::F1)==0){
+        if (event.key.code==sf::Keyboard::F1){
             functions.takeScreenshot(window);
             SoundManager.soundEffect("PRESS");
             output_message="Screenshot saved!";
@@ -1638,7 +1638,7 @@ int main_menu(){
         if (mods_list.size()>0){
         HUDdisplay.showTextBOW("Mods",{64,416},window);
         };
-        if (isPressed(event,sf::Keyboard::F1)==0){
+        if (event.key.code==sf::Keyboard::F1){
             functions.takeScreenshot(window);
             SoundManager.soundEffect("PRESS");
             output_message="Screenshot saved!";
