@@ -1463,8 +1463,8 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
             }else{
                 int x_size=0;
                 int y_size=0;
-                x_size=pos2[0]-pos1[0];
-                y_size=pos2[1]-pos1[1];
+                x_size=pos2[0]-pos1[0]+1;
+                y_size=pos2[1]-pos1[1]+1;
                 HUDdisplay.showTextDEBUG("Select square size: "+std::to_string(x_size*y_size)+" tiles",{0,64},window);
             }
 
