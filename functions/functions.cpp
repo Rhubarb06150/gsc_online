@@ -178,7 +178,17 @@ class GSC_Functions{
         struct passwd *pw = getpwuid(getuid());
         std::string homedir = pw->pw_dir;
         return homedir;
-    }
+    };
+
+    int renderMap(std::vector<std::vector<std::string>> terrain_vector){
+        sf::Texture texture;
+        texture.create(terrain_vector.size(), terrain_vector[0].size());
+        if (texture.copyToImage().saveToFile(getUserPath()+"/.gsc_o/renders/render_"+currentDateTime()+".png"))
+        {
+            log("INFO","map render saved at "+getUserPath()+"/.gsc_o/renders/render_"+currentDateTime()+".png");
+            return 0;
+        };
+    };
 
     int takeScreenshot(sf::RenderWindow& render_window){
 
