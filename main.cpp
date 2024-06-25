@@ -1222,6 +1222,30 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                                 selected_tile_index--;
                             };
                         };
+                    }else if (event.key.code==sf::Keyboard::Right){
+                        if (choice==0){
+                            camera_speed++;
+                        }else if(choice==1){
+                            if (map_width>1){
+                                map_width--;
+                                for (int i = 0;i<map_height;i++){
+                                terrain_vector[i].pop_back();
+                                };
+                            };
+                        }else if(choice==2){
+                            if (map_height>1){
+                                map_height--;
+                                terrain_vector.pop_back();
+                            };
+                        }else if(choice==3){
+                            if (default_tile_index>0){
+                                default_tile_index--;
+                            };
+                        }else if(choice==4){
+                            if (selected_tile_index>0){
+                                selected_tile_index--;
+                            };
+                        };
                     };
                     if (event.key.code==sf::Keyboard::Down){
                         if (choice==actions.size()-1){
