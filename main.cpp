@@ -288,7 +288,6 @@ void mainLoop(){
                 //player_state="back";
             //};
         };
-        //if ()
     }else{
         walking=false;moving_timer=20;
     };
