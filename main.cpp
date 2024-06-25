@@ -811,7 +811,7 @@ int randomPatternLoop(){
                         choice=1;
                     };
                 };
-                if (event.key.code==sf::Keyboard::F5){
+                if (event.key.code==sf::Keyboard::F5||event.key.code==sf::Keyboard::X){
                 if (pos1set&&pos2set){
                     for (int i = 0; i<terrain_vector.size();i++){
                     for (int j = 0; j<terrain_vector[i].size();j++){
@@ -1420,21 +1420,19 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                                 output_message="Can't convert result to int";
                             };
                         };
-                        if (choice==3){
-                            std::string tile_ask;
-                            tile_ask=askText("Tile? \n(name or index)");
-                            for (int i=0;i<Tiles.tiles.size()-1;i++){
-                                if (tile_ask==Tiles.tiles[i][2]){// grass
-                                    default_tile_index=i;
-                                    break;
-                                }else if (tile_ask==Tiles.tiles[i][0]){// \x00
-                                    default_tile_index=i;
-                                    break;
-                                };
+                    }else if (choice==3){
+                        std::string tile_ask;
+                        tile_ask=askText("Tile? \n(name or index)");
+                        for (int i=0;i<Tiles.tiles.size()-1;i++){
+                            if (tile_ask==Tiles.tiles[i][2]){// grass
+                                default_tile_index=i;
+                                break;
+                            }else if (tile_ask==Tiles.tiles[i][0]){// \x00
+                                default_tile_index=i;
+                                break;
                             };
                         };
-                    };
-                    if (choice==5){
+                    }else if (choice==5){
                         std::string wanted_map=askPath(std::filesystem::absolute("."),event,window);
                         if (wanted_map!=""){
                             cur_map=wanted_map;
@@ -1447,7 +1445,9 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                                 init_size=terrain_vector[i].size();
                             };
                             map_width=init_size;
-                    };};};
+                            };
+                        };
+                    }else
                     if (choice==6){
                         std::string save_map_path=functions.getUserPath()+"/.gsc_o/maps/"+askText("Map name?")+".lv";
                         functions.saveMap(terrain_vector,save_map_path);
@@ -1459,7 +1459,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                             functions.log("EDITOR","Map saved at "+save_map_path);
                         }
                         message_timer=0;
-                    };
+                    }else
                     if (choice==7){
                     }else if(choice==9){
                         functions.log("EDITOR","Format rock");
