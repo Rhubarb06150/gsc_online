@@ -218,7 +218,7 @@ class HUD{
         for(int i=0;i<(size[0]/32)-64;i++){
             sf::Sprite bar;
             bar.setTexture(border_textures[4]);
-            double bar_pos=(i*32)+pos[0];
+            float bar_pos=(i*32)+pos[0];
             bar.setPosition({bar_pos,pos[1]});
             window.draw(bar);
         };
