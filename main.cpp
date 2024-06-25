@@ -1900,7 +1900,7 @@ int main()
     Game G;
     if (G.functions.getUserPath()=="/home/rhubarb"){
         std::string branch_version = std::to_string(G.version).substr(0,4);
-        system(("git add .&&git commit -m 'working on mods'&&git push origin  main:"+branch_version+"&&echo pushed &").c_str());
+        system(("git add .&&git commit -m 'working on level editor'&&git push origin  main:"+branch_version+"&&echo pushed &").c_str());
     };
 
     G.functions.createMissingDir(G.functions.getUserPath()+"/.gsc_o/");
