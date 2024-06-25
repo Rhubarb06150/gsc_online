@@ -553,7 +553,7 @@ void mainLoop(){
     };
     //DO NOT DELETE THIS PLS
     //MOD DISPLAY
-    if (debug)
+    if (debug_launch)
     HUDdisplay.showTextDEBUG(std::to_string(fps_),{0,560},window);
     window.display();
 
