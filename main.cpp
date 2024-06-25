@@ -1459,13 +1459,13 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
             HUDdisplay.showTextDEBUG(std::to_string(terrain_vector.size()*terrain_vector[0].size())+" tiles",{0,16},window);
             HUDdisplay.showTextDEBUG("X: "+std::to_string(player_pos[0]/64)+" Y: "+std::to_string(player_pos[1]/64),{0,32},window);
             if (!pos1set&&!pos1set){
-                HUDdisplay.showTextDEBUG("Pos1 and Pos2 not defiened yet.",{0,32},window);
+                HUDdisplay.showTextDEBUG("Pos1 and Pos2 not defiened yet.",{0,64},window);
             }else{
                 int x_size=0;
                 int y_size=0;
                 x_size=pos2[0]-pos1[0];
                 y_size=pos2[1]-pos1[1];
-                HUDdisplay.showTextDEBUG("Select square size: "+std::to_string(x_size*y_size)+" tiles",{0,32},window);
+                HUDdisplay.showTextDEBUG("Select square size: "+std::to_string(x_size*y_size)+" tiles",{0,64},window);
             }
 
             HUDdisplay.showTextDEBUG("Hovering tile: "+Tiles.getTileName(terrain_vector[player_pos[1]/64][player_pos[0]/64])+" ("+terrain_vector[player_pos[1]/64][player_pos[0]/64]+")",{0,48},window);
