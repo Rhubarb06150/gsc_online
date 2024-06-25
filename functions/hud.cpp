@@ -201,12 +201,12 @@ class HUD{
         corner_br.setScale(4.f,4.f);
         float pos0tl=pos[0];
         float pos1tl=pos[1];
-        float pos0tr=pos[0]+size[0];
-        float pos1tr=pos[1];
+        float pos0tr=pos[0]+size[0]-64;
+        float pos1tr=pos[1]-64;
         float pos0bl=pos[0];
         float pos1bl=pos[1]+size[1];
-        float pos0br=pos[0]+size[0];
-        float pos1br=pos[1]+size[1];
+        float pos0br=pos[0]+size[0]-64;
+        float pos1br=pos[1]+size[1]-64;
         corner_tl.setPosition({pos0tl,pos1tl});
         corner_tr.setPosition({pos0tr,pos1tr});
         corner_bl.setPosition({pos0bl,pos1bl});
