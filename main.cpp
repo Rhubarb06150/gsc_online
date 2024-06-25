@@ -853,10 +853,12 @@ int randomPatternLoop(){
         HUDdisplay.showTextDEBUG("  Replace? ",{32,144},window);
         if (replace){
             if (choice==1){
-                HUDdisplay.showTextSELDEBUG("yes        ",{208,144},window);
-            };
-        };
-        if (!replace){
+                HUDdisplay.showTextSELDEBUG("yes          ",{208,144},window);
+            }else{
+                HUDdisplay.showTextDEBUG("yes          ",{208,144},window);
+            }
+        }
+        else{
             HUDdisplay.showTextDEBUG("                        ",{32,160},window);
             HUDdisplay.showTextDEBUG("  Press F6 to cancel    ",{32,176},window);
             HUDdisplay.showTextDEBUG("                        ",{32,192},window);
