@@ -180,8 +180,20 @@ class GSC_Functions{
         std::string homedir = pw->pw_dir;
         return homedir;
     };
-
     int renderMap(std::vector<std::vector<std::string>> terrain_vector,TilesIndex Tiles){
+        //16384x16384
+        bool nope=false;
+        if (terrain_vector[0].size()*16>16384){
+            log("ERROR","Cant create render, width is too big!");
+            nope=true;
+        };
+        if (terrain_vector.size()*16>16384){
+            log("ERROR","Cant create render, height is too high!");
+            nope=true;
+        };
+        if (nope){
+            return 1;
+        };
         sf::RenderWindow window(sf::VideoMode(terrain_vector[0].size()*16,terrain_vector.size()*16),"Render window");
         sf::FloatRect visibleArea(0,0,terrain_vector[0].size()*16,terrain_vector.size()*16);
         window.setView(sf::View(visibleArea));
