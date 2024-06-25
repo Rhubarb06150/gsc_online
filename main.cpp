@@ -1345,6 +1345,11 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                             try{
                                 height_ask=askText("Map height?");
                                 height_convert = std::stoi(height_ask);
+                                if (height_convert<=0){
+                                    functions.log("ERROR","Can't enter a negative value, or 0.");
+                                    message_timer=0;
+                                    output_message="Can't enter a negative value, or 0.";
+                                };
                                 if (map_height<height_convert){
                                     while(map_height!=height_convert){//ADDING HEIGHT
                                         map_height++;
