@@ -742,6 +742,7 @@ std::string askText(std::string caption){
             };
             if (event.type==sf::Event::KeyPressed){
                 if (event.key.code==sf::Keyboard::Enter||event.key.code==sf::Keyboard::Return){
+                    std::cout << text_input.toAnsiString() << std::endl;
                     return text_input;
                 };
             };
