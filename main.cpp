@@ -742,7 +742,6 @@ std::string askText(std::string caption){
             };
             if (event.type==sf::Event::KeyPressed){
                 if (event.key.code==sf::Keyboard::Enter||event.key.code==sf::Keyboard::Return){
-                    std::cout << text_input.toAnsiString() << std::endl;
                     return text_input.toAnsiString();
                 };
             };
@@ -1320,7 +1319,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                             camera_speed=camera_ask;
                         }
                         catch (std::exception &err){
-                            std::cout << err.what() << std::endl;
+                            functions.log("ERROR",err.what());
                             message_timer=0;
                             output_message="Can't convert result to int";
                         };
