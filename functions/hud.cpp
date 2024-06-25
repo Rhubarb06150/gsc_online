@@ -216,6 +216,7 @@ class HUD{
         window.draw(corner_bl);
         window.draw(corner_br);
         for(int i=0;i<(size[0]/32)-64;i++){
+            std::cout << i << std::endl;
             sf::Sprite bar;
             bar.setTexture(border_textures[4]);
             float bar_pos;
