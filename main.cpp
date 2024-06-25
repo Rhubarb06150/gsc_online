@@ -266,9 +266,9 @@ void mainLoop(){
             }else{SoundManager.soundEffect("COLLISION");}
             walking=true;
             
-            if (player_state!="left"&&player_state!="right"&&player_state!="left1"&&player_state!="right1"){
+            //if (player_state!="left"&&player_state!="right"&&player_state!="left1"&&player_state!="right1"){
                 player_state="front";
-            };
+            //};
         }else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){   
             if(player_pos[1]>0){
                 if (Tiles.checkCollision(player_pos,'u',terrain_vector)==0){
@@ -276,9 +276,9 @@ void mainLoop(){
                 };
             }else{SoundManager.soundEffect("COLLISION");}
             walking=true;
-            if (player_state!="left"&&player_state!="right"&&player_state!="left1"&&player_state!="right1"){
+            //if (player_state!="left"&&player_state!="right"&&player_state!="left1"&&player_state!="right1"){
                 player_state="back";
-            };
+            //};
         };
     }else{
         walking=false;moving_timer=20;
