@@ -1397,10 +1397,10 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                             tile_ask=askText("Tile? \n(name or index)");
                             for (int i=0;i<Tiles.tiles.size()-1;i++){
                                 if (tile_ask==Tiles.tiles[i][2]){
-                                    selected_tile_index=Tiles.getIntIndex(Tiles.tiles[i][2]);//\x00
+                                    default_tile_index=Tiles.getIntIndex(Tiles.tiles[i][2]);//\x00
                                     break;
                                 }else if (tile_ask==Tiles.tiles[i][0]){
-                                    selected_tile_index=Tiles.getIntIndex(Tiles.getIndex(Tiles.tiles[i][2]));//grass
+                                    default_tile_index=Tiles.getIntIndex(Tiles.getIndex(Tiles.tiles[i][2]));//grass
                                     break;
                                 };
                             };
