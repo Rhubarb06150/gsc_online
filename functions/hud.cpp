@@ -267,7 +267,6 @@ class HUD{
     int getLetterIntIndex(char index){
         std::string fish;
         fish=index;
-        std::cout << fish << std::endl;
         for (int i = 0;i<letters_index.size();i++){
             if (letters_index[i][0]==fish){
                 return i;};

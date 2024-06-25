@@ -1935,6 +1935,7 @@ int show_debug_pause(){
 
 int main()
     {
+    setlocale(LC_ALL, "");
     Game G;
     if (G.functions.getUserPath()=="/home/rhubarb"){
         std::string branch_version = std::to_string(G.version).substr(0,4);
