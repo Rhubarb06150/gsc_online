@@ -186,8 +186,27 @@ class HUD{
         };
     };
 
-    int drawSquare(sf::RenderWindow& window){
-        
+    int drawSquare(sf::RenderWindow& window,std::vector<int> pos, std::vector<int> size){
+        sf::Sprite corner_tl;
+        sf::Sprite corner_tr;
+        sf::Sprite corner_bl;
+        sf::Sprite corner_br;
+        corner_tl.setTexture(border_textures[0]);
+        corner_tr.setTexture(border_textures[1]);
+        corner_bl.setTexture(border_textures[2]);
+        corner_br.setTexture(border_textures[3]);
+        corner_tl.setScale(4.f,4.f);
+        corner_tr.setScale(4.f,4.f);
+        corner_bl.setScale(4.f,4.f);
+        corner_br.setScale(4.f,4.f);
+        corner_tl.setPosition({pos[0],pos[1]});
+        corner_tr.setPosition({pos[0]+size[0],pos[1]});
+        corner_bl.setPosition({pos[0],pos[1]});
+        corner_br.setPosition({pos[0]+size[0],pos[1]+size[1]});
+        window.draw(corner_tl);
+        window.draw(corner_tr);
+        window.draw(corner_bl);
+        window.draw(corner_br);
         return 0;
     };
 
