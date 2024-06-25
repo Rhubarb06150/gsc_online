@@ -182,7 +182,7 @@ class GSC_Functions{
     };
 
     int renderMap(std::vector<std::vector<std::string>> terrain_vector,TilesIndex Tiles){
-        sf::RenderWindow window(sf::VideoMode(terrain_vector.size(),terrain_vector[0].size()),"Render window");
+        sf::RenderWindow window(sf::VideoMode(terrain_vector[0].size()*16,terrain_vector.size()*16),"Render window");
         for (int i=0;i<terrain_vector.size();i++){
             for (int j=0;j<terrain_vector[0].size();j++){
                 sf::Sprite sprite;
