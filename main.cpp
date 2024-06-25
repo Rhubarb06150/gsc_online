@@ -1468,7 +1468,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                         if (event.key.code==sf::Keyboard::T){
                             help_tiles_show=!help_tiles_show;//show/hide the tile viewer
                         };
-                    };//END OF F5 / X  
+                };//END OF F5 / X  
             };//END IF MENU SHOW
         };//ENF OF KEYPRESSED
         if (event.type == sf::Event::Closed){
