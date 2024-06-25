@@ -793,12 +793,16 @@ int randomPatternLoop(){
                         break;
                     };
                     if (event.key.code==sf::Keyboard::Right){
-                        chance++;
+                        if (choice==0){
+                            chance++;
+                        };
                     };
                     if (event.key.code==sf::Keyboard::Left){
-                        if (chance>1){
-                            chance--;
-                        }
+                        if (choice==0){
+                            if (chance>1){
+                                chance--;
+                            };
+                        };
                     };
                     if (event.key.code==sf::Keyboard::Up){
                         choice=0;
@@ -856,7 +860,8 @@ int randomPatternLoop(){
                 HUDdisplay.showTextSELDEBUG("yes          ",{208,144},window);
             }else{
                 HUDdisplay.showTextDEBUG("yes          ",{208,144},window);
-            }
+            };
+
         }
         else{
             if (choice==1){
