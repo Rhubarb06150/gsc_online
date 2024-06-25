@@ -1230,7 +1230,33 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                             HUDdisplay.editor_bg_index=0;
                         }else{
                             HUDdisplay.editor_bg_index++;
+                        };
+                    }else if(event.key.code==sf::Keyboard::O){
+                        std::string wanted_map=askPath(std::filesystem::absolute("."),event,window);
+                        if (wanted_map!=""){
+                            cur_map=wanted_map;
+                            functions.log("EDITOR","Loaded "+cur_map+" map");
+                            terrain_vector=terrain.terrainForm(terrain_vector,cur_map);
+                            map_height=terrain_vector.size();
+                            int init_size=terrain_vector[0].size();
+                            for (int i=0;i<map_height;i++){
+                                if (terrain_vector[i].size()<init_size){
+                                init_size=terrain_vector[i].size();
+                            };
+                            map_width=init_size;
+                            };
+                        };
+                    }else if (event.key.code==sf::Keyboard::S){
+                        std::string save_map_path=functions.getUserPath()+"/.gsc_o/maps/"+askText("Map name?")+".lv";
+                        functions.saveMap(terrain_vector,save_map_path); 
+                        if (!std::filesystem::is_regular_file(save_map_path)){
+                            output_message="Failed to save map!";
+                            functions.log("ERROR","Failed to save map at "+save_map_path+".\nYou should verify if you have the rights to save in this path.");
+                        }else{
+                            output_message="Map saved at "+save_map_path;
+                            functions.log("EDITOR","Map saved at "+save_map_path);
                         }
+                        message_timer=0;
                     };
                 };
             };
@@ -1373,9 +1399,9 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                                 functions.log("ERROR","Failed to save map at "+save_map_path+".\nYou should verify if you have the rights to save in this path.");
                             }else{
                                 output_message="Map saved at "+save_map_path;
+                                message_timer=0;
                                 functions.log("EDITOR","Map saved at "+save_map_path);
-                            }
-                            message_timer=0;
+                            };
                         }else if (choice==7){
 
                         }else if(choice==9){
@@ -1848,7 +1874,11 @@ int pauseMenu(){
                     }else{
                         choice--;
                     };
+                }else if (event.key.code==sf::Keyboard::F6){
+                    return 0;
                 };
+            }else if (event.Closed){
+                functions.quitGame(window);
             };
         };
         index_frame++;
