@@ -1198,7 +1198,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                 if (menu_show){
                     if (event.key.code==sf::Keyboard::Left){
                         if (choice==0){
-                            if (camera_speed>4){
+                            if (camera_speed>1){
                                 camera_speed--;
                             };
                         }else if(choice==1){
@@ -1226,11 +1226,9 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                         if (choice==0){
                             camera_speed++;
                         }else if(choice==1){
-                            if (map_width>1){
-                                map_width--;
-                                for (int i = 0;i<map_height;i++){
-                                terrain_vector[i].pop_back();
-                                };
+                            map_width++;
+                            for (int i=0;i<terrain_vector.size();i++){
+                                terrain_vector[i].push_back(Tiles.tiles[i][2]);
                             };
                         }else if(choice==2){
                             if (map_height>1){
