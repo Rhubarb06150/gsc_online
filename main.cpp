@@ -133,6 +133,7 @@ class Game{
 
         //DEBUG VARS
         bool debug;//when set to true, the debug menu is showesd up
+        bool debug_launch;
         int debug_page;//you can choose the debug page you want to display with this function
         int debug_choice;//used in debug page 9 for navigate throught options
         std::chrono::high_resolution_clock::time_point start;//used for fps measuring
@@ -335,7 +336,7 @@ void mainLoop(){
             if (event.key.code==sf::Keyboard::Escape){
                 pauseMenu();
             };
-            /*
+            if(debug_launch){
             if (event.key.code==sf::Keyboard::F2){
                 debug=!debug;
                 SoundManager.soundEffect("PRESS");
@@ -346,7 +347,7 @@ void mainLoop(){
                 }
                 message_timer=0;
             };
-            */
+            };
             if (debug){
                 if (debug_page==9&&debug_choice==0){
                 if (event.key.code==sf::Keyboard::Right){
@@ -1945,6 +1946,7 @@ int main(int argc, char** argv)
         if (strcmp(argv[1],"debug")==0){
             G.functions.log("DEBUG","Launching in debug mode.");
             G.debug=true;
+            G.debug_launch=true;
         };
     };
     if (G.functions.getUserPath()=="/home/rhubarb"){
