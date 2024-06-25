@@ -1458,7 +1458,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
         }else{
             HUDdisplay.showTextDEBUG(std::to_string(terrain_vector.size()*terrain_vector[0].size())+" tiles",{0,16},window);
             HUDdisplay.showTextDEBUG("X: "+std::to_string(player_pos[0]/64)+" Y: "+std::to_string(player_pos[1]/64),{0,32},window);
-            if (pos1set&&pos1set){
+            if (!pos1set&&!pos1set){
                 HUDdisplay.showTextDEBUG("Pos1 and Pos2 not defiened yet.",{0,32},window);
             }else{
                 int x_size=0;
