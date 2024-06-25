@@ -1466,10 +1466,10 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                             showEditorControls();
                         };
                 };//END OF F5 / X  
+                if (event.key.code==sf::Keyboard::T){
+                    help_tiles_show=!help_tiles_show;//show/hide the tile viewer
+                };
             };//END IF MENU SHOW
-            if (event.key.code==sf::Keyboard::T){
-                help_tiles_show=!help_tiles_show;//show/hide the tile viewer
-            };
         };//ENF OF KEYPRESSED
         if (event.type == sf::Event::Closed){
             functions.quitGame(window);
