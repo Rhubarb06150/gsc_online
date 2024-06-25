@@ -1849,7 +1849,7 @@ int pauseMenu(){
         int screen_width=window.getSize().x;
         HUDdisplay.drawSquare(window,{screen_width-320,0},{320,576});
         HUDdisplay.showTextBOW(username,{screen_width-256,320},window);
-        HUDdisplay.showTextBOW("Pokédex\n\nPokémon\n\nSAC\n\n\n\nSAUVER\n\nOPTIONS\n\nSORTIR",{screen_width-256,64},window);
+        HUDdisplay.showTextBOW("Pokédex\n\nPokémon\n\nSAC\n\npkmts\n\n\n\nSAUVER\n\nOPTIONS\n\nSORTIR",{screen_width-256,64},window);
         HUDdisplay.showCursor({screen_width-288,64+(choice*64)},window);
         window.display();
     }while(true);
