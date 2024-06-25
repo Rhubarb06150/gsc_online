@@ -1847,8 +1847,8 @@ int main_menu(){
         if (message_timer<=60){
             HUDdisplay.showTextDEBUG(output_message,{0,560},window);
         };
-        if (debug_launch)
-        HUDdisplay.showTextWOB("DEBUG",{debug_x,0},window);
+        //if (debug_launch)
+        //    HUDdisplay.showTextWOB("DEBUG",{debug_x,0},window);
         window.display();
         if (choosen)return 0;
     }
