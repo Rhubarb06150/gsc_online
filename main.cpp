@@ -270,9 +270,9 @@ void mainLoop(){
         }   
         else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){   
             if(player_pos[1]>0){
-                if (Tiles.checkCollision(player_pos,'u',terrain_vector)==0){
-                    player_pos[1]-=4;
-                };
+            if (Tiles.checkCollision(player_pos,'u',terrain_vector)==0){
+                player_pos[1]-=4;
+            };
             }else{SoundManager.soundEffect("COLLISION");}
             walking=true;
             player_state="back";
