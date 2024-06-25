@@ -1197,60 +1197,42 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
             if (event.type==sf::Event::KeyPressed){
                 if (menu_show){
 
-                /////////////////////////////////////////:
-                //DO ACTION
+                    /////////////////////////////////////////:
+                    //DO ACTION
 
-                if (event.key.code==sf::Keyboard::F5||event.key.code==sf::Keyboard::X){
-                };
-
-                if (event.key.code==sf::Keyboard::Left){
-                    if (choice==0){
-                        if (camera_speed>4){
-                            camera_speed--;
-                        };
-                    }else if(choice==1){
-                        if (map_width>1){
-                            map_width--;
-                            for (int i = 0;i<map_height;i++){
-                            terrain_vector[i].pop_back();
+                    if (event.key.code==sf::Keyboard::Left){
+                        if (choice==0){
+                            if (camera_speed>4){
+                                camera_speed--;
+                            };
+                        }else if(choice==1){
+                            if (map_width>1){
+                                map_width--;
+                                for (int i = 0;i<map_height;i++){
+                                terrain_vector[i].pop_back();
+                                };
+                            };
+                        }else if(choice==2){
+                            if (map_height>1){
+                                map_height--;
+                                terrain_vector.pop_back();
+                            };
+                        }else if(choice==3){
+                            if (default_tile_index>0){
+                                default_tile_index--;
+                            };
+                        }else if(choice==4){
+                            if (selected_tile_index>0){
+                                selected_tile_index--;
                             };
                         };
-                    }else if(choice==2){
-                        if (map_height>1){
-                            map_height--;
-                            terrain_vector.pop_back();
-                        };
-                    }else if(choice==3){
-                        if (default_tile_index>0){
-                            default_tile_index--;
-                        };
-                    }else if(choice==4){
-                        if (selected_tile_index>0){
-                            selected_tile_index--;
-                        };
                     };
                 };
-                };
-                if (menu_show){
-                    if (event.key.code==sf::Keyboard::Up){
-                        if (choice>0){
-                            choice--;
-                        }else{
-                            choice=actions.size()-1;
-                        };
-                    };
-    
-                    if (event.key.code==sf::Keyboard::Down){
-                        if (choice<actions.size()-1){
-                            choice++;
-                        }else{
-                            choice=0;
-                        };
-                    };
-                };
+
                 if (event.key.code==sf::Keyboard::RShift){
                     menu_show=!menu_show;
-                }
+                };
+                
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift)){//for forced fill verify first if left shift is pressed
                     if (event.key.code==sf::Keyboard::F){
                         if (pos1set&&pos2set){//verify if pos1 and pos2 is set
