@@ -396,14 +396,4 @@ class HUD{
         };
         return 0;  
     };
-
-    int showPauseMenu(sf::RenderWindow& window, std::string username, int screen_width){
-        sf::Sprite sprite;
-        sprite.setTexture(menu_textures[0]);
-        sprite.scale(4.f,4.f);
-        sprite.setPosition(screen_width-320,0);
-        window.draw(sprite);
-        showTextBOW(username,{screen_width-256,320},window);
-        return 0;
-    };
 };

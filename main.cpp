@@ -330,6 +330,9 @@ void mainLoop(){
             if (event.key.code==sf::Keyboard::C){
                 connection.clientConnect();        
             };
+            if (event.key.code==sf::Keyboard::Escape){
+                pauseMenu();
+            };
             if (event.key.code==sf::Keyboard::F2){
                 debug=!debug;
                 SoundManager.soundEffect("PRESS");
@@ -387,8 +390,8 @@ void mainLoop(){
     terrain.showTerrain(terrain_vector,player_pos,time_otd,window,player_offset,(debug&&debug_page==9&&debug_choice==2),index_frame);
     player_state=player.animPlayer(player_state,moving_timer,walking);
     player.showPlayer(player_type,player_state,window);
-    HUDdisplay.drawSquare(window,{0,0},{352,96});
-    HUDdisplay.showTextBOW("Rhubarb",{32,32},window);
+    //HUDdisplay.drawSquare(window,{0,0},{352,96});
+    //HUDdisplay.showTextBOW("Rhubarb",{32,32},window);
     if (debug){
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1)&&debug){debug_page=1;};
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2)&&debug){debug_page=2;};
@@ -1815,7 +1818,20 @@ int main_menu(){
     }
     while(true);
     return 0;
-}
+};
+
+int pauseMenu(){
+    do{
+        window.clear();
+        terrain.showTerrain(terrain_vector,player_pos,time_otd,window,player_offset,(debug&&debug_page==9&&debug_choice==2),index_frame);
+        player_state=player.animPlayer(player_state,moving_timer,walking);
+        player.showPlayer(player_type,player_state,window);
+        int screen_width=window.getSize().x;
+        HUDdisplay.drawSquare(window,{screen_width-320,0},{320,576});
+        HUDdisplay.showTextBOW(username,{screen_width-256,320},window);
+        return 0;
+    }while(true);
+};
 
 int show_debug_pause(){
     int choice = 0;
