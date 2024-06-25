@@ -63,6 +63,7 @@
 #include <filesystem>
 #include <algorithm>
 #include <iostream>
+#include <clocale>
 #include <variant>
 #include <vector>
 #include <chrono>
