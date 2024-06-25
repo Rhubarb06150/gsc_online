@@ -72,15 +72,15 @@ class GSC_Functions{
 
     int log(std::string type, std::string info){
         if (type=="ERROR"){//red type and red text
-            std::cout << "[\033[1;31m" << type << "\033[0m] " << currentHour()  << " // \033[1;31m" << info << "\033[0m" << std::endl;
+            std::cout << "[\033[31m" << type << "\033[0m] " << currentHour()  << " // \033[1;31m" << info << "\033[0m" << std::endl;
         }else if (type=="WARN"){//yellow type and yellow text
-            std::cout << "[\033[1;33m" << type << "\033[0m] " << currentHour()  << " // \033[1;33m" << info << "\033[0m" << std::endl;
+            std::cout << "[\033[33m" << type << "\033[0m] " << currentHour()  << " // \033[1;33m" << info << "\033[0m" << std::endl;
         }else if (type=="INFO"||type=="CONFIG"){//cyan type
-            std::cout << "[\033[1;35m" << type << "\033[0m] " << currentHour()  << " // " << info << std::endl;
+            std::cout << "[\033[35m" << type << "\033[0m] " << currentHour()  << " // " << info << std::endl;
         }else if (type=="EDITOR"||type=="MOD"||type=="TERRAIN"||"SUCCESS"){//green type
-            std::cout << "[\033[1;32m" << type << "\033[0m] " << currentHour()  << " // " << info << std::endl;
+            std::cout << "[\033[32m" << type << "\033[0m] " << currentHour()  << " // " << info << std::endl;
         }else if (type=="ENGINE"||type=="DEBUG"){//yellow type
-            std::cout << "[\033[1;34m" << type << "\033[0m] " << currentHour()  << " // " << info << std::endl;
+            std::cout << "[\033[33m" << type << "\033[0m] " << currentHour()  << " // " << info << std::endl;
         }else{//basic terminal color for all
             std::cout << "\033[0m][" << type << "] " << currentHour() << " // " << info << std::endl;
         }
