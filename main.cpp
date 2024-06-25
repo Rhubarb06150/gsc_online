@@ -1570,7 +1570,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                     HUDdisplay.showTextDEBUG(actions[i],{0,32+(i*16)},window);
                 };
             };
-        }else{
+        }else if(!help_tiles_show){
             HUDdisplay.showTextDEBUG(std::to_string(terrain_vector.size()*terrain_vector[0].size())+" tiles",{0,16},window);
             HUDdisplay.showTextDEBUG("X: "+std::to_string(player_pos[0]/64)+" Y: "+std::to_string(player_pos[1]/64),{0,32},window);
             if (!pos1set||!pos2set){
@@ -1583,9 +1583,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                 HUDdisplay.showTextDEBUG("Select square size: "+std::to_string(x_size*y_size)+" tiles",{0,64},window);
             };
             HUDdisplay.showTextDEBUG("Hovering tile: "+Tiles.getTileName(terrain_vector[player_pos[1]/64][player_pos[0]/64])+" ("+terrain_vector[player_pos[1]/64][player_pos[0]/64]+")",{0,48},window);
-        };
-
-        if (help_tiles_show){
+        }else{
             char space=' ';
             HUDdisplay.showTextDEBUG("                              ",{32,32},window);
             HUDdisplay.showTextDEBUG("   Tiles viewer               ",{32,48},window);
