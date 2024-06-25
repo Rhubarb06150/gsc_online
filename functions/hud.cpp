@@ -224,6 +224,15 @@ class HUD{
             bar.setPosition({bar_pos,pos1tl});
             window.draw(bar);
         };
+        for(int i=0;i<(size[0]-64)/32;i++){
+            sf::Sprite bar;
+            bar.setTexture(border_textures[4]);
+            float bar_pos;
+            bar_pos=32+(i*32)+pos[0];
+            bar.setScale(4.f,4.f);
+            bar.setPosition({bar_pos,pos1bl});
+            window.draw(bar);
+        };
         return 0;
     };
 
