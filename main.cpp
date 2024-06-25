@@ -1483,7 +1483,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
             };
         };//END OF POLYEVENTS
 
-        if (event.key.code==sf::Keyboard::C){
+        if (event.key.code==sf::Keyboard::C||sf::Keyboard::isKeyPressed(sf::Keyboard::LControl)){
             int real_pos_x=player_pos[0]/64;
             int real_pos_y=player_pos[1]/64;
             copied_tile=terrain_vector[real_pos_y][real_pos_x];
