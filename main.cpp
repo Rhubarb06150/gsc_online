@@ -1224,7 +1224,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                         };
                     };
                     if (event.key.code==sf::Keyboard::Down){
-                        if (choice==actions.size()){
+                        if (choice==actions.size()-1){
                             choice=0;
                         }else{
                             choice++;
