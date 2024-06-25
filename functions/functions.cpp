@@ -210,9 +210,40 @@ class GSC_Functions{
         sf::Texture render;
         render.create(window.getSize().x, window.getSize().y);
         render.update(window);
-        if (render.copyToImage().saveToFile(getUserPath()+"/.gsc_o/renders/render_"+currentDateTime()+".png")){
-            log("INFO","Render saved at "+getUserPath()+"/.gsc_o/renders/render_"+currentDateTime()+".png");
-            return 0;
+        if (render.copyToImage().saveToFile(getUserPath()+"/.gsc_o/renders/render_"+currentDateTime()+"_day.png")){
+            log("INFO","Day render saved at "+getUserPath()+"/.gsc_o/renders/render_"+currentDateTime()+"_day.png");
+        };
+        log("ERROR","Failed to save render");
+        
+        window.clear();
+        for (int i=0;i<terrain_vector.size();i++){
+            for (int j=0;j<terrain_vector[0].size();j++){
+                sf::Sprite sprite;
+                sprite.setPosition(j*16,i*16);
+                sprite.setTexture(Tiles.morning_textures[Tiles.getIntIndex(terrain_vector[i][j])]);
+                window.draw(sprite);
+            };
+        };
+        render.create(window.getSize().x, window.getSize().y);
+        render.update(window);
+        if (render.copyToImage().saveToFile(getUserPath()+"/.gsc_o/renders/render_"+currentDateTime()+"_morning.png")){
+            log("INFO","Morning render saved at "+getUserPath()+"/.gsc_o/renders/render_"+currentDateTime()+"_morning.png");
+        };
+        log("ERROR","Failed to save render");
+
+        window.clear();
+        for (int i=0;i<terrain_vector.size();i++){
+            for (int j=0;j<terrain_vector[0].size();j++){
+                sf::Sprite sprite;
+                sprite.setPosition(j*16,i*16);
+                sprite.setTexture(Tiles.day_textures[Tiles.getIntIndex(terrain_vector[i][j])]);
+                window.draw(sprite);
+            };
+        };
+        render.create(window.getSize().x, window.getSize().y);
+        render.update(window);
+        if (render.copyToImage().saveToFile(getUserPath()+"/.gsc_o/renders/render_"+currentDateTime()+"_night.png")){
+            log("INFO","Night render saved at "+getUserPath()+"/.gsc_o/renders/render_"+currentDateTime()+"_night.png");
         };
         log("ERROR","Failed to save render");
         return 1;
