@@ -1272,10 +1272,10 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                         help_tiles_show=!help_tiles_show;//show/hide the tile viewer
                     };
                 };
-                if (event.type == sf::Event::Closed){
-                    functions.quitGame(window);
-                    return 0;
-                };
+            };
+            if (event.type == sf::Event::Closed){
+                functions.quitGame(window);
+                return 0;
             };
         };//END OF MENU ACTIONS
 
