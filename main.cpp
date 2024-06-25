@@ -1939,7 +1939,7 @@ int main(int argc, char** argv)
     setlocale(LC_ALL, "");
     Game G;
     if (argc>1){
-        if (argv[1]=="debug"){
+        if (argv[1]!="debug"){
             G.functions.log("DEBUG","Launching in debug mode.");
         };
     };
