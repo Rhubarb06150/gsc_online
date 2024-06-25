@@ -188,6 +188,7 @@ class GSC_Functions{
             log("INFO","map render saved at "+getUserPath()+"/.gsc_o/renders/render_"+currentDateTime()+".png");
             return 0;
         };
+        return 1;
     };
 
     int takeScreenshot(sf::RenderWindow& render_window){
