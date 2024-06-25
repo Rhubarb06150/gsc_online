@@ -1231,10 +1231,12 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                                 terrain_vector[i].push_back(Tiles.tiles[default_tile_index][2]);
                             };
                         }else if(choice==2){
-                            if (map_height>1){
-                                map_height--;
-                                terrain_vector.pop_back();
+                            map_height++;
+                            std::vector<std::string> terrain_line;
+                            for (int i=0;i<terrain_vector[0].size();i++){
+                                terrain_line.push_back(Tiles.tiles[default_tile_index][2]);
                             };
+                            terrain_vector.push_back(terrain_line);
                         }else if(choice==3){
                             if (default_tile_index>0){
                                 default_tile_index--;
