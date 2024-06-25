@@ -41,6 +41,7 @@ class HUD{
     std::vector<sf::Texture> border_textures;
 
     HUD(){
+        editor_bg_index=0;
         letters_index.push_back({" ","ef"});
         //UPPERCASES
         letters_index.push_back({"0","0f"});
