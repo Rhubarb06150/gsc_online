@@ -277,17 +277,17 @@ class HUD{
 
     std::string convertText(std::string text){
         std::string res;
-        //res=funs.ReplaceAll(text,"","");
         std::cout<<res<<std::endl;
         return res;
     };
 
     int showTextBOW(std::string text, std::vector<int> text_pos, sf::RenderWindow& window){
-        text=convertText(text);
+        //text=convertText(text);
         int y=text_pos[1];
         int x=text_pos[0];
         for (int i = 0; i < text.size(); i++){
             sf::Sprite sprite;
+            std::cout << text[i];
             if(text[i]=='\n'){
                 y+=32;
                 x=text_pos[0];
@@ -299,6 +299,7 @@ class HUD{
                 x+=32;
             };
         };
+        std::cout << std::endl;
         return 0;
     };
     int showTextAskBOW(std::string text, std::vector<int> text_pos, sf::RenderWindow& window){
