@@ -1877,7 +1877,7 @@ int optionMenu(){
                     if (choice==0){//USERNAME MODIFY
                         std::string username_res;
                         std::string init_username=username;
-                        username_res=askText("Username?");
+                        username_res=askText("Username? (7 max.)");
                         if (username_res!=""){
                             if (username_res.length()>7){
                                 functions.log("ERROR","Your username can't be longer than 7 characters");
