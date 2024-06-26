@@ -1877,7 +1877,7 @@ int optionMenu(){
                         choice--;
                     };
                 }else if (event.key.code==sf::Keyboard::F6||event.key.code==sf::Keyboard::Escape){
-                    //return 0;
+                    return 0;
                 }else if (event.key.code==sf::Keyboard::F5){//OPTION SELECT
                     if (choice==0){
                         std::string username_res;
@@ -1894,7 +1894,7 @@ int optionMenu(){
                     }else if(choice==4){
                         
                     }else if(choice==5){
-                        
+                        return 0;    
                     };
                 };
             }else if (event.Closed){
