@@ -2011,6 +2011,9 @@ int pauseMenu(){
         rec.setFillColor({255,255,255});
         rec.setPosition(0,416);
         window.draw(rec);
+        if (choice==0){
+            HUDdisplay.showTextBOW("Pokémon\n\nIndex",{0,448},window);
+        };
         HUDdisplay.drawSquare(window,{screen_width-320,0},{320,576},border_style);
         HUDdisplay.showTextBOW(username,{screen_width-256,320},window);
         HUDdisplay.showTextBOW("POKéDEX\n\nPOKéMON\n\nPACK\n\n\xee\xefGEAR\n\n\n\nSAVE\n\nOPTION\n\nEXIT",{screen_width-256,64},window);
