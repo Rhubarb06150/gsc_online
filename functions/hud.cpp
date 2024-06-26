@@ -147,8 +147,8 @@ class HUD{
         menu_tiles_indexes.push_back({"cursor","71","\x00"});
         menu_tiles_indexes.push_back({"white","32","\x01"});
         menu_tiles_indexes.push_back({"blueSquare","00","\xe0"});
-        menu_tiles_indexes.push_back({"blueSlope","00","\xe1"});
-        menu_tiles_indexes.push_back({"blueSlope2","00","\xe2"});
+        menu_tiles_indexes.push_back({"blueSlope","10","\xe1"});
+        menu_tiles_indexes.push_back({"blueSlope2","20","\xe2"});
 
         //EDITOR TEXTURES
         texture.loadFromFile("assets/hud/editor_bg.png");
