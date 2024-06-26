@@ -1959,8 +1959,6 @@ int optionMenu(){
 int pauseMenu(){
     int choice=0;
     do{
-        start=std::chrono::high_resolution_clock::now();
-        index_frame++;
         moving_timer=20;
         walking=false;
         while (window.pollEvent(event))
@@ -2003,7 +2001,6 @@ int pauseMenu(){
                 functions.quitGame(window);
             };
         };
-        index_frame++;
         window.clear();
         terrain.showTerrain(terrain_vector,player_pos,time_otd,window,player_offset,(debug&&debug_page==9&&debug_choice==2),index_frame);
         player_state=player.animPlayer(player_state,moving_timer,walking);
@@ -2036,9 +2033,6 @@ int pauseMenu(){
         HUDdisplay.showCursor({screen_width-288,64+(choice*64)},window);
         HUDdisplay.showTextBOW(std::to_string(fps_),{0,0},window);
         window.display();
-        end=std::chrono::high_resolution_clock::now();
-        fps=(float)1e9/(float)std::chrono::duration_cast<std::chrono::nanoseconds>(end-start).count();
-        fps_=fps;
     }while(true);
     return 0;
 };
