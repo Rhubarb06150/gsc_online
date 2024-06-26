@@ -209,13 +209,13 @@ class HUD{
         };
     };
 
-    sf::Texture getMenuTile(std::string tile_index){
+    int getMenuTileIndex(std::string tile_index){
         for(int i=0;i<menu_tiles.size();i++){
             if(tile_index==menu_tiles_indexes[i][2]){
-                return menu_tiles[i];
+                return i;
             };
         };
-        return menu_tiles[menu_tiles.size()-1];
+        return menu_tiles.size()-1;
     };
 
     int showMenu(sf::RenderWindow& window,std::string menu_path){
@@ -228,13 +228,13 @@ class HUD{
                 sf::Sprite tile;
                 std::string cur_index;
                 cur_index=line[i];
-                tile.setTexture(getMenuTile(cur_index));
+                tile.setTexture(menu_tiles[getMenuTileIndex(cur_index)]);
                 tile.setPosition(x,y);
                 tile.setScale(4.f,4.f);
                 window.draw(tile);
                 x+=32;
             };
-            std::cout<<line<<std::endl;
+            //std::cout<<line<<std::endl;
             y+=32;
             x=0;
         };
