@@ -277,7 +277,7 @@ class HUD{
 
     std::string convertText(std::string text){
         std::string res;
-        res=funs.ReplaceAll(text,"é","");
+        res=funs.ReplaceAll(text,"","");
         std::cout<<res<<std::endl;
         return res;
     };
