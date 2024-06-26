@@ -1879,6 +1879,9 @@ int optionMenu(){
                         std::string init_username=username;
                         username_res=askText("Username?");
                         if (username_res!=""){
+                            if (username_res.length()>7){
+                                functions.log("ERROR","Your username can't be longer than 7 characters");
+                            }else{
                             std::ofstream ofile(functions.getUserPath()+"/.gsc_o/settings.temp");
                             std::ifstream ifile(functions.getUserPath()+"/.gsc_o/settings");
                             std::string line;
@@ -1892,6 +1895,7 @@ int optionMenu(){
                             instruction="rm -f "+functions.getUserPath()+"/.gsc_o/settings.temp -f";
                             system(instruction.c_str());
                             username=username_res;
+                            };
                         };
                     }else if(choice==1){
 
