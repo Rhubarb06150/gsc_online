@@ -203,8 +203,8 @@ class HUD{
             letters_debug_sel_textures.push_back(texture);
             texture.loadFromFile("assets/hud/font_debug_blu.png",sf::IntRect(x*8,y*8,8,8));
             letters_debug_blu_textures.push_back(texture);
-
         };
+
         for (int k=0;k<11;k++){
             texture.loadFromFile("assets/hud/border.png",sf::IntRect(0,0+(k*16),8,8));//TOP LEFT CORNER
             border_textures.push_back(texture);
@@ -228,6 +228,14 @@ class HUD{
             };
         };
         return 0;
+    };
+
+    int showMenuTile(sf::RenderWindow& window, std::string tile_index, std::vector<int> pos){
+        sf::Sprite tile;
+        tile.setTexture(menu_tiles[getMenuTileIndex(tile_index)]);
+        tile.setPosition(pos[0],pos[1]);
+        tile.setScale(4.f,4.f);
+        window.draw(tile);
     };
 
     int showMenu(sf::RenderWindow& window,std::string menu_path){
