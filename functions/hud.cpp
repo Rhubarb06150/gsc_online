@@ -194,7 +194,6 @@ class HUD{
         sf::Sprite corner_bl;
         sf::Sprite corner_br;
         int border_offset=border_index*6;
-        std::cout << border_offset << std::endl;
         corner_tl.setTexture(border_textures[0+border_offset]);
         corner_tr.setTexture(border_textures[1+border_offset]);
         corner_bl.setTexture(border_textures[2+border_offset]);
