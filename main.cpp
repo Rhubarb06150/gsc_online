@@ -2015,6 +2015,8 @@ int pauseMenu(){
             HUDdisplay.showTextBOW("Pokémon\n\nIndex",{0,448},window);
         }else if(choice==1){
             HUDdisplay.showTextBOW("\xde\xdf Team\n\nStatus",{0,448},window);
+        }else if(choice==2){
+            HUDdisplay.showTextBOW("Your\n\nBackpack",{0,448},window);
         };
         HUDdisplay.drawSquare(window,{screen_width-320,0},{320,576},border_style);
         HUDdisplay.showTextBOW(username,{screen_width-256,320},window);
