@@ -87,7 +87,7 @@ class HUD{
         letters_index.push_back({"c","22"});
         letters_index.push_back({"d","32"});
         letters_index.push_back({"e","42"});
-        letters_index.push_back({"é","42"});
+        letters_index.push_back({"\xed","42"});
         letters_index.push_back({"f","52"});
         letters_index.push_back({"g","62"});
         letters_index.push_back({"h","72"});
@@ -278,17 +278,17 @@ class HUD{
 
     std::string convertText(std::string text){
         std::string res;
-        std::cout<<res<<std::endl;
+        res=funs.ReplaceAll(text,"é","\xed");
         return res;
     };
 
     int showTextBOW(std::string text, std::vector<int> text_pos, sf::RenderWindow& window){
-        //text=convertText(text);
+        text=convertText(text);
         int y=text_pos[1];
         int x=text_pos[0];
         for (int i = 0; i < text.size(); i++){
             sf::Sprite sprite;
-            std::cout << text[i];
+            //std::cout << text[i];
             if(text[i]=='\n'){
                 y+=32;
                 x=text_pos[0];
@@ -300,7 +300,7 @@ class HUD{
                 x+=32;
             };
         };
-        std::cout << std::endl;
+        //std::cout << std::endl;
         return 0;
     };
     int showTextAskBOW(std::string text, std::vector<int> text_pos, sf::RenderWindow& window){
