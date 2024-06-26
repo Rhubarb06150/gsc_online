@@ -167,7 +167,7 @@ class HUD{
             x=funs.hexToInt(fish[0]);
             y=funs.hexToInt(fish[1]);
             texture.loadFromFile("assets/menus.png",sf::IntRect(x*8,y*8,8,8));
-            letters_bow_textures.push_back(texture);
+            menu_tiles.push_back(texture);
         };
         
         sf::Sprite sprite;
