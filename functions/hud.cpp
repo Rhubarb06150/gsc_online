@@ -215,7 +215,7 @@ class HUD{
                 return menu_tiles[i];
             };
         };
-        return menu_tiles[menu_tiles.size()-10];
+        return menu_tiles[menu_tiles.size()-1];
     };
 
     int showMenu(sf::RenderWindow& window,std::string menu_path){
