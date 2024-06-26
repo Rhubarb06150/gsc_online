@@ -2009,6 +2009,8 @@ int pauseMenu(){
         int screen_width=window.getSize().x;
         if(choice==0){
             HUDdisplay.showTextBOW("             \nPokémon      \n             \nIndex        \n             ",{0,416},window);
+        }else if(choice==1){
+            HUDdisplay.showTextBOW("             \n\xee\xef Team       \n             \nStatus       \n             ",{0,416},window);
         };
         HUDdisplay.drawSquare(window,{screen_width-320,0},{320,576},border_style);
         HUDdisplay.showTextBOW(username,{screen_width-256,320},window);
