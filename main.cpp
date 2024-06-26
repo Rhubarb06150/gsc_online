@@ -1880,7 +1880,11 @@ int optionMenu(){
                     //return 0;
                 }else if (event.key.code==sf::Keyboard::F5){//OPTION SELECT
                     if (choice==0){
-
+                        std::string username_res;
+                        username_res=askText("Username?");
+                        if (username_res!=""){
+                            username=username_res;
+                        };
                     }else if(choice==1){
 
                     }else if(choice==2){
@@ -1904,7 +1908,6 @@ int optionMenu(){
         HUDdisplay.showCursor({32,64+(choice*64)},window);
         window.display();
     }while(true);
-    std::cout << "endquit" << std::endl;
     return 0;
 };
 
