@@ -130,7 +130,7 @@ class HUD{
         letters_index.push_back({"\xee","cf"});//PO
         letters_index.push_back({"\xef","df"});//Ké
         letters_index.push_back({"\xde","dd"});//PK
-        letters_index.push_back({"\xdf","de"});//MN
+        letters_index.push_back({"\xdf","ed"});//MN
 
         letters_index.push_back({"","de"});
 
