@@ -1878,7 +1878,7 @@ int optionMenu(){
                         choice--;
                     };
                 }else if (event.key.code==sf::Keyboard::F6||event.key.code==sf::Keyboard::Escape){
-                    return 0;
+                    //return 0;
                 }else if (event.key.code==sf::Keyboard::F5){//OPTION SELECT
                     if (choice==0){
 
