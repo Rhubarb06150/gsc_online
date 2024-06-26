@@ -1889,6 +1889,8 @@ int optionMenu(){
                             std::string instruction;
                             instruction="mv "+functions.getUserPath()+"/.gsc_o/settings.temp "+functions.getUserPath()+"/.gsc_o/settings";
                             system(instruction.c_str());
+                            instruction="rm -f "+functions.getUserPath()+"/.gsc_o/settings.temp -f";
+                            system(instruction.c_str());
                             username=username_res;
                         };
                     }else if(choice==1){
