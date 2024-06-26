@@ -87,7 +87,7 @@ class HUD{
         letters_index.push_back({"c","22"});
         letters_index.push_back({"d","32"});
         letters_index.push_back({"e","42"});
-        letters_index.push_back({"\xed","42"});
+        letters_index.push_back({"\xed","94"});
         letters_index.push_back({"f","52"});
         letters_index.push_back({"g","62"});
         letters_index.push_back({"h","72"});
@@ -109,7 +109,6 @@ class HUD{
         letters_index.push_back({"x","73"});
         letters_index.push_back({"y","83"});
         letters_index.push_back({"z","93"});
-        letters_index.push_back({"é","a3"});
 
         //NONE
         letters_index.push_back({":","0e"});
