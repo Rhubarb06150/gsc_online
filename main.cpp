@@ -1944,7 +1944,12 @@ int optionMenu(){
         window.clear();
         int screen_width=window.getSize().x;
         HUDdisplay.drawSquare(window,{0,0},{screen_width,576},border_style);
-        HUDdisplay.showTextBOW("USERNAME:\n  "+username+"\nBORDER STYLE:\n\n2\n\n3\n\n4\n\n5\n\nOPEN GITHUB REPO\n\nEXIT",{64,64},window);
+        HUDdisplay.showTextBOW("USERNAME:\n  \nBORDER STYLE:\n\n2\n\n3\n\n4\n\n5\n\nOPEN GITHUB REPO\n\nEXIT",{64,64},window);
+        if (choice==0){
+            HUDdisplay.showTextWOB(username,{128,96},window);
+        }else{
+            HUDdisplay.showTextBOW(username,{128,96},window);
+        };
         if (choice==1){
             HUDdisplay.showTextWOB(std::to_string(border_style+1),{480,128},window);
         }else{
