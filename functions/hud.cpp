@@ -225,7 +225,7 @@ class HUD{
         while(getline(menufile,line)){
             for(int i=0;i<line.length();i++){
                 sf::Sprite tile;
-                tile.setTexture(getMenuTile(""+line[i]));
+                tile.setTexture(getMenuTile("\xe0"));
                 tile.setPosition(x,y);
                 tile.setScale(4.f,4.f);
                 window.draw(tile);
