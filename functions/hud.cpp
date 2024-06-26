@@ -242,12 +242,12 @@ class HUD{
     int showMenu(sf::RenderWindow& window,std::string menu_path){
         std::ifstream menufile(menu_path);
         std::string line;
-        std::string cur_index;
         int x=0;
         int y=0;
         while(getline(menufile,line)){
             for(int i=0;i<20;i++){
                 sf::Sprite tile;
+                std::string cur_index;
                 cur_index=line[i];
                 tile.setTexture(menu_tiles[getMenuTileIndex(cur_index)]);
                 tile.setPosition(x,y);
