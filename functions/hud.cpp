@@ -245,7 +245,7 @@ class HUD{
         int x=0;
         int y=0;
         while(getline(menufile,line)){
-            for(int i=0;i<line.length();i++){
+            for(int i=0;i<line.length()+2;i++){
                 sf::Sprite tile;
                 std::string cur_index;
                 cur_index=line[i];
@@ -257,7 +257,7 @@ class HUD{
             };
             //std::cout<<line<<std::endl;
             y+=32;
-            //x=0;
+            x=0;
         };
         return 0;
     };
