@@ -1843,7 +1843,7 @@ int main_menu(){
     return 0;
 };
 
-int updateSettings(){
+int updateSettings(bool advert){
     std::string init_username;
     std::string init_resolution;
     std::string init_border;
@@ -1870,6 +1870,7 @@ int updateSettings(){
     system(instruction.c_str());
     instruction="rm -f "+functions.getUserPath()+"/.gsc_o/settings.temp -f";
     system(instruction.c_str());
+    if (advert)
     functions.log("INFO","Settings updated");
     return 0;
 };
@@ -1898,12 +1899,14 @@ int optionMenu(){
                     if (choice==1){
                         if (border_style>0){
                             border_style--;
+                            updateSettings(false);
                         };
                     };
                 }else if (event.key.code==sf::Keyboard::Right){
                     if (choice==1){
                         if (border_style<(HUDdisplay.border_textures.size()/6)){
                             border_style++;
+                            updateSettings(false);
                         };
                     };
                 }else if (event.key.code==sf::Keyboard::F6||event.key.code==sf::Keyboard::Escape){
@@ -1915,10 +1918,10 @@ int optionMenu(){
                         username_res=askText("Username? (7 max.)");
                         if (username_res!=""){
                             username=username_res;
-                            updateSettings();
+                            updateSettings(true);
                         };
                     }else if(choice==1){
-                        updateSettings();
+
                     }else if(choice==2){
 
                     }else if(choice==3){
