@@ -274,7 +274,16 @@ class HUD{
         };
         return letters_index.size()-1;
     };
+
+    std::string convertText(std::string text){
+        std::string res;
+        res=funs.ReplaceAll(text,"é","");
+        std::cout<<res<<std::endl;
+        return res;
+    };
+
     int showTextBOW(std::string text, std::vector<int> text_pos, sf::RenderWindow& window){
+        text=convertText(text);
         int y=text_pos[1];
         int x=text_pos[0];
         for (int i = 0; i < text.size(); i++){
