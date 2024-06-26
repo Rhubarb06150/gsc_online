@@ -1857,7 +1857,6 @@ int main_menu(){
 
 int optionMenu(){
     int choice=0;
-    std::cout<<"option"<<std::endl;
     do{
         moving_timer=20;
         walking=false;
@@ -1909,7 +1908,7 @@ int optionMenu(){
         window.clear();
         int screen_width=window.getSize().x;
         HUDdisplay.drawSquare(window,{0,0},{screen_width,576});
-        HUDdisplay.showTextBOW("USERNAME:\n  "+username+"\n1\n\n2\n\n3\n\n4\n\n5\n\n6\n\nEXIT",{64,64},window);
+        HUDdisplay.showTextBOW("USERNAME:\n  "+username+"\n1\n\n2\n\n3\n\n4\n\n5\n\nOPEN GITHUB REPO\n\nEXIT",{64,64},window);
         HUDdisplay.showCursor({32,64+(choice*64)},window);
         window.display();
     }while(true);
