@@ -212,6 +212,7 @@ class HUD{
     sf::Texture getMenuTile(std::string tile_index){
         for(int i=0;i<menu_tiles.size();i++){
             if(tile_index==menu_tiles_indexes[i][2]){
+                std::cout << "found" << std::endl;
                 return menu_tiles[i];
             };
         };
