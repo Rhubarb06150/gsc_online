@@ -1893,6 +1893,7 @@ int optionMenu(){
                     }else if(choice==5){
                         
                     }else if(choice==6){
+                        std::cout << "om" << std::endl;
                         optionMenu();
                     }else if(choice==7){
                         return 0;
