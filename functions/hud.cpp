@@ -173,17 +173,17 @@ class HUD{
 
         };
         for (int k=0;k<9;k++){
-            texture.loadFromFile("assets/hud/border.png",sf::IntRect(0,0+(k*8),8,8));//TOP LEFT CORNER
+            texture.loadFromFile("assets/hud/border.png",sf::IntRect(0,0+(k*16),8,8));//TOP LEFT CORNER
             border_textures.push_back(texture);
-            texture.loadFromFile("assets/hud/border.png",sf::IntRect(16,0+(k*8),8,8));//TOP RIGHT CORNER
+            texture.loadFromFile("assets/hud/border.png",sf::IntRect(16,0+(k*16),8,8));//TOP RIGHT CORNER
             border_textures.push_back(texture);
-            texture.loadFromFile("assets/hud/border.png",sf::IntRect(8,8+(k*8),8,8));//BOT LEFT CORNER
+            texture.loadFromFile("assets/hud/border.png",sf::IntRect(8,8+(k*16),8,8));//BOT LEFT CORNER
             border_textures.push_back(texture);
-            texture.loadFromFile("assets/hud/border.png",sf::IntRect(16,8+(k*8),8,8));//BOT RIGHT CORNER
+            texture.loadFromFile("assets/hud/border.png",sf::IntRect(16,8+(k*16),8,8));//BOT RIGHT CORNER
             border_textures.push_back(texture);
-            texture.loadFromFile("assets/hud/border.png",sf::IntRect(8,0+(k*8),8,8));//ROW CORNER
+            texture.loadFromFile("assets/hud/border.png",sf::IntRect(8,0+(k*16),8,8));//ROW CORNER
             border_textures.push_back(texture);
-            texture.loadFromFile("assets/hud/border.png",sf::IntRect(0,8+(k*8),8,8));//COLUMN CORNER
+            texture.loadFromFile("assets/hud/border.png",sf::IntRect(0,8+(k*16),8,8));//COLUMN CORNER
             border_textures.push_back(texture);
         };
     };
