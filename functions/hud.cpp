@@ -236,6 +236,7 @@ class HUD{
         tile.setPosition(pos[0],pos[1]);
         tile.setScale(4.f,4.f);
         window.draw(tile);
+        return 0;
     };
 
     int showMenu(sf::RenderWindow& window,std::string menu_path){
