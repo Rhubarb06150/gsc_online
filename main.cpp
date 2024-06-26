@@ -2055,7 +2055,6 @@ int show_debug_pause(){
 
 int main(int argc, char** argv)
     {
-    setlocale(LC_ALL,"");
     Game G;
     /* if (argc>1){
         if (strcmp(argv[1],"debug")==0){
