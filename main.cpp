@@ -201,8 +201,7 @@ class Game{
         mods_list={};
         mods_states={};
         mods_descriptions={};
-        border_style=2;
-        std::cout << "BORDERs" << HUDdisplay.border_textures.size() << std::endl;
+        border_style=1;
         //MOD DESC
         srand(time(NULL));//reset the random values
 
