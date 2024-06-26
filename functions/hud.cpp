@@ -250,7 +250,7 @@ class HUD{
                 std::string cur_index;
                 cur_index=line[i];
                 tile.setTexture(menu_tiles[getMenuTileIndex(cur_index)]);
-                tile.setPosition(x,y);
+                tile.setPosition(y,x);
                 tile.setScale(4.f,4.f);
                 window.draw(tile);
                 x+=32;
