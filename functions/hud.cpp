@@ -87,7 +87,7 @@ class HUD{
         letters_index.push_back({"c","22"});
         letters_index.push_back({"d","32"});
         letters_index.push_back({"e","42"});
-        letters_index.push_back({"\xed","a3"});
+        letters_index.push_back({"\xed","a3"});//é
         letters_index.push_back({"f","52"});
         letters_index.push_back({"g","62"});
         letters_index.push_back({"h","72"});
@@ -172,7 +172,7 @@ class HUD{
             letters_debug_blu_textures.push_back(texture);
 
         };
-        for (int k=0;k<9;k++){
+        for (int k=0;k<10;k++){
             texture.loadFromFile("assets/hud/border.png",sf::IntRect(0,0+(k*16),8,8));//TOP LEFT CORNER
             border_textures.push_back(texture);
             texture.loadFromFile("assets/hud/border.png",sf::IntRect(16,0+(k*16),8,8));//TOP RIGHT CORNER
