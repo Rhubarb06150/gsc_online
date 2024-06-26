@@ -144,13 +144,14 @@ class HUD{
         menu_textures.push_back(texture);
 
         // MENU TILES INDEX
-        menu_tiles_indexes.push_back({"cursor","71","\x00"});
-        menu_tiles_indexes.push_back({"white","32","\x01"});
-        menu_tiles_indexes.push_back({"blueSquare","00","\xe0"});
-        menu_tiles_indexes.push_back({"blueSlopeBL","10","\xe1"});
-        menu_tiles_indexes.push_back({"blueSlopeTR","20","\xe2"});
-        menu_tiles_indexes.push_back({"blueSlopeTL","43","\xe3"});
-        menu_tiles_indexes.push_back({"blueSlopeBR","53","\xe4"});
+        menu_tiles_indexes.push_back({"cursor","7111","\x00"});
+        menu_tiles_indexes.push_back({"white","3211","\x01"});
+        menu_tiles_indexes.push_back({"blueSquare","0011","\xe0"});
+        menu_tiles_indexes.push_back({"blueSlopeBL","1011","\xe1"});
+        menu_tiles_indexes.push_back({"blueSlopeTR","2011","\xe2"});
+        menu_tiles_indexes.push_back({"blueSlopeTL","4311","\xe3"});
+        menu_tiles_indexes.push_back({"blueSlopeBR","5311","\xe4"});
+        menu_tiles_indexes.push_back({"status","2151","\xe4"});
 
         //EDITOR TEXTURES
         texture.loadFromFile("assets/hud/editor_bg.png");
@@ -164,6 +165,8 @@ class HUD{
 
         int x;
         int y;
+        int xsize;
+        int ysize;
 
         for(int i=0;i<menu_tiles_indexes.size();i++){
             sf::Texture texture;
@@ -171,7 +174,9 @@ class HUD{
             std::cout << fish << std::endl;
             x=funs.hexToInt(fish[0]);
             y=funs.hexToInt(fish[1]);
-            texture.loadFromFile("assets/hud/menus.png",sf::IntRect(x*8,y*8,8,8));
+            xsize=funs.hexToInt(fish[2]);
+            ysize=funs.hexToInt(fish[3]);
+            texture.loadFromFile("assets/hud/menus.png",sf::IntRect(x*8,y*8,xsize*8,ysize*8));
             menu_tiles.push_back(texture);
         };
         
