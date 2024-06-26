@@ -1856,6 +1856,60 @@ int main_menu(){
     return 0;
 };
 
+int optionMenu(){
+    int choice=0;
+    do{
+        moving_timer=20;
+        walking=false;
+        while (window.pollEvent(event))
+        {
+            if (event.type==sf::Event::KeyPressed){
+                if (event.key.code==sf::Keyboard::Down){
+                    if (choice==7){
+                        choice=0;
+                    }else{
+                        choice++;
+                    };
+                }else if (event.key.code==sf::Keyboard::Up){
+                    if (choice==0){
+                        choice=7;
+                    }else{
+                        choice--;
+                    };
+                }else if (event.key.code==sf::Keyboard::F6||event.key.code==sf::Keyboard::Escape){
+                    return 0;
+                }else if (event.key.code==sf::Keyboard::F5){//OPTION SELECT
+                    if (choice==0){
+
+                    }else if(choice==1){
+
+                    }else if(choice==2){
+
+                    }else if(choice==3){
+
+                    }else if(choice==4){
+                        
+                    }else if(choice==5){
+                        
+                    }else if(choice==6){
+                        
+                    }else if(choice==7){
+                        return 0;
+                    };
+                };
+            }else if (event.Closed){
+                functions.quitGame(window);
+            };
+        };
+        index_frame++;
+        window.clear();
+        int screen_width=window.getSize().x;
+        HUDdisplay.drawSquare(window,{0,0},{screen_width,576});
+        HUDdisplay.showCursor({screen_width-288,64+(choice*64)},window);
+        window.display();
+    }while(true);
+};
+
 int pauseMenu(){
     int choice=0;
     do{
@@ -1888,11 +1942,11 @@ int pauseMenu(){
                     }else if(choice==3){
 
                     }else if(choice==4){
-                
+                        
                     }else if(choice==5){
-                    
+                        
                     }else if(choice==6){
-
+                        
                     }else if(choice==7){
                         return 0;
                     };
@@ -1913,6 +1967,7 @@ int pauseMenu(){
         HUDdisplay.showCursor({screen_width-288,64+(choice*64)},window);
         window.display();
     }while(true);
+    return 0;
 };
 
 int show_debug_pause(){
