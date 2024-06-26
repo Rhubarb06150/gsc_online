@@ -256,8 +256,6 @@ class HUD{
                 x+=32;
             };
             line=funs.ReplaceAll(line,"\x01","w");
-            std::cout<<line<<std::endl;
-            std::cout<<line.length()<<std::endl;
             y+=32;
             x=0;
         };

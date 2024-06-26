@@ -1166,8 +1166,7 @@ int playerMenu(){
             };
         };
         window.clear();
-        //HUDdisplay.showMenu(window,"assets/menus/playerStatus.mn");
-        HUDdisplay.showMenu(window,"menu.mn");
+        HUDdisplay.showMenu(window,"assets/menus/playerStatus.mn");
         HUDdisplay.showTextBOW("NAME/"+username,{64,64},window);
         window.display();
     }while(true);
@@ -2155,11 +2154,7 @@ int main(int argc, char** argv)
     G.loadSettings();
     //G.functions.log("INFO","an game folder has been created at "+G.functions.getUserPath()+"/.gsc_o, it will be used to store your saved maps and your screenshots");
 
-    //G.main_menu();
-    do{
-        G.HUDdisplay.showMenu(G.window,"menu.mn");
-        G.window.display();
-    }while(true);
+    G.main_menu();
     while (G.window.isOpen()){
         G.mainLoop();
     };
