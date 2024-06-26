@@ -172,7 +172,7 @@ class HUD{
             letters_debug_blu_textures.push_back(texture);
 
         };
-        for (int k=0;k<9;k++){
+        for (int k=1;k<10;k++){
         for (int i=0;i<6;i++){
             texture.loadFromFile("assets/hud/border.png",sf::IntRect(0,0*k,8,8));//TOP LEFT CORNER
             border_textures.push_back(texture);
