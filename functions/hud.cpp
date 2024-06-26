@@ -144,6 +144,7 @@ class HUD{
         menu_textures.push_back(texture);
 
         // MENU TILES INDEX
+        menu_tiles_indexes.push_back({"status","ff11"," "});
         menu_tiles_indexes.push_back({"cursor","7111","\x00"});
         menu_tiles_indexes.push_back({"white","3211","\x01"});
         menu_tiles_indexes.push_back({"blueSquare","0011","\xe0"});
@@ -151,7 +152,7 @@ class HUD{
         menu_tiles_indexes.push_back({"blueSlopeTR","2011","\xe2"});
         menu_tiles_indexes.push_back({"blueSlopeTL","4311","\xe3"});
         menu_tiles_indexes.push_back({"blueSlopeBR","5311","\xe4"});
-        menu_tiles_indexes.push_back({"status","2151","\xe4"});
+        menu_tiles_indexes.push_back({"status","2151","\xa0"});
 
         //EDITOR TEXTURES
         texture.loadFromFile("assets/hud/editor_bg.png");
