@@ -254,7 +254,7 @@ class HUD{
                 tile.setScale(4.f,4.f);
                 window.draw(tile);
                 x+=32;
-                if (i==0){
+                if (i==1){
                     std::cout<<line[i]<<std::to_string(y/32)<<std::endl;
                 };
             };
