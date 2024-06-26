@@ -556,6 +556,7 @@ void mainLoop(){
     //MOD DISPLAY
     if (debug_launch)
         HUDdisplay.showTextDEBUG(std::to_string(fps_),{0,560},window);
+    HUDdisplay.showMenu(window,"menu1.mn");
     window.display();
 
     //if (record){
@@ -921,7 +922,6 @@ int showEditorControls(){
     if (message_timer<=60){
         HUDdisplay.showTextDEBUG(output_message,{0,560},window);
     };
-    HUDdisplay.showMenu(window,"menu1.mn");
     window.display();
     }while(true);
     return 0;
