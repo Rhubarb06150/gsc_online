@@ -2032,7 +2032,11 @@ int pauseMenu(){
         HUDdisplay.showTextBOW(username,{screen_width-256,320},window);
         HUDdisplay.showTextBOW("POKéDEX\n\nPOKéMON\n\nPACK\n\n\xee\xefGEAR\n\n\n\nSAVE\n\nOPTION\n\nEXIT",{screen_width-256,64},window);
         HUDdisplay.showCursor({screen_width-288,64+(choice*64)},window);
+        HUDdisplay.showTextBOW(std::to_string(fps_),{0,0},window);
         window.display();
+        end=std::chrono::high_resolution_clock::now();
+        fps=(float)1e9/(float)std::chrono::duration_cast<std::chrono::nanoseconds>(end-start).count();
+        fps_=fps;
     }while(true);
     return 0;
 };
