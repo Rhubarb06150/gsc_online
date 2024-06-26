@@ -632,7 +632,7 @@ std::vector<int> checkResolutionPOffset(){
 };
 
 int loadSettings(){
-    if (std::filesystem::is_regular_file(functions.getUserPath()+"/.gsc_o/settings.st")){
+    if (std::filesystem::is_regular_file(functions.getUserPath()+"/.gsc_o/settings")){
         std::ifstream inputFile(functions.getUserPath()+"/.gsc_o/settings");
         std::string line;
         while (getline(inputFile, line)){
@@ -641,7 +641,9 @@ int loadSettings(){
                 functions.log("ENGINE","The resolution of the game is "+real_res);
                 std::vector<int> resolution_vec=checkResolutionRWindow();
                 std::vector<int> player_offset=checkResolutionPOffset();
-            }else{
+            }else if (line.rfind("username=",0)==0){
+                username = functions.ReplaceAll(line,"username=","");
+                functions.log("INFO","Game launched as "+username);
             };
         };
     }else{
