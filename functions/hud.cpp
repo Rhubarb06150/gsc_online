@@ -128,7 +128,7 @@ class HUD{
         letters_index.push_back({"+","ce"});
         letters_index.push_back({"?","de"});
         letters_index.push_back({"!","ee"});
-        letters_index.push_back({"\\x00","cf"});
+        letters_index.push_back({"\\xee","cf"});
         letters_index.push_back({"\x01","df"});
         letters_index.push_back({"","de"});
 
