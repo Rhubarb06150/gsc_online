@@ -2025,6 +2025,8 @@ int pauseMenu(){
             HUDdisplay.showTextBOW("Save the\n\ngame",{0,448},window);
         }else if(choice==6){
             HUDdisplay.showTextBOW("Edit\n\noptions",{0,448},window);
+        }else if(choice==7){
+            HUDdisplay.showTextBOW("Close this\n\nmenu",{0,448},window);
         };
         HUDdisplay.drawSquare(window,{screen_width-320,0},{320,576},border_style);
         HUDdisplay.showTextBOW(username,{screen_width-256,320},window);
