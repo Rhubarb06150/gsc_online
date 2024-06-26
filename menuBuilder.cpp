@@ -33,13 +33,13 @@ int main(){
                     std::ofstream ofile("menu.mn");
                     for(int i=0;i<18;i++){
                         for(int j=0;j<20;j++){
-                            ofile<<tiles[i][j];
+                            ofile<<tiles[j][i];
                         };
                         if(i!=17){
                             ofile<<"\n";
                         };
                     };
-                    system("sudo chmod 444 menu.mn");
+                    system("chmod 444 menu.mn");
                 };
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
                     if(cursor_pos[0]<640)
