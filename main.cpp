@@ -1876,8 +1876,16 @@ int optionMenu(){
                 }else if (event.key.code==sf::Keyboard::F5){//OPTION SELECT
                     if (choice==0){//USERNAME MODIFY
                         std::string username_res;
+                        std::string init_username=username;
                         username_res=askText("Username?");
                         if (username_res!=""){
+                            std::ofstream ofile(functions.getUserPath()+"/.gsc_o/settings.temp");
+                            std::ifstream ifile(functions.getUserPath()+"/.gsc_o/settings");
+                            std::string line;
+                            while (getline(ifile, line)){
+                                line=functions.ReplaceAll(line,init_username,username_res);
+                                ofile<<line+"\n";
+                            };
                             username=username_res;
                         };
                     }else if(choice==1){
