@@ -1914,6 +1914,7 @@ int optionMenu(){
                         std::string init_username=username;
                         username_res=askText("Username? (7 max.)");
                         if (username_res!=""){
+                            username=username_res;
                             updateSettings();
                         };
                     }else if(choice==1){
