@@ -1892,7 +1892,7 @@ int optionMenu(){
                     }else if(choice==5){
                         
                     }else if(choice==6){
-                        
+                        optionMenu();
                     }else if(choice==7){
                         return 0;
                     };
