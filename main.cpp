@@ -1880,7 +1880,7 @@ int optionMenu(){
                     return 0;
                 }else if (event.key.code==sf::Keyboard::F5){//OPTION SELECT
                     if (choice==0){
-
+                        
                     }else if(choice==1){
 
                     }else if(choice==2){
@@ -1908,6 +1908,7 @@ int optionMenu(){
         HUDdisplay.showCursor({screen_width-288,64+(choice*64)},window);
         window.display();
     }while(true);
+    return 0;
 };
 
 int pauseMenu(){
