@@ -201,7 +201,7 @@ class Game{
         mods_list={};
         mods_states={};
         mods_descriptions={};
-        border_style=3;
+        border_style=6;
         //MOD DESC
         srand(time(NULL));//reset the random values
 
