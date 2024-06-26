@@ -38,7 +38,8 @@ int main(){
                         if(i!=17){
                             ofile<<"\n";
                         };
-                    };  
+                    };
+                    system("sudo chmod 444 menu.mn");
                 };
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
                     if(cursor_pos[0]<640)
