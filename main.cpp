@@ -921,6 +921,7 @@ int showEditorControls(){
     if (message_timer<=60){
         HUDdisplay.showTextDEBUG(output_message,{0,560},window);
     };
+    HUDdisplay.showMenu(window,"menu1.mn");
     window.display();
     }while(true);
     return 0;
