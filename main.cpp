@@ -1861,6 +1861,9 @@ int updateSettings(){
         };
         final_content.append(line+"\n");
     };
+    final_content=functions.ReplaceAll(final_content,init_username,username);
+    final_content=functions.ReplaceAll(final_content,init_resolution,real_res);
+    final_content=functions.ReplaceAll(final_content,init_border,std::to_string(border_style));
     ofile<<final_content;
     std::string instruction;
     instruction="mv "+functions.getUserPath()+"/.gsc_o/settings.temp "+functions.getUserPath()+"/.gsc_o/settings";
