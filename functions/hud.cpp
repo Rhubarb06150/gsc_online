@@ -411,7 +411,7 @@ class HUD{
     int showCursor(std::vector<int> text_pos, sf::RenderWindow& window){
         sf::Sprite sprite;
         sprite.setPosition(text_pos[0],text_pos[1]);
-        sprite.setTexture(menu_textures[0]);
+        sprite.setTexture(menu_tiles[0]);
         sprite.scale(4.f,4.f);
         window.draw(sprite);
         return 0;  
