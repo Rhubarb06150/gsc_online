@@ -156,7 +156,7 @@ class HUD{
         menu_tiles_indexes.push_back({"wideLine","0111","\xd0"});
         menu_tiles_indexes.push_back({"wideLineRight","1111","\xd1"});
         menu_tiles_indexes.push_back({"wideLineLeft","1311","\xd2"});
-        menu_tiles_indexes.push_back({"idN","6421","\xd5"});
+        //menu_tiles_indexes.push_back({"idN","6421","\xd5"});
 
         //EDITOR TEXTURES
         texture.loadFromFile("assets/hud/editor_bg.png");
