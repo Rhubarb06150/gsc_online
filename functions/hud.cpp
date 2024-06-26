@@ -87,7 +87,7 @@ class HUD{
         letters_index.push_back({"c","22"});
         letters_index.push_back({"d","32"});
         letters_index.push_back({"e","42"});
-        letters_index.push_back({"\xed","94"});
+        letters_index.push_back({"\xed","a3"});
         letters_index.push_back({"f","52"});
         letters_index.push_back({"g","62"});
         letters_index.push_back({"h","72"});
