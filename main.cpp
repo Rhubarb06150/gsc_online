@@ -769,6 +769,8 @@ std::string askText(std::string caption){
             text_input=takeLetter(text_input);
         };
         window.clear(sf::Color(255,255,255));
+        int win_width=window.getSize().x;
+        HUDdisplay.drawSquare(window,{0,0},{win_width,576},border_style);
         HUDdisplay.showTextBOW(caption,{32,32},window);
         if (index_frame%60<=30){
             HUDdisplay.showTextAskBOW(text_input,{32,96},window);
@@ -1854,6 +1856,30 @@ int main_menu(){
     return 0;
 };
 
+int updateSettings(){
+    std::string init_username;
+    std::string init_resolution;
+    std::string init_border;
+    std::ofstream ofile(functions.getUserPath()+"/.gsc_o/settings.temp");
+    std::ifstream ifile(functions.getUserPath()+"/.gsc_o/settings");
+    std::string line;
+    while (getline(ifile, line)){
+        if (line.rfind("username=",0)==0){
+            init_username=functions.ReplaceAll(line,"username=","");
+        }else if(line.rfind("resolution=",0)==0){
+            init_resolution=functions.ReplaceAll(line,"resolution=","");
+        }else if(line.rfind("border=",0)==0){
+            init_border=functions.ReplaceAll(line,"border=","");
+        };
+    };
+
+    std::string instruction;
+    instruction="mv "+functions.getUserPath()+"/.gsc_o/settings.temp "+functions.getUserPath()+"/.gsc_o/settings";
+    system(instruction.c_str());
+    instruction="rm -f "+functions.getUserPath()+"/.gsc_o/settings.temp -f";
+    system(instruction.c_str());
+};
+
 int optionMenu(){
     int choice=0;
     do{
@@ -1882,7 +1908,7 @@ int optionMenu(){
                     };
                 }else if (event.key.code==sf::Keyboard::Right){
                     if (choice==1){
-                        if (border_style<(HUDdisplay.border_textures.size()/6)-1){
+                        if (border_style<(HUDdisplay.border_textures.size()/6)){
                             border_style++;
                         };
                     };
