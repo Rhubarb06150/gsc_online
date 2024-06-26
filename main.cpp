@@ -720,19 +720,6 @@ std::string takeLetter(sf::String text_input){
             text_input+=event.text.unicode;
         };
     };
-    //int pres=count(letters.begin(), letters.end(), letters[event.key.code]);
-    //if (pres==1){
-        //if (event.text.unicode<128){
-        //    std::cout << event.text.unicode << std::endl;
-        //    text_input.append(letters[event.key.code]);
-        //};
-    //};
-    //if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift)||sf::Keyboard::isKeyPressed(sf::Keyboard::RShift)){
-        //pres=count(letters.begin(), letters.end(), letters[event.key.code]);
-        //if (pres==1){
-        //    text_input.append(letters[(event.key.code+26)]);
-        //};
-    //}
     return text_input;
 };
 
@@ -1860,6 +1847,7 @@ int updateSettings(){
     std::string init_username;
     std::string init_resolution;
     std::string init_border;
+    std::string final_content;
     std::ofstream ofile(functions.getUserPath()+"/.gsc_o/settings.temp");
     std::ifstream ifile(functions.getUserPath()+"/.gsc_o/settings");
     std::string line;
@@ -1871,13 +1859,16 @@ int updateSettings(){
         }else if(line.rfind("border=",0)==0){
             init_border=functions.ReplaceAll(line,"border=","");
         };
+        final_content.append(line+"\n");
     };
-
+    ofile<<final_content;
     std::string instruction;
     instruction="mv "+functions.getUserPath()+"/.gsc_o/settings.temp "+functions.getUserPath()+"/.gsc_o/settings";
     system(instruction.c_str());
     instruction="rm -f "+functions.getUserPath()+"/.gsc_o/settings.temp -f";
     system(instruction.c_str());
+    functions.log("INFO","Settings updated");
+    return 0;
 };
 
 int optionMenu(){
@@ -1920,26 +1911,10 @@ int optionMenu(){
                         std::string init_username=username;
                         username_res=askText("Username? (7 max.)");
                         if (username_res!=""){
-                            if (username_res.length()>7){
-                                functions.log("ERROR","Your username can't be longer than 7 characters");
-                            }else{
-                            std::ofstream ofile(functions.getUserPath()+"/.gsc_o/settings.temp");
-                            std::ifstream ifile(functions.getUserPath()+"/.gsc_o/settings");
-                            std::string line;
-                            while (getline(ifile, line)){
-                                line=functions.ReplaceAll(line,init_username,username_res);
-                                ofile<<line+"\n";
-                            };
-                            std::string instruction;
-                            instruction="mv "+functions.getUserPath()+"/.gsc_o/settings.temp "+functions.getUserPath()+"/.gsc_o/settings";
-                            system(instruction.c_str());
-                            instruction="rm -f "+functions.getUserPath()+"/.gsc_o/settings.temp -f";
-                            system(instruction.c_str());
-                            username=username_res;
-                            };
+                            updateSettings();
                         };
                     }else if(choice==1){
-                        
+                        updateSettings();
                     }else if(choice==2){
 
                     }else if(choice==3){
