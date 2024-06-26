@@ -2019,6 +2019,12 @@ int pauseMenu(){
             HUDdisplay.showTextBOW("Your\n\nbackpack",{0,448},window);
         }else if(choice==3){
             HUDdisplay.showTextBOW("Useful\n\nstuff",{0,448},window);
+        }else if(choice==4){
+            HUDdisplay.showTextBOW("Your\n\nstatus",{0,448},window);
+        }else if(choice==5){
+            HUDdisplay.showTextBOW("Save the\n\ngame",{0,448},window);
+        }else if(choice==6){
+            HUDdisplay.showTextBOW("Edit\n\noptions",{0,448},window);
         };
         HUDdisplay.drawSquare(window,{screen_width-320,0},{320,576},border_style);
         HUDdisplay.showTextBOW(username,{screen_width-256,320},window);
