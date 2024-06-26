@@ -1959,6 +1959,8 @@ int optionMenu(){
 int pauseMenu(){
     int choice=0;
     do{
+        start=std::chrono::high_resolution_clock::now();
+        index_frame++;
         moving_timer=20;
         walking=false;
         while (window.pollEvent(event))
