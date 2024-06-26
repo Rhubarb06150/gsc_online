@@ -2091,7 +2091,6 @@ int main(int argc, char** argv)
     G.loadSettings();
     //G.functions.log("INFO","an game folder has been created at "+G.functions.getUserPath()+"/.gsc_o, it will be used to store your saved maps and your screenshots");
 
-    G.main_menu();
     while (G.window.isOpen()){
         G.mainLoop();
     };
