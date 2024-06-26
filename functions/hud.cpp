@@ -251,12 +251,12 @@ class HUD{
                 cur_index=line[i];
                 tile.setTexture(menu_tiles[getMenuTileIndex(cur_index)]);
                 tile.setPosition(x,y);
-                tile.setScale(4.f,4.f);
+                //tile.setScale(4.f,4.f);
                 window.draw(tile);
                 x+=4;
             };
             //std::cout<<line<<std::endl;
-            y+=32;
+            y+=4;
             x=0;
         };
         return 0;
