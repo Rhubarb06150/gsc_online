@@ -222,12 +222,14 @@ class HUD{
     };
 
     int getMenuTileIndex(std::string tile_index){
+        std::cout << tile_index;
         for(int i=0;i<menu_tiles.size();i++){
             if (tile_index==menu_tiles_indexes[i][2]){
-                std::cout << tile_index << "=" << menu_tiles_indexes[i][0]<<std::endl;
+                std::cout << "=" << menu_tiles_indexes[i][0]<<std::endl;
                 return i;
             };
         };
+        std::cout << std::endl;
         return menu_tiles.size()-1;
     };
 
