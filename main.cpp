@@ -201,6 +201,7 @@ class Game{
         mods_list={};
         mods_states={};
         mods_descriptions={};
+        debug_launch=false;
         //MOD DESC
         srand(time(NULL));//reset the random values
 
@@ -554,7 +555,7 @@ void mainLoop(){
     //DO NOT DELETE THIS PLS
     //MOD DISPLAY
     if (debug_launch)
-    HUDdisplay.showTextDEBUG(std::to_string(fps_),{0,560},window);
+        HUDdisplay.showTextDEBUG(std::to_string(fps_),{0,560},window);
     window.display();
 
     //if (record){
