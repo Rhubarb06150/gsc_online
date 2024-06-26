@@ -1858,7 +1858,7 @@ int main_menu(){
 
 int optionMenu(){
     int choice=0;
-    std::cout << "option" << std::endl;
+    std::cout<<"option"<<std::endl;
     do{
         moving_timer=20;
         walking=false;
