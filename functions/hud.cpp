@@ -144,7 +144,7 @@ class HUD{
         menu_textures.push_back(texture);
 
         // MENU TILES INDEX
-        menu_tiles_indexes.push_back({"status","ff11"," "});
+        menu_tiles_indexes.push_back({"empty","ff11"," "});
         menu_tiles_indexes.push_back({"cursor","7111","\x00"});
         menu_tiles_indexes.push_back({"white","3211","\x01"});
         menu_tiles_indexes.push_back({"blueSquare","0011","\xe0"});
@@ -411,7 +411,7 @@ class HUD{
     int showCursor(std::vector<int> text_pos, sf::RenderWindow& window){
         sf::Sprite sprite;
         sprite.setPosition(text_pos[0],text_pos[1]);
-        sprite.setTexture(menu_tiles[0]);
+        sprite.setTexture(menu_tiles[1]);
         sprite.scale(4.f,4.f);
         window.draw(sprite);
         return 0;  
