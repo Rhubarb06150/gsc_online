@@ -175,6 +175,8 @@ class HUD{
 
         for (int i = 0;i<letters_index.size();i++){
 
+            sf::Texture texture;
+
             std::string fish = letters_index[i][1];
 
             x = funs.hexToInt(fish[0]);
