@@ -193,10 +193,11 @@ class HUD{
         sf::Sprite corner_tr;
         sf::Sprite corner_bl;
         sf::Sprite corner_br;
-        corner_tl.setTexture(border_textures[0+(6*border_index)]);
-        corner_tr.setTexture(border_textures[1+(6*border_index)]);
-        corner_bl.setTexture(border_textures[2+(6*border_index)]);
-        corner_br.setTexture(border_textures[3+(6*border_index)]);
+        int border_offset=6*border_index;
+        corner_tl.setTexture(border_textures[0+border_offset]);
+        corner_tr.setTexture(border_textures[1+border_offset]);
+        corner_bl.setTexture(border_textures[2+border_offset]);
+        corner_br.setTexture(border_textures[3+border_offset]);
         corner_tl.setScale(4.f,4.f);
         corner_tr.setScale(4.f,4.f);
         corner_bl.setScale(4.f,4.f);
@@ -219,7 +220,7 @@ class HUD{
         window.draw(corner_br);
         for(int i=0;i<(size[0]-64)/32;i++){
             sf::Sprite bar;
-            bar.setTexture(border_textures[4+(6*border_index)]);
+            bar.setTexture(border_textures[4+border_offset]);
             float bar_pos;
             bar_pos=32+(i*32)+pos[0];
             bar.setScale(4.f,4.f);
@@ -228,7 +229,7 @@ class HUD{
         };
         for(int i=0;i<(size[0]-64)/32;i++){
             sf::Sprite bar;
-            bar.setTexture(border_textures[4+(6*border_index)]);
+            bar.setTexture(border_textures[4+border_offset]);
             float bar_pos;
             bar_pos=32+(i*32)+pos[0];
             bar.setScale(4.f,4.f);
@@ -237,7 +238,7 @@ class HUD{
         };
         for(int i=0;i<(size[1]-64)/32;i++){
             sf::Sprite bar;
-            bar.setTexture(border_textures[5+(6*border_index)]);
+            bar.setTexture(border_textures[5+border_offset]);
             float bar_pos;
             bar_pos=32+(i*32)+pos[1];
             bar.setScale(4.f,4.f);
@@ -246,7 +247,7 @@ class HUD{
         };
         for(int i=0;i<(size[1]-64)/32;i++){
             sf::Sprite bar;
-            bar.setTexture(border_textures[5+(6*border_index)]);
+            bar.setTexture(border_textures[5+border_offset]);
             float bar_pos;
             bar_pos=32+(i*32)+pos[1];
             bar.setScale(4.f,4.f);
