@@ -1858,6 +1858,7 @@ int main_menu(){
 
 int optionMenu(){
     int choice=0;
+    std::cout << "option" << std::endl;
     do{
         moving_timer=20;
         walking=false;
@@ -1880,7 +1881,7 @@ int optionMenu(){
                     return 0;
                 }else if (event.key.code==sf::Keyboard::F5){//OPTION SELECT
                     if (choice==0){
-                        
+
                     }else if(choice==1){
 
                     }else if(choice==2){
