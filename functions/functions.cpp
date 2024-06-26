@@ -103,16 +103,25 @@ class GSC_Functions{
             std::string ins;
             ins="mkdir "+path;
             if (system(ins.c_str())==0){
-                //log("FOLDER",path+" has been created");
                 return 0;
             }else{
-                //log("FOLDER",path+" could not been created");
                 return 2;
             };
         }else{
-            //log("FOLDER",path+" already exists");
             return 1;
         };
+    };
+
+    int createMissingFile(std::string path,std::string content){
+        if (!std::filesystem::is_regular_file(path)){
+            std::ofstream ofile(path);
+            ofile<<content;
+            ofile.close();
+            return 0;
+        }else{
+            return 1;
+        };
+        return 0;
     };
 
     std::vector<std::string> saveGifFrame(int index_frame, sf::RenderWindow& window, std::vector<std::string> vector){
