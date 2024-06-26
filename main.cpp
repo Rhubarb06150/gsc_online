@@ -1894,7 +1894,11 @@ int optionMenu(){
                     }else if(choice==4){
                         
                     }else if(choice==5){
-                        return 0;    
+                            
+                    }else if(choice==6){
+
+                    }else if(choice==7){
+                        return 0;
                     };
                 };
             }else if (event.Closed){
@@ -1905,7 +1909,7 @@ int optionMenu(){
         window.clear();
         int screen_width=window.getSize().x;
         HUDdisplay.drawSquare(window,{0,0},{screen_width,576});
-        HUDdisplay.showTextBOW("USERNAME:\n  "+username,{64,64},window);
+        HUDdisplay.showTextBOW("USERNAME:\n  "+username+"\n1\n\n2\n\n3\n\n4\n\n5\n\n6\n\nEXIT",{64,64},window);
         HUDdisplay.showCursor({32,64+(choice*64)},window);
         window.display();
     }while(true);
