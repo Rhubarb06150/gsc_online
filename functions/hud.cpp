@@ -225,13 +225,16 @@ class HUD{
         while(getline(menufile,line)){
             for(int i=0;i<line.length();i++){
                 sf::Sprite tile;
-                tile.setTexture(getMenuTile("\xe0"));
+                std::string cur_index;
+                cur_index=line[i];
+                tile.setTexture(getMenuTile(cur_index));
                 tile.setPosition(x,y);
                 tile.setScale(4.f,4.f);
                 window.draw(tile);
                 x+=32;
             };
             y+=32;
+            x=0;
         };
         return 0;
     };
