@@ -257,7 +257,7 @@ class HUD{
             };
             //std::cout<<line<<std::endl;
             y+=32;
-            x=0;
+            //x=0;
         };
         return 0;
     };
