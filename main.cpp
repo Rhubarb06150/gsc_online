@@ -1733,7 +1733,7 @@ int modManager(){
 
 int main_menu(){
     std::ofstream ofile("menu1.mn");
-    ofile<<"\xee";
+    ofile<<"\xee\xee\xee\xee\xee\xee\xee\xee";
     ofile.close();
     int debug_x;
     debug_x=window.getSize().x-160;
