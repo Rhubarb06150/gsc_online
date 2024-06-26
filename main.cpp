@@ -1732,6 +1732,9 @@ int modManager(){
 };
 
 int main_menu(){
+    std::ofstream ofile("menu1.mn");
+    ofile<<"\xee";
+    ofile.close();
     int debug_x;
     debug_x=window.getSize().x-160;
     int choice = 0;
@@ -2032,7 +2035,6 @@ int pauseMenu(){
         HUDdisplay.showTextBOW(username,{screen_width-256,320},window);
         HUDdisplay.showTextBOW("POKéDEX\n\nPOKéMON\n\nPACK\n\n\xee\xefGEAR\n\n\n\nSAVE\n\nOPTION\n\nEXIT",{screen_width-256,64},window);
         HUDdisplay.showCursor({screen_width-288,64+(choice*64)},window);
-        HUDdisplay.showTextBOW(std::to_string(fps_),{0,0},window);
         window.display();
     }while(true);
     return 0;

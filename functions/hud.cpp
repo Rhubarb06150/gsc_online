@@ -39,6 +39,8 @@ class HUD{
     std::vector<sf::Texture> menu_textures;
     std::vector<sf::Texture> editor_background;
     std::vector<sf::Texture> border_textures;
+    std::vector<std::vector<std::string>> menu_tiles_indexes;
+    std::vector<sf::Texture> menu_tiles;
 
     HUD(){
         editor_bg_index=0;
@@ -140,6 +142,11 @@ class HUD{
         menu_textures.push_back(texture);
         texture.loadFromFile("assets/hud/logo.png");
         menu_textures.push_back(texture);
+        
+        // MENU TILES INDEX
+        menu_tiles_indexes.push_back({"cursor","71"});
+        menu_tiles_indexes.push_back({"blueSquare","00"});
+        menu_tiles_indexes.push_back({"blueSlope","00"});
 
         //EDITOR TEXTURES
         texture.loadFromFile("assets/hud/editor_bg.png");
