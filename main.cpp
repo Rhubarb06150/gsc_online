@@ -2007,11 +2007,10 @@ int pauseMenu(){
         player_state=player.animPlayer(player_state,moving_timer,walking);
         player.showPlayer(player_type,player_state,window);
         int screen_width=window.getSize().x;
-        if(choice==0){
-            HUDdisplay.showTextBOW("             \nPokémon      \n             \nIndex        \n             ",{0,416},window);
-        }else if(choice==1){
-            HUDdisplay.showTextBOW("             \n\xee\xef Team       \n             \nStatus       \n             ",{0,416},window);
-        };
+        sf::RectangleShape rec({720,160});
+        rec.setFillColor({255,255,255});
+        rec.setPosition(0,416);
+        window.draw(rec);
         HUDdisplay.drawSquare(window,{screen_width-320,0},{320,576},border_style);
         HUDdisplay.showTextBOW(username,{screen_width-256,320},window);
         HUDdisplay.showTextBOW("POKéDEX\n\nPOKéMON\n\nPACK\n\n\xee\xefGEAR\n\n\n\nSAVE\n\nOPTION\n\nEXIT",{screen_width-256,64},window);
