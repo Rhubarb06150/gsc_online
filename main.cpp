@@ -1175,7 +1175,6 @@ int playerMenu(){
 };
 
 int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
-
     functions.log("EDITOR","Launching editor");
 
     std::vector<std::string> actions;//actions list for they are  displayed in the editor menu
