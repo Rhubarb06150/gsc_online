@@ -1870,7 +1870,7 @@ int updateSettings(bool advert){
     system(instruction.c_str());
     instruction="rm -f "+functions.getUserPath()+"/.gsc_o/settings.temp -f";
     system(instruction.c_str());
-    if (advert)
+    if (advert) 
     functions.log("INFO","Settings updated");
     return 0;
 };
