@@ -1911,6 +1911,7 @@ int optionMenu(){
         HUDdisplay.showCursor({screen_width-288,64+(choice*64)},window);
         window.display();
     }while(true);
+    std::cout << "endquit" << std::endl;
     return 0;
 };
 
