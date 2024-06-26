@@ -255,6 +255,7 @@ class HUD{
                 window.draw(tile);
                 x+=32;
             };
+            line=funs.ReplaceAll(line,"\x01","w");
             std::cout<<line<<std::endl;
             y+=32;
             x=0;
