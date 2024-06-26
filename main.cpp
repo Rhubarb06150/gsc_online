@@ -1159,6 +1159,13 @@ std::string askPath(std::string path,sf::Event event,sf::RenderWindow& window){
 
 int playerMenu(){
     do{
+        while (window.pollEvent(event)){
+            if (event.type==sf::Event::KeyPressed){
+                if (event.key.code==sf::Keyboard::F6){
+                    return 0;
+                };
+            };
+        };
         window.clear();
         HUDdisplay.showMenu(window,"assets/menus/playerStatus.mn");
         HUDdisplay.showTextBOW("NAME/"+username,{64,64},window);
@@ -2002,7 +2009,7 @@ int pauseMenu(){
                     }else if(choice==4){
                         playerMenu();
                     }else if(choice==5){
-                        
+
                     }else if(choice==6){
                         optionMenu();
                     }else if(choice==7){
