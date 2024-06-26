@@ -226,6 +226,7 @@ class HUD{
                 sf::Sprite tile;
                 tile.setTexture(getMenuTile(""+line[i]));
                 tile.setPosition(x,y);
+                tile.setScale(4.f,4.f);
                 window.draw(tile);
                 x+=32;
             };
