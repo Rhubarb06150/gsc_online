@@ -1886,6 +1886,9 @@ int optionMenu(){
                                 line=functions.ReplaceAll(line,init_username,username_res);
                                 ofile<<line+"\n";
                             };
+                            std::string instruction;
+                            instruction="mv "+functions.getUserPath()+"/.gsc_o/settings.temp "+functions.getUserPath()+"/.gsc_o/settings";
+                            system(instruction.c_str());
                             username=username_res;
                         };
                     }else if(choice==1){
