@@ -1874,6 +1874,18 @@ int optionMenu(){
                     }else{
                         choice--;
                     };
+                }else if (event.key.code==sf::Keyboard::Left){
+                    if (choice==1){
+                        if (border_style>0){
+                            border_style--;
+                        };
+                    };
+                }else if (event.key.code==sf::Keyboard::Right){
+                    if (choice==1){
+                        if (border_style<HUDdisplay.border_textures.size()/6){
+                            border_style++;
+                        };
+                    };
                 }else if (event.key.code==sf::Keyboard::F6||event.key.code==sf::Keyboard::Escape){
                     return 0;
                 }else if (event.key.code==sf::Keyboard::F5){//OPTION SELECT
