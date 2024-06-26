@@ -2007,13 +2007,13 @@ int pauseMenu(){
         player_state=player.animPlayer(player_state,moving_timer,walking);
         player.showPlayer(player_type,player_state,window);
         int screen_width=window.getSize().x;
+        if(choice==0){
+            HUDdisplay.showTextBOW("             \nPokémon      \n             \nIndex        \n             ",{0,416},window);
+        };
         HUDdisplay.drawSquare(window,{screen_width-320,0},{320,576},border_style);
         HUDdisplay.showTextBOW(username,{screen_width-256,320},window);
         HUDdisplay.showTextBOW("POKéDEX\n\nPOKéMON\n\nPACK\n\n\xee\xefGEAR\n\n\n\nSAVE\n\nOPTION\n\nEXIT",{screen_width-256,64},window);
         HUDdisplay.showCursor({screen_width-288,64+(choice*64)},window);
-        if(choice==0){
-            HUDdisplay.showTextBOW("\nPokémon      \n             \nIndex        \n             ",{0,416},window);
-        };
         window.display();
     }while(true);
     return 0;
