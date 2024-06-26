@@ -147,6 +147,7 @@ class HUD{
         menu_tiles_indexes.push_back({"cursor","71","\x00"});
         menu_tiles_indexes.push_back({"blueSquare","00","\xe0"});
         menu_tiles_indexes.push_back({"blueSlope","00","\xe1"});
+        menu_tiles_indexes.push_back({"blueSlope2","00","\xe2"});
 
         //EDITOR TEXTURES
         texture.loadFromFile("assets/hud/editor_bg.png");
@@ -160,6 +161,14 @@ class HUD{
 
         int x;
         int y;
+
+        for(int i=0;i<menu_tiles_indexes.size();i++){
+            std::string fish = letters_index[i][1];
+            x=funs.hexToInt(fish[0]);
+            y=funs.hexToInt(fish[1]);
+            texture.loadFromFile("assets/menu.png",sf::IntRect(x*8,y*8,8,8));
+            letters_bow_textures.push_back(texture);
+        };
         
         sf::Sprite sprite;
 
@@ -196,6 +205,27 @@ class HUD{
             texture.loadFromFile("assets/hud/border.png",sf::IntRect(0,8+(k*16),8,8));//COLUMN CORNER
             border_textures.push_back(texture);
         };
+    };
+
+    sf::Texture getMenuTile(std::string tile_index){
+        for(int i=0;i<menu_tiles.size();i++){
+            if(tile_index==menu_tiles_indexes[i][2]){
+                return menu_tiles[i];
+            };
+        };
+        return menu_tiles[menu_tiles.size()-10];
+    };
+
+    int showMenu(sf::RenderWindow& window,std::string menu_path){
+        std::ifstream menufile(menu_path);
+        std::string line;
+        while(getline(menufile,line)){
+            for(int i=0;i<line.length();i++){
+                sf::Sprite tile;
+                tile.setTexture(getMenuTile(""+line[i]));
+            };
+        };
+        return 0;
     };
 
     int drawSquare(sf::RenderWindow& window,std::vector<int> pos, std::vector<int> size, int border_index){
