@@ -218,7 +218,7 @@ class HUD{
         return menu_tiles[menu_tiles.size()-1];
     };
 
-    void showMenu(sf::RenderWindow& window,std::string menu_path){
+    int showMenu(sf::RenderWindow& window,std::string menu_path){
         std::ifstream menufile(menu_path);
         std::string line;
         int x=0;
@@ -234,9 +234,11 @@ class HUD{
                 window.draw(tile);
                 x+=32;
             };
+            std::cout<<line<<std::endl;
             y+=32;
             x=0;
         };
+        return 0;
     };
 
     int drawSquare(sf::RenderWindow& window,std::vector<int> pos, std::vector<int> size, int border_index){
