@@ -634,7 +634,7 @@ std::vector<int> checkResolutionPOffset(){
 
 int loadSettings(){
     if (std::filesystem::is_regular_file(functions.getUserPath()+"/.gsc_o/settings.st")){
-        std::ifstream inputFile(functions.getUserPath()+"/.gsc_o/settings.st");
+        std::ifstream inputFile(functions.getUserPath()+"/.gsc_o/settings");
         std::string line;
         while (getline(inputFile, line)){
             if (line.rfind("resolution=",0)==0){
@@ -646,12 +646,7 @@ int loadSettings(){
             };
         };
     }else{
-        std::ofstream settings_file(functions.getUserPath()+"/.gsc_o/settings.st");
-        settings_file << "This is where your settings are saved, if you delete this file, it will be recreated with default values\n";
-        settings_file << "resolution=640x480\n";
-        settings_file << "username=Player";
-        settings_file.close();
-        functions.log("INFO","A settings file has been created in the game folder, please don't modify by hand it may couse trouble in the game.");
+        functions.log("WARN","Failed to load settings file");
     };
     return 0;
 };
@@ -2073,6 +2068,7 @@ int main(int argc, char** argv)
     G.functions.createMissingDir(G.functions.getUserPath()+"/.gsc_o/maps/");
     G.functions.createMissingDir(G.functions.getUserPath()+"/.gsc_o/renders/");
     G.functions.createMissingFile(G.functions.getUserPath()+"/.gsc_o/settings","username=Player\nresolution=640x576\n");
+    G.loadSettings();
     //G.functions.log("INFO","an game folder has been created at "+G.functions.getUserPath()+"/.gsc_o, it will be used to store your saved maps and your screenshots");
 
     G.main_menu();
