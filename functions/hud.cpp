@@ -163,6 +163,7 @@ class HUD{
         int y;
 
         for(int i=0;i<menu_tiles_indexes.size();i++){
+            sf::Texture texture;
             std::string fish = menu_tiles_indexes[i][1];
             std::cout << fish << std::endl;
             x=funs.hexToInt(fish[0]);
@@ -174,8 +175,6 @@ class HUD{
         sf::Sprite sprite;
 
         for (int i = 0;i<letters_index.size();i++){
-
-            sf::Texture texture;
 
             std::string fish = letters_index[i][1];
 
