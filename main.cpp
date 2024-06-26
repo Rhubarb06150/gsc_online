@@ -1896,6 +1896,7 @@ int optionMenu(){
                         std::cout << "om" << std::endl;
                         optionMenu();
                     }else if(choice==7){
+                        std::cout << "quit" << std::endl;
                         return 0;
                     };
                 };
