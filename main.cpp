@@ -556,7 +556,6 @@ void mainLoop(){
     //MOD DISPLAY
     if (debug_launch)
         HUDdisplay.showTextDEBUG(std::to_string(fps_),{0,560},window);
-    HUDdisplay.showMenu(window,"menu1.mn");
     window.display();
 
     //if (record){
@@ -1167,7 +1166,8 @@ int playerMenu(){
             };
         };
         window.clear();
-        HUDdisplay.showMenu(window,"assets/menus/playerStatus.mn");
+        //HUDdisplay.showMenu(window,"assets/menus/playerStatus.mn");
+        HUDdisplay.showMenu(window,"menu.mn");
         HUDdisplay.showTextBOW("NAME/"+username,{64,64},window);
         window.display();
     }while(true);
