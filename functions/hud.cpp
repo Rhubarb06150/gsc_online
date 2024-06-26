@@ -255,7 +255,7 @@ class HUD{
                 window.draw(tile);
                 x+=32;
                 if (i==15){
-                    std::cout<<cur_index<<std::to_string(y/32)<<std::endl;
+                    std::cout<<line[i]<<std::to_string(y/32)<<std::endl;
                 };
             };
             //std::cout<<line<<std::endl;
