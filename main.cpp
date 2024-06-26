@@ -1879,7 +1879,7 @@ int optionMenu(){
                 }else if (event.key.code==sf::Keyboard::F6||event.key.code==sf::Keyboard::Escape){
                     return 0;
                 }else if (event.key.code==sf::Keyboard::F5){//OPTION SELECT
-                    if (choice==0){
+                    if (choice==0){//USERNAME MODIFY
                         std::string username_res;
                         username_res=askText("Username?");
                         if (username_res!=""){
@@ -1905,6 +1905,7 @@ int optionMenu(){
         window.clear();
         int screen_width=window.getSize().x;
         HUDdisplay.drawSquare(window,{0,0},{screen_width,576});
+        HUDdisplay.showTextBOW("USERNAME:\n  "+username,{64,64},window);
         HUDdisplay.showCursor({32,64+(choice*64)},window);
         window.display();
     }while(true);
