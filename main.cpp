@@ -1901,7 +1901,7 @@ int optionMenu(){
         window.clear();
         int screen_width=window.getSize().x;
         HUDdisplay.drawSquare(window,{0,0},{screen_width,576});
-        HUDdisplay.showCursor({screen_width-288,64+(choice*64)},window);
+        HUDdisplay.showCursor({32,64+(choice*64)},window);
         window.display();
     }while(true);
     std::cout << "endquit" << std::endl;
