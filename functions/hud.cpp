@@ -163,7 +163,7 @@ class HUD{
         int y;
 
         for(int i=0;i<menu_tiles_indexes.size();i++){
-            std::string fish = letters_index[i][1];
+            std::string fish = menu_tiles_indexes[i][1];
             x=funs.hexToInt(fish[0]);
             y=funs.hexToInt(fish[1]);
             texture.loadFromFile("assets/hud/menus.png",sf::IntRect(x*8,y*8,8,8));
