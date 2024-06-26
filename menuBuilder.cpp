@@ -31,11 +31,11 @@ int main(){
             if (!tile_select){
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)){
                     std::ofstream ofile("menu.mn");
-                    for(int i=0;i<20;i++){
-                        for(int j=0;j<18;j++){
-                            ofile<<tiles[j][i];
+                    for(int i=0;i<18;i++){
+                        for(int j=0;j<20;j++){
+                            ofile<<tiles[i][j];
                         };
-                        if(i!=19){
+                        if(i!=17){
                             ofile<<"\n";
                         };
                     };  
