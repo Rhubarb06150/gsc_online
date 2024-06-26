@@ -212,14 +212,13 @@ class HUD{
     sf::Texture getMenuTile(std::string tile_index){
         for(int i=0;i<menu_tiles.size();i++){
             if(tile_index==menu_tiles_indexes[i][2]){
-                std::cout << "found" << std::endl;
                 return menu_tiles[i];
             };
         };
         return menu_tiles[menu_tiles.size()-1];
     };
 
-    int showMenu(sf::RenderWindow& window,std::string menu_path){
+    void showMenu(sf::RenderWindow& window,std::string menu_path){
         std::ifstream menufile(menu_path);
         std::string line;
         int x=0;
@@ -238,7 +237,6 @@ class HUD{
             y+=32;
             x=0;
         };
-        return 0;
     };
 
     int drawSquare(sf::RenderWindow& window,std::vector<int> pos, std::vector<int> size, int border_index){
