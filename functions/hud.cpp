@@ -145,6 +145,7 @@ class HUD{
 
         // MENU TILES INDEX
         menu_tiles_indexes.push_back({"cursor","71","\x00"});
+        menu_tiles_indexes.push_back({"white","32","\x01"});
         menu_tiles_indexes.push_back({"blueSquare","00","\xe0"});
         menu_tiles_indexes.push_back({"blueSlope","00","\xe1"});
         menu_tiles_indexes.push_back({"blueSlope2","00","\xe2"});
