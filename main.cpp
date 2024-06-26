@@ -201,7 +201,6 @@ class Game{
         mods_list={};
         mods_states={};
         mods_descriptions={};
-        border_style=2;
         //MOD DESC
         srand(time(NULL));//reset the random values
 
@@ -646,6 +645,8 @@ int loadSettings(){
             }else if (line.rfind("username=",0)==0){
                 username = functions.ReplaceAll(line,"username=","");
                 functions.log("INFO","Game launched as "+username);
+            }else if (line.rfind("border=",0)==0){
+                border_style = std::stoi(functions.ReplaceAll(line,"border=",""));
             };
         };
     }else{
