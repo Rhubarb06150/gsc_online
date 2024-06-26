@@ -1921,7 +1921,7 @@ int optionMenu(){
         index_frame++;
         window.clear();
         int screen_width=window.getSize().x;
-        HUDdisplay.drawSquare(window,{0,0},{screen_width,576});
+        HUDdisplay.drawSquare(window,{0,0},{screen_width,576},border_style);
         HUDdisplay.showTextBOW("USERNAME:\n  "+username+"\n1\n\n2\n\n3\n\n4\n\n5\n\nOPEN GITHUB REPO\n\nEXIT",{64,64},window);
         HUDdisplay.showCursor({32,64+(choice*64)},window);
         window.display();
@@ -1980,7 +1980,7 @@ int pauseMenu(){
         player_state=player.animPlayer(player_state,moving_timer,walking);
         player.showPlayer(player_type,player_state,window);
         int screen_width=window.getSize().x;
-        HUDdisplay.drawSquare(window,{screen_width-320,0},{320,576});
+        HUDdisplay.drawSquare(window,{screen_width-320,0},{320,576},border_style);
         HUDdisplay.showTextBOW(username,{screen_width-256,320},window);
         HUDdisplay.showTextBOW("POKéDEX\n\nPOKéMON\n\nPACK\n\n\xee\xefGEAR\n\n\n\nSAVE\n\nOPTION\n\nEXIT",{screen_width-256,64},window);
         HUDdisplay.showCursor({screen_width-288,64+(choice*64)},window);
@@ -2079,7 +2079,7 @@ int main(int argc, char** argv)
     }; */
     if (G.functions.getUserPath()=="/home/rhubarb"){
         std::string branch_version = std::to_string(G.version).substr(0,4);
-        system(("git add .&&git commit -m 'working on level editor'&&git push origin  main:"+branch_version+"&&echo pushed &").c_str());
+        system(("git add .&&git commit -m 'working on user interface'&&git push origin  main:"+branch_version+"&&echo pushed &").c_str());
     };
 
     G.functions.createMissingDir(G.functions.getUserPath()+"/.gsc_o/");
