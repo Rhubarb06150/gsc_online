@@ -156,7 +156,7 @@ class HUD{
         menu_tiles_indexes.push_back({"wideLine","0111","\xd0"});
         menu_tiles_indexes.push_back({"wideLineRight","1111","\xd1"});
         menu_tiles_indexes.push_back({"wideLineLeft","1311","\xd2"});
-        //menu_tiles_indexes.push_back({"idN","6421","\xd5"});
+        menu_tiles_indexes.push_back({"idN","6421","\xd5"});
 
         //EDITOR TEXTURES
         texture.loadFromFile("assets/hud/editor_bg.png");
@@ -230,7 +230,7 @@ class HUD{
             };
         };
         std::cout << std::endl;
-        return menu_tiles.size()-1;
+        return 0;
     };
 
     int showMenu(sf::RenderWindow& window,std::string menu_path){
