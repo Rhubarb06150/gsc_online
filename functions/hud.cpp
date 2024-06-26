@@ -176,7 +176,6 @@ class HUD{
         for(int i=0;i<menu_tiles_indexes.size();i++){
             sf::Texture texture;
             std::string fish = menu_tiles_indexes[i][1];
-            std::cout << fish << std::endl;
             x=funs.hexToInt(fish[0]);
             y=funs.hexToInt(fish[1]);
             xsize=funs.hexToInt(fish[2]);
@@ -225,7 +224,7 @@ class HUD{
     int getMenuTileIndex(std::string tile_index){
         for(int i=0;i<menu_tiles.size();i++){
             if (tile_index==menu_tiles_indexes[i][2]){
-                std::cout << menu_tiles_indexes[i][0]<<std::endl;
+                std::cout << tile_index << "=" << menu_tiles_indexes[i][0]<<std::endl;
                 return i;
             };
         };
