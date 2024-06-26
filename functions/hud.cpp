@@ -172,20 +172,21 @@ class HUD{
             letters_debug_blu_textures.push_back(texture);
 
         };
-
+        for (int k=0;k<9;k++){
         for (int i=0;i<6;i++){
-            texture.loadFromFile("assets/hud/def_border.png",sf::IntRect(0,0,8,8));
+            texture.loadFromFile("assets/hud/border.png",sf::IntRect(0,0*k,8,8));
             border_textures.push_back(texture);
-            texture.loadFromFile("assets/hud/def_border.png",sf::IntRect(8,0,8,8));
+            texture.loadFromFile("assets/hud/border.png",sf::IntRect(8,0*k,8,8));
             border_textures.push_back(texture);
-            texture.loadFromFile("assets/hud/def_border.png",sf::IntRect(0,8,8,8));
+            texture.loadFromFile("assets/hud/border.png",sf::IntRect(0,8*k,8,8));
             border_textures.push_back(texture);
-            texture.loadFromFile("assets/hud/def_border.png",sf::IntRect(8,8,8,8));
+            texture.loadFromFile("assets/hud/border.png",sf::IntRect(8,8*k,8,8));
             border_textures.push_back(texture);
-            texture.loadFromFile("assets/hud/def_border.png",sf::IntRect(16,8,8,8));
+            texture.loadFromFile("assets/hud/border.png",sf::IntRect(16,8*k,8,8));
             border_textures.push_back(texture);
-            texture.loadFromFile("assets/hud/def_border.png",sf::IntRect(16,0,8,8));
+            texture.loadFromFile("assets/hud/border.png",sf::IntRect(16,0*k,8,8));
             border_textures.push_back(texture);
+        };
         };
     };
 
