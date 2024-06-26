@@ -253,11 +253,11 @@ class HUD{
                 tile.setPosition(x,y);
                 tile.setScale(4.f,4.f);
                 window.draw(tile);
-                x+=32;
+                y+=32;
             };
             //std::cout<<line<<std::endl;
-            y+=32;
-            x=0;
+            x+=32;
+            y=0;
         };
         return 0;
     };
