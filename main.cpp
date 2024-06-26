@@ -1904,7 +1904,7 @@ int optionMenu(){
                     };
                 }else if (event.key.code==sf::Keyboard::Right){
                     if (choice==1){
-                        if (border_style<(HUDdisplay.border_textures.size()/6)){
+                        if (border_style<(HUDdisplay.border_textures.size()/6)-1){
                             border_style++;
                             updateSettings(false);
                         };
