@@ -9,7 +9,7 @@ class Items{
         items.push_back({"\x00","NONE","Item not exist."});
         balls.push_back({"\x01","MASTER BALL","The best Ball.\n\nIt never misses."});
         balls.push_back({"\x02","ULTRA BALL","A Ball with a high\n\nrate of success."});
-        balls.push_back({"\x03","BRIGHT POWDER","Lowers the foe's\n\naccuracy. (HOLD)"});
+        balls.push_back({"\x03","BRIGHTPOWDER","Lowers the foe's\n\naccuracy. (HOLD)"});
         for(int i=0;i<balls.size();i++){
             items.push_back(balls[i]);
         };
