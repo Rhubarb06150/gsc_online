@@ -1979,7 +1979,7 @@ int packMenu(){
     do{
         while (window.pollEvent(event)){
             if(event.type==sf::Event::KeyPressed){
-                if(event.key.code==sf::Keyboard::F6){
+                if(event.key.code==sf::Keyboard::F6||event.key.code==sf::Keyboard::Escape){
                     return 0;
                 };
                 if(event.key.code==sf::Keyboard::Left){
