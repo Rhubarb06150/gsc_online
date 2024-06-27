@@ -1980,9 +1980,9 @@ int packMenu(){
     int choice=0;
     int offset=0;
     std::vector<std::vector<std::string>> pocket_content;
+    pocket_content={{"Poké BALL","1"}};
     do{
         while (window.pollEvent(event)){
-            pocket_content={{"Poké BALL","1"}};
             if(event.type==sf::Event::KeyPressed){
                 if(event.key.code==sf::Keyboard::F6||event.key.code==sf::Keyboard::Escape){
                     return 0;
