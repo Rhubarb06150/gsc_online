@@ -2043,7 +2043,8 @@ int packMenu(){
             shown_items++;
             std::string item_nb;
             item_nb=pocket_content[i+choice-offset][1];
-            HUDdisplay.showTextBOW(item_nb,{576,96+(i*64)},window);
+            int xpos=608-(item_nb.length());
+            HUDdisplay.showTextBOW(item_nb,{xpos,96+(i*64)},window);
             if (shown_items>=5)break;
         };
         HUDdisplay.showTextBOW(ItemsIndex.items[ItemsIndex.getItemIntIndexByName(pocket_content[choice][0])][3],{32,448},window);//SHOWING ITEM DESCRIPTION
