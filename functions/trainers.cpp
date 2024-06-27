@@ -20,6 +20,9 @@ class Trainers{
         int x;
         int y;
         for(int i=0;i<trainers_index.size();i++){
+            std::cout<<trainers_index[i][0]<<"="<<trainers_index[i][1]<<std::endl;
+        };
+        for(int i=0;i<trainers_index.size();i++){
             sf::Texture texture;
             std::string fish = trainers_index[i][1];
             std::string xstr;
