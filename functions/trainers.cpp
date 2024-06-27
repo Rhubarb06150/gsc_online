@@ -20,9 +20,6 @@ class Trainers{
         int x;
         int y;
         for(int i=0;i<trainers_index.size();i++){
-            std::cout<<trainers_index[i][0]<<"="<<trainers_index[i][1]<<std::endl;
-        };
-        for(int i=0;i<trainers_index.size();i++){
             sf::Texture texture;
             std::string fish = trainers_index[i][1];
             std::string xstr;
@@ -31,6 +28,7 @@ class Trainers{
             ystr=fish[1];
             x=std::stoi(xstr);
             y=std::stoi(ystr);
+            std::cout<<trainers_index[i][0]<<"="<<x<<y<<std::endl;
             texture.loadFromFile("assets/hud/menus.png",sf::IntRect(x*56,y*56,56,56));
             trainers_textures.push_back(texture);
         };
