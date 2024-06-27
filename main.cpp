@@ -1982,16 +1982,17 @@ int packMenu(){
     int offset=0;
     std::vector<std::vector<std::string>> pocket_content;
     pocket_content={
-        {ItemsIndex.items[ItemsIndex.items.size()-1][2],"1"},
-        {ItemsIndex.items[ItemsIndex.items.size()-2][2],"2"},
-        {ItemsIndex.items[ItemsIndex.items.size()-3][2],"2"},
-        {ItemsIndex.items[ItemsIndex.items.size()-4][2],"2"},
-        {ItemsIndex.items[ItemsIndex.items.size()-5][2],"2"},
-        {ItemsIndex.items[ItemsIndex.items.size()-4][2],"2"},
-        {ItemsIndex.items[ItemsIndex.items.size()-2][2],"2"},
-        {ItemsIndex.items[ItemsIndex.items.size()-3][2],"2"},
-        {ItemsIndex.items[ItemsIndex.items.size()-1][2],"2"},
-        {ItemsIndex.items[ItemsIndex.items.size()-2][2],"2"}};
+        {ItemsIndex.items[ItemsIndex.items.size()-1][2],std::to_string(rand()%10+1)},
+        {ItemsIndex.items[ItemsIndex.items.size()-2][2],std::to_string(rand()%10+1)},
+        {ItemsIndex.items[ItemsIndex.items.size()-3][2],std::to_string(rand()%10+1)},
+        {ItemsIndex.items[ItemsIndex.items.size()-4][2],std::to_string(rand()%10+1)},
+        {ItemsIndex.items[ItemsIndex.items.size()-5][2],std::to_string(rand()%10+1)},
+        {ItemsIndex.items[ItemsIndex.items.size()-4][2],std::to_string(rand()%10+1)},
+        {ItemsIndex.items[ItemsIndex.items.size()-2][2],std::to_string(rand()%10+1)},
+        {ItemsIndex.items[ItemsIndex.items.size()-3][2],std::to_string(rand()%10+1)},
+        {ItemsIndex.items[ItemsIndex.items.size()-1][2],std::to_string(rand()%10+1)},
+        {ItemsIndex.items[ItemsIndex.items.size()-2][2],std::to_string(rand()%10+1)}
+    };
     do{
         while (window.pollEvent(event)){
             if(event.type==sf::Event::KeyPressed){
@@ -2040,6 +2041,9 @@ int packMenu(){
         for(int i=0;i<pocket_content.size();i++){
             HUDdisplay.showTextBOW(pocket_content[i+choice-offset][0],{256,64+(i*64)},window);//SHOWING ITEM NAME
             shown_items++;
+            std::string item_nb;
+            item_nb=pocket_content[i+choice-offset][0];
+            HUDdisplay.showTextBOW(item_nb,{576,64+(i*64)},window);
             if (shown_items>=5)break;
         };
         HUDdisplay.showTextBOW(ItemsIndex.items[ItemsIndex.getItemIntIndexByName(pocket_content[choice][0])][3],{32,448},window);//SHOWING ITEM DESCRIPTION

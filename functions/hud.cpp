@@ -175,6 +175,7 @@ class HUD{
         menu_tiles_indexes.push_back({"bagBoxR","3711","\xbe"});
         menu_tiles_indexes.push_back({"redCursor","7211","\x00"});
         menu_tiles_indexes.push_back({"idN","6421","\xd5"});
+        menu_tiles_indexes.push_back({"itemNB","5211","\xd6"});
 
         //EDITOR TEXTURES
         texture.loadFromFile("assets/hud/editor_bg.png");
