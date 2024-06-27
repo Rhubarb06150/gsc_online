@@ -1982,8 +1982,8 @@ int packMenu(){
     int offset=0;
     std::vector<std::vector<std::string>> pocket_content;
     pocket_content={
-        {ItemsIndex.items[ItemsIndex.items.size()-1][2],std::to_string(rand()%20+1)},
-        {ItemsIndex.items[ItemsIndex.items.size()-2][2],std::to_string(rand()%20+1)},
+        {"\x04",std::to_string(rand()%20+1)},
+        {"\x04",std::to_string(rand()%20+1)},
     };
     do{
         while (window.pollEvent(event)){
@@ -2032,7 +2032,7 @@ int packMenu(){
         shown_items=0;
         for(int i=0;i<pocket_content.size();i++){
             int posy=96+(i*64);
-            HUDdisplay.showTextBOW(pocket_content[i+choice-offset][0],{256,64+(i*64)},window);//SHOWING ITEM NAME
+            HUDdisplay.showTextBOW(ItemsIndex.items[ItemsIndex.getItemIntIndexByIndex(pocket_content[i+choice-offset][0])][2],{256,64+(i*64)},window);//SHOWING ITEM NAME
             shown_items++;
             std::string item_nb;
             item_nb=pocket_content[i+choice-offset][1];
