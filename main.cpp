@@ -1858,6 +1858,9 @@ int main_menu(){
         };
         //if (debug_launch)
         //    HUDdisplay.showTextWOB("DEBUG",{debug_x,0},window);
+        for(int i=0;i<TrainersIndex.trainers_index.size();i++){
+            TrainersIndex.showTrainer(window,{i*8,i*8},i);
+        };
         window.display();
         if (choosen)return 0;
     }
