@@ -231,6 +231,7 @@ void screenshotThread(){
                 SoundManager.soundEffect("PRESS");
                 output_message="Screenshot saved!";
                 message_timer=0;
+                usleep(500000);
             };
         };
     };
