@@ -72,6 +72,7 @@
 
 #include "functions/connection.cpp"
 #include "functions/functions.cpp"
+#include "functions/trainers.cpp"
 #include "functions/terrain.cpp"
 #include "functions/player.cpp"
 #include "functions/sounds.cpp"
