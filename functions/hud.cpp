@@ -163,6 +163,10 @@ class HUD{
         menu_tiles_indexes.push_back({"ballsLabel","b353","\xb4"});
         menu_tiles_indexes.push_back({"keysItemsLabel","b653","\xb5"});
         menu_tiles_indexes.push_back({"TMTHLabel","b953","\xb6"});
+        menu_tiles_indexes.push_back({"ballsLabel2","0831","\xc0"});
+        menu_tiles_indexes.push_back({"itemsLabel2","0931","\xc1"});
+        menu_tiles_indexes.push_back({"keysItemsLabel2","0a51","\xc2"});
+        menu_tiles_indexes.push_back({"TMTHLabel2","0b51","\xc3"});
         menu_tiles_indexes.push_back({"bagBoxTL","0611","\xb7"});
         menu_tiles_indexes.push_back({"bagBoxTR","1611","\xb8"});
         menu_tiles_indexes.push_back({"bagBoxBL","0711","\xb9"});
