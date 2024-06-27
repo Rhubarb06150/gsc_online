@@ -84,20 +84,6 @@
 class Game{
 
     public:
-        void screenshotThread(){
-            while(true){
-                while (window.pollEvent(event)){
-                    if (event.type==sf::Event::KeyPressed){
-                        if (event.key.code==sf::Keyboard::F1){
-                        functions.takeScreenshot(window);
-                        SoundManager.soundEffect("PRESS");
-                        output_message="Screenshot saved!";
-                        message_timer=0;
-                        };
-                    };
-                };
-            };
-        };
         //MODULES VARS
         Terrain terrain;//terrain functions, to init, load/reload and showterrain
         Sounds SoundManager;//sound functions, for sound effects and music
@@ -234,6 +220,21 @@ class Game{
         };
         functions.log("ENGINE","Game launched!");//and there, we annouce to our dear player, that the game is ready to be played
     };
+
+void screenshotThread(){
+    while(true){
+        while (window.pollEvent(event)){
+            if (event.type==sf::Event::KeyPressed){
+                if (event.key.code==sf::Keyboard::F1){
+                functions.takeScreenshot(window);
+                SoundManager.soundEffect("PRESS");
+                output_message="Screenshot saved!";
+                message_timer=0;
+                };
+            };
+        };
+    };
+};
 
 int crash(std::string message){
     do{
