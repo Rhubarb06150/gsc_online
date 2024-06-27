@@ -1976,6 +1976,24 @@ int optionMenu(){
 int packMenu(){
     int pocket=0;
     int choice=0;
+    while (window.pollEvent(event)){
+        if(sf::Event::KeyPressed){
+            if(event.key.code==sf::Keyboard::Left){
+                if(pocket==0){
+                    pocket=3;
+                }else{
+                    pocket--;
+                };
+            };
+            if(event.key.code==sf::Keyboard::Right){
+                if(pocket==3){
+                    pocket=0;
+                }else{
+                    pocket++;
+                };
+            };
+        };
+    };
     do{
         window.clear();
         HUDdisplay.showMenuTile(window,HUDdisplay.menu_tiles_indexes[15+pocket][2],{0,96});
