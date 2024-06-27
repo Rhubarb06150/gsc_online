@@ -230,6 +230,7 @@ int crash(std::string message){
         while (window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed || event.type == sf::Event::KeyPressed){
+                screenshotVerify();
                 functions.quitGame(window);
                 return 0;
             };
@@ -340,6 +341,7 @@ void mainLoop(){
             functions.quitGame(window);
         };
         if (event.type==sf::Event::KeyPressed){
+            screenshotVerify();
             //MOD KEYPRESS
             if (event.key.code==sf::Keyboard::S){
                 connection.serverStart();
@@ -740,6 +742,7 @@ std::string askText(std::string caption){
                 return 0;
             };
             if (event.type==sf::Event::KeyPressed){
+                screenshotVerify();
                 if (event.key.code==sf::Keyboard::Enter||event.key.code==sf::Keyboard::Return){
                     return text_input.toAnsiString();
                 };
@@ -785,6 +788,7 @@ int randomPatternLoop(){
                     return 0;
                 };
                 if (event.type==sf::Event::KeyPressed){
+                    screenshotVerify();
                     if (event.key.code==sf::Keyboard::F6){
                         break;
                     };
@@ -1048,6 +1052,7 @@ std::string askPath(std::string path,sf::Event event,sf::RenderWindow& window){
     {
         switch (event.type) {
             case sf::Event::KeyPressed:
+                screenshotVerify();
                 if (event.key.code==sf::Keyboard::Up){
                     if (map_choice>0){
                         map_choice--;
@@ -1147,6 +1152,7 @@ int playerMenu(){
         full_loaded=0;
         while (window.pollEvent(event)){
             if (event.type==sf::Event::KeyPressed){
+                screenshotVerify();
                 if (event.key.code==sf::Keyboard::F6||event.key.code==sf::Keyboard::Escape){
                     return 0;
                 };
@@ -1166,6 +1172,15 @@ int playerMenu(){
         HUDdisplay.showMenu(window,"assets/menus/playerStatus.mn");
         HUDdisplay.showTextBOW("NAME/"+username,{64,64},window);
         TrainersIndex.showTrainer(window,{416,32},trainer_app_id,1);
+        HUDdisplay.showMenuTile(window,"\xe0",{608,0});
+        HUDdisplay.showMenuTile(window,"\xe0",{608,32});
+        HUDdisplay.showMenuTile(window,"\xe0",{608,64});
+        HUDdisplay.showMenuTile(window,"\xe0",{608,96});
+        HUDdisplay.showMenuTile(window,"\xe0",{608,128});
+        HUDdisplay.showMenuTile(window,"\xe0",{608,160});
+        HUDdisplay.showMenuTile(window,"\xe0",{608,192});
+        HUDdisplay.showMenuTile(window,"\xe0",{608,224});
+        HUDdisplay.showMenuTile(window,"\xe0",{608,256});
         window.display();
         full_loaded=1;
     }while(true);
@@ -1272,7 +1287,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                 };
             };
             if (event.type==sf::Event::KeyPressed){
-
+                screenshotVerify();
                 if (event.key.code==sf::Keyboard::RShift){
                     menu_show=!menu_show;
                 };
@@ -1699,6 +1714,7 @@ int modManager(){
                 return 0;
             };
             if (event.type == sf::Event::KeyPressed){
+                screenshotVerify();
                 if (event.key.code==sf::Keyboard::F6){
                     return 0;
                 };
@@ -1762,6 +1778,7 @@ int main_menu(){
         {
             switch (event.type) {
             case sf::Event::KeyPressed:
+                screenshotVerify();
                 if (event.key.code==sf::Keyboard::Up){
                         if (choice>0){
                             choice--;
@@ -1894,6 +1911,7 @@ int optionMenu(){
         while (window.pollEvent(event))
         {
             if (event.type==sf::Event::KeyPressed){
+                screenshotVerify();
                 if (event.key.code==sf::Keyboard::Down){
                     if (choice==7){
                         choice=0;
@@ -1982,6 +2000,7 @@ int packMenu(){
         full_loaded=0;
         while (window.pollEvent(event)){
             if(event.type==sf::Event::KeyPressed){
+                screenshotVerify();
                 if(event.key.code==sf::Keyboard::F6||event.key.code==sf::Keyboard::Escape){
                     return 0;
                 };
@@ -2051,6 +2070,7 @@ int pauseMenu(){
         while (window.pollEvent(event))
         {
             if (event.type==sf::Event::KeyPressed){
+                screenshotVerify();
                 if (event.key.code==sf::Keyboard::Down){
                     if (choice==7){
                         choice=0;
@@ -2197,24 +2217,13 @@ int show_debug_pause(){
     return 0;
     };
 
-    void screenshotThread(){
-        while(true){
-            if (event.type==sf::Event::KeyPressed){
-                if (event.key.code==sf::Keyboard::F1){
-                    while(!full_loaded){
-                    };
-                    functions.takeScreenshot(window,index_frame);
-                    //SoundManager.soundEffect("PRESS");
-                    //output_message="Screenshot saved!";
-                    //message_timer=0;
-                    std::cout<<"ending"<<std::endl;
-                    usleep(500000);
-                    std::cout<<"ended"<<std::endl;
-                };
-            };
+void screenshotVerify(){
+    if (event.key.code==sf::Keyboard::F1){
+        functions.takeScreenshot(window,index_frame);
+        SoundManager.soundEffect("PRESS");
+        output_message="Screenshot saved!";
+        message_timer=0;
         };
-        std::cout<<"SCREENSHOT END"<<std::endl;
-        return;
     };
 };
 
@@ -2240,8 +2249,6 @@ int main(int argc, char** argv)
     G.functions.createMissingFile(G.functions.getUserPath()+"/.gsc_o/settings","username=Player\nresolution=640x576\nborder=0");
     G.loadSettings();
     //G.functions.log("INFO","an game folder has been created at "+G.functions.getUserPath()+"/.gsc_o, it will be used to store your saved maps and your screenshots");
-    std::thread screenshotThread_Thread(&Game::screenshotThread, &G);
-    screenshotThread_Thread.detach();
     G.main_menu();
     while (G.window.isOpen()){
         G.mainLoop();
