@@ -84,6 +84,20 @@
 class Game{
 
     public:
+        void screenshotThread(){
+            while(true){
+                while (window.pollEvent(event)){
+                    if (event.type==sf::Event::KeyPressed){
+                        if (event.key.code==sf::Keyboard::F1){
+                        functions.takeScreenshot(window);
+                        SoundManager.soundEffect("PRESS");
+                        output_message="Screenshot saved!";
+                        message_timer=0;
+                        };
+                    };
+                };
+            };
+        };
         //MODULES VARS
         Terrain terrain;//terrain functions, to init, load/reload and showterrain
         Sounds SoundManager;//sound functions, for sound effects and music
@@ -114,6 +128,7 @@ class Game{
         bool record;//used to display message, when you want to show a message, put this value to less than 60
         std::vector<std::string> record_images;
         int border_style;//Used to manage border style choosen by the user
+        int full_loaded=0;
         
         //PLAYER VARS
         std::vector<int> player_pos;//used to store player position (yup)
@@ -222,6 +237,7 @@ class Game{
 
 int crash(std::string message){
     do{
+        full_loaded=0;
         while (window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed || event.type == sf::Event::KeyPressed){
@@ -234,12 +250,14 @@ int crash(std::string message){
         HUDdisplay.showTextDEBUG(message,{0,32},window);
         HUDdisplay.showTextDEBUG("Press any key to quit the game",{0,560},window);
         window.display();
+        full_loaded=1;
     }while(true);
     functions.quitGame(window);
     return 0;
 };
 
 void mainLoop(){
+    full_loaded=0;
     start=std::chrono::high_resolution_clock::now();
     index_frame++;      //increasing this for frames mesuring
     message_timer++;    //increasing this for messages display
@@ -563,6 +581,7 @@ void mainLoop(){
     if (debug_launch)
         HUDdisplay.showTextDEBUG(std::to_string(fps_),{0,560},window);
     window.display();
+    full_loaded=1;
 
     //if (record){
     //    if(index_frame%4==0){
@@ -674,6 +693,7 @@ int isPressed(sf::Event event,sf::Keyboard::Key key_pressed){
 int yesNoQuestion(std::string question,sf::Event event,sf::RenderWindow& window){
     int choice = 1;
     do{
+        full_loaded=0;
         while (window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed){
@@ -713,6 +733,7 @@ int yesNoQuestion(std::string question,sf::Event event,sf::RenderWindow& window)
             HUDdisplay.showTextDEBUG(output_message,{0,560},window);
         };
         window.display();
+        full_loaded=1;
     }while(true);
     return 1;
 };
@@ -734,6 +755,7 @@ std::string askText(std::string caption){
     text_input="";
     std::string text;
     do{
+        full_loaded=0;
         index_frame++;
         while (window.pollEvent(event))
         {
@@ -775,6 +797,7 @@ std::string askText(std::string caption){
             HUDdisplay.showTextDEBUG(output_message,{0,560},window);
         };
         window.display();
+        full_loaded=1;
     }while(true);
     return text_input.toAnsiString();
 };
@@ -784,6 +807,7 @@ int randomPatternLoop(){
     int choice=0;
     bool replace=false;
     do{
+        full_loaded=0;
         while (window.pollEvent(event))
             {
                 if (event.type == sf::Event::Closed){
@@ -874,7 +898,8 @@ int randomPatternLoop(){
             HUDdisplay.showTextDEBUG("  Press F6 to cancel    ",{32,176},window);
             HUDdisplay.showTextDEBUG("                        ",{32,192},window);
         };
-        window.display();   
+        window.display();
+        full_loaded=1;
         if (isPressed(event,sf::Keyboard::F1)==0){
             functions.takeScreenshot(window);
             SoundManager.soundEffect("PRESS");
@@ -883,7 +908,7 @@ int randomPatternLoop(){
         };
     }while(true);
     return 0;
-}
+};
 
 int showEditorControls(){
     do{
@@ -918,16 +943,11 @@ int showEditorControls(){
     HUDdisplay.showTextDEBUG("                                   ",{32,240},window);
     HUDdisplay.showTextDEBUG("  Press F6 to exit                 ",{32,256},window);
     HUDdisplay.showTextDEBUG("                                   ",{32,272},window);
-    if (isPressed(event,sf::Keyboard::F1)==0){
-        functions.takeScreenshot(window);
-        SoundManager.soundEffect("PRESS");
-        output_message="Screenshot saved!";
-        message_timer=0;
-    };
     if (message_timer<=60){
         HUDdisplay.showTextDEBUG(output_message,{0,560},window);
     };
     window.display();
+    full_loaded=1;
     }while(true);
     return 0;
 };
@@ -1059,6 +1079,7 @@ std::string askPath(std::string path,sf::Event event,sf::RenderWindow& window){
     int map_choice = 0;
     int map_offset = 0;
     do{
+    full_loaded=0;
     while (window.pollEvent(event))
     {
         switch (event.type) {
@@ -1159,11 +1180,13 @@ std::string askPath(std::string path,sf::Event event,sf::RenderWindow& window){
         HUDdisplay.showTextDEBUG(output_message,{0,560},window);
     };
     window.display();
+    full_loaded=1;
     }while(true);
 };
 
 int playerMenu(){
     do{
+        full_loaded=0;
         while (window.pollEvent(event)){
             if (event.type==sf::Event::KeyPressed){
                 if (event.key.code==sf::Keyboard::F6||event.key.code==sf::Keyboard::Escape){
@@ -1186,6 +1209,7 @@ int playerMenu(){
         HUDdisplay.showTextBOW("NAME/"+username,{64,64},window);
         TrainersIndex.showTrainer(window,{416,32},trainer_app_id,1);
         window.display();
+        full_loaded=1;
     }while(true);
     return 0;
 };
@@ -1241,6 +1265,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
     functions.log("EDITOR","Editor launched!");//logs in the console that the editor is launched
     
     do{
+        full_loaded=0;
         message_timer++;//increase the message timer for display messages
         while (window.pollEvent(event))//level editor true loop
         {
@@ -1705,6 +1730,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
         };
         //HUDdisplay.drawSquare(window,{0,352},{640,224});
         window.display();
+        full_loaded=1;
     }while(true);
     return 0;
 };
@@ -1713,6 +1739,7 @@ int modManager(){
     int choice=0;
     int offset=0;
     while (true){
+        full_loaded=0;
         while (window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed){
@@ -1760,6 +1787,7 @@ int modManager(){
         HUDdisplay.showTextDEBUG("Description:",{0,336},window);
         HUDdisplay.showTextDEBUG(mods_descriptions[choice][0],{16,352},window);
         window.display();
+        full_loaded=1;
     };
     return 0;
 };
@@ -1777,6 +1805,7 @@ int main_menu(){
     };
     functions.log("INFO","Opening main menu");
     do{
+        full_loaded=0;
         while (window.pollEvent(event))
         {
             switch (event.type) {
@@ -1871,6 +1900,7 @@ int main_menu(){
         //if (debug_launch)
         //    HUDdisplay.showTextWOB("DEBUG",{debug_x,0},window);
         window.display();
+        full_loaded=1;
         if (choosen)return 0;
     }
     while(true);
@@ -1912,6 +1942,7 @@ int updateSettings(bool advert){
 int optionMenu(){
     int choice=0;
     do{
+        full_loaded=0;
         moving_timer=20;
         walking=false;
         while (window.pollEvent(event))
@@ -1986,6 +2017,7 @@ int optionMenu(){
         }
         HUDdisplay.showCursor({32,64+(choice*64)},window);
         window.display();
+        full_loaded=1;
     }while(true);
     return 0;
 };
@@ -2001,6 +2033,7 @@ int packMenu(){
         {"\x04",std::to_string(rand()%20+1)}
     };
     do{
+        full_loaded=0;
         while (window.pollEvent(event)){
             if(event.type==sf::Event::KeyPressed){
                 if(event.key.code==sf::Keyboard::F6||event.key.code==sf::Keyboard::Escape){
@@ -2058,12 +2091,15 @@ int packMenu(){
         };
         HUDdisplay.showTextBOW(ItemsIndex.items[ItemsIndex.getItemIntIndexByIndex(pocket_content[choice][0])][3],{32,448},window);//SHOWING ITEM DESCRIPTION
         window.display();
+        full_loaded=1;
     }while(true);
 };
 
 int pauseMenu(){
     int choice=0;
     do{
+        full_loaded=0;
+        index_frame++;
         moving_timer=20;
         walking=false;
         while (window.pollEvent(event))
@@ -2137,6 +2173,7 @@ int pauseMenu(){
         HUDdisplay.showTextBOW("POKéDEX\n\nPOKéMON\n\nPACK\n\n\xee\xefGEAR\n\n\n\nSAVE\n\nOPTION\n\nEXIT",{screen_width-256,64},window);
         HUDdisplay.showCursor({screen_width-288,64+(choice*64)},window);
         window.display();
+        full_loaded=1;
     }while(true);
     return 0;
 };
@@ -2144,6 +2181,7 @@ int pauseMenu(){
 int show_debug_pause(){
     int choice = 0;
     do{
+        full_loaded=0;
         while (window.pollEvent(event))
         {
             if (isPressed(event,sf::Keyboard::Up)==0){
@@ -2197,6 +2235,7 @@ int show_debug_pause(){
             HUDdisplay.showTextDEBUG(output_message,{0,560},window);
         };
         window.display();
+        full_loaded=1;
         if (isPressed(event,sf::Keyboard::F6)==0){
             return 0;
         };
@@ -2241,7 +2280,8 @@ int main(int argc, char** argv)
     G.functions.createMissingFile(G.functions.getUserPath()+"/.gsc_o/settings","username=Player\nresolution=640x576\nborder=0");
     G.loadSettings();
     //G.functions.log("INFO","an game folder has been created at "+G.functions.getUserPath()+"/.gsc_o, it will be used to store your saved maps and your screenshots");
-
+    sf::Thread screenshotThread_Thread(&Game::screenshotThread, &G);
+    screenshotThread_Thread.launch();
     G.main_menu();
     while (G.window.isOpen()){
         G.mainLoop();
