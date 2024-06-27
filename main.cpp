@@ -1718,7 +1718,7 @@ int modManager(){
                 };
             };
         };
-        window.clear(sf::Color(248,248,248));
+        window.clear(sf::Color(255,255,255));
         for (int i = 0; i<mods_list.size();i++){
             if (i>5)break;
             if (mods_states[i]==true){
@@ -1819,7 +1819,7 @@ int main_menu(){
             
         };
         index_frame++;
-        window.clear(sf::Color(248,248,248));
+        window.clear(sf::Color(255,255,255));
         
         HUDdisplay.showLogo({32,0},window);
 
