@@ -1184,7 +1184,7 @@ int playerMenu(){
         window.clear();
         HUDdisplay.showMenu(window,"assets/menus/playerStatus.mn");
         HUDdisplay.showTextBOW("NAME/"+username,{64,64},window);
-        TrainersIndex.showTrainer(window,{416,32},trainer_app_id,0);
+        TrainersIndex.showTrainer(window,{416,32},trainer_app_id,1);
         window.display();
     }while(true);
     return 0;
