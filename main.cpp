@@ -2043,7 +2043,7 @@ int packMenu(){
             shown_items++;
             std::string item_nb;
             item_nb=pocket_content[i+choice-offset][1];
-            int xpos=608-(item_nb.length());
+            int xpos=608-(item_nb.length()*32);
             HUDdisplay.showTextBOW(item_nb,{xpos,96+(i*64)},window);
             if (shown_items>=5)break;
         };
