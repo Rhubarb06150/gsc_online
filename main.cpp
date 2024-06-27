@@ -2004,9 +2004,11 @@ int packMenu(){
                 };
                 if(event.key.code==sf::Keyboard::Down){
                     choice++;
+                    if(offset<6)offset++;
                 };
                 if(event.key.code==sf::Keyboard::Up){
                     choice--;
+                    if(offset>0)offset--;
                 };
             };
         };
