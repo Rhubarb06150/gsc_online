@@ -65,6 +65,7 @@
 #include <iostream>
 #include <string.h>
 #include <variant>
+#include <thread>
 #include <vector>
 #include <chrono>
 #include <regex>
@@ -226,10 +227,10 @@ void screenshotThread(){
         while (window.pollEvent(event)){
             if (event.type==sf::Event::KeyPressed){
                 if (event.key.code==sf::Keyboard::F1){
-                functions.takeScreenshot(window);
-                SoundManager.soundEffect("PRESS");
-                output_message="Screenshot saved!";
-                message_timer=0;
+                    functions.takeScreenshot(window);
+                    SoundManager.soundEffect("PRESS");
+                    output_message="Screenshot saved!";
+                    message_timer=0;
                 };
             };
         };
@@ -2281,8 +2282,8 @@ int main(int argc, char** argv)
     G.functions.createMissingFile(G.functions.getUserPath()+"/.gsc_o/settings","username=Player\nresolution=640x576\nborder=0");
     G.loadSettings();
     //G.functions.log("INFO","an game folder has been created at "+G.functions.getUserPath()+"/.gsc_o, it will be used to store your saved maps and your screenshots");
-    sf::Thread screenshotThread_Thread(&Game::screenshotThread, &G);
-    screenshotThread_Thread.launch();
+    std::thread screenshotThread_Thread(&Game::screenshotThread, &G);
+    screenshotThread_Thread.join();
     G.main_menu();
     while (G.window.isOpen()){
         G.mainLoop();
