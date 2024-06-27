@@ -159,7 +159,7 @@ class HUD{
         menu_tiles_indexes.push_back({"carpet","3311","\xb0"});
         menu_tiles_indexes.push_back({"itemsLabel","0461","\xb1"});
         menu_tiles_indexes.push_back({"pocketLabel","0561","\xb2"});
-        menu_tiles_indexes.push_back({"itemsLabel","b053","\xb3"});
+        menu_tiles_indexes.push_back({"itemsLabel_Pack","b053","\xb3"});
         menu_tiles_indexes.push_back({"ballsLabel","b353","\xb4"});
         menu_tiles_indexes.push_back({"keysItemsLabel","b653","\xb5"});
         menu_tiles_indexes.push_back({"TMTHLabel","b953","\xb6"});
