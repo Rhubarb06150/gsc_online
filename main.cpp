@@ -2015,7 +2015,7 @@ int packMenu(){
                 };
                 if(event.key.code==sf::Keyboard::Down){
                     choice++;
-                    if(offset<5)offset++;
+                    if(offset<=5)offset++;
                 };
                 if(event.key.code==sf::Keyboard::Up){
                     choice--;
