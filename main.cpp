@@ -2013,8 +2013,8 @@ int packMenu(){
         if(pocket==3)HUDdisplay.showMenuTile(window,"\xc3",{0,256});
         HUDdisplay.drawSquare(window,{0,384},{640,192},border_style);
         for(int i=0;i<pocket_content.size();i++){
-            HUDdisplay.showTextBOW(pocket_content[i][0],{288,96+(i*64)},window);
-            HUDdisplay.showTextBOW(ItemsIndex.items[ItemsIndex.getItemIntIndexByName(pocket_content[i][0])][1],{32,448},window);
+            HUDdisplay.showTextBOW(pocket_content[i][0],{288,96+(i*64)},window);//SHOWING ITEM NAME
+            HUDdisplay.showTextBOW(ItemsIndex.items[ItemsIndex.getItemIntIndexByName(pocket_content[i][0])][2],{32,448},window);//SHOWING ITEM DESCRIPTION
         };
         window.display();
     }while(true);
