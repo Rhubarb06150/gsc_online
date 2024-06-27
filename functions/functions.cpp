@@ -261,14 +261,14 @@ class GSC_Functions{
         return 1;
     };
 
-    int takeScreenshot(sf::RenderWindow& render_window){
+    int takeScreenshot(sf::RenderWindow& render_window,int index_frame){
 
         sf::Texture texture;
         texture.create(render_window.getSize().x, render_window.getSize().y);
         texture.update(render_window);
-        if (texture.copyToImage().saveToFile(getUserPath()+"/.gsc_o/screenshots/screenshot_"+currentDateTime()+".png"))
+        if (texture.copyToImage().saveToFile(getUserPath()+"/.gsc_o/screenshots/screenshot_"+currentDateTime()+std::to_string(index_frame)+".png"))
         {
-            log("INFO","screenshot saved at "+getUserPath()+"/.gsc_o/screenshots/screenshot_"+currentDateTime()+".png");
+            log("INFO","screenshot saved at "+getUserPath()+"/.gsc_o/screenshots/screenshot_"+currentDateTime()+std::to_string(index_frame)+".png");
             return 0;
         };
         log("ERROR","Failed to save screenshot");
