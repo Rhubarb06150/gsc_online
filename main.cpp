@@ -2039,12 +2039,14 @@ int packMenu(){
         HUDdisplay.drawSquare(window,{0,384},{640,192},border_style);
         shown_items=0;
         for(int i=0;i<pocket_content.size();i++){
-            HUDdisplay.showTextBOW(pocket_content[i+choice-offset][0],{256,64+(i*64)},window);//SHOWING ITEM NAME
+            int posy=96+(i*64);
+            HUDdisplay.showTextBOW(pocket_content[i+choice-offset][0],{256,posy},window);//SHOWING ITEM NAME
             shown_items++;
             std::string item_nb;
             item_nb=pocket_content[i+choice-offset][1];
             int xpos=640-(item_nb.length()*32);
-            HUDdisplay.showTextBOW(item_nb,{xpos,96+(i*64)},window);
+            HUDdisplay.showTextBOW(item_nb,{xpos,posy},window);
+            HUDdisplay.showMenuTile(window,"\xd6",{576,posy});
             if (shown_items>=5)break;
         };
         HUDdisplay.showTextBOW(ItemsIndex.items[ItemsIndex.getItemIntIndexByName(pocket_content[choice][0])][3],{32,448},window);//SHOWING ITEM DESCRIPTION
