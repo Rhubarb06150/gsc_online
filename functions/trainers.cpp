@@ -35,9 +35,19 @@ class Trainers{
             std::cout<<trainers_index[i][0]<<"="<<trainers_index[i][1]<<std::endl;
         }; */
     };
-    int showTrainer(sf::RenderWindow& window,std::vector<int> pos, int id){
+    int showTrainer(sf::RenderWindow& window,std::vector<int> pos, int id,bool shadow){
         for(int i=0;i<trainers_index.size();i++){
             if (trainers_index[i][0]=="trainer"+std::to_string(id)){
+                if(shadow){
+                sf::Sprite trainer_sh;
+                sf::Texture texture_sh;
+                texture_sh=trainers_textures[i];
+                trainer_sh.setTexture(texture_sh);
+                trainer_sh.setPosition(pos[0]+8,pos[1]+8);
+                trainer_sh.setScale(4.f,4.f);
+                trainer_sh.setColor({0,0,0});
+                window.draw(trainer_sh);
+                };
                 sf::Sprite trainer;
                 sf::Texture texture;
                 texture=trainers_textures[i];
@@ -45,7 +55,6 @@ class Trainers{
                 trainer.setPosition(pos[0],pos[1]);
                 trainer.setScale(4.f,4.f);
                 window.draw(trainer);
-                return 0;
             };
         };
         return 0;

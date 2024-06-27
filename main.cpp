@@ -1172,7 +1172,7 @@ int playerMenu(){
         window.clear();
         HUDdisplay.showMenu(window,"assets/menus/playerStatus.mn");
         HUDdisplay.showTextBOW("NAME/"+username,{64,64},window);
-        TrainersIndex.showTrainer(window,{640-160,32},1);
+        TrainersIndex.showTrainer(window,{640-160,32},1,1);
         window.display();
     }while(true);
     return 0;
@@ -1858,9 +1858,6 @@ int main_menu(){
         };
         //if (debug_launch)
         //    HUDdisplay.showTextWOB("DEBUG",{debug_x,0},window);
-        for(int i=0;i<TrainersIndex.trainers_index.size();i++){
-            TrainersIndex.showTrainer(window,{i*8,i*8},i);
-        };
         window.display();
         if (choosen)return 0;
     }
