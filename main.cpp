@@ -2036,8 +2036,8 @@ int packMenu(){
         HUDdisplay.showRedCursor({224,64+(choice*64)},window);
         HUDdisplay.drawSquare(window,{0,384},{640,192},border_style);
         shown_items=0;
-        for(int i=choice-offset;i<pocket_content.size();i++){
-            HUDdisplay.showTextBOW(pocket_content[i][0],{256,64+(i*64)},window);//SHOWING ITEM NAME
+        for(int i=0;i<pocket_content.size();i++){
+            HUDdisplay.showTextBOW(pocket_content[i+choice][0],{256,64+(i*64)},window);//SHOWING ITEM NAME
             shown_items++;
             if (shown_items>=5)break;
         };
