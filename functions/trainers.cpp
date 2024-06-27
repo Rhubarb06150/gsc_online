@@ -28,7 +28,6 @@ class Trainers{
             ystr=fish[1];
             x=std::stoi(xstr);
             y=std::stoi(ystr);
-            std::cout<<"X:"<<x<<"Y:"<<y<<std::endl;
             texture.loadFromFile("assets/player/trainers.png",sf::IntRect({x*56,y*56},{56,56}));
             trainers_textures.push_back(texture);
         };
