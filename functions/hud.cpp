@@ -138,8 +138,6 @@ class HUD{
 
         // MENU TEXTURES
         sf::Texture texture;
-        texture.loadFromFile("assets/hud/r_arrow.png");
-        menu_textures.push_back(texture);
         texture.loadFromFile("assets/hud/logo.png");
         menu_textures.push_back(texture);
 
@@ -175,6 +173,7 @@ class HUD{
         menu_tiles_indexes.push_back({"bagBoxB","2711","\xbc"});
         menu_tiles_indexes.push_back({"bagBoxL","3611","\xbd"});
         menu_tiles_indexes.push_back({"bagBoxR","3711","\xbe"});
+        menu_tiles_indexes.push_back({"redCursor","7211","\x00"});
         menu_tiles_indexes.push_back({"idN","6421","\xd5"});
 
         //EDITOR TEXTURES
@@ -439,6 +438,14 @@ class HUD{
         sf::Sprite sprite;
         sprite.setPosition(text_pos[0],text_pos[1]);
         sprite.setTexture(menu_tiles[1]);
+        sprite.scale(4.f,4.f);
+        window.draw(sprite);
+        return 0;  
+    };
+    int showRedCursor(std::vector<int> text_pos, sf::RenderWindow& window){
+        sf::Sprite sprite;
+        sprite.setPosition(text_pos[0],text_pos[1]);
+        sprite.setTexture(menu_tiles[32]);
         sprite.scale(4.f,4.f);
         window.draw(sprite);
         return 0;  
