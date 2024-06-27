@@ -1982,16 +1982,16 @@ int packMenu(){
     int offset=0;
     std::vector<std::vector<std::string>> pocket_content;
     pocket_content={
-        {ItemsIndex.items[ItemsIndex.items.size()-1][2],std::to_string(rand()%10+1)},
-        {ItemsIndex.items[ItemsIndex.items.size()-2][2],std::to_string(rand()%10+1)},
-        {ItemsIndex.items[ItemsIndex.items.size()-3][2],std::to_string(rand()%10+1)},
-        {ItemsIndex.items[ItemsIndex.items.size()-4][2],std::to_string(rand()%10+1)},
-        {ItemsIndex.items[ItemsIndex.items.size()-5][2],std::to_string(rand()%10+1)},
-        {ItemsIndex.items[ItemsIndex.items.size()-4][2],std::to_string(rand()%10+1)},
-        {ItemsIndex.items[ItemsIndex.items.size()-2][2],std::to_string(rand()%10+1)},
-        {ItemsIndex.items[ItemsIndex.items.size()-3][2],std::to_string(rand()%10+1)},
-        {ItemsIndex.items[ItemsIndex.items.size()-1][2],std::to_string(rand()%10+1)},
-        {ItemsIndex.items[ItemsIndex.items.size()-2][2],std::to_string(rand()%10+1)}
+        {ItemsIndex.items[ItemsIndex.items.size()-1][2],std::to_string(rand()%100+1)},
+        {ItemsIndex.items[ItemsIndex.items.size()-2][2],std::to_string(rand()%100+1)},
+        {ItemsIndex.items[ItemsIndex.items.size()-3][2],std::to_string(rand()%100+1)},
+        {ItemsIndex.items[ItemsIndex.items.size()-4][2],std::to_string(rand()%100+1)},
+        {ItemsIndex.items[ItemsIndex.items.size()-5][2],std::to_string(rand()%100+1)},
+        {ItemsIndex.items[ItemsIndex.items.size()-4][2],std::to_string(rand()%100+1)},
+        {ItemsIndex.items[ItemsIndex.items.size()-2][2],std::to_string(rand()%100+1)},
+        {ItemsIndex.items[ItemsIndex.items.size()-3][2],std::to_string(rand()%100+1)},
+        {ItemsIndex.items[ItemsIndex.items.size()-1][2],std::to_string(rand()%100+1)},
+        {ItemsIndex.items[ItemsIndex.items.size()-2][2],std::to_string(rand()%100+1)}
     };
     do{
         while (window.pollEvent(event)){
