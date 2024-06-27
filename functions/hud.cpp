@@ -159,10 +159,18 @@ class HUD{
         menu_tiles_indexes.push_back({"carpet","3311","\xb0"});
         menu_tiles_indexes.push_back({"itemsLabel","0461","\xb1"});
         menu_tiles_indexes.push_back({"pocketLabel","0561","\xb2"});
-        menu_tiles_indexes.push_back({"itemsLabel","b043","\xb3"});
-        menu_tiles_indexes.push_back({"ballsLabel","b343","\xb4"});
-        menu_tiles_indexes.push_back({"keysItemsLabel","b643","\xb5"});
-        menu_tiles_indexes.push_back({"TMTHLabel","b943","\xb6"});
+        menu_tiles_indexes.push_back({"itemsLabel","b053","\xb3"});
+        menu_tiles_indexes.push_back({"ballsLabel","b353","\xb4"});
+        menu_tiles_indexes.push_back({"keysItemsLabel","b653","\xb5"});
+        menu_tiles_indexes.push_back({"TMTHLabel","b953","\xb6"});
+        menu_tiles_indexes.push_back({"bagBoxTL","0611","\xb7"});
+        menu_tiles_indexes.push_back({"bagBoxTR","1611","\xb8"});
+        menu_tiles_indexes.push_back({"bagBoxBL","0711","\xb9"});
+        menu_tiles_indexes.push_back({"bagBoxBR","1711","\xba"});
+        menu_tiles_indexes.push_back({"bagBoxT","2611","\xba"});
+        menu_tiles_indexes.push_back({"bagBoxB","2711","\xbb"});
+        menu_tiles_indexes.push_back({"bagBoxL","3611","\xbc"});
+        menu_tiles_indexes.push_back({"bagBoxR","3711","\xbd"});
         menu_tiles_indexes.push_back({"idN","6421","\xd5"});
 
         //EDITOR TEXTURES

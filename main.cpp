@@ -1978,7 +1978,7 @@ int packMenu(){
     int choice=0;
     do{
         window.clear();
-        HUDdisplay.showMenu(window,"assets/menus/bagMenu.mn");
+        HUDdisplay.showMenu(window,"assets/menus/packMenu.mn");
         window.display();
     }while(true);
 };
