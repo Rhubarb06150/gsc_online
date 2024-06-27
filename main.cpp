@@ -238,6 +238,7 @@ int screenshotThread(){
             };
         };
     };
+    std::cout<<"SCREENSHOT END"<<std::endl;
     return 0;
 };
 
