@@ -2042,8 +2042,8 @@ int packMenu(){
             HUDdisplay.showTextBOW(pocket_content[i+choice-offset][0],{256,64+(i*64)},window);//SHOWING ITEM NAME
             shown_items++;
             std::string item_nb;
-            item_nb=pocket_content[i+choice-offset][0];
-            HUDdisplay.showTextBOW(item_nb,{576,64+(i*64)},window);
+            item_nb=pocket_content[i+choice-offset][1];
+            HUDdisplay.showTextBOW(item_nb,{576,96+(i*64)},window);
             if (shown_items>=5)break;
         };
         HUDdisplay.showTextBOW(ItemsIndex.items[ItemsIndex.getItemIntIndexByName(pocket_content[choice][0])][3],{32,448},window);//SHOWING ITEM DESCRIPTION
