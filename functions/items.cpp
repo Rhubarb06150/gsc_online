@@ -6,9 +6,8 @@ class Items{
     std::vector<std::vector<std::string>> items;
     std::vector<std::vector<std::string>> balls;
     Items(){
-        items.push_back({"NONE","Item not exist."});
-        balls.push_back({"FAST BALL","A BALL for \n\ncatchingfast Pokémon."});
-        balls.push_back({"POKé BALL","An item for\n\ncatching Pokémon."});
+        items.push_back({"\x00","NONE","Item not exist."});
+        balls.push_back({"\x01","MASTER BALL","The best Ball.\n\nIt never misses."});
         for(int i=0;i<balls.size();i++){
             items.push_back(balls[i]);
         };
