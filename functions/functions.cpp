@@ -262,7 +262,6 @@ class GSC_Functions{
     };
 
     int takeScreenshot(sf::RenderWindow& render_window,int index_frame){
-
         sf::Texture texture;
         texture.create(render_window.getSize().x, render_window.getSize().y);
         texture.update(render_window);
