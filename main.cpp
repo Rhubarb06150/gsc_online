@@ -1979,6 +1979,9 @@ int packMenu(){
     do{
         while (window.pollEvent(event)){
             if(event.type==sf::Event::KeyPressed){
+                if(event.key.code==sf::Keyboard::F6){
+                    return 0;
+                };
                 if(event.key.code==sf::Keyboard::Left){
                     std::cout << "left";
                     if(pocket==0){
