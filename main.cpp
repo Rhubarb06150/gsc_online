@@ -1999,7 +1999,7 @@ int packMenu(){
         window.clear();
         HUDdisplay.showMenuTile(window,HUDdisplay.menu_tiles_indexes[15+pocket][2],{0,96});
         HUDdisplay.showMenu(window,"assets/menus/packMenu.mn");
-        if(pocket==0)HUDdisplay.showMenuTile(window,"\xc0",{192,0});
+        if(pocket==0)HUDdisplay.showMenuTile(window,"\xc0",{0,192});
         window.display();
     }while(true);
 };
