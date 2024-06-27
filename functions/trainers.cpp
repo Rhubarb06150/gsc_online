@@ -29,7 +29,7 @@ class Trainers{
             x=std::stoi(xstr);
             y=std::stoi(ystr);
             std::cout<<"X:"<<x<<"Y:"<<y<<std::endl;
-            texture.loadFromFile("assets/hud/menus.png",sf::IntRect(x*56,y*56,16,16));
+            texture.loadFromFile("assets/player/trainers.png",sf::IntRect(x*56,y*56,16,16));
             trainers_textures.push_back(texture);
         };
         /* for(int i=0;i<trainers_index.size();i++){
