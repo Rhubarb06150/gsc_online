@@ -29,7 +29,7 @@ class Trainers{
             x=std::stoi(xstr);
             y=std::stoi(ystr);
             std::cout<<"X:"<<x<<"Y:"<<y<<std::endl;
-            texture.loadFromFile("assets/player/trainers.png",sf::IntRect(x*56,y*56,16,16));
+            texture.loadFromFile("assets/player/trainers.png",sf::IntRect(x*56,y*56,56,56));
             trainers_textures.push_back(texture);
         };
         /* for(int i=0;i<trainers_index.size();i++){
@@ -44,6 +44,7 @@ class Trainers{
                 texture=trainers_textures[i];
                 trainer.setTexture(texture);
                 trainer.setPosition(pos[0],pos[1]);
+                trainer.setScale(4.f,4.f);
                 window.draw(trainer);
                 return 0;
             };
