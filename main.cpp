@@ -226,13 +226,11 @@ void screenshotThread(){
     while(true){
         if (event.type==sf::Event::KeyPressed){
             if (event.key.code==sf::Keyboard::F1){
-                while(full_loaded!=1){
-                    
-                };
+                while(full_loaded!=1){};
                 functions.takeScreenshot(window,index_frame);
-                SoundManager.soundEffect("PRESS");
-                output_message="Screenshot saved!";
-                message_timer=0;
+                //SoundManager.soundEffect("PRESS");
+                //output_message="Screenshot saved!";
+                //message_timer=0;
                 usleep(500000);
             };
         };
