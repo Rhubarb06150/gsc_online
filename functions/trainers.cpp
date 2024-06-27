@@ -22,8 +22,12 @@ class Trainers{
         for(int i=0;i<trainers_index.size();i++){
             sf::Texture texture;
             std::string fish = trainers_index[i][1];
-            x=std::stoi(""+fish[0]);
-            y=std::stoi(""+fish[1]);
+            std::string xstr;
+            xstr=fish[0];
+            std::string ystr;
+            ystr=fish[1];
+            x=std::stoi(xstr);
+            y=std::stoi(ystr);
             texture.loadFromFile("assets/hud/menus.png",sf::IntRect(x*56,y*56,56,56));
             trainers_textures.push_back(texture);
         };
@@ -32,7 +36,9 @@ class Trainers{
         for(int i=0;i<trainers_index.size();i++){
             if (trainers_index[i][0]=="trainer"+std::to_string(id)){
                 sf::Sprite trainer;
-                trainer.setTexture(trainers_textures[i]);
+                sf::Texture texture;
+                texture=trainers_textures[i];
+                trainer.setTexture(texture);
                 trainer.setPosition(pos[0],pos[1]);
                 window.draw(trainer);
                 return 0;

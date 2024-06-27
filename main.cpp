@@ -90,6 +90,7 @@ class Game{
         HUD HUDdisplay;//hud functions, every texts you'll see is displayed with HUDdisplay
         Player player;//players functions, used to show the player, also all players sprites are stored here
         TilesIndex Tiles;//tiles functions, tiles manager, sprites etc are all stored here
+        Trainers TrainersIndex;
         Items ItemsIndex;//items functions, items infos are stored here.
         GSC_Functions functions;//other functions such as save a map, get current date and time
         Connection connection;
@@ -1171,6 +1172,7 @@ int playerMenu(){
         window.clear();
         HUDdisplay.showMenu(window,"assets/menus/playerStatus.mn");
         HUDdisplay.showTextBOW("NAME/"+username,{64,64},window);
+        TrainersIndex.showTrainer(window,{640-160,32},1);
         window.display();
     }while(true);
     return 0;
