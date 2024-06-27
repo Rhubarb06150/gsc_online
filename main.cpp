@@ -222,7 +222,7 @@ class Game{
         functions.log("ENGINE","Game launched!");//and there, we annouce to our dear player, that the game is ready to be played
     };
 
-void screenshotThread(){
+int screenshotThread(){
     while(true){
         if (event.type==sf::Event::KeyPressed){
             if (event.key.code==sf::Keyboard::F1){
@@ -239,6 +239,7 @@ void screenshotThread(){
             };
         };
     };
+    return 0;
 };
 
 int crash(std::string message){
