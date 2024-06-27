@@ -13,7 +13,7 @@ class Items{
     };
     int getItemIntIndexByName(std::string name){
         for(int i=0;i<items.size();i++){
-            if(items[i][1]==name){
+            if(items[i][2]==name){
                 return i;
             };
         };
@@ -21,7 +21,7 @@ class Items{
     };
     int getItemIntIndexByIndex(std::string name){
         for(int i=0;i<items.size();i++){
-            if(items[i][0]==name){
+            if(items[i][1]==name){
                 return i;
             };
         };
