@@ -8,7 +8,7 @@ class Items{
     Items(){
         items.push_back({"\x00","NONE","Item not exist."});
         balls.push_back({"\x01","MASTER BALL","The best Ball.\n\nIt never misses."});
-        balls.push_back({"\x01","ULTRA BALL"," 	A Ball with a \n\nhigh rate of success. "});
+        balls.push_back({"\x01","ULTRA BALL","A Ball with a \n\nhigh rate of success. "});
         for(int i=0;i<balls.size();i++){
             items.push_back(balls[i]);
         };
