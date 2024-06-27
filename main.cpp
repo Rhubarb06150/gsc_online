@@ -2030,6 +2030,9 @@ int packMenu(){
         if(pocket==1)HUDdisplay.showMenuTile(window,"\xc0",{32,256});
         if(pocket==2)HUDdisplay.showMenuTile(window,"\xc2",{0,256});
         if(pocket==3)HUDdisplay.showMenuTile(window,"\xc3",{0,256});
+        std::cout << "Choice:"<<choice<<std::endl;
+        std::cout << "Offset:"<<offset<<std::endl;
+        std::cout << std::endl;
         HUDdisplay.showRedCursor({224,64+(choice*64)},window);
         HUDdisplay.drawSquare(window,{0,384},{640,192},border_style);
         shown_items=0;
