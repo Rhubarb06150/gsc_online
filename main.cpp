@@ -1127,7 +1127,7 @@ std::string askPath(std::string path,sf::Event event,sf::RenderWindow& window){
         map_offset=0;
     };
 
-    window.clear(sf::Color(248,248,248));
+    window.clear(sf::Color(255,255,255));
     HUDdisplay.showTextDEBUG("Pokemon GSC Online build "+std::to_string(version).substr(0,4),{0,0},window);
     HUDdisplay.showTextDEBUG("27/05/24",{0,16},window);
     HUDdisplay.showTextDEBUG("F5 or X to confirm, F6 to cancel",{0,32},window);
