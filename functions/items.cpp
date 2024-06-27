@@ -6,7 +6,19 @@ class Items{
     std::vector<std::vector<std::string>> items;
     std::vector<std::vector<std::string>> balls;
     Items(){
-        balls.push_back({"Fast BALL","A BALL for catching\nfast Pokémon."});
-        balls.push_back({"Poké BALL","An item for catching\nPokémon."});
+        items.push_back({"NONE","Item not exist."});
+        balls.push_back({"FAST BALL","A BALL for catching\nfast Pokémon."});
+        balls.push_back({"POKé BALL","An item for catching\nPokémon."});
+        for(int i=0;i<balls.size();i++){
+            items.push_back(balls[i]);
+        };
+    };
+    int getItemIntIndexByName(std::string name){
+        for(int i=0;i<items.size();i++){
+            if(items[i][0]==name){
+                return i;
+            };
+        };
+        return 0;
     };
 };

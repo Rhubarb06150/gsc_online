@@ -2013,6 +2013,7 @@ int packMenu(){
         if(pocket==3)HUDdisplay.showMenuTile(window,"\xc3",{0,256});
         for(int i=0;i<pocket_content.size();i++){
             HUDdisplay.showTextBOW(pocket_content[i][0],{288,96+(i*64)},window);
+            HUDdisplay.showTextBOW(ItemsIndex.items[ItemsIndex.getItemIntIndexByName(pocket_content[i][0])][1],{32,384},window);
         };
         HUDdisplay.drawSquare(window,{0,384},{640,192},border_style);
         window.display();
