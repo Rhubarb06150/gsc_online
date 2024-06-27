@@ -123,6 +123,7 @@ class Game{
         std::string player_type;//that's your type (boy, girl etc...)
         bool walking;//is set to true when player is moving for animate the player
         bool can_move;//when set to true, the player can move, so when false, the player can't (for example it's set to false when some menus are opened)
+        int trainer_app_id;
         
         //EDITOR VARS
         std::string copied_tile;//the copied tile id (not index but id for example "\x00")
@@ -1167,12 +1168,22 @@ int playerMenu(){
                 if (event.key.code==sf::Keyboard::F6||event.key.code==sf::Keyboard::Escape){
                     return 0;
                 };
+                if (event.key.code==sf::Keyboard::Left){
+                    if(trainer_app_id>0){
+                        trainer_app_id--;
+                    };
+                };
+                if (event.key.code==sf::Keyboard::Right){
+                    if(trainer_app_id<TrainersIndex.trainers_index.size()-1){
+                        trainer_app_id++;
+                    };
+                };
             };
         };
         window.clear();
         HUDdisplay.showMenu(window,"assets/menus/playerStatus.mn");
         HUDdisplay.showTextBOW("NAME/"+username,{64,64},window);
-        TrainersIndex.showTrainer(window,{384,32},45,0);
+        TrainersIndex.showTrainer(window,{384,32},trainer_app_id,0);
         window.display();
     }while(true);
     return 0;
