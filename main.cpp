@@ -1999,8 +1999,8 @@ int packMenu(){
         window.clear();
         HUDdisplay.showMenuTile(window,HUDdisplay.menu_tiles_indexes[15+pocket][2],{0,96});
         HUDdisplay.showMenu(window,"assets/menus/packMenu.mn");
-        if(pocket==0)HUDdisplay.showMenuTile(window,"\xc0",{32,256});
-        if(pocket==1)HUDdisplay.showMenuTile(window,"\xc1",{32,256});
+        if(pocket==0)HUDdisplay.showMenuTile(window,"\xc1",{32,256});
+        if(pocket==1)HUDdisplay.showMenuTile(window,"\xc0",{32,256});
         if(pocket==2)HUDdisplay.showMenuTile(window,"\xc2",{0,256});
         if(pocket==3)HUDdisplay.showMenuTile(window,"\xc3",{0,256});
         window.display();
