@@ -2033,7 +2033,7 @@ int packMenu(){
         std::cout << "Choice:"<<choice<<std::endl;
         std::cout << "Offset:"<<offset<<std::endl;
         std::cout << std::endl;
-        HUDdisplay.showRedCursor({224,64+(choice*64)},window);
+        HUDdisplay.showRedCursor({224,64+(offset*64)},window);
         HUDdisplay.drawSquare(window,{0,384},{640,192},border_style);
         shown_items=0;
         for(int i=0;i<pocket_content.size();i++){
