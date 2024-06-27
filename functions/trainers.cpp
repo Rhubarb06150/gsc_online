@@ -13,7 +13,7 @@ class Trainers{
         int trainers_nb=0;
         for(int i=0;i<8;i++){
             for(int j=0;j<9;j++){
-                trainers_index.push_back({"trainer"+trainers_nb,std::to_string(i)+std::to_string(j)});
+                trainers_index.push_back({"trainer"+std::to_string(trainers_nb),std::to_string(i)+std::to_string(j)});
                 trainers_nb++;
             };
         };
