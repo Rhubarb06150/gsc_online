@@ -1984,13 +1984,13 @@ int packMenu(){
     pocket_content={
         {ItemsIndex.items[ItemsIndex.items.size()-1][2],"1"},
         {ItemsIndex.items[ItemsIndex.items.size()-2][2],"2"},
+        {ItemsIndex.items[ItemsIndex.items.size()-3][2],"2"},
+        {ItemsIndex.items[ItemsIndex.items.size()-4][2],"2"},
+        {ItemsIndex.items[ItemsIndex.items.size()-5][2],"2"},
+        {ItemsIndex.items[ItemsIndex.items.size()-4][2],"2"},
         {ItemsIndex.items[ItemsIndex.items.size()-2][2],"2"},
-        {ItemsIndex.items[ItemsIndex.items.size()-2][2],"2"},
-        {ItemsIndex.items[ItemsIndex.items.size()-2][2],"2"},
-        {ItemsIndex.items[ItemsIndex.items.size()-2][2],"2"},
-        {ItemsIndex.items[ItemsIndex.items.size()-2][2],"2"},
-        {ItemsIndex.items[ItemsIndex.items.size()-2][2],"2"},
-        {ItemsIndex.items[ItemsIndex.items.size()-2][2],"2"},
+        {ItemsIndex.items[ItemsIndex.items.size()-3][2],"2"},
+        {ItemsIndex.items[ItemsIndex.items.size()-1][2],"2"},
         {ItemsIndex.items[ItemsIndex.items.size()-2][2],"2"}};
     do{
         while (window.pollEvent(event)){
@@ -2015,7 +2015,7 @@ int packMenu(){
                 };
                 if(event.key.code==sf::Keyboard::Down){
                     choice++;
-                    if(offset<6)offset++;
+                    if(offset<5)offset++;
                 };
                 if(event.key.code==sf::Keyboard::Up){
                     choice--;
