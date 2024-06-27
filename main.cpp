@@ -2002,6 +2002,12 @@ int packMenu(){
                         pocket++;
                     };
                 };
+                if(event.key.code==sf::Keyboard::Down){
+                    choice++;
+                };
+                if(event.key.code==sf::Keyboard::Up){
+                    choice--;
+                };
             };
         };
         window.clear();
