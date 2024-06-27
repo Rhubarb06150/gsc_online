@@ -1978,6 +1978,7 @@ int packMenu(){
     int choice=0;
     do{
         window.clear();
+        HUDdisplay.showMenuTile(window,HUDdisplay.menu_tiles_indexes[13+pocket][2],{0,96});
         HUDdisplay.showMenu(window,"assets/menus/packMenu.mn");
         window.display();
     }while(true);
