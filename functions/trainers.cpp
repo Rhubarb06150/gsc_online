@@ -11,8 +11,8 @@ class Trainers{
     std::vector<sf::Texture> trainers_textures;
     Trainers(){
         int trainers_nb=0;
-        for(int i=0;i<8;i++){
-            for(int j=0;j<9;j++){
+        for(int i=0;i<9;i++){
+            for(int j=0;j<8;j++){
                 trainers_index.push_back({"trainer"+std::to_string(trainers_nb),std::to_string(j)+std::to_string(i)});
                 trainers_nb++;
             };
