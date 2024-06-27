@@ -22,22 +22,18 @@ class Trainers{
         for(int i=0;i<trainers_index.size();i++){
             sf::Texture texture;
             std::string fish = trainers_index[i][1];
-
             std::string xstr;
             xstr=fish[0];
             std::string ystr;
             ystr=fish[1];
-            
             x=std::stoi(xstr);
             y=std::stoi(ystr);
-            int size=56;
-            std::cout<<x<<y<<std::endl;
-            texture.loadFromFile("assets/hud/menus.png",sf::IntRect(x*56,y*56,size,size));
+            texture.loadFromFile("assets/hud/menus.png",sf::IntRect(x*56,y*56,56,56));
             trainers_textures.push_back(texture);
         };
-        for(int i=0;i<trainers_index.size();i++){
+        /* for(int i=0;i<trainers_index.size();i++){
             std::cout<<trainers_index[i][0]<<"="<<trainers_index[i][1]<<std::endl;
-        };
+        }; */
     };
     int showTrainer(sf::RenderWindow& window,std::vector<int> pos, int id){
         for(int i=0;i<trainers_index.size();i++){
