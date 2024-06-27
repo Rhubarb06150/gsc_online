@@ -167,10 +167,10 @@ class HUD{
         menu_tiles_indexes.push_back({"bagBoxTR","1611","\xb8"});
         menu_tiles_indexes.push_back({"bagBoxBL","0711","\xb9"});
         menu_tiles_indexes.push_back({"bagBoxBR","1711","\xba"});
-        menu_tiles_indexes.push_back({"bagBoxT","2611","\xba"});
-        menu_tiles_indexes.push_back({"bagBoxB","2711","\xbb"});
-        menu_tiles_indexes.push_back({"bagBoxL","3611","\xbc"});
-        menu_tiles_indexes.push_back({"bagBoxR","3711","\xbd"});
+        menu_tiles_indexes.push_back({"bagBoxT","2611","\xbb"});
+        menu_tiles_indexes.push_back({"bagBoxB","2711","\xbc"});
+        menu_tiles_indexes.push_back({"bagBoxL","3611","\xbd"});
+        menu_tiles_indexes.push_back({"bagBoxR","3711","\xbe"});
         menu_tiles_indexes.push_back({"idN","6421","\xd5"});
 
         //EDITOR TEXTURES
