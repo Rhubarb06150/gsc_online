@@ -2011,9 +2011,9 @@ int pauseMenu(){
                     }else if(choice==1){
 
                     }else if(choice==2){
-
-                    }else if(choice==3){
                         packMenu();
+                    }else if(choice==3){
+
                     }else if(choice==4){
                         playerMenu();
                     }else if(choice==5){
