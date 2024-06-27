@@ -2033,7 +2033,7 @@ int packMenu(){
         HUDdisplay.drawSquare(window,{0,384},{640,192},border_style);
         for(int i=choice-offset;i<pocket_content.size();i++){
             HUDdisplay.showTextBOW(pocket_content[i][0],{256,64+(i*64)},window);//SHOWING ITEM NAME
-            if (i>6)break;
+            if (i>=6)break;
         };
         HUDdisplay.showTextBOW(ItemsIndex.items[ItemsIndex.getItemIntIndexByName(pocket_content[choice][0])][3],{32,448},window);//SHOWING ITEM DESCRIPTION
         window.display();
