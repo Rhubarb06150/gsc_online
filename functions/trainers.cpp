@@ -28,6 +28,7 @@ class Trainers{
             ystr=fish[1];
             x=std::stoi(xstr);
             y=std::stoi(ystr);
+            std::cout<<x<<y<<std::endl;
             texture.loadFromFile("assets/hud/menus.png",sf::IntRect(x*56,y*56,56,56));
             trainers_textures.push_back(texture);
         };
