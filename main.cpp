@@ -2024,7 +2024,7 @@ int packMenu(){
         for(int i=choice-offset;i<pocket_content.size();i++){
             HUDdisplay.showTextBOW(pocket_content[i][0],{256,64+(i*64)},window);//SHOWING ITEM NAME
         };
-        HUDdisplay.showTextBOW(ItemsIndex.items[ItemsIndex.getItemIntIndexByName(pocket_content[choice-offset][0])][3],{32,448},window);//SHOWING ITEM DESCRIPTION
+        HUDdisplay.showTextBOW(ItemsIndex.items[ItemsIndex.getItemIntIndexByName(pocket_content[choice][0])][3],{32,448},window);//SHOWING ITEM DESCRIPTION
         window.display();
     }while(true);
 };
