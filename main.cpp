@@ -226,6 +226,7 @@ void screenshotThread(){
     while(true){
         if (event.type==sf::Event::KeyPressed){
             if (event.key.code==sf::Keyboard::F1){
+                while(full_loaded!=1){};
                 functions.takeScreenshot(window);
                 SoundManager.soundEffect("PRESS");
                 output_message="Screenshot saved!";
@@ -565,13 +566,6 @@ void mainLoop(){
     }else{
         can_move=true;
     };
-    
-    if (isPressed(event,sf::Keyboard::F1)==0){
-        functions.takeScreenshot(window);
-        SoundManager.soundEffect("PRESS");
-        output_message="Screenshot saved!";
-        message_timer=0;
-    };
 
     if (message_timer<=60){
         HUDdisplay.showTextDEBUG(output_message,{0,560},window);
@@ -723,12 +717,6 @@ int yesNoQuestion(std::string question,sf::Event event,sf::RenderWindow& window)
             HUDdisplay.showTextDEBUG("YES",{32,160},window);
             HUDdisplay.showTextSELDEBUG("NO",{144,160},window);
         };
-        if (isPressed(event,sf::Keyboard::F1)==0){
-            functions.takeScreenshot(window);
-            SoundManager.soundEffect("PRESS");
-            output_message="Screenshot saved!";
-            message_timer=0;
-        };
         if (message_timer<=60){
             HUDdisplay.showTextDEBUG(output_message,{0,560},window);
         };
@@ -766,12 +754,6 @@ std::string askText(std::string caption){
             if (event.type==sf::Event::KeyPressed){
                 if (event.key.code==sf::Keyboard::Enter||event.key.code==sf::Keyboard::Return){
                     return text_input.toAnsiString();
-                };
-                if (event.key.code==sf::Keyboard::F1){
-                    functions.takeScreenshot(window);
-                    SoundManager.soundEffect("PRESS");
-                    output_message="Screenshot saved!";
-                    message_timer=0;
                 };
                 if (event.key.code==sf::Keyboard::F6){
                     return "";
@@ -900,12 +882,6 @@ int randomPatternLoop(){
         };
         window.display();
         full_loaded=1;
-        if (isPressed(event,sf::Keyboard::F1)==0){
-            functions.takeScreenshot(window);
-            SoundManager.soundEffect("PRESS");
-            output_message="Screenshot saved!";
-            message_timer=0;
-        };
     }while(true);
     return 0;
 };
@@ -1170,12 +1146,6 @@ std::string askPath(std::string path,sf::Event event,sf::RenderWindow& window){
     };
     HUDdisplay.showCursor({64,128+(map_choice*32)-(map_offset*32)},window);
     HUDdisplay.showTextBOW("CUR DIRECTORY ("+std::to_string(maps.size()-1)+")",{64,64},window);
-    if (isPressed(event,sf::Keyboard::F1)==0){
-        functions.takeScreenshot(window);
-        SoundManager.soundEffect("PRESS");
-        output_message="Screenshot saved!";
-        message_timer=0;
-    };
     if (message_timer<=60){
         HUDdisplay.showTextDEBUG(output_message,{0,560},window);
     };
@@ -1719,12 +1689,6 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                 help_tiles_show=false;
             };
         };
-        if (event.key.code==sf::Keyboard::F1){
-            functions.takeScreenshot(window);
-            SoundManager.soundEffect("PRESS");
-            output_message="Screenshot saved!";
-            message_timer=0;
-        };
         if (message_timer<=60){
             HUDdisplay.showTextDEBUG(output_message,{0,560},window);
         };
@@ -1887,12 +1851,6 @@ int main_menu(){
         HUDdisplay.showTextBOW("Open game folder",{64,384},window);
         if (mods_list.size()>0){
         HUDdisplay.showTextBOW("Mods",{64,416},window);
-        };
-        if (event.key.code==sf::Keyboard::F1){
-            functions.takeScreenshot(window);
-            SoundManager.soundEffect("PRESS");
-            output_message="Screenshot saved!";
-            message_timer=0;
         };
         if (message_timer<=60){
             HUDdisplay.showTextDEBUG(output_message,{0,560},window);
@@ -2225,12 +2183,6 @@ int show_debug_pause(){
         if (choice==2)HUDdisplay.showTextSELDEBUG("exit menu",            {192,256+80},window);
                     else HUDdisplay.showTextDEBUG("exit menu",            {192,256+80},window);
                          HUDdisplay.showTextDEBUG(          "           ",{336,256+80},window);
-        if (isPressed(event,sf::Keyboard::F1)==0){
-            functions.takeScreenshot(window);
-            SoundManager.soundEffect("PRESS");
-            output_message="Screenshot saved!";
-            message_timer=0;
-        };
         if (message_timer<=60){
             HUDdisplay.showTextDEBUG(output_message,{0,560},window);
         };
