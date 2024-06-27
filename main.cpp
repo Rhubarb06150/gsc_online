@@ -2040,7 +2040,7 @@ int packMenu(){
         shown_items=0;
         for(int i=0;i<pocket_content.size();i++){
             int posy=96+(i*64);
-            HUDdisplay.showTextBOW(pocket_content[i+choice-offset][0],{256,posy},window);//SHOWING ITEM NAME
+            HUDdisplay.showTextBOW(pocket_content[i+choice-offset][0],{256,64+(i*64)},window);//SHOWING ITEM NAME
             shown_items++;
             std::string item_nb;
             item_nb=pocket_content[i+choice-offset][1];
