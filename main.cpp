@@ -207,6 +207,7 @@ class Game{
         mods_states={};
         mods_descriptions={};
         debug_launch=false;
+        trainer_app_id=1;
         //MOD DESC
         srand(time(NULL));//reset the random values
 
