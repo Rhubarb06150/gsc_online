@@ -169,6 +169,8 @@ class Game{
         std::vector<std::vector<std::string>> mods_descriptions;
         //MOD INIT
 
+        std::thread screenshotThread_Thread;
+
     Game(){
         version=0.0;
         //letters={"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
@@ -221,26 +223,6 @@ class Game{
         };
         functions.log("ENGINE","Game launched!");//and there, we annouce to our dear player, that the game is ready to be played
     };
-
-int screenshotThread(){
-    while(true){
-        if (event.type==sf::Event::KeyPressed){
-            if (event.key.code==sf::Keyboard::F1){
-                while(!full_loaded){
-                };
-                functions.takeScreenshot(window,index_frame);
-                //SoundManager.soundEffect("PRESS");
-                //output_message="Screenshot saved!";
-                //message_timer=0;
-                std::cout<<"ending"<<std::endl;
-                usleep(500000);
-                std::cout<<"ended"<<std::endl;
-            };
-        };
-    };
-    std::cout<<"SCREENSHOT END"<<std::endl;
-    return 0;
-};
 
 int crash(std::string message){
     do{
@@ -2214,6 +2196,26 @@ int show_debug_pause(){
     }while(true);
     return 0;
     };
+
+    void screenshotThread(){
+        while(true){
+            if (event.type==sf::Event::KeyPressed){
+                if (event.key.code==sf::Keyboard::F1){
+                    while(!full_loaded){
+                    };
+                    functions.takeScreenshot(window,index_frame);
+                    //SoundManager.soundEffect("PRESS");
+                    //output_message="Screenshot saved!";
+                    //message_timer=0;
+                    std::cout<<"ending"<<std::endl;
+                    usleep(500000);
+                    std::cout<<"ended"<<std::endl;
+                };
+            };
+        };
+        std::cout<<"SCREENSHOT END"<<std::endl;
+        return;
+    };
 };
 
 int main(int argc, char** argv)
@@ -2239,7 +2241,7 @@ int main(int argc, char** argv)
     G.loadSettings();
     //G.functions.log("INFO","an game folder has been created at "+G.functions.getUserPath()+"/.gsc_o, it will be used to store your saved maps and your screenshots");
     std::thread screenshotThread_Thread(&Game::screenshotThread, &G);
-    screenshotThread_Thread.detach();
+    screenshotThread_Thread.join();
     G.main_menu();
     while (G.window.isOpen()){
         G.mainLoop();
