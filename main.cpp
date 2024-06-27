@@ -75,6 +75,7 @@
 #include "functions/terrain.cpp"
 #include "functions/player.cpp"
 #include "functions/sounds.cpp"
+#include "functions/items.cpp"
 #include "functions/hud.cpp"
 
 #include "mods/header.hpp"
@@ -88,6 +89,7 @@ class Game{
         HUD HUDdisplay;//hud functions, every texts you'll see is displayed with HUDdisplay
         Player player;//players functions, used to show the player, also all players sprites are stored here
         TilesIndex Tiles;//tiles functions, tiles manager, sprites etc are all stored here
+        Items ItemsIndex;//items functions, items infos are stored here.
         GSC_Functions functions;//other functions such as save a map, get current date and time
         Connection connection;
         double version;
@@ -1976,8 +1978,11 @@ int optionMenu(){
 int packMenu(){
     int pocket=0;
     int choice=0;
+    int offset=0;
+    std::vector<std::vector<std::string>> pocket_content;
     do{
         while (window.pollEvent(event)){
+            pocket_content={{"Poké BALL","1"}};
             if(event.type==sf::Event::KeyPressed){
                 if(event.key.code==sf::Keyboard::F6||event.key.code==sf::Keyboard::Escape){
                     return 0;
@@ -1998,6 +2003,9 @@ int packMenu(){
                     };
                 };
             };
+        };
+        for(int i=0;i<pocket_content.size();i++){
+            HUDdisplay.showTextBOW(pocket_content[i][0],{288,96+(i*64)},window);
         };
         window.clear();
         HUDdisplay.showMenuTile(window,HUDdisplay.menu_tiles_indexes[15+pocket][2],{0,96});
