@@ -8,6 +8,7 @@ class Items{
     Items(){
         items.push_back({"\x00","NONE","Item not exist."});
         balls.push_back({"\x01","MASTER BALL","The best Ball.\n\nIt never misses."});
+        balls.push_back({"\x01","ULTRA BALL"," 	A Ball with a \n\nhigh rate of success. "});
         for(int i=0;i<balls.size();i++){
             items.push_back(balls[i]);
         };
@@ -15,6 +16,14 @@ class Items{
     int getItemIntIndexByName(std::string name){
         for(int i=0;i<items.size();i++){
             if(items[i][1]==name){
+                return i;
+            };
+        };
+        return 0;
+    };
+    int getItemIntIndexByIndex(std::string name){
+        for(int i=0;i<items.size();i++){
+            if(items[i][0]==name){
                 return i;
             };
         };
