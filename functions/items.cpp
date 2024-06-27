@@ -4,15 +4,12 @@
 class Items{
     public:
     std::vector<std::vector<std::string>> items;
-    std::vector<std::vector<std::string>> balls;
     Items(){
-        items.push_back({"\x00","NONE","Item not exist."});
-        balls.push_back({"\x01","MASTER BALL","The best Ball.\n\nIt never misses."});
-        balls.push_back({"\x02","ULTRA BALL","A Ball with a high\n\nrate of success."});
-        balls.push_back({"\x03","BRIGHTPOWDER","Lowers the foe's\n\naccuracy. (HOLD)"});
-        for(int i=0;i<balls.size();i++){
-            items.push_back(balls[i]);
-        };
+        items.push_back({"ITEMS","\x00","NONE","Item not exist."});
+        items.push_back({"BALLS","\x01","MASTER BALL","The best Ball.\n\nIt never misses."});
+        items.push_back({"BALLS","\x02","ULTRA BALL","A Ball with a high\n\nrate of success."});
+        items.push_back({"ITEMS","\x03","BRIGHTPOWDER","Lowers the foe's\n\naccuracy. (HOLD)"});
+        items.push_back({"BALLS","\x03","GREAT BALL","A Ball with a decent\n\nsuccess rate."});
     };
     int getItemIntIndexByName(std::string name){
         for(int i=0;i<items.size();i++){
