@@ -2014,7 +2014,7 @@ int packMenu(){
                     };
                 };
                 if(event.key.code==sf::Keyboard::Down){
-                    if(choice<pocket_content.size()){
+                    if(choice<pocket_content.size()-1){
                     choice++;
                     if(offset<4)offset++;
                 };
