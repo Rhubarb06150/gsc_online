@@ -2046,7 +2046,7 @@ int packMenu(){
             item_nb=pocket_content[i+choice-offset][1];
             int xpos=640-(item_nb.length()*32);
             HUDdisplay.showTextBOW(item_nb,{xpos,posy},window);
-            HUDdisplay.showMenuTile(window,"\xd6",{576,posy});
+            HUDdisplay.showMenuTile(window,"\xd6",{544,posy});
             if (shown_items>=5)break;
         };
         HUDdisplay.showTextBOW(ItemsIndex.items[ItemsIndex.getItemIntIndexByName(pocket_content[choice][0])][3],{32,448},window);//SHOWING ITEM DESCRIPTION
