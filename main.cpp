@@ -2014,12 +2014,16 @@ int packMenu(){
                     };
                 };
                 if(event.key.code==sf::Keyboard::Down){
+                    if(choice<pocket_content.size()){
                     choice++;
                     if(offset<4)offset++;
                 };
                 if(event.key.code==sf::Keyboard::Up){
+                    if(choice>0){
                     choice--;
                     if(offset>0)offset--;
+                    };
+                };
                 };
             };
         };
