@@ -1983,7 +1983,7 @@ int packMenu(){
     std::vector<std::vector<std::string>> pocket_content;
     pocket_content={
         {"\x02",std::to_string(rand()%20+1)},
-        {"\x04",std::to_string(rand()%20+1)},
+        {"\x04",std::to_string(rand()%20+1)}
     };
     do{
         while (window.pollEvent(event)){
