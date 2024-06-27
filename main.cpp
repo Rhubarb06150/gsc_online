@@ -1973,6 +1973,16 @@ int optionMenu(){
     return 0;
 };
 
+int packMenu(){
+    int pocket=0;
+    int choice=0;
+    do{
+        window.clear();
+        HUDdisplay.showMenu(window,"assets/menus/bagMenu.mn");
+        window.display();
+    }while(true);
+};
+
 int pauseMenu(){
     int choice=0;
     do{
@@ -2003,7 +2013,7 @@ int pauseMenu(){
                     }else if(choice==2){
 
                     }else if(choice==3){
-
+                        packMenu();
                     }else if(choice==4){
                         playerMenu();
                     }else if(choice==5){

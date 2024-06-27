@@ -156,6 +156,13 @@ class HUD{
         menu_tiles_indexes.push_back({"wideLine","0111","\xd0"});
         menu_tiles_indexes.push_back({"wideLineRight","1111","\xd1"});
         menu_tiles_indexes.push_back({"wideLineLeft","1311","\xd2"});
+        menu_tiles_indexes.push_back({"carpet","3311","\xb0"});
+        menu_tiles_indexes.push_back({"itemsLabel","0461","\xb1"});
+        menu_tiles_indexes.push_back({"pocketLabel","0561","\xb2"});
+        menu_tiles_indexes.push_back({"itemsLabel","b043","\xb3"});
+        menu_tiles_indexes.push_back({"ballsLabel","b343","\xb4"});
+        menu_tiles_indexes.push_back({"keysItemsLabel","b643","\xb5"});
+        menu_tiles_indexes.push_back({"TMTHLabel","b943","\xb6"});
         menu_tiles_indexes.push_back({"idN","6421","\xd5"});
 
         //EDITOR TEXTURES
@@ -255,7 +262,6 @@ class HUD{
                 window.draw(tile);
                 x+=32;
             };
-            line=funs.ReplaceAll(line,"\x01","w");
             y+=32;
             x=0;
         };
