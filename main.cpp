@@ -1984,14 +1984,6 @@ int packMenu(){
     pocket_content={
         {ItemsIndex.items[ItemsIndex.items.size()-1][2],std::to_string(rand()%20+1)},
         {ItemsIndex.items[ItemsIndex.items.size()-2][2],std::to_string(rand()%20+1)},
-        {ItemsIndex.items[ItemsIndex.items.size()-3][2],std::to_string(rand()%20+1)},
-        {ItemsIndex.items[ItemsIndex.items.size()-4][2],std::to_string(rand()%20+1)},
-        {ItemsIndex.items[ItemsIndex.items.size()-5][2],std::to_string(rand()%20+1)},
-        {ItemsIndex.items[ItemsIndex.items.size()-4][2],std::to_string(rand()%20+1)},
-        {ItemsIndex.items[ItemsIndex.items.size()-2][2],std::to_string(rand()%20+1)},
-        {ItemsIndex.items[ItemsIndex.items.size()-3][2],std::to_string(rand()%20+1)},
-        {ItemsIndex.items[ItemsIndex.items.size()-1][2],std::to_string(rand()%20+1)},
-        {ItemsIndex.items[ItemsIndex.items.size()-2][2],std::to_string(rand()%20+1)}
     };
     do{
         while (window.pollEvent(event)){
