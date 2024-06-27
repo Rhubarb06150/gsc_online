@@ -1982,7 +1982,7 @@ int packMenu(){
     int offset=0;
     std::vector<std::vector<std::string>> pocket_content;
     pocket_content={
-        {"\x04",std::to_string(rand()%20+1)},
+        {"\x02",std::to_string(rand()%20+1)},
         {"\x04",std::to_string(rand()%20+1)},
     };
     do{
@@ -2041,7 +2041,7 @@ int packMenu(){
             HUDdisplay.showMenuTile(window,"\xd6",{544,posy});
             if (shown_items>=5)break;
         };
-        HUDdisplay.showTextBOW(ItemsIndex.items[ItemsIndex.getItemIntIndexByName(pocket_content[choice][0])][3],{32,448},window);//SHOWING ITEM DESCRIPTION
+        HUDdisplay.showTextBOW(ItemsIndex.items[ItemsIndex.getItemIntIndexByIndex(pocket_content[choice][0])][3],{32,448},window);//SHOWING ITEM DESCRIPTION
         window.display();
     }while(true);
 };
