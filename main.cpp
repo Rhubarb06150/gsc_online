@@ -1979,6 +1979,7 @@ int packMenu(){
     while (window.pollEvent(event)){
         if(sf::Event::KeyPressed){
             if(event.key.code==sf::Keyboard::Left){
+                std::cout << "left";
                 if(pocket==0){
                     pocket=3;
                 }else{
