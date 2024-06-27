@@ -233,7 +233,9 @@ void screenshotThread(){
                 //SoundManager.soundEffect("PRESS");
                 //output_message="Screenshot saved!";
                 //message_timer=0;
+                std::cout<<"ending"<<std::endl;
                 usleep(500000);
+                std::cout<<"ended"<<std::endl;
             };
         };
     };
