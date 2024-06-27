@@ -2003,6 +2003,7 @@ int packMenu(){
         if(pocket==1)HUDdisplay.showMenuTile(window,"\xc0",{32,256});
         if(pocket==2)HUDdisplay.showMenuTile(window,"\xc2",{0,256});
         if(pocket==3)HUDdisplay.showMenuTile(window,"\xc3",{0,256});
+        HUDdisplay.drawSquare(window,{684,0},{640,192},border_style);
         window.display();
     }while(true);
 };
