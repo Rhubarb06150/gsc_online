@@ -2241,7 +2241,7 @@ int main(int argc, char** argv)
     G.loadSettings();
     //G.functions.log("INFO","an game folder has been created at "+G.functions.getUserPath()+"/.gsc_o, it will be used to store your saved maps and your screenshots");
     std::thread screenshotThread_Thread(&Game::screenshotThread, &G);
-    screenshotThread_Thread.join();
+    screenshotThread_Thread.detach();
     G.main_menu();
     while (G.window.isOpen()){
         G.mainLoop();
