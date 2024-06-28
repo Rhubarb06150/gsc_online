@@ -53,7 +53,7 @@ class GSC_Functions{
         int day = tm_struct->tm_wday;
         std::vector<std::string> days;
         days={"MONDAY","TUESDAY","WENSDAY","THURSDAY","FRIDAY","SATURDAY","SUNDAY"};   
-        return days[day];
+        return days[day-1];
     };
 
     std::string currentHour(){
