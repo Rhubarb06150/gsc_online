@@ -224,7 +224,7 @@ class Game{
     };
 
 int intro(){
-    std::string intro_text="Pokémon GSC Online";
+    const std::string intro_text="Pokémon GSC Online";
     std::cout <<"intro"<<std::endl;
     while(true){
         window.clear();
