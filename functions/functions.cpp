@@ -203,6 +203,7 @@ class GSC_Functions{
         if (nope){
             return 1;
         };
+        log("RENDER","Starting render...");
         sf::Image render_image;
         render_image.create(terrain_vector[0].size()*16,terrain_vector.size()*16,sf::Color::Black);
         //sf::RenderWindow window(sf::VideoMode(terrain_vector[0].size()*16,terrain_vector.size()*16),"Render window");
@@ -222,6 +223,7 @@ class GSC_Functions{
             };
         };
         render_image.saveToFile("result.png");
+        log("RENDER","Render saved!");
         //sf::Texture render;
         //render.create(window.getSize().x, window.getSize().y);
         //render.update(window);
