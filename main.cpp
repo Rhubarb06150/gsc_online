@@ -1232,6 +1232,7 @@ int pokeGearMenu(){
         HUDdisplay.showMenu(window,"assets/menus/PKGear"+std::to_string(choice)+".mn");
         if(choice==0){
             HUDdisplay.showTextBeige(functions.getDay(),{192,192},window);
+            HUDdisplay.showTextBeige(":",{256,256},window);
         };
         window.display();
         full_loaded=1;
