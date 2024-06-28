@@ -2298,6 +2298,7 @@ void screenshotVerify(){
 int main(int argc, char** argv)
     {
     Game G;
+    G.intro();
     /* if (argc>1){
         if (strcmp(argv[1],"debug")==0){
             G.functions.log("DEBUG","Launching in debug mode.");
@@ -2317,7 +2318,6 @@ int main(int argc, char** argv)
     G.functions.createMissingFile(G.functions.getUserPath()+"/.gsc_o/settings","username=Player\nresolution=640x576\nborder=0\ntrainer=0");
     G.loadSettings();
     //G.functions.log("INFO","an game folder has been created at "+G.functions.getUserPath()+"/.gsc_o, it will be used to store your saved maps and your screenshots");
-    G.intro();
     G.main_menu();
     while (G.window.isOpen()){
         G.mainLoop();
