@@ -214,6 +214,7 @@ class GSC_Functions{
         //window.clear();
         clock_t start, end;
         start=clock();
+        sf::Color cur_pixel;
         for (int i=0;i<terrain_vector.size();i++){
             for (int j=0;j<terrain_vector[0].size();j++){
                 if(Tiles.getIntIndex(terrain_vector[i][j])!=Tiles.tiles.size()-2){
@@ -223,7 +224,6 @@ class GSC_Functions{
                     image=cur_texture.copyToImage();
                     for(int ytex=0;ytex<cur_texture.getSize().y;ytex++){
                         for(int xtex=0;xtex<cur_texture.getSize().x;xtex++){
-                            sf::Color cur_pixel;
                             cur_pixel=image.getPixel(ytex,xtex);
                             //if(cur_pixel!=sf::Color::Transparent){
                             render_image.setPixel((j*16)+ytex,(i*16)+xtex,cur_pixel);
