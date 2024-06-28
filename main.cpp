@@ -230,9 +230,11 @@ int crash(std::string message){
         while (window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed || event.type == sf::Event::KeyPressed){
-                screenshotVerify();
                 functions.quitGame(window);
                 return 0;
+            };
+            if(event.type==sf::Event::KeyPressed){
+                screenshotVerify();
             };
         };
         window.clear();
@@ -339,8 +341,7 @@ void mainLoop(){
             functions.log("DEBUG","Lowest FPS: "+std::to_string(lowest));
             functions.log("DEBUG","Highest FPS: "+std::to_string(biggest));
             functions.quitGame(window);
-        };
-        if (event.type==sf::Event::KeyPressed){
+        }else if (event.type==sf::Event::KeyPressed){
             screenshotVerify();
             //MOD KEYPRESS
             if (event.key.code==sf::Keyboard::S){
@@ -360,7 +361,7 @@ void mainLoop(){
                     output_message="Showing debug menu";
                 }else{
                     output_message="Hiding debug menu";
-                }
+                };
                 message_timer=0;
             };
             };
