@@ -1168,6 +1168,7 @@ int playerMenu(){
                         trainer_app_id++;
                     };
                 };
+                updateSettings(false);
             };
         };
         window.clear();
