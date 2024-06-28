@@ -1240,13 +1240,13 @@ int pokeGearMenu(){
             std::string cur_hour;
             cur_hour=std::to_string(real_hour);
             int str_len=cur_hour.length();
-            
             HUDdisplay.showTextBeige(std::to_string(real_hour),{256-(32*str_len),256},window);
             if(functions.getHour()<12){
                 HUDdisplay.showTextBeige("AM",{384,256},window);
             }else{
                 HUDdisplay.showTextBeige("PM",{384,256},window);
             };
+            HUDdisplay.showTextBeige(std::to_string(functions.getMinute()),{288,256},window);
         };
         window.display();
         full_loaded=1;
