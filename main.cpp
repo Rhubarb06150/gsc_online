@@ -234,6 +234,7 @@ int intro(){
         if(index_frame/4>intro_text.length()){
             return 0;
         };
+        usleep(50000);
     }while(true);
 };
 
