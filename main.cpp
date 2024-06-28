@@ -1292,7 +1292,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::LControl)){
                 if (event.type==sf::Event::KeyPressed){
                     if (event.key.code==sf::Keyboard::R){
-                        functions.renderMap(terrain_vector,Tiles);
+                        functions.renderMap(terrain_vector,Tiles,time_otd);
                     };
                 };
             };
@@ -1805,6 +1805,15 @@ int main_menu(){
                             choice--;
                         };
                         break;
+                };
+                if (event.key.code==sf::Keyboard::P){
+                    if(time_otd=='m'){
+                        time_otd='d';
+                    }else if(time_otd=='d'){
+                        time_otd='n';
+                    }else if(time_otd=='n'){
+                        time_otd='m';
+                    };
                 };
                 if (event.key.code==sf::Keyboard::Down){
                     if (choice<max_choice){

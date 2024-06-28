@@ -190,7 +190,7 @@ class GSC_Functions{
         std::string homedir = pw->pw_dir;
         return homedir;
     };
-    int renderMap(std::vector<std::vector<std::string>> terrain_vector,TilesIndex Tiles){
+    int renderMap(std::vector<std::vector<std::string>> terrain_vector,TilesIndex Tiles,char time_otd){
         //16384x16384
         bool nope=false;
         if (terrain_vector[0].size()*16>16384){
@@ -204,28 +204,30 @@ class GSC_Functions{
         if (nope){
             return 1;
         };
+
         log("RENDER","Starting render...");
         sf::Image render_image;
         render_image.create(terrain_vector[0].size()*16,terrain_vector.size()*16,sf::Color::Transparent);
-        //sf::RenderWindow window(sf::VideoMode(terrain_vector[0].size()*16,terrain_vector.size()*16),"Render window");
-        //sf::FloatRect visibleArea(0,0,terrain_vector[0].size()*16,terrain_vector.size()*16);
-        //window.setView(sf::View(visibleArea));
-        //window.setSize(sf::Vector2u(terrain_vector[0].size()*16,terrain_vector.size()*16));
-        //window.clear();
         clock_t start, end;
         start=clock();
+        int none_ind=Tiles.tiles.size()-2;
         sf::Color cur_pixel;
+        int time_ind;
+        
+        if(time_otd=='m'){time_ind=0;};
+        if(time_otd=='d'){time_ind=1;};
+        if(time_otd=='n'){time_ind=2;};
+
         for (int i=0;i<terrain_vector.size();i++){
             for (int j=0;j<terrain_vector[0].size();j++){
-                if(Tiles.getIntIndex(terrain_vector[i][j])!=Tiles.tiles.size()-2){
+                if(Tiles.getIntIndex(terrain_vector[i][j])!=none_ind){//DONT PUT EMPTY TILE
                 sf::Texture cur_texture;
                 sf::Image image;
-                    cur_texture=Tiles.day_textures[Tiles.getIntIndex(terrain_vector[i][j])];
+                    cur_texture=Tiles.textures[time_ind][Tiles.getIntIndex(terrain_vector[i][j])];
                     image=cur_texture.copyToImage();
                     for(int ytex=0;ytex<cur_texture.getSize().x;ytex++){
                         for(int xtex=0;xtex<cur_texture.getSize().y;xtex++){
                             cur_pixel=image.getPixel(ytex,xtex);
-                            //if(cur_pixel!=sf::Color::Transparent){
                             render_image.setPixel((j*16)+ytex,(i*16)+xtex,cur_pixel);
                         };
                     };
@@ -237,47 +239,6 @@ class GSC_Functions{
         double time_taken = double(end - start) / double(CLOCKS_PER_SEC);
         render_times.push_back(time_taken);
         log("RENDER","Render saved in "+std::to_string(time_taken));
-        //sf::Texture render;
-        //render.create(window.getSize().x, window.getSize().y);
-        //render.update(window);
-        //if (render.copyToImage().saveToFile(getUserPath()+"/.gsc_o/renders/render_"+currentDateTime()+"_day.png")){
-        //    log("INFO","Day render saved at "+getUserPath()+"/.gsc_o/renders/render_"+currentDateTime()+"_day.png");
-        //}else{
-        //    log("ERROR","Failed to save render");
-        //};
-        //window.clear();
-        //for (int i=0;i<terrain_vector.size();i++){
-        //    for (int j=0;j<terrain_vector[0].size();j++){
-        //        sf::Sprite sprite;
-        //        sprite.setPosition(j*16,i*16);
-        //        sprite.setTexture(Tiles.morning_textures[Tiles.getIntIndex(terrain_vector[i][j])]);
-        //        window.draw(sprite);
-        //    };
-        //};
-        //render.create(window.getSize().x, window.getSize().y);
-        //render.update(window);
-        //if (render.copyToImage().saveToFile(getUserPath()+"/.gsc_o/renders/render_"+currentDateTime()+"_morning.png")){
-        //    log("INFO","Morning render saved at "+getUserPath()+"/.gsc_o/renders/render_"+currentDateTime()+"_morning.png");
-        //}else{
-        //    log("ERROR","Failed to save render");
-        //};
-        //
-        //window.clear();
-        //for (int i=0;i<terrain_vector.size();i++){
-        //    for (int j=0;j<terrain_vector[0].size();j++){
-        //        sf::Sprite sprite;
-        //        sprite.setPosition(j*16,i*16);
-        //        sprite.setTexture(Tiles.night_textures[Tiles.getIntIndex(terrain_vector[i][j])]);
-        //        window.draw(sprite);
-        //    };
-        //};
-        //render.create(window.getSize().x, window.getSize().y);
-        //render.update(window);
-        //if (render.copyToImage().saveToFile(getUserPath()+"/.gsc_o/renders/render_"+currentDateTime()+"_night.png")){
-        //    log("INFO","Night render saved at "+getUserPath()+"/.gsc_o/renders/render_"+currentDateTime()+"_night.png");
-        //}else{
-        //    log("ERROR","Failed to save render");
-        //};
         return 0;
     };
 
