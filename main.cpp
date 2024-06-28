@@ -1240,6 +1240,7 @@ int pokeGearMenu(){
             std::string cur_hour;
             cur_hour=std::to_string(real_hour);
             int str_len=cur_hour.length();
+            std::cout << str_len << std::endl;
             
             HUDdisplay.showTextBeige(std::to_string(real_hour),{192+(2*str_len),256},window);
             if(functions.getHour()<12){
