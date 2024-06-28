@@ -110,6 +110,7 @@ class Terrain{
                 if (!animated){
                     sprite.setTexture(tiles_index.textures[time_index][tiles_index.getIntIndex(terrain_vector[i][j])]);
                 }else{
+                    frame_index+=rand()%10;
                     int animation_index=tiles_index.getAnimIndex(terrain_vector[i][j]);
                     int frames_nb=std::stoi(tiles_index.animated_tiles[animation_index][1]);
                     sprite.setTexture(tiles_index.animated_textures[time_index][animation_index][(frame_index%((frames_nb)*16))/16]);
