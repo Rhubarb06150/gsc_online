@@ -1234,12 +1234,12 @@ int pokeGearMenu(){
             HUDdisplay.showTextBeige(functions.getDay(),{192,192},window);
             HUDdisplay.showTextBeige(":",{256,256},window);
             std::string cur_hour;
-            int str_len=cur_hour.length();
-            
             cur_hour=std::to_string(functions.getHour());
-            int real_hour=functions.getHour();
             
-            if(std::stoi(cur_hour)>=12){
+            int str_len=cur_hour.length();
+            int real_hour=functions.getHour();
+
+            if(real_hour>=12){
                 int real_hour=std::stoi(cur_hour)-12;
             };
             
