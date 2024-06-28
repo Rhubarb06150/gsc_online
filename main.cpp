@@ -1557,8 +1557,8 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                     sum_moy+=functions.render_times[i];
                 };
                 functions.log("DEBUG","AVG FPS: "+std::to_string(sum_moy/functions.render_times.size()));
-                functions.log("DEBUG","Lowest FPS: "+std::to_string(lowest));
-                functions.log("DEBUG","Highest FPS: "+std::to_string(biggest));
+                functions.log("DEBUG","Fastest Render: "+std::to_string(lowest));
+                functions.log("DEBUG","Slowest Reender: "+std::to_string(biggest));
                 functions.quitGame(window);
                 return 0;
             };
