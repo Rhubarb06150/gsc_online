@@ -1239,7 +1239,7 @@ int pokeGearMenu(){
             int str_len=cur_hour.length();
             int real_hour=functions.getHour();
 
-            if(real_hour>=12){
+            if(real_hour<=12){
                 int real_hour=std::stoi(cur_hour)-12;
             };
             
