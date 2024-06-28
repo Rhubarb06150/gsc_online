@@ -1247,6 +1247,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
     
     do{
         full_loaded=0;
+        index_frame++;
         message_timer++;//increase the message timer for display messages
         while (window.pollEvent(event))//level editor true loop
         {
