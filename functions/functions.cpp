@@ -229,9 +229,7 @@ class GSC_Functions{
                             render_image.setPixel((j*16)+ytex,(i*16)+xtex,cur_pixel);
                         };
                     };
-                }else{
-                    std::cout << "none found" << std::endl;
-                }
+                };
             };
         };
         render_image.saveToFile(getUserPath()+"/.gsc_o/renders/render_"+currentDateTime()+".png");
