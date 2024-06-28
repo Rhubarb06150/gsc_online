@@ -2277,12 +2277,7 @@ int main(int argc, char** argv)
    // convert now to string form
    char* dt = ctime(&now);
 
-   std::cout << "The local date and time is: " << dt << std::endl;
-
-   // convert now to tm struct for UTC
-   tm *gmtm = gmtime(&now);
-   dt = asctime(gmtm);
-   std::cout << "The UTC date and time is:"<< dt << std::endl;
+   std::cout << "The local date and time is: " << dt[0] << std::endl;
     Game G;
     /* if (argc>1){
         if (strcmp(argv[1],"debug")==0){
