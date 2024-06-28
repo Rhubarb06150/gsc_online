@@ -226,7 +226,7 @@ class GSC_Functions{
                         for(int xtex=0;xtex<cur_texture.getSize().x;xtex++){
                             cur_pixel=image.getPixel(ytex,xtex);
                             //if(cur_pixel!=sf::Color::Transparent){
-                            render_image.setPixel((j*16)+xtex,(i*16)+ytex,cur_pixel);
+                            render_image.setPixel((i*16)+ytex,(i*16)+xtex,cur_pixel);
                         };
                     };
                 };
