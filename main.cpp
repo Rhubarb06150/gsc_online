@@ -2272,8 +2272,10 @@ void screenshotVerify(){
 
 int main(int argc, char** argv)
     {
-    /* std::tm *t = std::localtime(nullptr); 
-    int hour = t->tm_hour; */
+    time_t now = time(NULL);
+    struct tm *tm_struct = localtime(&now);
+    int hour = tm_struct->tm_hour;
+
     Game G;
     /* if (argc>1){
         if (strcmp(argv[1],"debug")==0){
