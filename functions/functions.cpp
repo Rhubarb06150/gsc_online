@@ -220,8 +220,8 @@ class GSC_Functions{
                     for(int xtex=0;xtex<cur_texture.getSize().x;xtex++){
                         if(var%2==0)
                         render_image.setPixel((j*16)+ytex,(i*16)+xtex,cur_texture.copyToImage().getPixel(xtex,ytex));
-                        var++;
                     };
+                    var++;
                 };
             };
         };
