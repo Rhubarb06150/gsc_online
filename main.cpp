@@ -225,7 +225,8 @@ class Game{
 
 int intro(){
     std::string intro_text="Pokémon GSC Online";
-    std::cout << "into" << std::endl;
+    std::cout << "intro" << std::endl;
+    index_frame=0;
     while(true){
         window.clear();
         HUDdisplay.showTextWOB(intro_text,{0,0},window);
