@@ -236,7 +236,7 @@ int intro(){
         };
         window.display();
         index_frame++;
-        if(index_frame/4>intro_text.length()){
+        if(index_frame/4>intro_text.length()+intro_text_1.length()){
             return 0;
         };
     }
