@@ -211,8 +211,8 @@ class GSC_Functions{
         //window.setView(sf::View(visibleArea));
         //window.setSize(sf::Vector2u(terrain_vector[0].size()*16,terrain_vector.size()*16));
         //window.clear();
-        time_t start, end;
-        time(&start);
+        clock_t start, end;
+        start=clock();
         for (int i=0;i<terrain_vector.size();i++){
             for (int j=0;j<terrain_vector[0].size();j++){
                 sf::Texture cur_texture;
@@ -227,8 +227,8 @@ class GSC_Functions{
             };
         };
         render_image.saveToFile("result.png");
-        time(&end);
-        double time_taken = double(end - start);
+        end=clock();
+        double time_taken = double(end - start) / double(CLOCKS_PER_SEC);
         log("RENDER","Render saved in"+std::to_string(time_taken));
         //sf::Texture render;
         //render.create(window.getSize().x, window.getSize().y);
