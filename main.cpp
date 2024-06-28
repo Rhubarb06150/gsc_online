@@ -659,7 +659,7 @@ int loadSettings(){
             }else if (line.rfind("border=",0)==0){
                 border_style = std::stoi(functions.ReplaceAll(line,"border=",""));
             }else if (line.rfind("trainer=",0)==0){
-                trainer_app_id = std::stoi(functions.ReplaceAll(line,"trainer=",""));
+                trainer_app_id   = std::stoi(functions.ReplaceAll(line,"trainer=",""));
             };
         };
     }else{
