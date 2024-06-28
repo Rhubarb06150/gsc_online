@@ -206,7 +206,7 @@ class GSC_Functions{
         };
         log("RENDER","Starting render...");
         sf::Image render_image;
-        render_image.create(terrain_vector[0].size()*16,terrain_vector.size()*16,sf::Color::Black);
+        render_image.create(terrain_vector[0].size()*16,terrain_vector.size()*16,sf::Color::Transparent);
         //sf::RenderWindow window(sf::VideoMode(terrain_vector[0].size()*16,terrain_vector.size()*16),"Render window");
         //sf::FloatRect visibleArea(0,0,terrain_vector[0].size()*16,terrain_vector.size()*16);
         //window.setView(sf::View(visibleArea));
