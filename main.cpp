@@ -1233,6 +1233,11 @@ int pokeGearMenu(){
         if(choice==0){
             HUDdisplay.showTextBeige(functions.getDay(),{192,192},window);
             HUDdisplay.showTextBeige(":",{256,256},window);
+            if(functions.getHour()<12){
+                HUDdisplay.showTextBeige("AM",{384,256},window);
+            }else{
+                HUDdisplay.showTextBeige("PM",{384,256},window);
+            };
         };
         window.display();
         full_loaded=1;
