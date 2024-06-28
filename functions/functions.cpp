@@ -24,6 +24,7 @@
 
 class GSC_Functions{
     public:
+    std::vector<double> render_times;
     GSC_Functions(){};
     std::string currentDateTime() {
         time_t now=time(0);
@@ -229,6 +230,7 @@ class GSC_Functions{
         render_image.saveToFile("result.png");
         end=clock();
         double time_taken = double(end - start) / double(CLOCKS_PER_SEC);
+        render_times.push_back(time_taken);
         log("RENDER","Render saved in"+std::to_string(time_taken));
         //sf::Texture render;
         //render.create(window.getSize().x, window.getSize().y);
