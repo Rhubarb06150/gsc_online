@@ -223,25 +223,6 @@ class Game{
         functions.log("ENGINE","Game launched!");//and there, we annouce to our dear player, that the game is ready to be played
     };
 
-int intro(){
-    std::string intro_text="Pokémon GSC Online";
-    std::string intro_text_1="By Rhubarb";
-    std::cout << "intro" << std::endl;
-    index_frame=0;
-    while(true){
-        window.clear();
-        HUDdisplay.showTextWOB(intro_text.substr(0,index_frame/4),{0,0},window);
-        if(index_frame/4>intro_text.length()){
-            HUDdisplay.showTextWOB(intro_text_1.substr(0,intro_text.length()-(index_frame/4)),{0,32},window);
-        };
-        window.display();
-        index_frame++;
-        if(index_frame/4>intro_text.length()+intro_text_1.length()){
-            return 0;
-        };
-    }
-};
-
 int crash(std::string message){
     do{
         full_loaded=0;
@@ -2303,7 +2284,6 @@ void screenshotVerify(){
 int main(int argc, char** argv)
     {
     Game G;
-    G.intro();
     /* if (argc>1){
         if (strcmp(argv[1],"debug")==0){
             G.functions.log("DEBUG","Launching in debug mode.");
