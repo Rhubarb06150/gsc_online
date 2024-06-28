@@ -395,6 +395,7 @@ class HUD{
         return 0;
     };
     int showTextAskBOW(std::string text, std::vector<int> text_pos, sf::RenderWindow& window){
+        text=convertText(text);
         int y=text_pos[1];
         int x=text_pos[0];
         for (int i = 0; i < text.size(); i++){
@@ -417,6 +418,7 @@ class HUD{
         return 0;  
     };
     int showTextWOB(std::string text, std::vector<int> text_pos, sf::RenderWindow& window){
+        text=convertText(text);
         int y=text_pos[1];
         int x=text_pos[0];
         for (int i = 0; i < text.size(); i++){
