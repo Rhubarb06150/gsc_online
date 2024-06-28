@@ -2239,6 +2239,7 @@ int show_debug_pause(){
     };
 
 void screenshotVerify(){
+    //Take ScreenShot
     if (event.type==sf::Event::KeyPressed&&event.key.code==sf::Keyboard::F1){
         functions.takeScreenshot(window,index_frame);
         SoundManager.soundEffect("PRESS");
