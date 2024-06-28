@@ -39,6 +39,7 @@ class GSC_Functions{
         time_t now = time(NULL);
         struct tm *tm_struct = localtime(&now);
         int hour = tm_struct->tm_hour;   
+        return hour;
     }
 
     std::string currentHour() {
