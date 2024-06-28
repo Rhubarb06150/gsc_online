@@ -211,7 +211,7 @@ class Game{
         mods_states={};
         mods_descriptions={};
         debug_launch=false;
-        trainer_app_id=1;
+        trainer_app_id=0;
         //MOD DESC
         srand(time(NULL));//reset the random values
 
@@ -657,6 +657,8 @@ int loadSettings(){
                 functions.log("INFO","Game launched as "+username);
             }else if (line.rfind("border=",0)==0){
                 border_style = std::stoi(functions.ReplaceAll(line,"border=",""));
+            }else if (line.rfind("trainer=",0)==0){
+                border_style = std::stoi(functions.ReplaceAll(line,"trainer=",""));
             };
         };
     }else{
@@ -1172,15 +1174,15 @@ int playerMenu(){
         HUDdisplay.showMenu(window,"assets/menus/playerStatus.mn");
         HUDdisplay.showTextBOW("NAME/"+username,{64,64},window);
         TrainersIndex.showTrainer(window,{416,32},trainer_app_id,1);
-        HUDdisplay.showMenuTile(window,"\xe0",{608,0});
-        HUDdisplay.showMenuTile(window,"\xe0",{608,32});
-        HUDdisplay.showMenuTile(window,"\xe0",{608,64});
-        HUDdisplay.showMenuTile(window,"\xe0",{608,96});
-        HUDdisplay.showMenuTile(window,"\xe0",{608,128});
-        HUDdisplay.showMenuTile(window,"\xe0",{608,160});
-        HUDdisplay.showMenuTile(window,"\xe0",{608,192});
-        HUDdisplay.showMenuTile(window,"\xe0",{608,224});
-        HUDdisplay.showMenuTile(window,"\xe0",{608,256});
+        //HUDdisplay.showMenuTile(window,"\xe0",{608,0});
+        //HUDdisplay.showMenuTile(window,"\xe0",{608,32});
+        //HUDdisplay.showMenuTile(window,"\xe0",{608,64});
+        //HUDdisplay.showMenuTile(window,"\xe0",{608,96});
+        //HUDdisplay.showMenuTile(window,"\xe0",{608,128});
+        //HUDdisplay.showMenuTile(window,"\xe0",{608,160});
+        //HUDdisplay.showMenuTile(window,"\xe0",{608,192});
+        //HUDdisplay.showMenuTile(window,"\xe0",{608,224});
+        //HUDdisplay.showMenuTile(window,"\xe0",{608,256});
         window.display();
         full_loaded=1;
     }while(true);
@@ -1874,6 +1876,8 @@ int updateSettings(bool advert){
     std::string init_username;
     std::string init_resolution;
     std::string init_border;
+    std::string init_trainer;
+
     std::string final_content;
     std::ofstream ofile(functions.getUserPath()+"/.gsc_o/settings.temp");
     std::ifstream ifile(functions.getUserPath()+"/.gsc_o/settings");
@@ -1885,12 +1889,15 @@ int updateSettings(bool advert){
             init_resolution=functions.ReplaceAll(line,"resolution=","");
         }else if(line.rfind("border=",0)==0){
             init_border=functions.ReplaceAll(line,"border=","");
+        }else if(line.rfind("trainer=",0)==0){
+            init_trainer=functions.ReplaceAll(line,"trainer=","");
         };
         final_content.append(line+"\n");
     };
     final_content=functions.ReplaceAll(final_content,init_username,username);
     final_content=functions.ReplaceAll(final_content,init_resolution,real_res);
     final_content=functions.ReplaceAll(final_content,init_border,std::to_string(border_style));
+    final_content=functions.ReplaceAll(final_content,init_trainer,std::to_string(trainer_app_id));
     ofile<<final_content;
     std::string instruction;
     instruction="mv "+functions.getUserPath()+"/.gsc_o/settings.temp "+functions.getUserPath()+"/.gsc_o/settings";
@@ -2246,7 +2253,7 @@ int main(int argc, char** argv)
     G.functions.createMissingDir(G.functions.getUserPath()+"/.gsc_o/screenshots/");
     G.functions.createMissingDir(G.functions.getUserPath()+"/.gsc_o/maps/");
     G.functions.createMissingDir(G.functions.getUserPath()+"/.gsc_o/renders/");
-    G.functions.createMissingFile(G.functions.getUserPath()+"/.gsc_o/settings","username=Player\nresolution=640x576\nborder=0");
+    G.functions.createMissingFile(G.functions.getUserPath()+"/.gsc_o/settings","username=Player\nresolution=640x576\nborder=0\ntrainer=0");
     G.loadSettings();
     //G.functions.log("INFO","an game folder has been created at "+G.functions.getUserPath()+"/.gsc_o, it will be used to store your saved maps and your screenshots");
     G.main_menu();
