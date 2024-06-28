@@ -327,9 +327,7 @@ void mainLoop(){
     };
 
     // WHILE EVENT LOOP HERE
-    while (window.pollEvent(event))
-    {
-        screenshotVerify();
+    while (window.pollEvent(event)){
         if (event.type == sf::Event::Closed){
             int sum_moy=0;
             int biggest=moy[0];
@@ -344,7 +342,7 @@ void mainLoop(){
             functions.log("DEBUG","Highest FPS: "+std::to_string(biggest));
             functions.quitGame(window);
         }else if (event.type==sf::Event::KeyPressed){
-            
+            screenshotVerify();
             //MOD KEYPRESS
             if (event.key.code==sf::Keyboard::S){
                 connection.serverStart();
