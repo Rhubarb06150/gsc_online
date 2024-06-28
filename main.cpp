@@ -200,7 +200,7 @@ class Game{
         window.create(sf::VideoMode(resolution_vec[0],resolution_vec[1]), "Pokemon GSC Online",sf::Style::Titlebar | sf::Style::Close);//create the window with the resolution we just got
         icon.loadFromFile("assets/icon.png");//loads up the icon
         window.setIcon(64, 64, icon.getPixelsPtr());//and BANG, we set the icon
-        window.setFramerateLimit(0);//60 FPS limit hell yeah, 60HZ POWAAAAAAAAA
+        window.setFramerateLimit(60);//60 FPS limit hell yeah, 60HZ POWAAAAAAAAA
         player.initPlayer(player_offset);//we init the player here
         time_otd='d';//default daytime is the day
         time_otd_str=time_otd;//same value as time_otd but is string, not char
