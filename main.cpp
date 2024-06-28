@@ -1234,9 +1234,9 @@ int pokeGearMenu(){
             HUDdisplay.showTextBeige(functions.getDay(),{192,192},window);
             HUDdisplay.showTextBeige(":",{256,256},window);
             int real_hour=functions.getHour();
-            if(real_hour>=12){
-                real_hour-=12;
-            };
+            //if(real_hour>=12){
+            //    real_hour-=12;
+            //};
             std::string cur_hour;
             cur_hour=std::to_string(real_hour);
             int str_len=cur_hour.length();
