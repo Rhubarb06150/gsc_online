@@ -260,7 +260,7 @@ class GSC_Functions{
         //}else{
         //    log("ERROR","Failed to save render");
         //};
-        //return 1;
+        return 0;
     };
 
     int takeScreenshot(sf::RenderWindow& render_window,int index_frame){
