@@ -94,7 +94,7 @@ class Game{
         Trainers TrainersIndex;
         Items ItemsIndex;//items functions, items infos are stored here.
         GSC_Functions functions;//other functions such as save a map, get current date and time
-        Connection connection;
+        //Connection connection;
         double version;
 
         //TERRAIN VARS
@@ -312,19 +312,19 @@ void mainLoop(){
         walking=false;moving_timer=20;
     };
 
-    if (connection.connected){
-        message_timer=0;
-        if (connection.server){
-            output_message="Server";
-            connection.recvPos();
-            connection.sendPos(player_pos);
-        };
-        if (connection.client){
-            output_message="Client";
-            connection.recvPos();
-            connection.sendPos(player_pos);
-        };
-    };
+    //if (connection.connected){
+    //    message_timer=0;
+    //    if (connection.server){
+    //        output_message="Server";
+    //        connection.recvPos();
+    //        connection.sendPos(player_pos);
+    //    };
+    //    if (connection.client){
+    //        output_message="Client";
+    //        connection.recvPos();
+    //        connection.sendPos(player_pos);
+    //    };
+    //};
 
     // WHILE EVENT LOOP HERE
     while (window.pollEvent(event)){
@@ -344,12 +344,12 @@ void mainLoop(){
             functions.quitGame(window);
         }else if (event.type==sf::Event::KeyPressed){
             //MOD KEYPRESS
-            if (event.key.code==sf::Keyboard::S){
-                connection.serverStart();
-            };
-            if (event.key.code==sf::Keyboard::C){
-                connection.clientConnect();        
-            };
+            //if (event.key.code==sf::Keyboard::S){
+            //    connection.serverStart();
+            //};
+            //if (event.key.code==sf::Keyboard::C){
+            //    connection.clientConnect();        
+            //};
             if (event.key.code==sf::Keyboard::Escape){
                 pauseMenu();
             };
