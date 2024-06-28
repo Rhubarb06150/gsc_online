@@ -468,7 +468,7 @@ class HUD{
         sprite.setTexture(editor_background[editor_bg_index]);
         sprite.scale(4.f,4.f);
         window.draw(sprite);
-        return 0;  
+        return 0;
     };
 
     int showTextDEBUG(std::string text, std::vector<int> text_pos, sf::RenderWindow& window){
@@ -487,7 +487,7 @@ class HUD{
                 x+=16;
             };
         };
-        return 0; 
+        return 0;
     };
 
     int showTextSELDEBUG(std::string text, std::vector<int> text_pos, sf::RenderWindow& window){
