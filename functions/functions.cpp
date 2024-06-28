@@ -211,13 +211,16 @@ class GSC_Functions{
         //window.setView(sf::View(visibleArea));
         //window.setSize(sf::Vector2u(terrain_vector[0].size()*16,terrain_vector.size()*16));
         //window.clear();
+        int var=0;
         for (int i=0;i<terrain_vector.size();i++){
             for (int j=0;j<terrain_vector[0].size();j++){
                 sf::Texture cur_texture;
                 cur_texture=Tiles.day_textures[Tiles.getIntIndex(terrain_vector[i][j])];
                 for(int ytex=0;ytex<cur_texture.getSize().y;ytex++){
                     for(int xtex=0;xtex<cur_texture.getSize().x;xtex++){
+                        if(var%2==0)
                         render_image.setPixel((j*16)+ytex,(i*16)+xtex,cur_texture.copyToImage().getPixel(xtex,ytex));
+                        var++;
                     };
                 };
             };
