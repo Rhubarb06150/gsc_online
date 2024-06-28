@@ -1248,6 +1248,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
         {
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::LControl)){
                 if (event.type==sf::Event::KeyPressed){
+                    screenshotVerify();
                     if (event.key.code==sf::Keyboard::B){
                         if (HUDdisplay.editor_bg_index==HUDdisplay.editor_background.size()-1){
                             HUDdisplay.editor_bg_index=0;
