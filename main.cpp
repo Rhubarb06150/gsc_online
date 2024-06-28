@@ -2245,8 +2245,8 @@ void screenshotVerify(){
         SoundManager.soundEffect("PRESS");
         output_message="Screenshot saved!";
         message_timer=0;
-        };
     };
+};
 };
 
 int main(int argc, char** argv)
