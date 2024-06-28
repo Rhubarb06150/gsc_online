@@ -205,37 +205,40 @@ class GSC_Functions{
         };
         sf::Image render_image;
         render_image.create(terrain_vector[0].size()*16,terrain_vector.size()*16,sf::Color::Black);
+        //sf::RenderWindow window(sf::VideoMode(terrain_vector[0].size()*16,terrain_vector.size()*16),"Render window");
+        //sf::FloatRect visibleArea(0,0,terrain_vector[0].size()*16,terrain_vector.size()*16);
+        //window.setView(sf::View(visibleArea));
+        //window.setSize(sf::Vector2u(terrain_vector[0].size()*16,terrain_vector.size()*16));
+        //window.clear();
+        for (int i=0;i<terrain_vector.size();i++){
+            for (int j=0;j<terrain_vector[0].size();j++){
+                sf::Texture cur_texture;
+                cur_texture=Tiles.day_textures[Tiles.getIntIndex(terrain_vector[i][j])];
+                for(int ytex=0;ytex<cur_texture.getSize().y;ytex++){
+                    for(int xtex=0;xtex<cur_texture.getSize().x;xtex++){
+                        render_image.setPixel((j*16)+ytex,(i*16)+xtex,cur_texture.copyToImage().getPixel(xtex,ytex));
+                    };
+                };
+            };
+        };
         render_image.saveToFile("result.png");
-        sf::RenderWindow window(sf::VideoMode(terrain_vector[0].size()*16,terrain_vector.size()*16),"Render window");
-        sf::FloatRect visibleArea(0,0,terrain_vector[0].size()*16,terrain_vector.size()*16);
-        window.setView(sf::View(visibleArea));
-        window.setSize(sf::Vector2u(terrain_vector[0].size()*16,terrain_vector.size()*16));
-        window.clear();
-        for (int i=0;i<terrain_vector.size();i++){
-            for (int j=0;j<terrain_vector[0].size();j++){
-                sf::Sprite sprite;
-                sprite.setPosition(j*16,i*16);
-                sprite.setTexture(Tiles.day_textures[Tiles.getIntIndex(terrain_vector[i][j])]);
-                window.draw(sprite);
-            };
-        };
-        sf::Texture render;
-        render.create(window.getSize().x, window.getSize().y);
-        render.update(window);
-        if (render.copyToImage().saveToFile(getUserPath()+"/.gsc_o/renders/render_"+currentDateTime()+"_day.png")){
-            log("INFO","Day render saved at "+getUserPath()+"/.gsc_o/renders/render_"+currentDateTime()+"_day.png");
-        }else{
-            log("ERROR","Failed to save render");
-        };
-        window.clear();
-        for (int i=0;i<terrain_vector.size();i++){
-            for (int j=0;j<terrain_vector[0].size();j++){
-                sf::Sprite sprite;
-                sprite.setPosition(j*16,i*16);
-                sprite.setTexture(Tiles.morning_textures[Tiles.getIntIndex(terrain_vector[i][j])]);
-                window.draw(sprite);
-            };
-        };
+        //sf::Texture render;
+        //render.create(window.getSize().x, window.getSize().y);
+        //render.update(window);
+        //if (render.copyToImage().saveToFile(getUserPath()+"/.gsc_o/renders/render_"+currentDateTime()+"_day.png")){
+        //    log("INFO","Day render saved at "+getUserPath()+"/.gsc_o/renders/render_"+currentDateTime()+"_day.png");
+        //}else{
+        //    log("ERROR","Failed to save render");
+        //};
+        //window.clear();
+        //for (int i=0;i<terrain_vector.size();i++){
+        //    for (int j=0;j<terrain_vector[0].size();j++){
+        //        sf::Sprite sprite;
+        //        sprite.setPosition(j*16,i*16);
+        //        sprite.setTexture(Tiles.morning_textures[Tiles.getIntIndex(terrain_vector[i][j])]);
+        //        window.draw(sprite);
+        //    };
+        //};
         //render.create(window.getSize().x, window.getSize().y);
         //render.update(window);
         //if (render.copyToImage().saveToFile(getUserPath()+"/.gsc_o/renders/render_"+currentDateTime()+"_morning.png")){
