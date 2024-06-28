@@ -215,8 +215,8 @@ class GSC_Functions{
             for (int j=0;j<terrain_vector[0].size();j++){
                 sf::Texture cur_texture;
                 sf::Image image;
-                image=cur_texture.copyToImage();
                 cur_texture=Tiles.day_textures[Tiles.getIntIndex(terrain_vector[i][j])];
+                image=cur_texture.copyToImage();
                 for(int ytex=0;ytex<cur_texture.getSize().y;ytex++){
                     for(int xtex=0;xtex<cur_texture.getSize().x;xtex++){
                         render_image.setPixel((j*16)+ytex,(i*16)+xtex,image.getPixel(xtex,ytex));
