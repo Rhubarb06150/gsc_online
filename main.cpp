@@ -183,7 +183,7 @@ class Game{
         moving_timer=0;//initializing timer for player animation
         function_done=0;//I really need to delete this
         username="Player";//Default username if username in settings file isn't detected
-        player_type="b";//default player type is the basic boy, the basic boiiiiiii
+        player_type="g";//default player type is the basic boy, the basic boiiiiiii
         player_pos={500,500};//I will change this later
         can_move=true;//It's better to move when you start
         debug=false;//don't show debug on game launch (that's better)

@@ -42,7 +42,7 @@ class GSC_Functions{
         return hour;
     }
 
-    std::string currentHour() {
+    std::string currentHour(){
         time_t now=time(0);
         struct tm tstruct;
         char buf[80];
