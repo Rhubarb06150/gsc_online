@@ -649,21 +649,21 @@ int loadSettings(){
         std::string line;
         while (getline(inputFile, line)){
             if (line.rfind("resolution=",0)==0){
-                real_res = functions.ReplaceAll(line,"resolution=","");
+                real_res=functions.ReplaceAll(line,"resolution=","");
                 functions.log("ENGINE","The resolution of the game is "+real_res);
                 std::vector<int> resolution_vec=checkResolutionRWindow();
                 std::vector<int> player_offset=checkResolutionPOffset();
             }else if (line.rfind("username=",0)==0){
-                username = functions.ReplaceAll(line,"username=","");
+                username=functions.ReplaceAll(line,"username=","");
                 functions.log("INFO","Game launched as "+username);
             }else if (line.rfind("border=",0)==0){
-                border_style = std::stoi(functions.ReplaceAll(line,"border=",""));
+                border_style=std::stoi(functions.ReplaceAll(line,"border=",""));
             }else if (line.rfind("trainer=",0)==0){
-                trainer_app_id   = std::stoi(functions.ReplaceAll(line,"trainer=",""));
+                trainer_app_id=std::stoi(functions.ReplaceAll(line,"trainer=",""));
             };
         };
     }else{
-        functions.log("WARN","Failed to load settings file");
+        functions.log("WARN","Failed to load settings file, check if it still exists, and it's not protected.");
     };
     return 0;
 };
@@ -1896,16 +1896,16 @@ int updateSettings(bool advert){
         }else if(line.rfind("resolution=",0)==0){
             init_resolution=functions.ReplaceAll(line,"resolution=","");
         }else if(line.rfind("border=",0)==0){
-            init_border=functions.ReplaceAll(line,"border=","");
+            init_border=line;
         }else if(line.rfind("trainer=",0)==0){
-            init_trainer=functions.ReplaceAll(line,"trainer=","");
+            init_trainer=line;
         };
         final_content.append(line+"\n");
     };
     final_content=functions.ReplaceAll(final_content,init_username,username);
     final_content=functions.ReplaceAll(final_content,init_resolution,real_res);
-    final_content=functions.ReplaceAll(final_content,init_border,std::to_string(border_style));
-    final_content=functions.ReplaceAll(final_content,init_trainer,std::to_string(trainer_app_id));
+    final_content=functions.ReplaceAll(final_content,init_border,"border="+std::to_string(border_style));
+    final_content=functions.ReplaceAll(final_content,init_trainer,"trainer="+std::to_string(trainer_app_id));
     ofile<<final_content;
     std::string instruction;
     instruction="mv "+functions.getUserPath()+"/.gsc_o/settings.temp "+functions.getUserPath()+"/.gsc_o/settings";
