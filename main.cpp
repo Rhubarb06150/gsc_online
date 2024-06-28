@@ -1257,10 +1257,13 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                     if (event.key.code==sf::Keyboard::P){
                         if(time_otd=='m'){
                             time_otd='d';
+                            time_otd_str="d";
                         }else if(time_otd=='d'){
                             time_otd='n';
+                            time_otd_str="n";
                         }else if(time_otd=='n'){
                             time_otd='m';
+                            time_otd_str="m";
                         };
                     };
                     if (event.key.code==sf::Keyboard::B){
