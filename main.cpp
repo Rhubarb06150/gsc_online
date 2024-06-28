@@ -1254,18 +1254,6 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
             screenshotVerify();
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::LControl)){
                 if (event.type==sf::Event::KeyPressed){
-                    if (event.key.code==sf::Keyboard::P){
-                        if(time_otd=='m'){
-                            time_otd='d';
-                            time_otd_str="d";
-                        }else if(time_otd=='d'){
-                            time_otd='n';
-                            time_otd_str="n";
-                        }else if(time_otd=='n'){
-                            time_otd='m';
-                            time_otd_str="m";
-                        };
-                    };
                     if (event.key.code==sf::Keyboard::B){
                         if (HUDdisplay.editor_bg_index==HUDdisplay.editor_background.size()-1){
                             HUDdisplay.editor_bg_index=0;
@@ -1309,6 +1297,18 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                 };
             };
             if (event.type==sf::Event::KeyPressed){
+                if (event.key.code==sf::Keyboard::P){
+                    if(time_otd=='m'){
+                        time_otd='d';
+                        time_otd_str="d";
+                    }else if(time_otd=='d'){
+                        time_otd='n';
+                        time_otd_str="n";
+                    }else if(time_otd=='n'){
+                        time_otd='m';
+                        time_otd_str="m";
+                    };
+                };
                 if (event.key.code==sf::Keyboard::RShift){
                     menu_show=!menu_show;
                 };
