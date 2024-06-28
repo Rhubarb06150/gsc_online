@@ -33,6 +33,7 @@ class HUD{
     std::vector<std::vector<std::string>> letters_index;
     std::vector<sf::Texture> letters_wob_textures;
     std::vector<sf::Texture> letters_bow_textures;
+    std::vector<sf::Texture> letters_beige_textures;
     std::vector<sf::Texture> letters_debug_textures;
     std::vector<sf::Texture> letters_debug_sel_textures;
     std::vector<sf::Texture> letters_debug_blu_textures;
@@ -222,6 +223,8 @@ class HUD{
             letters_debug_sel_textures.push_back(texture);
             texture.loadFromFile("assets/hud/font_debug_blu.png",sf::IntRect(x*8,y*8,8,8));
             letters_debug_blu_textures.push_back(texture);
+            texture.loadFromFile("assets/hud/font_beige.png",sf::IntRect(x*8,y*8,8,8));
+            letters_beige_textures.push_back(texture);
         };
 
         for (int k=0;k<11;k++){
@@ -429,6 +432,26 @@ class HUD{
             }else{
                 sprite.setPosition(x,y);
                 sprite.setTexture(letters_wob_textures[getLetterIntIndex((text[i]))]);
+                sprite.scale(4.f,4.f);
+                window.draw(sprite);
+                x+=32;
+            };
+        };
+        return 0;  
+    };
+
+    int showTextBeige(std::string text_arg, std::vector<int> text_pos, sf::RenderWindow& window){
+        std::string text=convertText(text_arg);
+        int y=text_pos[1];
+        int x=text_pos[0];
+        for (int i = 0; i < text.size(); i++){
+            sf::Sprite sprite;
+            if(text[i]=='\n'){
+                y+=32;
+                x=text_pos[0];
+            }else{
+                sprite.setPosition(x,y);
+                sprite.setTexture(letters_beige_textures[getLetterIntIndex((text[i]))]);
                 sprite.scale(4.f,4.f);
                 window.draw(sprite);
                 x+=32;
