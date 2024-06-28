@@ -1548,9 +1548,9 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                 };//END IF !menu_show
             };//ENF OF KEYPRESSED
             if (event.type == sf::Event::Closed){
-                int sum_moy=0;
-                int biggest=functions.render_times[0];
-                int lowest=functions.render_times[0];
+                double sum_moy=0;
+                double biggest=functions.render_times[0];
+                double lowest=functions.render_times[0];
                 for (int i =0;i<functions.render_times.size();i++){
                     if (functions.render_times[i]>biggest)biggest=functions.render_times[i];
                     if (functions.render_times[i]<lowest)lowest=functions.render_times[i];
