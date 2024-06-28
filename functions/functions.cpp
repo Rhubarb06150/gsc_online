@@ -223,7 +223,7 @@ class GSC_Functions{
                 for(int ytex=0;ytex<cur_texture.getSize().y;ytex++){
                     int yind=j*16;
                     for(int xtex=0;xtex<cur_texture.getSize().x;xtex++){
-                        render_image.setPixel((yind)+ytex,(i*16)+xtex,image.getPixel(xtex,ytex));
+                        render_image.setPixel((i*16),(yind)+ytex+xtex,image.getPixel(xtex,ytex));
                     };
                 };
             };
