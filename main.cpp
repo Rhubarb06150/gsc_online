@@ -202,7 +202,7 @@ class Game{
         window.setIcon(64, 64, icon.getPixelsPtr());//and BANG, we set the icon
         window.setFramerateLimit(60);//60 FPS limit hell yeah, 60HZ POWAAAAAAAAA
         player.initPlayer(player_offset);//we init the player here
-        time_otd='d';//default daytime is the day
+        time_otd='n';//default daytime is the day
         time_otd_str=time_otd;//same value as time_otd but is string, not char
         record=false;
         record_images={};
