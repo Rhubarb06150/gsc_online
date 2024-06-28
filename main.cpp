@@ -259,6 +259,18 @@ void mainLoop(){
     //    show_debug_pause();
     //};
     // WHILE EVENT LOOP HERE
+    if (index_frame%60){
+        if(functions.getHour()>17){
+            time_otd='n';
+            time_otd_str="n";
+        }else if(functions.getHour()<10){
+            time_otd='m';
+            time_otd_str="m";
+        }else{
+            time_otd='d';
+            time_otd_str="d";
+        };
+    }
     while (window.pollEvent(event))
         {
         screenshotVerify();
@@ -2272,11 +2284,6 @@ void screenshotVerify(){
 
 int main(int argc, char** argv)
     {
-    time_t now = time(NULL);
-    struct tm *tm_struct = localtime(&now);
-    int hour = tm_struct->tm_hour;
-    printf("%d",hour);
-
     Game G;
     /* if (argc>1){
         if (strcmp(argv[1],"debug")==0){

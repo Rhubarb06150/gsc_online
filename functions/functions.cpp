@@ -35,6 +35,12 @@ class GSC_Functions{
         return ReplaceAll(buf,":","_");
     };
 
+    int getHour(){//This one returns only the hour number for time switch
+        time_t now = time(NULL);
+        struct tm *tm_struct = localtime(&now);
+        int hour = tm_struct->tm_hour;   
+    }
+
     std::string currentHour() {
         time_t now=time(0);
         struct tm tstruct;
