@@ -225,9 +225,10 @@ class GSC_Functions{
                         if(terrain_vector[i][j]!="\\xff"){
                             sf::Color cur_pixel;
                             cur_pixel=image.getPixel(ytex,xtex);
-                            //if(cur_pixel!=sf::Color::Transparent){
                             render_image.setPixel((j*16)+ytex,(i*16)+xtex,cur_pixel);
                             //};
+                        }else{
+                            std::cout << "none found" << std::endl;
                         };
                     };
                 }
