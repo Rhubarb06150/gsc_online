@@ -261,7 +261,8 @@ void mainLoop(){
     //    show_debug_pause();
     //};
     // WHILE EVENT LOOP HERE
-    while (window.pollEvent(event)){
+    while (window.pollEvent(event))
+        {
         screenshotVerify();
         if (event.type == sf::Event::Closed){
             int sum_moy=0;
