@@ -229,12 +229,13 @@ int crash(std::string message){
         full_loaded=0;
         while (window.pollEvent(event))
         {
+            screenshotVerify();
             if (event.type == sf::Event::Closed || event.type == sf::Event::KeyPressed){
                 functions.quitGame(window);
                 return 0;
             };
             if(event.type==sf::Event::KeyPressed){
-                screenshotVerify();
+                
             };
         };
         window.clear();
@@ -328,6 +329,7 @@ void mainLoop(){
     // WHILE EVENT LOOP HERE
     while (window.pollEvent(event))
     {
+        screenshotVerify();
         if (event.type == sf::Event::Closed){
             int sum_moy=0;
             int biggest=moy[0];
@@ -342,7 +344,7 @@ void mainLoop(){
             functions.log("DEBUG","Highest FPS: "+std::to_string(biggest));
             functions.quitGame(window);
         }else if (event.type==sf::Event::KeyPressed){
-            screenshotVerify();
+            
             //MOD KEYPRESS
             if (event.key.code==sf::Keyboard::S){
                 connection.serverStart();
@@ -683,6 +685,7 @@ int yesNoQuestion(std::string question,sf::Event event,sf::RenderWindow& window)
         full_loaded=0;
         while (window.pollEvent(event))
         {
+            screenshotVerify();
             if (event.type == sf::Event::Closed){
                 functions.quitGame(window);
                 return 0;
@@ -740,12 +743,13 @@ std::string askText(std::string caption){
         index_frame++;
         while (window.pollEvent(event))
         {
+            screenshotVerify();
             if (event.type == sf::Event::Closed){
                 functions.quitGame(window);
                 return 0;
             };
             if (event.type==sf::Event::KeyPressed){
-                screenshotVerify();
+                
                 if (event.key.code==sf::Keyboard::Enter||event.key.code==sf::Keyboard::Return){
                     return text_input.toAnsiString();
                 };
@@ -786,12 +790,13 @@ int randomPatternLoop(){
         full_loaded=0;
         while (window.pollEvent(event))
             {
+                screenshotVerify();
                 if (event.type == sf::Event::Closed){
                     functions.quitGame(window);
                     return 0;
                 };
                 if (event.type==sf::Event::KeyPressed){
-                    screenshotVerify();
+                    
                     if (event.key.code==sf::Keyboard::F6){
                         break;
                     };
@@ -885,6 +890,7 @@ int showEditorControls(){
     do{
         while (window.pollEvent(event))
         {
+            screenshotVerify();
             if (event.type == sf::Event::Closed){
                 functions.quitGame(window);
                 return 0;
@@ -1053,9 +1059,10 @@ std::string askPath(std::string path,sf::Event event,sf::RenderWindow& window){
     full_loaded=0;
     while (window.pollEvent(event))
     {
+        screenshotVerify();
         switch (event.type) {
             case sf::Event::KeyPressed:
-                screenshotVerify();
+                
                 if (event.key.code==sf::Keyboard::Up){
                     if (map_choice>0){
                         map_choice--;
@@ -1154,8 +1161,8 @@ int playerMenu(){
     do{
         full_loaded=0;
         while (window.pollEvent(event)){
+            screenshotVerify();
             if (event.type==sf::Event::KeyPressed){
-                screenshotVerify();
                 if (event.key.code==sf::Keyboard::F6||event.key.code==sf::Keyboard::Escape){
                     return 0;
                 };
@@ -1246,9 +1253,9 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
         message_timer++;//increase the message timer for display messages
         while (window.pollEvent(event))//level editor true loop
         {
+            screenshotVerify();
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::LControl)){
                 if (event.type==sf::Event::KeyPressed){
-                    screenshotVerify();
                     if (event.key.code==sf::Keyboard::B){
                         if (HUDdisplay.editor_bg_index==HUDdisplay.editor_background.size()-1){
                             HUDdisplay.editor_bg_index=0;
@@ -1292,11 +1299,9 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                 };
             };
             if (event.type==sf::Event::KeyPressed){
-                screenshotVerify();
                 if (event.key.code==sf::Keyboard::RShift){
                     menu_show=!menu_show;
                 };
-                
 
                 if (menu_show){
 
@@ -1714,12 +1719,13 @@ int modManager(){
         full_loaded=0;
         while (window.pollEvent(event))
         {
+            screenshotVerify();
             if (event.type == sf::Event::Closed){
                 functions.quitGame(window);
                 return 0;
             };
             if (event.type == sf::Event::KeyPressed){
-                screenshotVerify();
+                
                 if (event.key.code==sf::Keyboard::F6){
                     return 0;
                 };
@@ -1781,9 +1787,10 @@ int main_menu(){
         full_loaded=0;
         while (window.pollEvent(event))
         {
+            screenshotVerify();
             switch (event.type) {
             case sf::Event::KeyPressed:
-                screenshotVerify();
+                
                 if (event.key.code==sf::Keyboard::Up){
                         if (choice>0){
                             choice--;
@@ -1920,8 +1927,9 @@ int optionMenu(){
         walking=false;
         while (window.pollEvent(event))
         {
+            screenshotVerify();
             if (event.type==sf::Event::KeyPressed){
-                screenshotVerify();
+                
                 if (event.key.code==sf::Keyboard::Down){
                     if (choice==7){
                         choice=0;
@@ -2009,8 +2017,9 @@ int packMenu(){
     do{
         full_loaded=0;
         while (window.pollEvent(event)){
+            screenshotVerify();
             if(event.type==sf::Event::KeyPressed){
-                screenshotVerify();
+                
                 if(event.key.code==sf::Keyboard::F6||event.key.code==sf::Keyboard::Escape){
                     return 0;
                 };
@@ -2079,8 +2088,9 @@ int pauseMenu(){
         walking=false;
         while (window.pollEvent(event))
         {
+            screenshotVerify();
             if (event.type==sf::Event::KeyPressed){
-                screenshotVerify();
+                
                 if (event.key.code==sf::Keyboard::Down){
                     if (choice==7){
                         choice=0;
@@ -2160,6 +2170,7 @@ int show_debug_pause(){
         full_loaded=0;
         while (window.pollEvent(event))
         {
+            screenshotVerify();
             if (isPressed(event,sf::Keyboard::Up)==0){
                 if (choice>0){
                     choice--;
@@ -2228,7 +2239,7 @@ int show_debug_pause(){
     };
 
 void screenshotVerify(){
-    if (event.key.code==sf::Keyboard::F1){
+    if (event.type==sf::Event::KeyPressed&&event.key.code==sf::Keyboard::F1){
         functions.takeScreenshot(window,index_frame);
         SoundManager.soundEffect("PRESS");
         output_message="Screenshot saved!";
