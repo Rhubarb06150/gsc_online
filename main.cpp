@@ -232,7 +232,7 @@ int intro(){
         window.clear();
         HUDdisplay.showTextWOB(intro_text.substr(0,index_frame/4),{0,0},window);
         if(index_frame/4>intro_text.length()){
-            HUDdisplay.showTextWOB(intro_text_1.substr(0,intro_text.length()-index_frame/4),{0,32},window);
+            HUDdisplay.showTextWOB(intro_text_1.substr(0,intro_text.length()-(index_frame/4)),{0,32},window);
         };
         window.display();
         index_frame++;
