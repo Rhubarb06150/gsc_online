@@ -170,7 +170,6 @@ class Game{
         //MOD INIT
 
         std::thread screenshotThread_Thread;
-
     Game(){
         version=0.0;
         //letters={"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
@@ -223,6 +222,16 @@ class Game{
         };
         functions.log("ENGINE","Game launched!");//and there, we annouce to our dear player, that the game is ready to be played
     };
+
+int intro(){
+    std::string intro_text="Pokémon GSC Online";
+    do{
+        window.clear();
+        HUDdisplay.showTextWOB(intro_text.substr(0,index_frame/4),{0,0},window);
+        window.display();
+        index_frame++;
+    }while(true);
+};
 
 int crash(std::string message){
     do{
