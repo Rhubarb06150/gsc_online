@@ -203,6 +203,9 @@ class GSC_Functions{
         if (nope){
             return 1;
         };
+        sf::Image render_image;
+        render_image.create(terrain_vector[0].size()*16,terrain_vector.size()*16,sf::Color::Black);
+        if (!render_image.saveToFile("result.png"));
         sf::RenderWindow window(sf::VideoMode(terrain_vector[0].size()*16,terrain_vector.size()*16),"Render window");
         sf::FloatRect visibleArea(0,0,terrain_vector[0].size()*16,terrain_vector.size()*16);
         window.setView(sf::View(visibleArea));
@@ -224,7 +227,6 @@ class GSC_Functions{
         }else{
             log("ERROR","Failed to save render");
         };
-        
         window.clear();
         for (int i=0;i<terrain_vector.size();i++){
             for (int j=0;j<terrain_vector[0].size();j++){
@@ -234,31 +236,31 @@ class GSC_Functions{
                 window.draw(sprite);
             };
         };
-        render.create(window.getSize().x, window.getSize().y);
-        render.update(window);
-        if (render.copyToImage().saveToFile(getUserPath()+"/.gsc_o/renders/render_"+currentDateTime()+"_morning.png")){
-            log("INFO","Morning render saved at "+getUserPath()+"/.gsc_o/renders/render_"+currentDateTime()+"_morning.png");
-        }else{
-            log("ERROR","Failed to save render");
-        };
-
-        window.clear();
-        for (int i=0;i<terrain_vector.size();i++){
-            for (int j=0;j<terrain_vector[0].size();j++){
-                sf::Sprite sprite;
-                sprite.setPosition(j*16,i*16);
-                sprite.setTexture(Tiles.night_textures[Tiles.getIntIndex(terrain_vector[i][j])]);
-                window.draw(sprite);
-            };
-        };
-        render.create(window.getSize().x, window.getSize().y);
-        render.update(window);
-        if (render.copyToImage().saveToFile(getUserPath()+"/.gsc_o/renders/render_"+currentDateTime()+"_night.png")){
-            log("INFO","Night render saved at "+getUserPath()+"/.gsc_o/renders/render_"+currentDateTime()+"_night.png");
-        }else{
-            log("ERROR","Failed to save render");
-        };
-        return 1;
+        //render.create(window.getSize().x, window.getSize().y);
+        //render.update(window);
+        //if (render.copyToImage().saveToFile(getUserPath()+"/.gsc_o/renders/render_"+currentDateTime()+"_morning.png")){
+        //    log("INFO","Morning render saved at "+getUserPath()+"/.gsc_o/renders/render_"+currentDateTime()+"_morning.png");
+        //}else{
+        //    log("ERROR","Failed to save render");
+        //};
+        //
+        //window.clear();
+        //for (int i=0;i<terrain_vector.size();i++){
+        //    for (int j=0;j<terrain_vector[0].size();j++){
+        //        sf::Sprite sprite;
+        //        sprite.setPosition(j*16,i*16);
+        //        sprite.setTexture(Tiles.night_textures[Tiles.getIntIndex(terrain_vector[i][j])]);
+        //        window.draw(sprite);
+        //    };
+        //};
+        //render.create(window.getSize().x, window.getSize().y);
+        //render.update(window);
+        //if (render.copyToImage().saveToFile(getUserPath()+"/.gsc_o/renders/render_"+currentDateTime()+"_night.png")){
+        //    log("INFO","Night render saved at "+getUserPath()+"/.gsc_o/renders/render_"+currentDateTime()+"_night.png");
+        //}else{
+        //    log("ERROR","Failed to save render");
+        //};
+        //return 1;
     };
 
     int takeScreenshot(sf::RenderWindow& render_window,int index_frame){
