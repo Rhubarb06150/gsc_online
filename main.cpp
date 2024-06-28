@@ -230,6 +230,9 @@ int intro(){
         HUDdisplay.showTextWOB(intro_text.substr(0,index_frame/4),{0,0},window);
         window.display();
         index_frame++;
+        if(index_frame/4>intro_text.length()){
+            return 0;
+        };
     }while(true);
 };
 
@@ -2313,6 +2316,7 @@ int main(int argc, char** argv)
     G.functions.createMissingFile(G.functions.getUserPath()+"/.gsc_o/settings","username=Player\nresolution=640x576\nborder=0\ntrainer=0");
     G.loadSettings();
     //G.functions.log("INFO","an game folder has been created at "+G.functions.getUserPath()+"/.gsc_o, it will be used to store your saved maps and your screenshots");
+    G.intro();
     G.main_menu();
     while (G.window.isOpen()){
         G.mainLoop();
