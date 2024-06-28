@@ -1241,7 +1241,7 @@ int pokeGearMenu(){
             }else{
                 int real_hour=std::stoi(cur_hour);
             };
-            HUDdisplay.showTextBeige(cur_hour,{224+(2*str_len),256},window);
+            HUDdisplay.showTextBeige(cur_hour,{192+(2*str_len),256},window);
             if(functions.getHour()<12){
                 HUDdisplay.showTextBeige("AM",{384,256},window);
             }else{
