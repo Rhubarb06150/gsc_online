@@ -1230,8 +1230,9 @@ int pokeGearMenu(){
         };
         window.clear();
         HUDdisplay.showMenu(window,"assets/menus/PKGear"+std::to_string(choice)+".mn");
-        //HUDdisplay.showTextBOW("NAME/"+username,{64,64},window);
-        //TrainersIndex.showTrainer(window,{416,32},trainer_app_id,1);
+        if(choice==0){
+            HUDdisplay.showTextBeige(functions.getDay(),{192,192},window);
+        };
         window.display();
         full_loaded=1;
     }while(true);

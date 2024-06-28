@@ -40,7 +40,21 @@ class GSC_Functions{
         struct tm *tm_struct = localtime(&now);
         int hour = tm_struct->tm_hour;   
         return hour;
-    }
+    };
+    int getMinute(){//This one returns only the hour number for time switch
+        time_t now = time(NULL);
+        struct tm *tm_struct = localtime(&now);
+        int min = tm_struct->tm_min;   
+        return min;
+    };
+    std::string getDay(){//This one returns only the hour number for time switch
+        time_t now = time(NULL);
+        struct tm *tm_struct = localtime(&now);
+        int day = tm_struct->tm_wday;
+        std::vector<std::string> days;
+        days={"MONDAY","TUESDAY","WENSDAY","THURSDAY","FRIDAY","SATURDAY","SUNDAY"};   
+        return days[day];
+    };
 
     std::string currentHour(){
         time_t now=time(0);
