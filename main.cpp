@@ -224,14 +224,14 @@ class Game{
     };
 
 int intro(){
-    const std::string intro_text="Pokémon GSC Online";
+    const char* intro_text="Pokémon GSC Online";
     std::cout <<"intro"<<std::endl;
     while(true){
         window.clear();
-        HUDdisplay.showTextWOB(intro_text.substr(0,index_frame/4),{0,0},window);
+        HUDdisplay.showTextWOB(intro_text,{0,0},window);
         window.display();
         index_frame++;
-        if(index_frame/4>intro_text.length()){
+        if(index_frame/4>sizeof(intro_text)){
             return 0;
         };
     }
