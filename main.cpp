@@ -1206,6 +1206,38 @@ int playerMenu(){
     return 0;
 };
 
+int pokeGearMenu(){
+    int choice=0;
+    do{
+        full_loaded=0;
+        while (window.pollEvent(event)){
+            screenshotVerify();
+            if (event.type==sf::Event::KeyPressed){
+                if (event.key.code==sf::Keyboard::F6||event.key.code==sf::Keyboard::Escape){
+                    return 0;
+                };
+                if (event.key.code==sf::Keyboard::Left){
+                    if(choice>0){
+                        choice--;
+                    };
+                };
+                if (event.key.code==sf::Keyboard::Right){
+                    if(choice<1){
+                        choice++;
+                    };
+                };
+            };
+        };
+        window.clear();
+        HUDdisplay.showMenu(window,"assets/menus/PKGear"+std::to_string(choice)+".mn");
+        //HUDdisplay.showTextBOW("NAME/"+username,{64,64},window);
+        //TrainersIndex.showTrainer(window,{416,32},trainer_app_id,1);
+        window.display();
+        full_loaded=1;
+    }while(true);
+    return 0;
+};
+
 int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
     functions.log("EDITOR","Launching editor");
 
@@ -2145,7 +2177,7 @@ int pauseMenu(){
                     }else if(choice==2){
                         packMenu();
                     }else if(choice==3){
-
+                        pokeGearMenu();
                     }else if(choice==4){
                         playerMenu();
                     }else if(choice==5){

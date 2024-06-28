@@ -144,7 +144,7 @@ class HUD{
 
         // MENU TILES INDEX
         menu_tiles_indexes.push_back({"empty","ff11"," "});
-        menu_tiles_indexes.push_back({"cursor","7111","\x00"});
+        menu_tiles_indexes.push_back({"cursor","7111","\x00"});//NOT MOVE TOO
         menu_tiles_indexes.push_back({"white","3211","\x01"});
         menu_tiles_indexes.push_back({"blueSquare","0011","\xe0"});
         menu_tiles_indexes.push_back({"blueSlopeBL","1011","\xe1"});
@@ -174,9 +174,27 @@ class HUD{
         menu_tiles_indexes.push_back({"bagBoxB","2711","\xbc"});
         menu_tiles_indexes.push_back({"bagBoxL","3611","\xbd"});
         menu_tiles_indexes.push_back({"bagBoxR","3711","\xbe"});
-        menu_tiles_indexes.push_back({"redCursor","7211","\x00"});
+        menu_tiles_indexes.push_back({"redCursor","7211","\x00"});//NOT MOVE
         menu_tiles_indexes.push_back({"idN","6421","\xd5"});
         menu_tiles_indexes.push_back({"itemNB","5211","\xd6"});
+        menu_tiles_indexes.push_back({"pokegearButtons","3842","\xd7"});
+        menu_tiles_indexes.push_back({"steelBorderTL","7511","\xd8"});
+        menu_tiles_indexes.push_back({"steelBorderTR","8511","\xd9"});
+        menu_tiles_indexes.push_back({"steelBorderBR","8611","\xda"});
+        menu_tiles_indexes.push_back({"steelBorderBL","7611","\xdb"});
+        menu_tiles_indexes.push_back({"steelBorderHBar","8711","\xdc"});
+        menu_tiles_indexes.push_back({"steelBorderVBar","7711","\xdd"});
+        menu_tiles_indexes.push_back({"beigeConrerTL","4611","\xa1"});
+        menu_tiles_indexes.push_back({"beigeConrerTR","5611","\xa2"});
+        menu_tiles_indexes.push_back({"beigeConrerBR","5711","\xa3"});
+        menu_tiles_indexes.push_back({"beigeConrerBL","4711","\xa4"});
+        menu_tiles_indexes.push_back({"beige","6611","\xa5"});
+        menu_tiles_indexes.push_back({"tuningLabel","8c51","\xa6"});
+        menu_tiles_indexes.push_back({"beigeCursor","6511","\xa7"});
+        menu_tiles_indexes.push_back({"bigArrow","9622","\xa8"});
+        menu_tiles_indexes.push_back({"switchLabel","8c51","\xa9"});
+        menu_tiles_indexes.push_back({"black","4211","\x09"});
+        menu_tiles_indexes.push_back({"signal","9422","\x0a"});
 
         //EDITOR TEXTURES
         texture.loadFromFile("assets/hud/editor_bg.png");
