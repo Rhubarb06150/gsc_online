@@ -255,8 +255,6 @@ void mainLoop(){
     index_frame++;      //increasing this for frames mesuring
     message_timer++;    //increasing this for messages display
 
-    sf::Event event;    //get happening events for handle them
-
     //if (isPressed(event,sf::Keyboard::F3)==0){
     //    show_debug_pause();
     //};
