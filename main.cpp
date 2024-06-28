@@ -2275,6 +2275,7 @@ int main(int argc, char** argv)
     time_t now = time(NULL);
     struct tm *tm_struct = localtime(&now);
     int hour = tm_struct->tm_hour;
+    printf("%d",hour);
 
     Game G;
     /* if (argc>1){
