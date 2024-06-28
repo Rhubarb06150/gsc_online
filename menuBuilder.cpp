@@ -30,7 +30,10 @@ int main(){
 
             if (!tile_select){
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)){
-                    std::ofstream ofile("menu.mn");
+                    std::string map_name;
+                    std::cout<<"Map name?\n> "<<std::endl;
+                    std::getline(std::cin,map_name);
+                    std::ofstream ofile("assets/menus/"+map_name+".mn");
                     for(int i=0;i<tiles.size();i++){
                         for(int j=0;j<tiles[i].size();j++){
                             ofile<<tiles[i][j];
@@ -64,7 +67,7 @@ int main(){
                     std::string path;
                     std::cout << "path?\n> ";
                     std::cin >> path;
-                    if(std::filesystem::is_regular_file("assets/menus/"+path)){
+                    if(std::filesystem::is_regular_file("assets/menus/"+path+".mn")){
                         std::ifstream ifile("assets/menus/"+path);
                         tiles={};
                         std::string line;
