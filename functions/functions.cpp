@@ -216,20 +216,17 @@ class GSC_Functions{
         start=clock();
         for (int i=0;i<terrain_vector.size();i++){
             for (int j=0;j<terrain_vector[0].size();j++){
-                if(terrain_vector[i][j]!="\\xff"){
+                if(Tiles.getIntIndex(terrain_vector[i][j])!=Tiles.tiles.size()-2){
                 sf::Texture cur_texture;
                 sf::Image image;
                     cur_texture=Tiles.day_textures[Tiles.getIntIndex(terrain_vector[i][j])];
                     image=cur_texture.copyToImage();
                     for(int ytex=0;ytex<cur_texture.getSize().y;ytex++){
                         for(int xtex=0;xtex<cur_texture.getSize().x;xtex++){
-                            if(terrain_vector[i][j]!="\\xff"){
-                                sf::Color cur_pixel;
-                                cur_pixel=image.getPixel(ytex,xtex);
-                                //if(cur_pixel!=sf::Color::Transparent){
-                                render_image.setPixel((j*16)+ytex,(i*16)+xtex,cur_pixel);
-                                //};
-                            };
+                            sf::Color cur_pixel;
+                            cur_pixel=image.getPixel(ytex,xtex);
+                            //if(cur_pixel!=sf::Color::Transparent){
+                            render_image.setPixel((j*16)+ytex,(i*16)+xtex,cur_pixel);
                         };
                     };
                 }else{
