@@ -220,7 +220,11 @@ class GSC_Functions{
                 for(int ytex=0;ytex<cur_texture.getSize().y;ytex++){
                     for(int xtex=0;xtex<cur_texture.getSize().x;xtex++){
                         if(terrain_vector[i][j]=="\\xff"){
-                            std::cout << image.getPixel(xtex,ytex).r<< image.getPixel(xtex,ytex).g<< image.getPixel(xtex,ytex).b<< image.getPixel(xtex,ytex).a << std::endl;
+                            std::cout << 
+                            image.getPixel(xtex,ytex).r<<
+                            image.getPixel(xtex,ytex).g<<
+                            image.getPixel(xtex,ytex).b<<
+                            image.getPixel(xtex,ytex).a << std::endl;
                         };
                         render_image.setPixel((j*16)+ytex,(i*16)+xtex,image.getPixel(xtex,ytex));
                     };
