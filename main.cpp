@@ -288,7 +288,7 @@ int showMessage(std::string message){
                 message_cur.erase(0,20);
             };
             if(transition_frame==8){
-                offset-=4;
+                offset-=3;
                 letters_shown-=19;
                 transition_frame=0;
                 transition=false;
