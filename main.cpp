@@ -280,7 +280,7 @@ int showMessage(std::string message){
                 letters_shown-=18;
                 message.erase(0,17);
                 message_cur.erase(0,17);
-                offset+=2;
+                offset-=2;
                 std::cout<<"MESSAGE|"<<message_cur<<"|"<<std::endl;
             }
             if(transition_frame==16){
