@@ -276,7 +276,7 @@ int showMessage(std::string message){
         if(finished&&index_frame%50<=25){
             HUDdisplay.showMenuTile(window,"\x0b",{576,544});
         };
-        if(!finished&&letters_shown==39){
+        if(!finished&&letters_shown==40){
             HUDdisplay.showMenuTile(window,"\x0b",{576,544});
             waiting=true;
         };
