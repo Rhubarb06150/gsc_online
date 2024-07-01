@@ -229,12 +229,9 @@ int crash(std::string message){
         while (window.pollEvent(event))
         {
             allVerify();
-            if (event.type == sf::Event::Closed || event.type == sf::Event::KeyPressed){
+            if (event.type == sf::Event::KeyPressed){
                 functions.quitGame(window);
                 return 0;
-            };
-            if(event.type==sf::Event::KeyPressed){
-                
             };
         };
         window.clear();
@@ -273,7 +270,7 @@ void mainLoop(){
     while (window.pollEvent(event))
         {
         allVerify();
-        if (event.type == sf::Event::Closed){
+        /* if (event.type == sf::Event::Closed){
             int sum_moy=0;
             int biggest=moy[0];
             int lowest=moy[0];
@@ -286,7 +283,8 @@ void mainLoop(){
             functions.log("DEBUG","Lowest FPS: "+std::to_string(lowest));
             functions.log("DEBUG","Highest FPS: "+std::to_string(biggest));
             functions.quitGame(window);
-        }else if (event.type==sf::Event::KeyPressed){
+        }else  */
+        if (event.type==sf::Event::KeyPressed){
             //MOD KEYPRESS
             //if (event.key.code==sf::Keyboard::S){
             //    connection.serverStart();
@@ -694,10 +692,6 @@ int yesNoQuestion(std::string question,sf::Event event,sf::RenderWindow& window)
         while (window.pollEvent(event))
         {
             allVerify();
-            if (event.type == sf::Event::Closed){
-                functions.quitGame(window);
-                return 0;
-            };
         };
         window.clear();
         HUDdisplay.showTextDEBUG("Following action:",{32,80},window);
@@ -752,10 +746,6 @@ std::string askText(std::string caption){
         while (window.pollEvent(event))
         {
             allVerify();
-            if (event.type == sf::Event::Closed){
-                functions.quitGame(window);
-                return 0;
-            };
             if (event.type==sf::Event::KeyPressed){
                 
                 if (event.key.code==sf::Keyboard::Enter||event.key.code==sf::Keyboard::Return){
@@ -799,10 +789,6 @@ int randomPatternLoop(){
         while (window.pollEvent(event))
             {
                 allVerify();
-                if (event.type == sf::Event::Closed){
-                    functions.quitGame(window);
-                    return 0;
-                };
                 if (event.type==sf::Event::KeyPressed){
                     
                     if (event.key.code==sf::Keyboard::F6){
@@ -899,10 +885,6 @@ int showEditorControls(){
         while (window.pollEvent(event))
         {
             allVerify();
-            if (event.type == sf::Event::Closed){
-                functions.quitGame(window);
-                return 0;
-            };
         };
         if (isPressed(event,sf::Keyboard::F6)==0){
             return 0;
@@ -1124,10 +1106,6 @@ std::string askPath(std::string path,sf::Event event,sf::RenderWindow& window){
                     };
                 }
             };
-        if (event.type == sf::Event::Closed){
-            functions.quitGame(window);
-            return 0;
-        };
     };
     if (isPressed(event,sf::Keyboard::F6)==0)
     return "";
@@ -1618,21 +1596,21 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
                     };
                 };//END IF !menu_show
             };//ENF OF KEYPRESSED
-            if (event.type == sf::Event::Closed){
-                double sum_moy=0;
-                double biggest=functions.render_times[0];
-                double lowest=functions.render_times[0];
-                for (int i =0;i<functions.render_times.size();i++){
-                    if (functions.render_times[i]>biggest)biggest=functions.render_times[i];
-                    if (functions.render_times[i]<lowest)lowest=functions.render_times[i];
-                    sum_moy+=functions.render_times[i];
-                };
-                functions.log("DEBUG","AVG FPS: "+std::to_string(sum_moy/functions.render_times.size()));
-                functions.log("DEBUG","Fastest Render: "+std::to_string(lowest));
-                functions.log("DEBUG","Slowest Reender: "+std::to_string(biggest));
-                functions.quitGame(window);
-                return 0;
-            };
+            //if (event.type == sf::Event::Closed){
+            //    double sum_moy=0;
+            //    double biggest=functions.render_times[0];
+            //    double lowest=functions.render_times[0];
+            //    for (int i =0;i<functions.render_times.size();i++){
+            //        if (functions.render_times[i]>biggest)biggest=functions.render_times[i];
+            //        if (functions.render_times[i]<lowest)lowest=functions.render_times[i];
+            //        sum_moy+=functions.render_times[i];
+            //    };
+            //    functions.log("DEBUG","AVG FPS: "+std::to_string(sum_moy/functions.render_times.size()));
+            //    functions.log("DEBUG","Fastest Render: "+std::to_string(lowest));
+            //    functions.log("DEBUG","Slowest Reender: "+std::to_string(biggest));
+            //    functions.quitGame(window);
+            //    return 0;
+            //};
         };//END OF POLYEVENTS
 
         if (event.key.code==sf::Keyboard::C&&!sf::Keyboard::isKeyPressed(sf::Keyboard::LControl)){
@@ -1800,10 +1778,6 @@ int modManager(){
         while (window.pollEvent(event))
         {
             allVerify();
-            if (event.type == sf::Event::Closed){
-                functions.quitGame(window);
-                return 0;
-            };
             if (event.type == sf::Event::KeyPressed){
                 
                 if (event.key.code==sf::Keyboard::F6){
@@ -1919,11 +1893,6 @@ int main_menu(){
                     };
                 };
             };
-            if (event.type == sf::Event::Closed){
-                functions.quitGame(window);
-                return 0;
-            };
-            
         };
         index_frame++;
         window.clear(sf::Color(255,255,255));
@@ -2063,8 +2032,6 @@ int optionMenu(){
                         return 0;
                     };
                 };
-            }else if (event.Closed){
-                functions.quitGame(window);
             };
         };
         index_frame++;
@@ -2204,8 +2171,6 @@ int pauseMenu(){
                         return 0;
                     };
                 };
-            }else if (event.Closed){
-                functions.quitGame(window);
             };
         };
         window.clear();
@@ -2260,21 +2225,6 @@ int show_debug_pause(){
                 if (choice<2){
                     choice++;
                 };
-            };
-            if (event.type == sf::Event::Closed){
-                int sum_moy=0;
-                int biggest=moy[0];
-                int lowest=moy[0];
-                for (int i =0;i<moy.size();i++){
-                    if (moy[i]>biggest)biggest=moy[i];
-                    if (moy[i]<lowest)lowest=moy[i];
-                    sum_moy+=moy[i];
-                };
-                functions.log("DEBUG","AVG FPS: "+std::to_string(sum_moy/moy.size()));
-                functions.log("DEBUG","Lowest FPS: "+std::to_string(lowest));
-                functions.log("DEBUG","Highest FPS: "+std::to_string(biggest));
-                functions.quitGame(window);
-                return 0;
             };
         };
         window.clear();
