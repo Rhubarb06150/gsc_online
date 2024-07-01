@@ -231,7 +231,13 @@ int showMessage(std::string message){
     int spaces=0;
     for(int i=0;i<message.length();i++){
         if(i!=0&&i%17==0){
+            std::string last1;
+            std::string last2;
+            last1=message[message.length()-1];
+            last1=message[message.length()-2];
             message.insert(i+spaces,"\n\n");
+            message.append(last1);
+            message.append(last2);
             spaces+=2;
         };
     };
