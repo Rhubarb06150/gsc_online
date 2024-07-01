@@ -284,12 +284,12 @@ int showMessage(std::string message){
             waiting=false;
             transition_frame++;
             if(transition_frame==4){
-                message.erase(0,17);
-                message_cur.erase(0,17);
+                message.erase(0,19);
+                message_cur.erase(0,19);
             };
             if(transition_frame==8){
                 offset-=2;
-                letters_shown-=18;
+                letters_shown-=19;
                 transition_frame=0;
                 transition=false;
             };
