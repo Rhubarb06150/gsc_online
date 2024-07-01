@@ -262,7 +262,7 @@ int showMessage(std::string message){
         terrain.showTerrain(terrain_vector,player_pos,time_otd,window,player_offset,false,index_frame);
         player.showPlayer(player_type,player_state,window);
         HUDdisplay.drawSquare(window,{0,352},{640,224},border_style);
-        HUDdisplay.showTextBOW(message_cur,{32,416-(transition_frame*32)},window);
+        HUDdisplay.showTextBOW(message_cur,{32,416-(transition_frame*4)},window);
         
         if(letters_shown==letters_nb&&index_frame%50<=25){
             HUDdisplay.showMenuTile(window,"\x0b",{576,544});
@@ -274,7 +274,7 @@ int showMessage(std::string message){
 
         if(transition){
             transition_frame++;
-            if(transition_frame==2){
+            if(transition_frame==16){
                 transition_frame=0;
                 transition=false;  
             };
