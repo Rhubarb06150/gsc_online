@@ -260,7 +260,7 @@ int showMessage(std::string message){
                 };
             }
         };
-        if(letters_shown<letters_nb){
+        if(letters_shown_real<letters_nb){
             letters_shown++;
             letters_shown_real++;
         };
@@ -280,14 +280,12 @@ int showMessage(std::string message){
             HUDdisplay.showMenuTile(window,"\x0b",{576,544});
             waiting=true;
         };
-
         if(transition){
             waiting=false;
             transition_frame++;
             if(transition_frame==4){
                 message.erase(0,17);
                 message_cur.erase(0,17);
-                //std::cout<<"MESSAGE|"<<message_cur<<"|"<<std::endl;
             };
             if(transition_frame==8){
                 offset-=2;
