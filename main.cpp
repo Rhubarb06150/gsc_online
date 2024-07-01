@@ -289,7 +289,7 @@ int showMessage(std::string message){
             };
             if(transition_frame==8){
                 offset-=2;
-                letters_shown-=19;
+                letters_shown-=20;
                 transition_frame=0;
                 transition=false;
             };
