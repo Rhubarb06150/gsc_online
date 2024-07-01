@@ -2347,7 +2347,7 @@ int main(int argc, char** argv)
     G.loadSettings();
     //G.functions.log("INFO","an game folder has been created at "+G.functions.getUserPath()+"/.gsc_o, it will be used to store your saved maps and your screenshots");
     G.main_menu();
-    G.showMessage("salut jeune chenapan des bois");
+    G.showMessage("salut jeune chenapan des bois qui pue");
     while (G.window.isOpen()){
         G.mainLoop();
     };
