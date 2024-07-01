@@ -228,6 +228,13 @@ int showMessage(std::string message){
     int letters_nb;
     letters_nb=message.length();
     std::string message_cur;
+    int spaces;
+    for(int i=0;i<message.length();i++){
+        if(i!=0&&i%17==0){
+            message.insert(i+spaces,"\n");
+            spaces+=2;
+        };
+    };
     do{
         index_frame++;
         message_cur=message.substr(0,letters_shown);
@@ -248,7 +255,7 @@ int showMessage(std::string message){
         
         if(letters_shown==letters_nb&&index_frame%50<=25){
             HUDdisplay.showMenuTile(window,"\x0b",{576,544});
-        }
+        };
         
         window.display();
     }while(true);
