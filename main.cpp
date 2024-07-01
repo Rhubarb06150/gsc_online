@@ -231,7 +231,7 @@ int showMessage(std::string message){
         window.clear();
         terrain.showTerrain(terrain_vector,player_pos,time_otd,window,player_offset,false,index_frame);
         player.showPlayer(player_type,player_state,window);
-        HUDdisplay.drawSquare(window,{0,576},{640,224},border_style);
+        HUDdisplay.drawSquare(window,{0,352},{640,224},border_style);
         window.display();
     }while(true);
     functions.quitGame(window);
