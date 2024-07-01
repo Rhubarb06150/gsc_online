@@ -253,8 +253,7 @@ int showMessage(std::string message){
                 if(event.key.code==sf::Keyboard::Space){
                     if(waiting){
                         transition=true;
-                    };
-                    if (finished){
+                    }else if(finished){
                         return 0;
                     }
                 };
