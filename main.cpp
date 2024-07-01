@@ -240,7 +240,6 @@ int showMessage(std::string message){
             letters_nb+=2;
         };
     };
-    std::cout<<"Message:"<<message<<std::endl;
     do{
         index_frame++;
         if(!waiting){
@@ -275,21 +274,20 @@ int showMessage(std::string message){
         };
 
         if(transition){
+            waiting=false;
             transition_frame++;
             if(transition_frame==8){
                 message.erase(0,17);
                 message_cur.erase(0,17);
-                std::cout<<"MESSAGE|"<<message_cur<<"|"<<std::endl;
+                //std::cout<<"MESSAGE|"<<message_cur<<"|"<<std::endl;
             };
             if(transition_frame==16){
                 offset-=2;
                 letters_shown-=18;
                 transition_frame=0;
                 transition=false;
-                waiting=false;
             };
         };
-
         window.display();
     }while(true);
     functions.quitGame(window);
