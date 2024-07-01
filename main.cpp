@@ -225,6 +225,7 @@ class Game{
 
 int showMessage(std::string message){
     int letters_shown=0;
+    int letters_shown_real=0;
     int letters_nb;
     letters_nb=message.length();
     std::string message_cur;
@@ -261,6 +262,7 @@ int showMessage(std::string message){
         };
         if(letters_shown<letters_nb){
             letters_shown++;
+            letters_shown_real++;
         };
         window.clear();
         
@@ -268,12 +270,13 @@ int showMessage(std::string message){
         player.showPlayer(player_type,player_state,window);
         HUDdisplay.drawSquare(window,{0,352},{640,224},border_style);
         HUDdisplay.showTextBOW(message_cur,{32,416-(transition_frame*8)+(offset*32)},window);
-        
-        if(letters_shown==letters_nb&&index_frame%50<=25){
-            HUDdisplay.showMenuTile(window,"\x0b",{576,544});
+        if(letters_nb==letters_shown_real){
             finished=true;
         };
-        if(letters_shown!=letters_nb&&letters_shown==36){
+        if(finished&&index_frame%50<=25){
+            HUDdisplay.showMenuTile(window,"\x0b",{576,544});
+        };
+        if(!finished&&letters_shown==36){
             HUDdisplay.showMenuTile(window,"\x0b",{576,544});
             waiting=true;
         };
