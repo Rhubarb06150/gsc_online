@@ -226,7 +226,7 @@ class Game{
 int showMessage(std::string message){
     int letters_shown=0;
     int letters_shown_real=0;
-    int letters_nb;
+    int letters_nb=0;
     letters_nb=message.length();
     std::string message_cur;
     int spaces=0;
