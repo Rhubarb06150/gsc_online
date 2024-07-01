@@ -286,6 +286,7 @@ int showMessage(std::string message){
             if(transition_frame==4){
                 message.erase(0,20);
                 message_cur.erase(0,20);
+                std::cout<<"Eff"<<std::endl;
             };
             if(transition_frame==8){
                 offset-=2;
