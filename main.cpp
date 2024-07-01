@@ -240,7 +240,7 @@ int showMessage(std::string message){
         HUDdisplay.drawSquare(window,{0,352},{640,224},border_style);
         HUDdisplay.showTextBOW(message_cur,{32,416},window);
         if(letters_shown==letters_nb&&index_frame%60<=30){
-            HUDdisplay.showMenuTile(window,"\x0b",{512,576});
+            HUDdisplay.showMenuTile(window,"\x0b",{576,512});
         }
         if(letters_shown<letters_nb){
             letters_shown++;
