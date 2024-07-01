@@ -275,7 +275,7 @@ class HUD{
         tile.setTexture(menu_tiles[getMenuTileIndex(tile_index)]);
         int x=pos[0];
         if (window.getSize().x>640){
-            x=(window.getSize().x-640)/2;            
+            x+=(window.getSize().x-640)/2;            
         }
         tile.setPosition(x,pos[1]);
         tile.setScale(4.f,4.f);
