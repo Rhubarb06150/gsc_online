@@ -229,8 +229,8 @@ int showMessage(std::string message){
     letters_nb=message.length();
     std::string message_cur;
     do{
-        message_cur=message.substr(0,letters_shown);
         index_frame++;
+        message_cur=message.substr(0,letters_shown);
         while(window.pollEvent(event)){
             allVerify();
         };
@@ -243,8 +243,9 @@ int showMessage(std::string message){
         if(letters_shown==letters_nb&&index_frame%60<=30){
             HUDdisplay.showMenuTile(window,"\x0b",{512,576});
         }
-        if(letters_shown<letters_nb)
-        letters_shown++;
+        if(letters_shown<letters_nb){
+            letters_shown++;
+        };
     }while(true);
     functions.quitGame(window);
     return 0;
