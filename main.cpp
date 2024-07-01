@@ -237,8 +237,8 @@ int showMessage(std::string message){
     int transition_frame=0;
     for(int i=0;i<message.length();i++){
         if(i!=0&&i%18==0){
-            message.insert(i+spaces,"\n\n");
-            spaces++;
+            message.insert(i,"\n\n");
+            spaces+=2;
             letters_nb+=2;
         };
     };
