@@ -285,11 +285,8 @@ class HUD{
     int showMenu(sf::RenderWindow& window,std::string menu_path){
         std::ifstream menufile(menu_path);
         std::string line;
-        int x=0;
+        int x=(window.getSize().x-640)/2;
         int y=0;
-        if (window.getSize().x>640){
-            x=(window.getSize().x-640)/2;            
-        }
         while(getline(menufile,line)){
             for(int i=0;i<20;i++){
                 sf::Sprite tile;
@@ -302,7 +299,7 @@ class HUD{
                 x+=32;
             };
             y+=32;
-            x=0;
+            x=(window.getSize().x-640)/2;
         };
         return 0;
     };
