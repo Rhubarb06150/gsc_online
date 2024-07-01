@@ -225,6 +225,8 @@ class Game{
 
 int showMessage(std::string message){
     int letters_shown=0;
+    int letters_nb;
+    letters_nb=message.length();
     std::string message_cur;
     do{
         message_cur=message.substr(0,letters_shown);
@@ -238,6 +240,10 @@ int showMessage(std::string message){
         HUDdisplay.drawSquare(window,{0,352},{640,224},border_style);
         HUDdisplay.showTextBOW(message_cur,{32,416},window);
         window.display();
+        if(letters_shown==letters_nb&&index_frame%60<=30){
+            HUDdisplay.showMenuTile(window,"\x0b",{512,576});
+        }
+        if(letters_shown<letters_nb)
         letters_shown++;
     }while(true);
     functions.quitGame(window);

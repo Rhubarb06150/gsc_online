@@ -195,6 +195,7 @@ class HUD{
         menu_tiles_indexes.push_back({"switchLabel","8c51","\xa9"});
         menu_tiles_indexes.push_back({"black","4211","\x09"});
         menu_tiles_indexes.push_back({"signal","9422","\x0a"});
+        menu_tiles_indexes.push_back({"downCusror","6211","\x0b"});
 
         //EDITOR TEXTURES
         texture.loadFromFile("assets/hud/editor_bg.png");
