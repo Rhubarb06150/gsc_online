@@ -230,8 +230,8 @@ int showMessage(std::string message){
     std::string message_cur;
     int spaces=0;
     int offset=0;
-    bool waiting;
-    bool transition;
+    bool waiting=false;
+    bool transition=false;
     int transition_frame=0;
     for(int i=0;i<message.length();i++){
         if(i!=0&&i%17==0){
@@ -250,7 +250,9 @@ int showMessage(std::string message){
             allVerify();
             if(event.type==sf::Event::KeyPressed){
                 if(event.key.code==sf::Keyboard::Space){
-                    transition=true;
+                    if(waiting){
+                        transition=true;
+                    };
                 };
             }
         };
