@@ -229,6 +229,8 @@ int showMessage(std::string message){
     letters_nb=message.length();
     std::string message_cur;
     int spaces=0;
+    int offset=0;
+    bool waiting;
     for(int i=0;i<message.length();i++){
         if(i!=0&&i%17==0){
             message.insert(i+spaces,"\n\n");
@@ -239,15 +241,15 @@ int showMessage(std::string message){
     std::cout<<"Message:"<<message<<std::endl;
     do{
         index_frame++;
-        message_cur=message.substr(0,letters_shown);
+        if(!waiting){
+            message_cur=message.substr(0,letters_shown);
+        };
         while(window.pollEvent(event)){
             allVerify();
         };
-        
         if(letters_shown<letters_nb){
             letters_shown++;
         };
-
         window.clear();
         
         terrain.showTerrain(terrain_vector,player_pos,time_otd,window,player_offset,false,index_frame);
@@ -258,7 +260,10 @@ int showMessage(std::string message){
         if(letters_shown==letters_nb&&index_frame%50<=25){
             HUDdisplay.showMenuTile(window,"\x0b",{576,544});
         };
-        
+        if(letters_shown!=letters_nb&&letters_shown==36){
+            HUDdisplay.showMenuTile(window,"\x0b",{576,544});
+            waiting=true;
+        };
         window.display();
     }while(true);
     functions.quitGame(window);
