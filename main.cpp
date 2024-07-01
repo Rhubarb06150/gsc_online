@@ -231,6 +231,8 @@ int showMessage(std::string message){
     int spaces=0;
     int offset=0;
     bool waiting;
+    bool transition;
+    int transition_frame;
     for(int i=0;i<message.length();i++){
         if(i!=0&&i%17==0){
             message.insert(i+spaces,"\n\n");
@@ -246,6 +248,11 @@ int showMessage(std::string message){
         };
         while(window.pollEvent(event)){
             allVerify();
+            if(event.type==sf::Event::KeyPressed){
+                if(event.key.code==sf::Keyboard::Space){
+                    transition=true;
+                };
+            }
         };
         if(letters_shown<letters_nb){
             letters_shown++;
@@ -255,7 +262,7 @@ int showMessage(std::string message){
         terrain.showTerrain(terrain_vector,player_pos,time_otd,window,player_offset,false,index_frame);
         player.showPlayer(player_type,player_state,window);
         HUDdisplay.drawSquare(window,{0,352},{640,224},border_style);
-        HUDdisplay.showTextBOW(message_cur,{32,416},window);
+        HUDdisplay.showTextBOW(message_cur,{32,416-(transition_frame*32)},window);
         
         if(letters_shown==letters_nb&&index_frame%50<=25){
             HUDdisplay.showMenuTile(window,"\x0b",{576,544});
@@ -264,6 +271,15 @@ int showMessage(std::string message){
             HUDdisplay.showMenuTile(window,"\x0b",{576,544});
             waiting=true;
         };
+
+        if(transition){
+            transition_frame++;
+            if(transition_frame==2){
+                transition_frame=0;
+                transition=false;  
+            };
+        };
+
         window.display();
     }while(true);
     functions.quitGame(window);
