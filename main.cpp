@@ -232,7 +232,7 @@ int showMessage(std::string message){
     int offset=0;
     bool waiting;
     bool transition;
-    int transition_frame;
+    int transition_frame=0;
     for(int i=0;i<message.length();i++){
         if(i!=0&&i%17==0){
             message.insert(i+spaces,"\n\n");
