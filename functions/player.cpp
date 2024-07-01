@@ -24,9 +24,6 @@ class Player{
 
     std::vector<std::vector<std::string>> player_tiles_index;
     Player(){
-        sf::Texture texture;
-        texture.loadFromFile("assets/player/shadow.png");
-        shadow.setTexture(texture);
         player_tiles_index.push_back({"front",    "1011"});
         player_tiles_index.push_back({"front1",   "0011"});
         player_tiles_index.push_back({"front2",   "2011"});
@@ -79,7 +76,7 @@ class Player{
 
     int initPlayer(std::vector<int> player_pos){
         sprite.setPosition(player_pos[0],player_pos[1]);
-        shadow.setPosition(player_pos[0],player_pos[1]+16);
+        shadow.setPosition(player_pos[0],player_pos[1]+32);
         sprite.scale(4.f,4.f);
         shadow.scale(4.f,4.f);
         return 0;
@@ -128,6 +125,10 @@ class Player{
         if (gender=="g")gender_index=1;
         if (gender=="r")gender_index=2;
         if (gender=="m")gender_index=3;
+
+        sf::Texture texture;
+        texture.loadFromFile("assets/player/shadow.png");
+        shadow.setTexture(texture);
 
         sprite.setTexture(players_textures[gender_index][getTextureIndex(player_state)]);
         window.draw(shadow);
