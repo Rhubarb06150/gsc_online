@@ -76,7 +76,7 @@ class Player{
 
     int initPlayer(std::vector<int> player_pos){
         sprite.setPosition(player_pos[0],player_pos[1]);
-        shadow.setPosition(player_pos[0],player_pos[1]+48);
+        shadow.setPosition(player_pos[0],player_pos[1]+44);
         sprite.scale(4.f,4.f);
         shadow.scale(4.f,4.f);
         return 0;
