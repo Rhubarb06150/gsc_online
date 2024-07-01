@@ -20,8 +20,8 @@ class Player{
     int ysize;
 
     std::vector<std::vector<sf::Texture>> players_textures;
-
     std::vector<std::vector<std::string>> player_tiles_index;
+    
     Player(){
         player_tiles_index.push_back({"front",    "1011"});
         player_tiles_index.push_back({"front1",   "0011"});
