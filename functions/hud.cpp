@@ -273,17 +273,23 @@ class HUD{
     int showMenuTile(sf::RenderWindow& window, std::string tile_index, std::vector<int> pos){
         sf::Sprite tile;
         tile.setTexture(menu_tiles[getMenuTileIndex(tile_index)]);
-        tile.setPosition(pos[0],pos[1]);
+        int x=pos[0];
+        if (window.getSize().x>640){
+            x=(window.getSize().x-640)/2;            
+        }
+        tile.setPosition(x,pos[1]);
         tile.setScale(4.f,4.f);
         window.draw(tile);
         return 0;
     };
-
     int showMenu(sf::RenderWindow& window,std::string menu_path){
         std::ifstream menufile(menu_path);
         std::string line;
         int x=0;
         int y=0;
+        if (window.getSize().x>640){
+            x=(window.getSize().x-640)/2;            
+        }
         while(getline(menufile,line)){
             for(int i=0;i<20;i++){
                 sf::Sprite tile;
