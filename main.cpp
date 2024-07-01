@@ -228,7 +228,7 @@ int crash(std::string message){
         full_loaded=0;
         while (window.pollEvent(event))
         {
-            screenshotVerify();
+            allVerify();
             if (event.type == sf::Event::Closed || event.type == sf::Event::KeyPressed){
                 functions.quitGame(window);
                 return 0;
@@ -272,7 +272,7 @@ void mainLoop(){
     }
     while (window.pollEvent(event))
         {
-        screenshotVerify();
+        allVerify();
         if (event.type == sf::Event::Closed){
             int sum_moy=0;
             int biggest=moy[0];
@@ -693,7 +693,7 @@ int yesNoQuestion(std::string question,sf::Event event,sf::RenderWindow& window)
         full_loaded=0;
         while (window.pollEvent(event))
         {
-            screenshotVerify();
+            allVerify();
             if (event.type == sf::Event::Closed){
                 functions.quitGame(window);
                 return 0;
@@ -751,7 +751,7 @@ std::string askText(std::string caption){
         index_frame++;
         while (window.pollEvent(event))
         {
-            screenshotVerify();
+            allVerify();
             if (event.type == sf::Event::Closed){
                 functions.quitGame(window);
                 return 0;
@@ -798,7 +798,7 @@ int randomPatternLoop(){
         full_loaded=0;
         while (window.pollEvent(event))
             {
-                screenshotVerify();
+                allVerify();
                 if (event.type == sf::Event::Closed){
                     functions.quitGame(window);
                     return 0;
@@ -898,7 +898,7 @@ int showEditorControls(){
     do{
         while (window.pollEvent(event))
         {
-            screenshotVerify();
+            allVerify();
             if (event.type == sf::Event::Closed){
                 functions.quitGame(window);
                 return 0;
@@ -1067,7 +1067,7 @@ std::string askPath(std::string path,sf::Event event,sf::RenderWindow& window){
     full_loaded=0;
     while (window.pollEvent(event))
     {
-        screenshotVerify();
+        allVerify();
         switch (event.type) {
             case sf::Event::KeyPressed:
                 
@@ -1169,7 +1169,7 @@ int playerMenu(){
     do{
         full_loaded=0;
         while (window.pollEvent(event)){
-            screenshotVerify();
+            allVerify();
             if (event.type==sf::Event::KeyPressed){
                 if (event.key.code==sf::Keyboard::F6||event.key.code==sf::Keyboard::Escape){
                     return 0;
@@ -1211,7 +1211,7 @@ int pokeGearMenu(){
     do{
         full_loaded=0;
         while (window.pollEvent(event)){
-            screenshotVerify();
+            allVerify();
             if (event.type==sf::Event::KeyPressed){
                 if (event.key.code==sf::Keyboard::F6||event.key.code==sf::Keyboard::Escape){
                     return 0;
@@ -1310,7 +1310,7 @@ int levelEditorLoop(sf::RenderWindow&window,sf::Event event){
         message_timer++;//increase the message timer for display messages
         while (window.pollEvent(event))//level editor true loop
         {
-            screenshotVerify();
+            allVerify();
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::LControl)){
                 if (event.type==sf::Event::KeyPressed){
                     if (event.key.code==sf::Keyboard::B){
@@ -1799,7 +1799,7 @@ int modManager(){
         full_loaded=0;
         while (window.pollEvent(event))
         {
-            screenshotVerify();
+            allVerify();
             if (event.type == sf::Event::Closed){
                 functions.quitGame(window);
                 return 0;
@@ -1867,7 +1867,7 @@ int main_menu(){
         full_loaded=0;
         while (window.pollEvent(event))
         {
-            screenshotVerify();
+            allVerify();
             switch (event.type) {
             case sf::Event::KeyPressed:
                 
@@ -2007,7 +2007,7 @@ int optionMenu(){
         walking=false;
         while (window.pollEvent(event))
         {
-            screenshotVerify();
+            allVerify();
             if (event.type==sf::Event::KeyPressed){
                 
                 if (event.key.code==sf::Keyboard::Down){
@@ -2097,7 +2097,7 @@ int packMenu(){
     do{
         full_loaded=0;
         while (window.pollEvent(event)){
-            screenshotVerify();
+            allVerify();
             if(event.type==sf::Event::KeyPressed){
                 
                 if(event.key.code==sf::Keyboard::F6||event.key.code==sf::Keyboard::Escape){
@@ -2168,7 +2168,7 @@ int pauseMenu(){
         walking=false;
         while (window.pollEvent(event))
         {
-            screenshotVerify();
+            allVerify();
             if (event.type==sf::Event::KeyPressed){
                 
                 if (event.key.code==sf::Keyboard::Down){
@@ -2250,7 +2250,7 @@ int show_debug_pause(){
         full_loaded=0;
         while (window.pollEvent(event))
         {
-            screenshotVerify();
+            allVerify();
             if (isPressed(event,sf::Keyboard::Up)==0){
                 if (choice>0){
                     choice--;
@@ -2318,13 +2318,16 @@ int show_debug_pause(){
     return 0;
     };
 
-void screenshotVerify(){
+void allVerify(){
     //Take ScreenShot To put in every event loop
     if (event.type==sf::Event::KeyPressed&&event.key.code==sf::Keyboard::F1){
         functions.takeScreenshot(window,index_frame);
         SoundManager.soundEffect("PRESS");
         output_message="Screenshot saved!";
         message_timer=0;
+    };
+    if (event.type==sf::Event::Closed){
+        functions.quitGame(window);
     };
 };
 };
