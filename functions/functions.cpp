@@ -34,7 +34,7 @@ class GSC_Functions{
         strftime(buf,sizeof(buf),"%Y_%m_%d_%X",&tstruct);
         return ReplaceAll(buf,":","_");
     };
-
+    
     int getHour(){//This one returns only the hour number for time switch
         time_t now = time(NULL);
         struct tm *tm_struct = localtime(&now);
