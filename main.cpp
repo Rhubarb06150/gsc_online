@@ -231,6 +231,7 @@ int showMessage(std::string message){
     int spaces=0;
     int offset=0;
     bool waiting=false;
+    bool finished=false;
     bool transition=false;
     int transition_frame=0;
     for(int i=0;i<message.length();i++){
@@ -252,6 +253,9 @@ int showMessage(std::string message){
                     if(waiting){
                         transition=true;
                     };
+                    if (finished){
+                        return 0;
+                    }
                 };
             }
         };
@@ -267,6 +271,7 @@ int showMessage(std::string message){
         
         if(letters_shown==letters_nb&&index_frame%50<=25){
             HUDdisplay.showMenuTile(window,"\x0b",{576,544});
+            finished=true;
         };
         if(letters_shown!=letters_nb&&letters_shown==36){
             HUDdisplay.showMenuTile(window,"\x0b",{576,544});
