@@ -278,6 +278,7 @@ int showMessage(std::string message){
             transition_frame++;
             if(transition_frame==8){
                 letters_shown-=18;
+                message.erase(0,17);
             }
             if(transition_frame==16){
                 transition_frame=0;
