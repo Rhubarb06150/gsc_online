@@ -9,7 +9,6 @@ class Player{
     public:
 
     sf::Sprite sprite;
-    sf::Sprite shadow;
     std::vector<sf::Texture> boy_textures;
     std::vector<sf::Texture> girl_textures;
     std::vector<sf::Texture> rival_textures;
@@ -76,9 +75,7 @@ class Player{
 
     int initPlayer(std::vector<int> player_pos){
         sprite.setPosition(player_pos[0],player_pos[1]);
-        shadow.setPosition(player_pos[0],player_pos[1]+40);
         sprite.scale(4.f,4.f);
-        shadow.scale(4.f,4.f);
         return 0;
     };
 
@@ -127,11 +124,8 @@ class Player{
         if (gender=="m")gender_index=3;
 
         sf::Texture texture;
-        texture.loadFromFile("assets/player/shadow.png");
-        shadow.setTexture(texture);
 
         sprite.setTexture(players_textures[gender_index][getTextureIndex(player_state)]);
-        window.draw(shadow);
         window.draw(sprite);
     };
 
