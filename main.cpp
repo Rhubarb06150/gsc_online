@@ -246,7 +246,7 @@ int showMessage(std::string message){
         if(letters_shown<letters_nb){
             letters_shown++;
         }else{
-            std::cout<<"Fin";
+            std::cout<<"Fin"<<std::endl;
         };
     }while(true);
     functions.quitGame(window);
