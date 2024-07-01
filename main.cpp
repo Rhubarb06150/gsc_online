@@ -239,7 +239,7 @@ int showMessage(std::string message){
         player.showPlayer(player_type,player_state,window);
         HUDdisplay.drawSquare(window,{0,352},{640,224},border_style);
         HUDdisplay.showTextBOW(message_cur,{32,416},window);
-        if(letters_shown==letters_nb&&index_frame%60>=30){
+        if(letters_shown==letters_nb&&index_frame%60<=30){
             HUDdisplay.showMenuTile(window,"\x0b",{512,576});
         }
         if(letters_shown<letters_nb){
