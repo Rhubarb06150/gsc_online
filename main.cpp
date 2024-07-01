@@ -285,7 +285,7 @@ int showMessage(std::string message){
             transition_frame++;
             if(transition_frame==4){
                 message.erase(0,20);
-                //message_cur.erase(0,20);
+                message_cur.erase(0,20);
                 std::cout<<"Eff"<<std::endl;
             };
             if(transition_frame==8){
@@ -2383,7 +2383,7 @@ int main(int argc, char** argv)
     G.loadSettings();
     //G.functions.log("INFO","an game folder has been created at "+G.functions.getUserPath()+"/.gsc_o, it will be used to store your saved maps and your screenshots");
     G.main_menu();
-    G.showMessage("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaaaaaaa ta vu ca?");
+    G.showMessage("AAAAAAAAAAAAAAABBBBBBBBBBBBBBCCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDDEEEEEEEEEEEEE ta vu ca?");
     while (G.window.isOpen()){
         G.mainLoop();
     };
