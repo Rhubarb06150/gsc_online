@@ -231,8 +231,8 @@ int showMessage(std::string message){
     int spaces=0;
     for(int i=0;i<message.length();i++){
         if(i!=0&&i%17==0){
-            const std::string last1=""+message[message.length()-1];
-            const std::string last2=""+message[message.length()-2];
+            const std::string last1=message[message.length()-1]+"";
+            const std::string last2=message[message.length()-2]+"";
             message.insert(i+spaces,"\n\n");
             message.append(last1);
             message.append(last2);
