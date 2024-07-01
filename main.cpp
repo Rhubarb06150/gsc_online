@@ -276,13 +276,14 @@ int showMessage(std::string message){
 
         if(transition){
             transition_frame++;
-            if(transition_frame==8){
+            if(transition_frame==4){
                 message.erase(0,17);
                 message_cur.erase(0,17);
-                offset-=2;
                 std::cout<<"MESSAGE|"<<message_cur<<"|"<<std::endl;
+            }else if(transition_frame==8){
             }
             if(transition_frame==16){
+                offset-=2;
                 letters_shown-=18;
                 transition_frame=0;
                 transition=false;
