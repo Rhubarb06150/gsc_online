@@ -224,7 +224,9 @@ class Game{
     };
 
 int showMessage(std::string message){
+    int letters_shown;
     do{
+        index_frame++;
         while(window.pollEvent(event)){
             allVerify();
         };
@@ -233,6 +235,8 @@ int showMessage(std::string message){
         player.showPlayer(player_type,player_state,window);
         HUDdisplay.drawSquare(window,{0,352},{640,224},border_style);
         window.display();
+        letters_shown++;
+        HUDdisplay.showTextBOW(message.substr(0,letters_shown),{32,384},window);
     }while(true);
     functions.quitGame(window);
     return 0;
