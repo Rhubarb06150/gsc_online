@@ -233,6 +233,7 @@ int showMessage(std::string message){
         if(i!=0&&i%17==0){
             message.insert(i+spaces,"\n\n");
             spaces+=2;
+            letters_nb+=2;
         };
     };
     std::cout<<"Message:"<<message<<std::endl;
