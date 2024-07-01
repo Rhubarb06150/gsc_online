@@ -239,6 +239,7 @@ int showMessage(std::string message){
             spaces+=2;
         };
     };
+    std::cout<<"Message:"<<message_cur<<std::endl;
     do{
         index_frame++;
         message_cur=message.substr(0,letters_shown);
