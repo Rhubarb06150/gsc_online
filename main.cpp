@@ -223,6 +223,21 @@ class Game{
         functions.log("ENGINE","Game launched!");//and there, we annouce to our dear player, that the game is ready to be played
     };
 
+int showMessage(std::string message){
+    do{
+        while(window.pollEvent(event)){
+            allVerify();
+        };
+        window.clear();
+        terrain.showTerrain(terrain_vector,player_pos,time_otd,window,player_offset,false,index_frame);
+        player.showPlayer(player_type,player_state,window);
+        HUDdisplay.drawSquare(window,{0,576},{640,224},border_style);
+        window.display();
+    }while(true);
+    functions.quitGame(window);
+    return 0;
+};
+
 int crash(std::string message){
     do{
         full_loaded=0;
@@ -2305,6 +2320,7 @@ int main(int argc, char** argv)
     G.loadSettings();
     //G.functions.log("INFO","an game folder has been created at "+G.functions.getUserPath()+"/.gsc_o, it will be used to store your saved maps and your screenshots");
     G.main_menu();
+    G.showMessage("salut");
     while (G.window.isOpen()){
         G.mainLoop();
     };
