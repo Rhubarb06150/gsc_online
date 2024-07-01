@@ -276,6 +276,9 @@ int showMessage(std::string message){
 
         if(transition){
             transition_frame++;
+            if(transition_frame==8){
+                letters_shown-=18;
+            }
             if(transition_frame==16){
                 transition_frame=0;
                 transition=false;
