@@ -236,9 +236,9 @@ int showMessage(std::string message){
         terrain.showTerrain(terrain_vector,player_pos,time_otd,window,player_offset,false,index_frame);
         player.showPlayer(player_type,player_state,window);
         HUDdisplay.drawSquare(window,{0,352},{640,224},border_style);
+        HUDdisplay.showTextBOW(message_cur,{32,384},window);
         window.display();
         letters_shown++;
-        HUDdisplay.showTextBOW(message_cur,{32,384},window);
     }while(true);
     functions.quitGame(window);
     return 0;
