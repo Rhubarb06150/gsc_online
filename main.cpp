@@ -279,6 +279,7 @@ int showMessage(std::string message){
             if(transition_frame==8){
                 letters_shown-=18;
                 message.erase(0,17);
+                std::cout<<"MESSAGE|"<<message_cur<<"|"<<std::endl;
             }
             if(transition_frame==16){
                 transition_frame=0;
