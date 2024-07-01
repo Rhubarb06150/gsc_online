@@ -224,7 +224,7 @@ class Game{
     };
 
 int showMessage(std::string message){
-    int letters_shown;
+    int letters_shown=0;
     do{
         index_frame++;
         while(window.pollEvent(event)){
