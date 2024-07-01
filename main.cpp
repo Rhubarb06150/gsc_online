@@ -193,7 +193,7 @@ class Game{
         pos2={};//same but for pos2
         pos1set=false;//so we dont start with already set pos1
         pos2set=false;//so we dont start with already set pos2
-        real_res="720x576";
+        real_res="640x576";
         resolution_vec=checkResolutionRWindow();//gets the resolution
         player_offset=checkResolutionPOffset();//gets the player offset
         window.create(sf::VideoMode(resolution_vec[0],resolution_vec[1]), "Pokemon GSC Online",sf::Style::Titlebar | sf::Style::Close);//create the window with the resolution we just got
