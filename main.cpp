@@ -241,7 +241,6 @@ int showMessage(std::string message){
             //std::cout<<"taille: "<<message.length()<<std::endl;
             letters_nb+=2;
             message.insert(i,"\n\n");
-            i+=2;
             //std::cout<<"nouvelle taille: "<<message.length()<<std::endl;
         };
         std::cout<<"Message:"<<std::endl;
