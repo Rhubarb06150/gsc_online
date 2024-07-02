@@ -199,7 +199,7 @@ class Game{
         window.create(sf::VideoMode(resolution_vec[0],resolution_vec[1]), "Pokemon GSC Online",sf::Style::Titlebar | sf::Style::Close);//create the window with the resolution we just got
         icon.loadFromFile("assets/icon.png");//loads up the icon
         window.setIcon(64, 64, icon.getPixelsPtr());//and BANG, we set the icon
-        window.setFramerateLimit(15);//60 FPS limit hell yeah, 60HZ POWAAAAAAAAA
+        window.setFramerateLimit(60);//60 FPS limit hell yeah, 60HZ POWAAAAAAAAA
         player.initPlayer(player_offset);//we init the player here
         time_otd='n';//default daytime is the day
         time_otd_str=time_otd;//same value as time_otd but is string, not char
@@ -2379,7 +2379,7 @@ int main(int argc, char** argv)
     G.loadSettings();
     //G.functions.log("INFO","an game folder has been created at "+G.functions.getUserPath()+"/.gsc_o, it will be used to store your saved maps and your screenshots");
     G.main_menu();
-    G.showMessage("Hey how are you my little chenapan des bois");
+    G.showMessage("Hey how are you mylittle chenapan des bois");
     while (G.window.isOpen()){
         G.mainLoop();
     };
