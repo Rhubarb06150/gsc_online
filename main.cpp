@@ -258,6 +258,10 @@ int showMessage(std::string message){
                 };
             }
         };
+        if(!finished&&letters_shown==39){
+            HUDdisplay.showMenuTile(window,"\x0b",{576,544});
+            waiting=true;
+        };
         if(letters_shown_real<=letters_nb&&!waiting){
             letters_shown++;
             letters_shown_real++;
@@ -273,10 +277,6 @@ int showMessage(std::string message){
         };
         if(finished&&index_frame%50<=25){
             HUDdisplay.showMenuTile(window,"\x0b",{576,544});
-        };
-        if(!finished&&letters_shown==39){
-            HUDdisplay.showMenuTile(window,"\x0b",{576,544});
-            waiting=true;
         };
         std::cout<<letters_shown<<std::endl;
         if(transition){
