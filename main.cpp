@@ -282,8 +282,8 @@ int showMessage(std::string message){
             waiting=false;
             transition_frame++;
             if(transition_frame==4){
-                message.erase(0,20);
                 message_cur.erase(0,20);
+                message.erase(0,20);
                 letters_shown-=20;
             };
             if(transition_frame==8){
