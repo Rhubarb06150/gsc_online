@@ -275,8 +275,7 @@ int showMessage(std::string message){
         if((waiting||finished)&&index_frame%50<=25){
             HUDdisplay.showMenuTile(window,"\x0b",{576,544});
         };
-        
-        std::cout<<letters_shown<<std::endl;
+
         if(transition){
             waiting=false;
             transition_frame++;
@@ -291,8 +290,8 @@ int showMessage(std::string message){
             };
         };
         window.display();
+
     }while(true);
-    functions.quitGame(window);
     return 0;
 };
 
