@@ -240,10 +240,10 @@ int showMessage(std::string message){
         //std::cout<<i<<std::endl;
          if(i!=0 && i%20==0 && i!=letters_nb){
             std::cout<<"espace"<<i<<std::endl;
-            message.insert(i,"\n\n");
+            message.insert(i-space,"\n\n");
             letters_nb+=2;
-            //if(i>40)
-            //space=0;
+            if(i>40)
+            space=0;
         };
     };
     std::cout<<"Message:"<<std::endl;
