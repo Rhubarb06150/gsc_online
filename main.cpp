@@ -274,12 +274,11 @@ int showMessage(std::string message,bool yes_no){
         if(letters_nb==letters_shown_real){
             finished=true;
         };
-        if(finished&&index_frame%50<=25){
+        if((finished&&!yes_no)||waiting&&index_frame%50<=25){
             HUDdisplay.showMenuTile(window,"\x0b",{576,544});
-            HUDdisplay.drawSquare(window,{576,352},{128,160},border_style);
         };
-        if(waiting&&index_frame%50<=25){
-            HUDdisplay.showMenuTile(window,"\x0b",{576,544});
+        if(finished&&yes_no){
+            HUDdisplay.drawSquare(window,{576,352},{128,160},border_style);
         };
         if(transition){
             waiting=false;
