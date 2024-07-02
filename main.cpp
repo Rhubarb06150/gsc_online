@@ -278,6 +278,7 @@ int showMessage(std::string message){
             HUDdisplay.showMenuTile(window,"\x0b",{576,544});
             waiting=true;
         };
+        std::cout<<transition_frame<<std::endl;
         if(transition){
             waiting=false;
             transition_frame++;
@@ -287,7 +288,7 @@ int showMessage(std::string message){
                 letters_shown-=20;
             };
             if(transition_frame==8){
-                offset-=1;
+                offset-=2;
                 transition_frame=0;
                 transition=false;
             };
