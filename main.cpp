@@ -243,9 +243,7 @@ int showMessage(std::string message){
     };
     do{
         index_frame++;
-        if(!waiting){
-            message_cur=message.substr(0,letters_shown);
-        };
+        message_cur=message.substr(0,letters_shown);
         while(window.pollEvent(event)){
             allVerify();
             if(event.type==sf::Event::KeyPressed){
@@ -285,8 +283,7 @@ int showMessage(std::string message){
             if(transition_frame==8){
                 message.erase(0,20);
                 offset=2;
-            };
-            if(transition_frame==16){
+            }else if(transition_frame==16){
                 letters_shown-=20;
                 offset=0;
                 transition_frame=0;
