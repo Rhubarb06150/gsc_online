@@ -237,15 +237,15 @@ int showMessage(std::string message){
     int space=2;
     for(int i=0;i<message.length();i++){
         std::cout<<i<<std::endl;
-         if(i!=18||(i!=0&&
-            i%(20-space)==0&&
-            i!=letters_nb)){
+         if(i!=0 && i%(20-space)==0 && i!=letters_nb){
+            if(i!=18){
             space=0;
             std::cout<<"espace"<<std::endl;
             //std::cout<<"taille: "<<message.length()<<std::endl;
             message.insert(i,"\n\n");
             letters_nb+=2;
             //std::cout<<"nouvelle taille: "<<message.length()<<std::endl;
+            };
         };
     };
     std::cout<<"Message:"<<std::endl;
