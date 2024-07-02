@@ -234,13 +234,15 @@ int showMessage(std::string message){
     bool finished=false;
     bool transition=false;
     int transition_frame=0;
+    int space=2;
     for(int i=2;i<message.length();i++){
         printf("%d",i);
         //std::cout<<i<<std::endl;
          if(i!=0 && i%20==0 && i!=letters_nb){
                 std::cout<<"espace"<<i<<std::endl;
-                message.insert(i,"\n\n");
+                message.insert(i-space,"\n\n");
                 letters_nb+=2;
+                space=0;
         };
     };
     std::cout<<"Message:"<<std::endl;
