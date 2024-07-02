@@ -237,7 +237,7 @@ int showMessage(std::string message,bool yes_no){
     bool finished=false;
     bool transition=false;
     int transition_frame=0;
-    if(letters_nb<39&&letters_nb>18){
+    if(letters_nb<39&&letters_nb>17){
         message.insert(18,"\n\n");
     }
     for(int i=2;i<message.length();i++){
