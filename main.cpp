@@ -245,9 +245,9 @@ int showMessage(std::string message){
             letters_nb+=2;
             //std::cout<<"nouvelle taille: "<<message.length()<<std::endl;
         };
-        std::cout<<"Message:"<<std::endl;
-        std::cout<<message<<std::endl;
     };
+    std::cout<<"Message:"<<std::endl;
+    std::cout<<message<<std::endl;
     do{
         index_frame++;
         if(!waiting){
