@@ -235,13 +235,11 @@ int showMessage(std::string message){
     bool finished=false;
     bool transition=false;
     int transition_frame=0;
-    int real_index=2;
     for(int i=0;i<message.length();i++){
-        if(real_index!=0&&real_index%20==0&&real_index!=letters_nb){
-            real_index++;
+        if(i!=0&&i%20==0&&i!=letters_nb){
             std::cout<<"espace"<<std::endl;
             std::cout<<"taille: "<<message.length()<<std::endl;
-            message.insert(real_index+spaces,"\n\n");
+            message.insert(i+spaces,"\n\n");
             i+=2;
             letters_nb+=2;
             std::cout<<"nouvelle taille: "<<message.length()<<std::endl;
