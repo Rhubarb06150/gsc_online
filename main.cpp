@@ -238,7 +238,7 @@ int showMessage(std::string message){
     for(int i=0;i<message.length();i++){
         std::cout<<"space: "<<space<<std::endl;
         if(i!=0&&i%(18+space)==0&&i!=letters_nb){
-            //std::cout<<"espace"<<std::endl;
+            std::cout<<"espace"<<std::endl;
             //std::cout<<"taille: "<<message.length()<<std::endl;
             message.insert(i,"\n\n");
             letters_nb+=2;
