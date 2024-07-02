@@ -236,11 +236,11 @@ int showMessage(std::string message){
     bool transition=false;
     int transition_frame=0;
     for(int i=0;i<message.length();i++){
-        if(i!=0&&i%18==0&&i!=letters_nb+spaces){
+        if(i!=0&&i%18==0&&i!=letters_nb){
             std::cout<<"espace"<<std::endl;
             std::cout<<"taille: "<<message.length()<<std::endl;
             message.insert(i+spaces,"\n\n");
-            spaces+=2;
+            i+=2;
             letters_nb+=2;
             std::cout<<"nouvelle taille: "<<message.length()<<std::endl;
         };
