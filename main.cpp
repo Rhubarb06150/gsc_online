@@ -244,6 +244,7 @@ int showMessage(std::string message){
     do{
         index_frame++;
         message_cur=message.substr(0,letters_shown);
+        message_cur=HUDdisplay.convertText(message_cur);
         while(window.pollEvent(event)){
             allVerify();
             if(event.type==sf::Event::KeyPressed){
