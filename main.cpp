@@ -235,6 +235,7 @@ int showMessage(std::string message){
     bool transition=false;
     int transition_frame=0;
     for(int i=2;i<message.length();i++){
+        printf("%c",i);
         //std::cout<<i<<std::endl;
          if(i!=0 && i%20==0 && i!=letters_nb){
                 std::cout<<"espace"<<i<<std::endl;
