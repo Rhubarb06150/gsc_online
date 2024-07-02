@@ -278,7 +278,7 @@ int showMessage(std::string message,bool yes_no){
             HUDdisplay.showMenuTile(window,"\x0b",{576,544});
         };
         if(finished&&yes_no){
-            HUDdisplay.drawSquare(window,{444,320},{196,128},border_style);
+            HUDdisplay.drawSquare(window,{444,0},{196,128},border_style);
         };
         if(transition){
             waiting=false;
