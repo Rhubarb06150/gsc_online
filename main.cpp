@@ -223,8 +223,9 @@ class Game{
         functions.log("ENGINE","Game launched!");//and there, we annouce to our dear player, that the game is ready to be played
     };
 
-int showMessage(std::string message){
+int showMessage(std::string message,bool yes_no){
     //PLEASE DO NOT TOUCH THIS PART THIS WAS THE WORT THING I HAD TO DO
+    int choice=0;
     message=HUDdisplay.convertText(message);
     int letters_shown=0;
     int letters_shown_real=0;
@@ -273,10 +274,13 @@ int showMessage(std::string message){
         if(letters_nb==letters_shown_real){
             finished=true;
         };
-        if((waiting||finished)&&index_frame%50<=25){
+        if(finished&&index_frame%50<=25){
+            HUDdisplay.showMenuTile(window,"\x0b",{576,544});
+            HUDdisplay.drawSquare(window,{576,352},{128,160},border_style);
+        };
+        if(waiting&&index_frame%50<=25){
             HUDdisplay.showMenuTile(window,"\x0b",{576,544});
         };
-
         if(transition){
             waiting=false;
             transition_frame++;
@@ -2379,7 +2383,7 @@ int main(int argc, char** argv)
     G.loadSettings();
     //G.functions.log("INFO","an game folder has been created at "+G.functions.getUserPath()+"/.gsc_o, it will be used to store your saved maps and your screenshots");
     G.main_menu();
-    G.showMessage(":)");
+    G.showMessage(":)",false);
     while (G.window.isOpen()){
         G.mainLoop();
     };
