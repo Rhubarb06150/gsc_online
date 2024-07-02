@@ -273,8 +273,7 @@ int showMessage(std::string message,bool yes_no){
                         }else{
                             choice=1;
                         };
-                    }
-                    if(event.key.code==sf::Keyboard::F5||event.key.code==sf::Keyboard::X||event.key.code==sf::Keyboard::Space){
+                    }else if(event.key.code==sf::Keyboard::F5||event.key.code==sf::Keyboard::X||event.key.code==sf::Keyboard::Space){
                         return choice+10;
                     };
                 };
