@@ -235,8 +235,10 @@ int showMessage(std::string message){
     bool finished=false;
     bool transition=false;
     int transition_frame=0;
+    int real_index=0;
     for(int i=0;i<message.length();i++){
-        if(i!=0&&i%18==0&&i!=letters_nb){
+        if(real_index!=0&&real_index%18==0&&real_index!=letters_nb){
+            real_index++;
             std::cout<<"espace"<<std::endl;
             std::cout<<"taille: "<<message.length()<<std::endl;
             message.insert(i+spaces,"\n\n");
