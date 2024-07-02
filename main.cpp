@@ -239,9 +239,9 @@ int showMessage(std::string message){
         if(i!=0&&i%18==0&&i!=letters_nb){
             std::cout<<"espace"<<std::endl;
             std::cout<<"taille: "<<message.length()<<std::endl;
-            message.insert(i+spaces,"\n\n");
-            i+=2;
             letters_nb+=2;
+            i+=2;
+            message.insert(i+spaces,"\n\n");
             std::cout<<"nouvelle taille: "<<message.length()<<std::endl;
         };
     };
