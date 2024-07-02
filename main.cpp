@@ -236,9 +236,9 @@ int showMessage(std::string message){
     bool transition=false;
     int transition_frame=0;
     for(int i=0;i<message.length();i++){
-        if(i!=0&&i%18==0){
+        if(i!=0&&i%18==0&&i!=letters_nb+spaces){
             message.insert(i+spaces,"\n\n");
-            spaces;
+            spaces+=2;
             letters_nb+=2;
         };
     };
