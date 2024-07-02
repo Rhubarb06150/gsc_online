@@ -238,7 +238,7 @@ int showMessage(std::string message,bool yes_no){
     bool transition=false;
     int transition_frame=0;
     if(letters_nb<39&&letters_nb>18){
-        message.insert(17,"\n\n");
+        message.insert(18,"\n\n");
     }else{
         for(int i=2;i<message.length();i++){
             if(i!=0 && i%20==0 && i!=letters_nb){
@@ -265,7 +265,7 @@ int showMessage(std::string message,bool yes_no){
         if(!finished&&letters_shown==39){
             waiting=true;
         };
-        if(letters_shown_real<=letters_nb&&!waiting){
+        if(letters_shown_real-1<=letters_nb&&!waiting){
             letters_shown++;
             letters_shown_real++;
         };
