@@ -260,19 +260,24 @@ int showMessage(std::string message,bool yes_no){
                         return 0;
                     }
                 };
-                if(event.key.code==sf::Keyboard::Up){
-                    if(choice==0){
-                        choice=1;
-                    }else{
-                        choice=0;
+                if(finished){
+                    if(event.key.code==sf::Keyboard::Up){
+                        if(choice==0){
+                            choice=1;
+                        }else{
+                            choice=0;
+                        };
+                    }else if(event.key.code==sf::Keyboard::Down){
+                        if(choice==1){
+                            choice=0;
+                        }else{
+                            choice=1;
+                        };
+                    }
+                    if(event.key.code==sf::Keyboard::F5||event.key.code==sf::Keyboard::X||event.key.code==sf::Keyboard::Space){
+                        return choice+10;
                     };
-                }else if(event.key.code==sf::Keyboard::Down){
-                    if(choice==1){
-                        choice=0;
-                    }else{
-                        choice=1;
-                    };
-                }
+                };
             }
         };
         if(!finished&&letters_shown==39){
