@@ -2389,7 +2389,7 @@ int main(int argc, char** argv)
     G.loadSettings();
     //G.functions.log("INFO","an game folder has been created at "+G.functions.getUserPath()+"/.gsc_o, it will be used to store your saved maps and your screenshots");
     G.main_menu();
-    G.showMessage("Did you visited  national park?",true);
+    G.showMessage("Did you visited   national park?",true);
     while (G.window.isOpen()){
         G.mainLoop();
     };
