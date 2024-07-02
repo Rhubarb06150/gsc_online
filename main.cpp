@@ -279,6 +279,7 @@ int showMessage(std::string message,bool yes_no){
         };
         if(finished&&yes_no){
             HUDdisplay.drawSquare(window,{448,224},{192,128},border_style);
+            HUDdisplay.showTextBOW("YES",{480,300},window);
         };
         if(transition){
             waiting=false;
