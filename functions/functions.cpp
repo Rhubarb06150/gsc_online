@@ -25,7 +25,7 @@
 class GSC_Functions{
     public:
     std::vector<double> render_times;
-    std::string log_file_name=getUserPath()+"/.gsc_o/logs/log_"+currentHour()+".log";
+    std::string log_file_name=getUserPath()+"/.gsc_o/logs/log_"+currentDateTime()+".log";
     std::ofstream log_file;
     GSC_Functions(){
         std::ofstream log_file(log_file_name);
@@ -110,7 +110,7 @@ class GSC_Functions{
         }else{//basic terminal color for all
             std::cout << "\033[0m][" << type << "] " << currentHour() << " // " << info << std::endl;
         }
-        log_file<<"["<<type<<"] "<<currentHour()<<" // "<<info<<"\n";
+        log_file<<("["+type+"] "+currentHour()+" // "+info+"\n");
         return 0;
     };
 
