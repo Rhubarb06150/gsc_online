@@ -224,6 +224,7 @@ class Game{
     };
 
 int showMessage(std::string message){
+    //PLEASE DO NOT TOUCH THIS PART THIS WAS THE WORT THING I HAD TO DO
     int letters_shown=0;
     int letters_shown_real=0;
     int letters_nb=0;
@@ -236,13 +237,10 @@ int showMessage(std::string message){
     int transition_frame=0;
     for(int i=2;i<message.length();i++){
          if(i!=0 && i%20==0 && i!=letters_nb){
-            std::cout<<"espace"<<i<<std::endl;
             message.insert(i-2,"\n\n");
             letters_nb+=2;
         };
     };
-    std::cout<<"Message:"<<std::endl;
-    std::cout<<message<<std::endl;
     do{
         index_frame++;
         if(!waiting){
@@ -286,11 +284,10 @@ int showMessage(std::string message){
             if(transition_frame==4){
                 message.erase(0,20);
                 message_cur.erase(0,20);
-                std::cout<<"Eff"<<std::endl;
+                letters_shown-=20;
             };
             if(transition_frame==8){
                 offset-=2;
-                letters_shown-=20;
                 transition_frame=0;
                 transition=false;
             };
