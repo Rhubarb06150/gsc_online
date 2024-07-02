@@ -225,7 +225,6 @@ class Game{
 
 int showMessage(std::string message){
     //PLEASE DO NOT TOUCH THIS PART THIS WAS THE WORT THING I HAD TO DO
-    std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
     message=HUDdisplay.convertText(message);
     int letters_shown=0;
     int letters_shown_real=0;
@@ -243,8 +242,6 @@ int showMessage(std::string message){
             letters_nb+=2;
         };
     };
-    std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-    std::cout << "Exec time = " << std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count() << "[ns]" << std::endl;
     do{
         index_frame++;
         message_cur=message.substr(0,letters_shown);
@@ -2382,7 +2379,7 @@ int main(int argc, char** argv)
     G.loadSettings();
     //G.functions.log("INFO","an game folder has been created at "+G.functions.getUserPath()+"/.gsc_o, it will be used to store your saved maps and your screenshots");
     G.main_menu();
-    G.showMessage("Pokémon");
+    G.showMessage("Hey how are you my little chenapan des bois");
     while (G.window.isOpen()){
         G.mainLoop();
     };
