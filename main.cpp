@@ -284,10 +284,11 @@ int showMessage(std::string message){
             transition_frame++;
             if(transition_frame==8){
                 message.erase(0,20);
+                offset-=2;
             };
             if(transition_frame==16){
                 letters_shown-=20;
-                //offset-=2;
+                offset=0;
                 transition_frame=0;
                 transition=false;
             };
