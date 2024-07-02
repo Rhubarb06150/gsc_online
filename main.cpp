@@ -258,7 +258,7 @@ int showMessage(std::string message){
                 };
             }
         };
-        if(letters_shown_real<=letters_nb){
+        if(letters_shown_real<=letters_nb&&!waiting){
             letters_shown++;
             letters_shown_real++;
         };
