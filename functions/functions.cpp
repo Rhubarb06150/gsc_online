@@ -25,7 +25,11 @@
 class GSC_Functions{
     public:
     std::vector<double> render_times;
-    GSC_Functions(){};
+    std::string log_file_name=getUserPath()+"/.gsc_o/logs/log_"+currentHour()+".log";
+    std::ofstream log_file;
+    GSC_Functions(){
+        std::ofstream log_file(log_file_name);
+    };
     std::string currentDateTime() {
         time_t now=time(0);
         struct tm tstruct;
@@ -106,6 +110,7 @@ class GSC_Functions{
         }else{//basic terminal color for all
             std::cout << "\033[0m][" << type << "] " << currentHour() << " // " << info << std::endl;
         }
+        log_file<<"["<<type<<"] "<<currentHour()<<" // "<<info<<"\n";
         return 0;
     };
 
@@ -116,6 +121,7 @@ class GSC_Functions{
         log("INFO","Temp folder cleared");
         #endif
         log("INFO","Closing game");
+        log_file.close();
         window.close();
         return 0;
     };

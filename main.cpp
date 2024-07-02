@@ -2380,6 +2380,7 @@ int main(int argc, char** argv)
     G.functions.createMissingDir(G.functions.getUserPath()+"/.gsc_o/");
     G.functions.createMissingDir(G.functions.getUserPath()+"/.gsc_o/screenshots/");
     G.functions.createMissingDir(G.functions.getUserPath()+"/.gsc_o/maps/");
+    G.functions.createMissingDir(G.functions.getUserPath()+"/.gsc_o/logs/");
     G.functions.createMissingDir(G.functions.getUserPath()+"/.gsc_o/renders/");
     G.functions.createMissingFile(G.functions.getUserPath()+"/.gsc_o/settings","username=Player\nresolution=640x576\nborder=0\ntrainer=0");
     G.loadSettings();
