@@ -225,6 +225,8 @@ class Game{
 
 int showMessage(std::string message){
     //PLEASE DO NOT TOUCH THIS PART THIS WAS THE WORT THING I HAD TO DO
+    std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
+    message=HUDdisplay.convertText(message);
     int letters_shown=0;
     int letters_shown_real=0;
     int letters_nb=0;
@@ -241,10 +243,11 @@ int showMessage(std::string message){
             letters_nb+=2;
         };
     };
+    std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+    std::cout << "Exec time = " << std::chrono::duration_cast<std::chrono::nanoseconds> (end - begin).count() << "[ns]" << std::endl;
     do{
         index_frame++;
         message_cur=message.substr(0,letters_shown);
-        message_cur=HUDdisplay.convertText(message_cur);
         while(window.pollEvent(event)){
             allVerify();
             if(event.type==sf::Event::KeyPressed){
