@@ -282,7 +282,7 @@ int showMessage(std::string message){
         if(transition){
             waiting=false;
             transition_frame++;
-            if(transition_frame==4){
+            if(transition_frame==6){
                 //message_cur.erase(0,20);
                 message.erase(0,20);
                 letters_shown-=20;
