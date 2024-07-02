@@ -235,7 +235,7 @@ int showMessage(std::string message){
     bool transition=false;
     int transition_frame=0;
     int space=2;
-    for(int i=2;i<message.length();i++){
+    for(int i=0;i<message.length();i++){
         std::cout<<"space: "<<space<<std::endl;
          if(i!=0||
             i==17&&
