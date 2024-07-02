@@ -229,7 +229,6 @@ int showMessage(std::string message){
     int letters_nb=0;
     letters_nb=message.length();
     std::string message_cur;
-    int spaces=0;
     int offset=0;
     bool waiting=false;
     bool finished=false;
@@ -241,7 +240,7 @@ int showMessage(std::string message){
             std::cout<<"taille: "<<message.length()<<std::endl;
             letters_nb+=2;
             i+=2;
-            message.insert(i+spaces,"\n\n");
+            message.insert(i,"\n\n");
             std::cout<<"nouvelle taille: "<<message.length()<<std::endl;
         };
     };
