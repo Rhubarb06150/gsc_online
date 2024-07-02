@@ -242,8 +242,8 @@ int showMessage(std::string message){
             std::cout<<"espace"<<i<<std::endl;
             message.insert(i-space,"\n\n");
             letters_nb+=2;
-            if(i>40)
-            space=0;
+            //if(i>40)
+            //space=0;
         };
     };
     std::cout<<"Message:"<<std::endl;
