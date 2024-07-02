@@ -237,7 +237,9 @@ int showMessage(std::string message){
     int space=2;
     for(int i=2;i<message.length();i++){
         std::cout<<"space: "<<space<<std::endl;
-        if(i!=0&&i!=20&&i%(20-space)==0&&i!=letters_nb){
+         if(i!=0&&
+            i%(20-space)==0&&
+            i!=letters_nb){
             space=0;
             std::cout<<"espace"<<std::endl;
             //std::cout<<"taille: "<<message.length()<<std::endl;
