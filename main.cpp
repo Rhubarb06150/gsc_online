@@ -242,6 +242,7 @@ int showMessage(std::string message){
             i+=2;
             message.insert(i,"\n\n");
             std::cout<<"nouvelle taille: "<<message.length()<<std::endl;
+            std::cout<<i<<std::endl;
         };
     };
     do{
@@ -261,8 +262,7 @@ int showMessage(std::string message){
                 };
             }
         };
-        if(letters_shown_real<=
-        letters_nb){
+        if(letters_shown_real<=letters_nb){
             letters_shown++;
             letters_shown_real++;
         };
