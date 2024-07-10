@@ -730,7 +730,7 @@ std::string getStandingTile(){
 std::vector<int> checkResolutionRWindow(){
     std::vector<int> res;
     if (real_res=="640x576"){
-        res={640,576};
+        res={1080,1080};
     }else if (real_res=="720x576"){
         res={720,576};
     }else {
